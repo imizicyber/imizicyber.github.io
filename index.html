@@ -27,7 +27,7 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"imizicyber","description":"OSCP-certified offensive security consultancy in Rwanda.","url":"https://imizicyber.com","foundingDate":"2025","telephone":"+250793146617","address":{"@type":"PostalAddress","addressLocality":"Kigali","addressCountry":"RW"},"areaServed":[{"@type":"Country","name":"Rwanda"},{"@type":"Place","name":"East Africa"}],"serviceType":["Penetration Testing","Managed Security Services","Vulnerability Assessment","Mobile Banking Security","USSD Security Testing","API Security","BNR Compliance"],"knowsAbout":["BNR Cybersecurity Regulation","PCI DSS","ISO 27001","OSCP","OWASP"],"parentOrganization":{"@type":"Organization","name":"Imizi Investment Group Ltd"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"imizicyber","description":"OSCP-certified offensive security consultancy in Rwanda.","url":"https://imizicyber.com","foundingDate":"2025","telephone":"+250793146617","address":{"@type":"PostalAddress","addressLocality":"Kigali","addressCountry":"RW"},"areaServed":[{"@type":"Country","name":"Rwanda"},{"@type":"Place","name":"East Africa"}],"serviceType":["Penetration Testing","Managed Security Services","Vulnerability Assessment","Mobile Banking Security","USSD Security Testing","API Security","BNR Compliance","Security Awareness Training","Secure Coding Training"],"knowsAbout":["BNR Cybersecurity Regulation","PCI DSS","ISO 27001","OSCP","OWASP"],"parentOrganization":{"@type":"Organization","name":"Imizi Investment Group Ltd"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do banks in Rwanda need penetration testing?","acceptedAnswer":{"@type":"Answer","text":"BNR requires regulated financial institutions to maintain cybersecurity programs. Penetration testing finds vulnerabilities before attackers do and is a core component of BNR compliance."}},{"@type":"Question","name":"Does imizicyber help with BNR cybersecurity compliance?","acceptedAnswer":{"@type":"Answer","text":"Yes. We help banks, microfinance institutions, and insurance companies meet BNR requirements through penetration testing, vulnerability assessments, and managed security."}},{"@type":"Question","name":"What certifications do imizicyber consultants hold?","acceptedAnswer":{"@type":"Answer","text":"OSCP and OSCP+, PNPT, and BlackHat Europe Arsenal presenter. This certification level is unique among providers physically based in Rwanda."}},{"@type":"Question","name":"How much does penetration testing cost in Rwanda?","acceptedAnswer":{"@type":"Answer","text":"Costs vary by scope and complexity. A web application assessment typically starts from USD 2,500 for small applications. Network penetration tests and comprehensive assessments for banking environments are scoped individually. Contact us for a tailored quote."}},{"@type":"Question","name":"What is BNR Regulation on cybersecurity?","acceptedAnswer":{"@type":"Answer","text":"The National Bank of Rwanda requires all regulated financial institutions to implement cybersecurity programs including regular vulnerability assessments, penetration testing, incident response plans, and security awareness training."}},{"@type":"Question","name":"How often should banks do penetration testing?","acceptedAnswer":{"@type":"Answer","text":"BNR recommends at minimum annual penetration testing, and after any significant infrastructure or application changes. Most institutions we work with test quarterly for critical systems."}},{"@type":"Question","name":"What is the difference between VAPT and penetration testing?","acceptedAnswer":{"@type":"Answer","text":"VAPT combines automated vulnerability scanning with manual penetration testing. Vulnerability assessment identifies weaknesses using tools. Penetration testing goes further by manually exploiting vulnerabilities to demonstrate real business impact."}},{"@type":"Question","name":"Do I need ISO 27001 certification in Rwanda?","acceptedAnswer":{"@type":"Answer","text":"ISO 27001 is not legally mandatory in Rwanda but is increasingly required by international partners, investors, and clients. BNR encourages ISO 27001 alignment for financial institutions. We help organisations prepare for certification through gap analysis and security improvements."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,9 +119,7 @@ h1 em{color:var(--acc);font-style:normal}
 .trust-logos{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .trust-logo{
   font-size:.82rem;font-weight:700;color:var(--dim);
-  display:flex;align-items:center;gap:6px;
 }
-.trust-logo svg{width:20px;height:20px;opacity:.5}
 
 /* WHY US */
 .why{padding:52px 0;border-bottom:1px solid rgba(255,255,255,.04)}
@@ -149,7 +147,7 @@ h1 em{color:var(--acc);font-style:normal}
 .sec-sub{font-size:.84rem;color:var(--txt2);max-width:380px;line-height:1.7;margin-bottom:24px}
 
 /* SERVICE CARDS */
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .card{
   border:1px solid rgba(255,255,255,.05);border-radius:12px;
   padding:28px 24px;background:var(--bg2);text-decoration:none;
@@ -402,18 +400,8 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="trust-inner">
     <span class="trust-label">Security engagements delivered for</span>
     <div class="trust-logos">
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
-        Danske Bank
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
-        ABSA Group
-      </span>
-      <span class="trust-logo">
-        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
-        Capitec
-      </span>
+      <span class="trust-logo">Danske Bank</span>
+      <span class="trust-logo">ABSA Group</span>
     </div>
   </div>
 </div>
@@ -425,7 +413,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="why-grid">
     <div class="why-item">
       <div class="why-icon">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
       <div class="why-num">01</div>
       <h3>OSCP-certified, in Kigali</h3>
@@ -433,7 +421,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     </div>
     <div class="why-item">
       <div class="why-icon">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="6 10 10 14 6 18"/><line x1="14" y1="18" x2="18" y2="18"/></svg>
       </div>
       <div class="why-num">02</div>
       <h3>We build custom tooling</h3>
@@ -441,7 +429,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     </div>
     <div class="why-item">
       <div class="why-icon">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 2 10 22 10 22 7 12 2"/><line x1="6" y1="10" x2="6" y2="18"/><line x1="10" y1="10" x2="10" y2="18"/><line x1="14" y1="10" x2="14" y2="18"/><line x1="18" y1="10" x2="18" y2="18"/><rect x="2" y="18" width="20" height="2"/></svg>
       </div>
       <div class="why-num">03</div>
       <h3>Banking red team experience</h3>
@@ -455,8 +443,8 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 <section id="services" class="sec sec-b">
 <div class="w reveal">
   <div class="sec-tag">SERVICES</div>
-  <h2 class="sec-title">Two ways to work with us</h2>
-  <p class="sec-sub">Ongoing protection or targeted assessments when you need them.</p>
+  <h2 class="sec-title">Three ways to work with us</h2>
+  <p class="sec-sub">Ongoing protection, targeted assessments, or training for your team.</p>
   <div class="cards">
     <a href="#contact" class="card">
       <div class="card-tag">MANAGED / MONTHLY RETAINER</div>
@@ -486,6 +474,20 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
         <span>BNR / PCI DSS / ISO 27001</span>
       </div>
       <span class="card-cta">Request an assessment &#8594;</span>
+    </a>
+    <a href="#contact" class="card">
+      <div class="card-tag">TRAINING / ON-SITE OR REMOTE</div>
+      <h3>Security Awareness Training</h3>
+      <p>Hands-on cybersecurity training for employees and IT teams. From executive awareness to technical workshops for developers and security staff.</p>
+      <div class="pills">
+        <span>Employee awareness</span>
+        <span>Phishing simulations</span>
+        <span>Secure coding</span>
+        <span>Incident response drills</span>
+        <span>Board-level briefings</span>
+        <span>BNR compliance training</span>
+      </div>
+      <span class="card-cta">Enquire about training &#8594;</span>
     </a>
   </div>
 </div>
@@ -567,9 +569,21 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
       <p>A practical breakdown of the National Bank of Rwanda's cybersecurity regulation and what it means for your institution's security program.</p>
       <span class="blog-link">Read more &#8594;</span>
     </a>
+    <a href="/blog/penetration-testing-cost-rwanda/" class="blog-card">
+      <div class="blog-date">FEB 2026</div>
+      <h3>How much does penetration testing cost in Rwanda?</h3>
+      <p>Transparent pricing guide with real market ranges, from single web app assessments to full enterprise engagements.</p>
+      <span class="blog-link">Read more &#8594;</span>
+    </a>
+    <a href="/blog/vapt-rwanda/" class="blog-card">
+      <div class="blog-date">FEB 2026</div>
+      <h3>VAPT in Rwanda: what organisations need to know</h3>
+      <p>Complete guide to Vulnerability Assessment and Penetration Testing — who needs it, what it covers, and how to choose a provider.</p>
+      <span class="blog-link">Read more &#8594;</span>
+    </a>
     <a href="/blog/penetration-testing-vs-vulnerability-scanning/" class="blog-card">
       <div class="blog-date">FEB 2026</div>
-      <h3>Penetration testing vs vulnerability scanning: what your organisation needs</h3>
+      <h3>Penetration testing vs vulnerability scanning</h3>
       <p>Understanding the difference between automated scanning and manual penetration testing, and when you need each.</p>
       <span class="blog-link">Read more &#8594;</span>
     </a>
@@ -620,6 +634,10 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     <details class="faq">
       <summary>Do I need ISO 27001 certification in Rwanda?</summary>
       <div class="faq-body">ISO 27001 is not legally mandatory in Rwanda but is increasingly required by international partners, investors, and clients. BNR encourages ISO 27001 alignment for financial institutions. We help organisations prepare through gap analysis and security improvements.</div>
+    </details>
+    <details class="faq">
+      <summary>Do you offer cybersecurity training for employees?</summary>
+      <div class="faq-body">Yes. We deliver security awareness training for all staff levels, from executive briefings to hands-on technical workshops for developers and IT teams. Training covers phishing recognition, secure coding practices, incident response procedures, and BNR compliance requirements. Available on-site in Kigali or remotely across East Africa.</div>
     </details>
     <details class="faq">
       <summary>Do you work with organisations outside Rwanda?</summary>
@@ -688,6 +706,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
               <option value="">Select a service</option>
               <option>Managed Security</option>
               <option>Penetration Testing</option>
+              <option>Security Training</option>
               <option>BNR Compliance</option>
               <option>Custom Security Tooling</option>
               <option>Other</option>
