@@ -87,7 +87,7 @@ nav{
   color:var(--acc);letter-spacing:.12em;margin-bottom:18px;
   display:flex;align-items:center;gap:10px;
 }
-.tag::before{content:'';width:24px;height:1.5px;background:var(--acc)}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc)}
 h1{
   font-size:clamp(2.1rem,4.5vw,2.9rem);font-weight:800;
   letter-spacing:-1.5px;line-height:1.08;color:var(--white);
@@ -139,7 +139,7 @@ h1 em{color:var(--acc);font-style:normal}
   color:var(--acc);letter-spacing:.1em;margin-bottom:6px;
   display:flex;align-items:center;gap:8px;
 }
-.sec-tag::before{content:'';width:12px;height:1.5px;background:var(--acc)}
+.sec-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc)}
 .sec-title{
   font-size:clamp(1.4rem,2.4vw,1.8rem);font-weight:800;
   letter-spacing:-.8px;color:var(--white);margin-bottom:4px;line-height:1.15;
@@ -198,18 +198,31 @@ h1 em{color:var(--acc);font-style:normal}
 .step:last-child .step-line{display:none}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
 .stat{padding:16px;border:1px solid rgba(255,255,255,.04);border-radius:10px;background:var(--bg2)}
 .stat strong{font-size:1.3rem;font-weight:800;color:var(--acc);display:block;letter-spacing:-.5px}
 .stat span{font-size:.68rem;color:var(--txt3)}
-.cred-box{background:var(--bg2);border-radius:12px;padding:22px;border:1px solid rgba(255,255,255,.04)}
-.cred-box h3{font-family:var(--mono);font-size:.64rem;color:var(--txt3);letter-spacing:.08em;margin-bottom:12px}
-.cred-item{margin-bottom:8px;display:flex;align-items:baseline;gap:8px;font-size:.8rem}
-.cred-item:last-child{margin-bottom:0}
-.cred-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--acc);flex-shrink:0}
-.cred-item b{color:var(--white);font-weight:700}
-.cred-item span{color:var(--txt3);font-size:.72rem}
+.cred-label{
+  font-family:var(--mono);font-size:.62rem;font-weight:500;
+  color:var(--txt3);letter-spacing:.1em;margin-bottom:10px;
+}
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cred-card{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;background:var(--bg2);
+  border:1px solid rgba(255,255,255,.04);border-radius:8px;
+  transition:border-color .2s;
+}
+.cred-card:hover{border-color:rgba(52,211,153,.15)}
+.cred-badge{
+  font-family:var(--mono);font-size:.56rem;font-weight:700;
+  color:var(--acc);background:rgba(52,211,153,.08);
+  padding:6px 8px;border-radius:5px;letter-spacing:.04em;
+  flex-shrink:0;min-width:36px;text-align:center;
+}
+.cred-info{display:flex;flex-direction:column}
+.cred-info b{font-size:.78rem;font-weight:800;color:var(--white);line-height:1.3}
+.cred-info span{font-size:.66rem;color:var(--txt3);line-height:1.3}
 
 /* FAQ */
 .faq-list{max-width:580px}
@@ -331,7 +344,8 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   .hero{padding:100px 0 40px}
   .why-grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .cred-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .btns{flex-direction:column;align-items:flex-start}
   .footer-inner{flex-direction:column;gap:10px;text-align:center}
@@ -531,26 +545,42 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 <!-- ABOUT -->
 <section id="about" class="sec sec-b">
 <div class="w reveal">
-  <div class="about-grid">
-    <div>
-      <div class="sec-tag">ABOUT</div>
-      <h2 class="sec-title">Independent offensive security consultancy, based in Kigali</h2>
-      <p class="sec-sub" style="margin-bottom:0">imizicyber is a registered Rwandan security firm serving banks, government agencies, and enterprises across East Africa. We combine hands-on penetration testing with managed security tooling deployment.</p>
-      <div class="stats">
-        <div class="stat"><strong>6+</strong><span>Countries served</span></div>
-        <div class="stat"><strong>50+</strong><span>Security engagements</span></div>
-        <div class="stat"><strong>5+</strong><span>Years offensive security</span></div>
-        <div class="stat"><strong>500+</strong><span>Professionals trained</span></div>
-      </div>
+  <div class="sec-tag">ABOUT</div>
+  <h2 class="sec-title">Independent offensive security consultancy, based in Kigali</h2>
+  <p class="sec-sub">imizicyber is a registered Rwandan security firm serving banks, government agencies, and enterprises across East Africa. We combine hands-on penetration testing with managed security tooling deployment.</p>
+
+  <div class="stats-row">
+    <div class="stat"><strong>6+</strong><span>Countries served</span></div>
+    <div class="stat"><strong>50+</strong><span>Security engagements</span></div>
+    <div class="stat"><strong>5+</strong><span>Years offensive security</span></div>
+    <div class="stat"><strong>500+</strong><span>Professionals trained</span></div>
+  </div>
+
+  <div class="cred-label">CREDENTIALS</div>
+  <div class="cred-grid">
+    <div class="cred-card">
+      <div class="cred-badge">CERT</div>
+      <div class="cred-info"><b>OSCP and OSCP+</b><span>Offensive Security</span></div>
     </div>
-    <div class="cred-box">
-      <h3>CREDENTIALS</h3>
-      <div class="cred-item"><b>OSCP and OSCP+</b> <span>Offensive Security</span></div>
-      <div class="cred-item"><b>PNPT</b> <span>Practical Network Pentester</span></div>
-      <div class="cred-item"><b>BlackHat Europe</b> <span>Arsenal presenter, London 2023</span></div>
-      <div class="cred-item"><b>MSc Computer Security</b> <span>Technical University of Denmark</span></div>
-      <div class="cred-item"><b>BSc Informatics</b> <span>University of Athens</span></div>
-      <div class="cred-item"><b>Google Summer of Code</b> <span>Honeynet Project 2023/2024</span></div>
+    <div class="cred-card">
+      <div class="cred-badge">CERT</div>
+      <div class="cred-info"><b>PNPT</b><span>Practical Network Pentester</span></div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-badge">TALK</div>
+      <div class="cred-info"><b>BlackHat Europe Arsenal</b><span>Presenter, London 2023</span></div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-badge">MSc</div>
+      <div class="cred-info"><b>Computer Security</b><span>Technical University of Denmark</span></div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-badge">BSc</div>
+      <div class="cred-info"><b>Informatics</b><span>University of Athens</span></div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-badge">OSS</div>
+      <div class="cred-info"><b>Google Summer of Code</b><span>Honeynet Project 2023/2024</span></div>
     </div>
   </div>
 </div>
@@ -578,7 +608,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     <a href="/blog/vapt-rwanda/" class="blog-card">
       <div class="blog-date">FEB 2026</div>
       <h3>VAPT in Rwanda: what organisations need to know</h3>
-      <p>Complete guide to Vulnerability Assessment and Penetration Testing — who needs it, what it covers, and how to choose a provider.</p>
+      <p>Complete guide to Vulnerability Assessment and Penetration Testing. Who needs it, what it covers, and how to choose a provider.</p>
       <span class="blog-link">Read more &#8594;</span>
     </a>
     <a href="/blog/penetration-testing-vs-vulnerability-scanning/" class="blog-card">
