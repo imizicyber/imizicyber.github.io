@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know | imizicyber</title>
+<meta name="description" content="A practical breakdown of the National Bank of Rwanda's cybersecurity regulation and what it means for your bank's security program. OSCP-certified guidance from imizicyber.">
+<meta name="keywords" content="BNR cybersecurity regulation, BNR compliance Rwanda, bank security Rwanda, cybersecurity requirements Rwanda, National Bank of Rwanda, penetration testing BNR, VAPT Rwanda banks">
+<meta property="og:title" content="BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know">
+<meta property="og:description" content="Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and insurance companies in Rwanda.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://imizicyber.com/blog/bnr-cybersecurity-requirements/">
+<meta property="og:image" content="https://imizicyber.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BNR Cybersecurity Requirements for Banks in Rwanda">
+<meta name="twitter:description" content="Practical guide to BNR cybersecurity compliance from an OSCP-certified consultancy in Kigali.">
+<link rel="canonical" href="https://imizicyber.com/blog/bnr-cybersecurity-requirements/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know","description":"A practical breakdown of BNR cybersecurity regulation for banks in Rwanda","author":{"@type":"Organization","name":"imizicyber"},"publisher":{"@type":"Organization","name":"imizicyber","url":"https://imizicyber.com"},"datePublished":"2026-02-17","dateModified":"2026-02-17","url":"https://imizicyber.com/blog/bnr-cybersecurity-requirements/"}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#0b1421;--bg2:#0f1b2d;--bg3:#131f33;
+  --txt:#d4dce8;--txt2:#8494a7;--txt3:#576b82;--dim:#3a5068;
+  --acc:#34d399;--acc2:#10b981;--accdark:#059669;--white:#f0f4f8;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+body{
+  font-family:var(--sans);color:var(--txt);background:var(--bg);
+  -webkit-font-smoothing:antialiased;line-height:1.7;font-size:15px;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+.w{max-width:680px;margin:0 auto;padding:0 24px}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(11,20,33,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:920px;margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:36px;height:36px}
+.logo-text{font-size:1.05rem;letter-spacing:-.5px;font-weight:400;color:var(--txt2)}
+.logo-text b{font-weight:800;color:var(--white)}
+.back{font-size:.8rem;color:var(--txt3);text-decoration:none;font-weight:600}
+.back:hover{color:var(--acc)}
+article{padding:100px 0 60px}
+.meta{font-family:var(--mono);font-size:.64rem;color:var(--acc);letter-spacing:.08em;margin-bottom:12px}
+h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--white);margin-bottom:20px}
+h2{font-size:1.2rem;font-weight:800;color:var(--white);margin:32px 0 10px;letter-spacing:-.5px}
+h3{font-size:1rem;font-weight:700;color:var(--white);margin:24px 0 8px}
+p{margin-bottom:14px;color:var(--txt);line-height:1.8}
+strong{color:var(--white)}
+a{color:var(--acc)}
+ul,ol{margin:0 0 14px 20px}
+li{margin-bottom:6px;color:var(--txt);line-height:1.7}
+.callout{
+  background:var(--bg2);border-left:3px solid var(--acc);
+  padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;
+  font-size:.88rem;
+}
+.cta-box{
+  background:var(--bg3);border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;padding:28px;margin:32px 0;text-align:center;
+}
+.cta-box h3{margin-top:0;margin-bottom:6px}
+.cta-box p{color:var(--txt2);font-size:.86rem;margin-bottom:14px}
+.btn{
+  display:inline-block;padding:10px 22px;border-radius:8px;font-size:.84rem;font-weight:700;
+  text-decoration:none;background:var(--accdark);color:var(--white);transition:all .2s;
+}
+.btn:hover{background:var(--acc2)}
+footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:center;font-size:.68rem;color:var(--dim)}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+  <a href="/" class="logo">
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/><line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/></svg>
+    <span class="logo-text"><b>imizi</b>cyber</span>
+  </a>
+  <a href="/#blog" class="back">&larr; All posts</a>
+</div>
+</nav>
+
+<article>
+<div class="w">
+  <div class="meta">FEBRUARY 2026 &middot; 8 MIN READ</div>
+  <h1>BNR cybersecurity requirements: what banks in Rwanda need to know</h1>
+
+  <p>The National Bank of Rwanda (BNR) has steadily increased its cybersecurity requirements for all regulated financial institutions. If you are a bank, microfinance institution, insurance company, or payment service provider operating in Rwanda, cybersecurity compliance is no longer optional.</p>
+
+  <p>This guide covers what BNR expects, what your institution needs to implement, and how penetration testing fits into your compliance programme.</p>
+
+  <h2>Who does this apply to?</h2>
+  <p>BNR cybersecurity regulation applies to all institutions supervised by the National Bank of Rwanda, including commercial banks, microfinance institutions (MFIs), insurance companies, pension funds, payment service providers, mobile money operators, and electronic money issuers.</p>
+
+  <h2>Core requirements</h2>
+  <p>BNR expects regulated institutions to have a documented and operational cybersecurity programme. The key areas include:</p>
+
+  <h3>1. Cybersecurity governance</h3>
+  <p>Your institution must have a <strong>board-approved cybersecurity policy</strong> and a designated officer responsible for information security. The board must receive regular reports on cybersecurity risks and the status of the security programme.</p>
+
+  <h3>2. Risk assessment</h3>
+  <p>BNR requires regular risk assessments to identify threats and vulnerabilities to your IT systems and data. This means understanding what assets you have, what could go wrong, and how likely it is.</p>
+
+  <h3>3. Vulnerability assessment and penetration testing</h3>
+  <p>This is where our work comes in. BNR expects institutions to conduct <strong>regular vulnerability assessments and penetration tests</strong> on their systems. This includes web applications, mobile banking platforms, APIs, network infrastructure, and any internet-facing services.</p>
+
+  <div class="callout">
+    <strong>What does "regular" mean?</strong> BNR recommends at minimum annual penetration testing, and after any significant changes to systems or infrastructure. For critical systems like mobile banking and payment processing, quarterly testing is the standard we see among well-prepared institutions.
+  </div>
+
+  <h3>4. Incident response</h3>
+  <p>You need a documented incident response plan that covers detection, containment, eradication, recovery, and post-incident review. BNR expects institutions to report significant cyber incidents promptly.</p>
+
+  <h3>5. Security awareness training</h3>
+  <p>All employees must receive cybersecurity awareness training. This is not just for IT staff. BNR recognises that human error is behind most security breaches, so training must cover all levels of the organisation.</p>
+
+  <h3>6. Data protection</h3>
+  <p>Sensitive customer data must be encrypted in transit and at rest. Access controls must be implemented to ensure only authorised personnel can access sensitive information. This aligns with Rwanda's broader data protection framework under the National Cyber Security Authority (NCSA).</p>
+
+  <h3>7. Third-party risk management</h3>
+  <p>If you use third-party service providers (cloud hosting, payment processors, software vendors), BNR expects you to assess and manage the security risks they introduce. This includes due diligence before contracting and ongoing monitoring.</p>
+
+  <h2>What does a BNR-compliant pentest look like?</h2>
+  <p>A penetration test for BNR compliance should cover:</p>
+  <ul>
+    <li><strong>External testing</strong>: assessing all internet-facing systems including websites, APIs, mobile banking endpoints, and USSD gateways</li>
+    <li><strong>Internal testing</strong>: simulating an attacker who has gained access to the internal network</li>
+    <li><strong>Web application testing</strong>: deep-dive into your core banking web interface and customer-facing applications</li>
+    <li><strong>Mobile application testing</strong>: security assessment of your mobile banking apps on Android and iOS</li>
+    <li><strong>Social engineering</strong>: testing employee resilience to phishing and other social engineering attacks</li>
+  </ul>
+
+  <p>The deliverable is a detailed report that includes findings ranked by severity, proof of exploitation, and clear remediation guidance that your IT team can act on.</p>
+
+  <h2>Common gaps we find</h2>
+  <p>From our experience testing financial institutions across Africa, the most common issues include:</p>
+  <ul>
+    <li>Insecure Direct Object References (IDOR) in banking APIs allowing access to other customers' data</li>
+    <li>Weak or missing authentication on internal APIs</li>
+    <li>USSD session handling vulnerabilities</li>
+    <li>Default credentials on network equipment</li>
+    <li>Missing security headers and TLS misconfigurations</li>
+    <li>Insufficient input validation leading to injection attacks</li>
+  </ul>
+
+  <h2>How to get started</h2>
+  <p>If your institution needs to meet BNR cybersecurity requirements and you do not have an in-house security testing capability, the most practical approach is to engage an external penetration testing firm.</p>
+
+  <p>When selecting a provider, look for <strong>recognised certifications</strong> (OSCP is the industry gold standard for penetration testers), <strong>experience with financial institutions</strong>, and <strong>physical presence in Rwanda</strong> for on-site testing when needed.</p>
+
+  <div class="cta-box">
+    <h3>Need help with BNR compliance?</h3>
+    <p>We deliver OSCP-certified penetration testing and help regulated institutions meet BNR cybersecurity requirements. Based in Kigali.</p>
+    <a href="/#contact" class="btn">Request a consultation</a>
+  </div>
+</div>
+</article>
+
+<footer>
+<div class="w">&copy; 2026 imizicyber / Imizi Investment Group Ltd / Kigali, Rwanda</div>
+</footer>
+</body>
+</html>
