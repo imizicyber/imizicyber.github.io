@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Penetration Testing and Managed Security in Rwanda | imizicyber</title>
-<meta name="description" content="OSCP-certified penetration testing and managed security for banks, government agencies, and regulated organisations in Kigali, Rwanda and East Africa.">
+<meta name="description" content="imizicyber delivers OSCP-certified penetration testing, managed security services, and compliance assessments for banks, government agencies, and regulated organisations in Kigali, Rwanda and East Africa.">
 <meta name="keywords" content="penetration testing Rwanda, cybersecurity Kigali, managed security services Rwanda, BNR cybersecurity compliance, VAPT Rwanda, security audit East Africa, OSCP penetration tester Rwanda, API security testing, mobile app security Rwanda, ISO 27001 Rwanda, PCI DSS compliance Rwanda, cybersecurity consultant Kigali, mobile money security Rwanda, USSD security testing, mobile banking penetration test, fintech security Rwanda, core banking security audit, payment API security East Africa">
 <meta property="og:title" content="imizicyber | Penetration Testing and Managed Security in Rwanda">
 <meta property="og:description" content="OSCP-certified offensive security consultancy based in Kigali. Managed security, penetration testing, and compliance for regulated organisations across East Africa.">
@@ -17,18 +17,20 @@
 <meta name="geo.region" content="RW">
 <meta name="geo.placename" content="Kigali">
 <meta name="theme-color" content="#0b1421">
+<meta property="og:image" content="https://imizicyber.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"imizicyber","description":"OSCP-certified offensive security consultancy in Rwanda.","url":"https://imizicyber.com","foundingDate":"2025","address":{"@type":"PostalAddress","addressLocality":"Kigali","addressCountry":"RW"},"areaServed":[{"@type":"Country","name":"Rwanda"},{"@type":"Place","name":"East Africa"}],"serviceType":["Penetration Testing","Managed Security Services","Vulnerability Assessment","Mobile Banking Security","USSD Security Testing","API Security","BNR Compliance"],"knowsAbout":["BNR Cybersecurity Regulation","PCI DSS","ISO 27001","OSCP","OWASP"],"parentOrganization":{"@type":"Organization","name":"Imizi Investment Group Ltd"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do banks in Rwanda need penetration testing?","acceptedAnswer":{"@type":"Answer","text":"BNR requires regulated financial institutions to maintain cybersecurity programs. Penetration testing finds vulnerabilities before attackers do and is a core component of BNR compliance."}},{"@type":"Question","name":"Does imizicyber help with BNR cybersecurity compliance?","acceptedAnswer":{"@type":"Answer","text":"Yes. We help banks, microfinance institutions, and insurance companies meet BNR requirements through penetration testing, vulnerability assessments, and managed security."}},{"@type":"Question","name":"What certifications do imizicyber consultants hold?","acceptedAnswer":{"@type":"Answer","text":"OSCP and OSCP+, PNPT, and BlackHat Europe Arsenal presenter. This certification level is unique among providers physically based in Rwanda."}}]}</script>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/logo-192.png">
-<meta property="og:image" content="https://imizicyber.com/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth}
 :root{
   --bg:#0b1421;--bg2:#0f1b2d;--bg3:#131f33;--bg4:#172640;
   --txt:#d4dce8;--txt2:#8494a7;--txt3:#576b82;--dim:#3a5068;
@@ -40,16 +42,11 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   font-family:var(--sans);color:var(--txt);background:var(--bg);
   -webkit-font-smoothing:antialiased;line-height:1.6;font-size:15px;
-  -webkit-tap-highlight-color:transparent;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size:48px 48px;
 }
 ::selection{background:var(--acc);color:var(--bg)}
 
 /* LAYOUT */
-.w{max-width:920px;margin:0 auto;padding:0 max(24px,env(safe-area-inset-left))}
+.w{max-width:920px;margin:0 auto;padding:0 24px}
 
 /* NAV */
 nav{
@@ -112,7 +109,7 @@ h1 em{color:var(--acc);font-style:normal}
 .why{padding:52px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .why-item{padding-left:14px;border-left:2px solid rgba(52,211,153,.3)}
-.why-num{font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.08em;margin-bottom:3px}
+.why-num{font-family:var(--mono);font-size:.6rem;color:var(--acc);letter-spacing:.08em;margin-bottom:3px}
 .why-item h3{font-size:.86rem;font-weight:800;color:var(--white);margin-bottom:3px;letter-spacing:-.2px}
 .why-item p{font-size:.74rem;color:var(--txt3);line-height:1.6}
 
@@ -129,9 +126,6 @@ h1 em{color:var(--acc);font-style:normal}
   font-size:clamp(1.4rem,2.4vw,1.8rem);font-weight:800;
   letter-spacing:-.8px;color:var(--white);margin-bottom:4px;line-height:1.15;
 }
-.mb0{margin-bottom:0}
-.mt16{margin-top:16px}
-.center{justify-content:center}
 .sec-sub{font-size:.84rem;color:var(--txt2);max-width:380px;line-height:1.7;margin-bottom:24px}
 
 /* SERVICE CARDS */
@@ -152,7 +146,7 @@ h1 em{color:var(--acc);font-style:normal}
   box-shadow:0 6px 24px rgba(0,0,0,.2);
 }
 .card:hover::before{opacity:1}
-.card-tag{font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.06em;margin-bottom:12px}
+.card-tag{font-family:var(--mono);font-size:.58rem;color:var(--acc);letter-spacing:.06em;margin-bottom:12px}
 .card h3{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:6px;letter-spacing:-.2px}
 .card p{font-size:.8rem;color:var(--txt2);line-height:1.65;margin-bottom:14px;flex:1}
 .pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
@@ -200,7 +194,6 @@ h1 em{color:var(--acc);font-style:normal}
 .cta-section .sec-tag{justify-content:center}
 .cta-section .sec-tag::before{display:none}
 .cta-section .sec-title{margin:0 auto 20px}
-.cta-section .btns{justify-content:center}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:24px}
@@ -262,13 +255,6 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
   .footer-inner{flex-direction:column;gap:8px;text-align:center}
   .form-row{grid-template-columns:1fr}
 }
-
-@media(max-width:380px){
-  h1{font-size:1.9rem}
-  .hero{padding:90px 0 32px}
-  .card{padding:22px 18px}
-  .pills span{font-size:.64rem}
-}
 </style>
 </head>
 <body>
@@ -279,12 +265,11 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
 <div class="nav-inner">
   <a href="#" class="logo">
     <svg viewBox="0 0 100 100" fill="none">
-      <path d="M24 19 L76 19 L76 58 L50 81 L24 58 Z" stroke="#34d399" stroke-width="2.8" fill="none" stroke-linejoin="round"/>
-      <line x1="50" y1="28" x2="50" y2="52" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"/>
-      <line x1="50" y1="52" x2="40" y2="66" stroke="#34d399" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
-      <line x1="50" y1="52" x2="50" y2="69" stroke="#34d399" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
-      <line x1="50" y1="52" x2="60" y2="66" stroke="#34d399" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
-      <circle cx="50" cy="52" r="1.5" fill="rgba(52,211,153,.3)"/>
+      <circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/>
+      <line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/>
+      <line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/>
+      <line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/>
     </svg>
     <span class="logo-text"><b>imizi</b>cyber</span>
   </a>
@@ -401,10 +386,10 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
     <div>
       <div class="sec-tag">ABOUT</div>
       <h2 class="sec-title">Independent offensive security consultancy, based in Kigali</h2>
-      <p class="sec-sub mb0">imizicyber is a registered Rwandan security firm serving banks, government agencies, and enterprises across East Africa. We combine hands-on penetration testing with managed security tooling deployment.</p>
+      <p class="sec-sub" style="margin-bottom:0">imizicyber is a registered Rwandan security firm serving banks, government agencies, and enterprises across East Africa. We combine hands-on penetration testing with managed security tooling deployment.</p>
       <div class="stats">
-        <div class="stat"><strong>8+</strong><span>Countries served</span></div>
-        <div class="stat"><strong>30+</strong><span>Security engagements</span></div>
+        <div class="stat"><strong>6+</strong><span>Countries served</span></div>
+        <div class="stat"><strong>50+</strong><span>Security engagements</span></div>
         <div class="stat"><strong>5+</strong><span>Years offensive security</span></div>
         <div class="stat"><strong>500+</strong><span>Professionals trained</span></div>
       </div>
@@ -427,7 +412,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
 <div class="w reveal">
   <div class="sec-tag">FAQ</div>
   <h2 class="sec-title">Common questions</h2>
-  <div class="faq-list mt16">
+  <div class="faq-list" style="margin-top:16px">
     <details class="faq">
       <summary>Why do banks in Rwanda need penetration testing?</summary>
       <div class="faq-body">BNR requires regulated financial institutions to maintain cybersecurity programs. Penetration testing finds vulnerabilities in your web apps, mobile banking, APIs, and USSD services before attackers do. It is a core component of BNR compliance.</div>
@@ -457,7 +442,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
 <div class="w reveal">
   <div class="sec-tag">READY?</div>
   <h2 class="sec-title">Find your vulnerabilities before attackers do</h2>
-  <div class="btns">
+  <div class="btns" style="justify-content:center">
     <a href="#contact" class="btn btn-fill">Schedule a call</a>
   </div>
 </div>
@@ -473,7 +458,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
     <div>
       <div class="contact-info">
         <div class="contact-label">Email</div>
-        <a class="contact-val" id="email-link"><noscript>Enable JavaScript to see email</noscript></a>
+        <a class="contact-val" id="email-link">Loading...</a>
       </div>
       <div class="contact-info">
         <div class="contact-label">Location</div>
@@ -488,13 +473,13 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
       <h3>Request a consultation</h3>
       <form action="https://formspree.io/f/mjgerrlv" method="POST">
         <div class="form-row">
-          <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" name="name" placeholder="Full name" required></div>
-          <div class="field"><label for="f-email">Work email</label><input id="f-email" type="email" name="email" required></div>
+          <div class="field"><label>Name</label><input type="text" name="name" placeholder="Full name" required></div>
+          <div class="field"><label>Work email</label><input type="email" name="email" required></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="f-org">Organisation</label><input id="f-org" type="text" name="org" placeholder="Company name"></div>
-          <div class="field"><label for="f-service">Interest</label>
-            <select id="f-service" name="service">
+          <div class="field"><label>Organisation</label><input type="text" name="org" placeholder="Company name"></div>
+          <div class="field"><label>Interest</label>
+            <select name="service">
               <option value="">Select a service</option>
               <option>Managed Security</option>
               <option>Penetration Testing</option>
@@ -504,7 +489,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0}
             </select>
           </div>
         </div>
-        <div class="field"><label for="f-msg">Details</label><textarea id="f-msg" name="message" placeholder="What do you need secured?"></textarea></div>
+        <div class="field"><label>Details</label><textarea name="message" placeholder="What do you need secured?"></textarea></div>
         <button type="submit" class="submit-btn">Send enquiry</button>
       </form>
     </div>
