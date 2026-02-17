@@ -47,9 +47,10 @@ body{
   font-family:var(--sans);color:var(--txt);background:var(--bg);
   -webkit-font-smoothing:antialiased;line-height:1.6;font-size:15px;
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size:48px 48px;
+    radial-gradient(circle, rgba(52,211,153,.07) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:32px 32px, 32px 32px;
+  background-position:0 0, 16px 16px;
 }
 ::selection{background:var(--acc);color:var(--bg)}
 
