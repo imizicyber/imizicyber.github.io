@@ -57,8 +57,20 @@ code{font-family:var(--mono);font-size:.85em;background:var(--bg2);padding:2px 6
 .callout{background:var(--bg2);border-left:3px solid var(--acc);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-size:.88rem}
 .cta-box{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:28px;margin:32px 0;text-align:center}
 .cta-box h3{margin:0 0 6px;font-size:1rem;color:var(--white)}.cta-box p{color:var(--txt2);font-size:.86rem;margin-bottom:14px}
-.btn{display:inline-block;padding:10px 22px;border-radius:8px;font-size:.84rem;font-weight:700;text-decoration:none;background:var(--accdark);color:var(--white);transition:all .2s}.btn:hover{background:var(--acc2)}
-footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;font-size:.68rem;color:var(--dim)}
+.btn{display:inline-block;padding:10px 22px;border-radius:8px;font-size:.84rem;font-weight:700;text-decoration:none;background:var(--accdark);color:#fff;transition:all .2s}.btn:hover{background:var(--acc2)}
+footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-left{font-size:.68rem;color:var(--dim)}
+.footer-mid{display:flex;gap:14px}
+.footer-mid a{color:var(--dim);text-decoration:none;font-size:.68rem;font-weight:600}
+.footer-mid a:hover{color:var(--txt2)}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{text-decoration:none;color:var(--txt3);font-size:.8rem;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-end{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:10px}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 </style>
 <style>
 [data-theme="light"]{--bg:#eef3fb;--bg2:#e4ecf8;--bg3:#d8e5f5;--txt:#2d3748;--txt2:#4a5568;--txt3:#718096;--dim:#a0aec0;--white:#0f1923}
@@ -66,31 +78,55 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;font-size:.68re
 [data-theme="light"] nav{background:rgba(238,243,251,.95);border-bottom-color:rgba(0,0,0,.08)}
 [data-theme="light"] .cta-box,[data-theme="light"] .callout{border-color:rgba(0,0,0,.1)}
 [data-theme="light"] footer{border-top-color:rgba(0,0,0,.08)}
-.nav-end-blog{display:flex;align-items:center;gap:10px}
 .theme-toggle{background:none;border:1.5px solid var(--dim);border-radius:6px;cursor:pointer;padding:5px 7px;display:flex;align-items:center;color:var(--txt3);transition:all .2s;line-height:0}
 .theme-toggle:hover{border-color:var(--acc);color:var(--acc)}
 .theme-toggle svg{width:15px;height:15px;stroke:currentColor}
 .theme-toggle .sun{display:none}.theme-toggle .moon{display:block}
 [data-theme="light"] .theme-toggle .sun{display:block}[data-theme="light"] .theme-toggle .moon{display:none}
-.footer-blog-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.footer-blog-links{display:flex;gap:14px;flex-wrap:wrap}
-.footer-blog-links a{font-size:.68rem;color:var(--txt3);text-decoration:none;font-weight:600}
-.footer-blog-links a:hover{color:var(--acc)}
-.wa-float{position:fixed;bottom:20px;right:20px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:99;box-shadow:0 4px 20px rgba(37,211,102,.3);text-decoration:none;transition:all .2s}
-.wa-float:hover{background:#20BD5A;transform:scale(1.05)}.wa-float svg{width:28px;height:28px;fill:#fff}
-@media(max-width:600px){.footer-blog-inner{flex-direction:column;text-align:center}.footer-blog-links{justify-content:center}}
+[data-theme="light"] .btn{color:#fff}
+[data-theme="light"] .nav-links.open{background:rgba(238,243,251,.98);border-bottom-color:rgba(0,0,0,.08)}
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:99;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.45)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+.wa-float-label{position:absolute;right:66px;top:50%;transform:translateY(-50%);background:var(--bg2);color:var(--white);font-size:.72rem;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,.3);opacity:0;transition:opacity .2s;pointer-events:none}
+.wa-float:hover .wa-float-label{opacity:1}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:rgba(11,20,33,.98);backdrop-filter:blur(20px);padding:16px 24px;gap:12px;border-bottom:1px solid rgba(255,255,255,.04);animation:slideDown .25s ease}
+  .footer-inner{flex-direction:column;gap:10px;text-align:center}
+  .footer-mid{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:480px){
+  .w{padding:0 16px}
+  article{padding:76px 0 40px}
+  .callout{padding:12px 14px}
+  .cta-box{padding:20px}
+  .wa-float{width:48px;height:48px;bottom:16px;right:16px}
+  .wa-float svg{width:24px;height:24px}
+  .wa-float-label{display:none}
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <nav><div class="nav-inner">
   <a href="/" class="logo"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/><line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/></svg><span class="logo-text"><b>imizi</b>cyber</span></a>
-  <div class="nav-end-blog">
-    <a href="/#blog" class="back">&larr; All posts</a>
-    <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
+  <div class="nav-end">
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#blog">Blog</a>
+        <a href="/resources/">Resources</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 </div></nav>
 
 <article><div class="w">
@@ -154,25 +190,29 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;font-size:.68re
   </div>
 </div></article>
 
-<footer><div class="w">
-  <div class="footer-blog-inner">
-    <span>&copy; 2026 imizicyber / Kigali, Rwanda</span>
-    <nav class="footer-blog-links">
+<footer>
+<div class="w">
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2026 imizicyber / Kigali, Rwanda</div>
+    <div class="footer-mid">
       <a href="/">Home</a>
       <a href="/#services">Services</a>
       <a href="/resources/">Resources</a>
       <a href="/#blog">Blog</a>
       <a href="/#contact">Contact</a>
-    </nav>
+    </div>
   </div>
-</div></footer>
+</div>
+</footer>
 
 <a href="https://wa.me/250793146617?text=Hi%20imizicyber%2C%20I%27d%20like%20to%20discuss%20security%20services" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-float-label">Chat with us</span>
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.696-5.788-1.876l-.404-.3-2.645.886.886-2.645-.3-.404A9.724 9.724 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
 </a>
 <script>
 function toggleTheme(){var h=document.documentElement;var n=h.dataset.theme==='light'?'dark':'light';h.dataset.theme=n;try{localStorage.setItem('imizi-theme',n)}catch(e){}}
 (function(){try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}})();
+(function(){var btn=document.querySelector('.menu-btn');var nav=document.querySelector('.nav-links');if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')})})}})();
 </script>
 </body>
 </html>

@@ -82,7 +82,6 @@
       {"@type": "EducationalOccupationalCredential", "name": "OSCP - Offensive Security Certified Professional"},
       {"@type": "EducationalOccupationalCredential", "name": "OSCP+ - Offensive Security Certified Professional Plus"},
       {"@type": "EducationalOccupationalCredential", "name": "PNPT - Practical Network Penetration Tester"},
-      {"@type": "EducationalOccupationalCredential", "name": "PJPT - Practical Junior Penetration Tester"}
     ]
   },
   "knowsAbout": [
@@ -332,7 +331,7 @@ h1 em{color:var(--acc);font-style:normal}
   padding:11px 24px;border-radius:8px;font-size:.84rem;font-weight:700;
   text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
 }
-.btn-fill{background:var(--accdark);color:var(--white)}
+.btn-fill{background:var(--accdark);color:#fff}
 .btn-fill:hover{background:var(--acc2);box-shadow:0 4px 20px rgba(52,211,153,.15)}
 .btn-ghost{color:var(--txt2);border:1.5px solid var(--dim)}
 .btn-ghost:hover{border-color:var(--txt2);color:var(--white)}
@@ -564,7 +563,31 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 .reveal{opacity:0;transform:translateY(12px);transition:all .5s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* RESPONSIVE */
+/* FOCUS */
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+/* LIGHT THEME — buttons */
+[data-theme="light"] .btn-fill{color:#fff}
+[data-theme="light"] .btn-wa{color:#fff}
+[data-theme="light"] .nav-cta{color:#fff !important}
+[data-theme="light"] .stat{border-color:rgba(0,0,0,.08)}
+[data-theme="light"] .cred-card{border-color:rgba(0,0,0,.08)}
+[data-theme="light"] .form-box{border-color:rgba(0,0,0,.08)}
+[data-theme="light"] .field input,[data-theme="light"] .field textarea,[data-theme="light"] .field select{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.12)}
+[data-theme="light"] .submit-btn{color:#fff}
+[data-theme="light"] .contact-wa{color:#fff}
+
+/* RESPONSIVE — TABLET */
+@media(max-width:1024px){
+  .cards{grid-template-columns:1fr 1fr}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr}
+  .step-line{display:none !important}
+  .cred-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+
+/* RESPONSIVE — MOBILE */
 @media(max-width:768px){
   .nav-links{display:none}
   .menu-btn{display:block}
@@ -572,10 +595,12 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;
     background:rgba(11,20,33,.98);backdrop-filter:blur(20px);
     padding:16px 24px;gap:12px;border-bottom:1px solid rgba(255,255,255,.04);
+    animation:slideDown .25s ease;
   }
-  .hero{padding:100px 0 40px}
-  .why-grid{grid-template-columns:1fr}
+  [data-theme="light"] .nav-links.open{background:rgba(238,243,251,.98);border-bottom-color:rgba(0,0,0,.08)}
+  .hero{padding:88px 0 36px}
   .cards{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:1fr 1fr}
   .cred-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -584,10 +609,26 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   .footer-mid{flex-wrap:wrap;justify-content:center}
   .footer-social{justify-content:center}
   .form-row{grid-template-columns:1fr}
-  .process{grid-template-columns:1fr 1fr}
-  .step-line{display:none !important}
-  .blog-grid{grid-template-columns:1fr}
+  .process{grid-template-columns:1fr}
 }
+
+/* RESPONSIVE — SMALL PHONE */
+@media(max-width:480px){
+  .w{padding:0 16px}
+  .hero{padding:72px 0 28px}
+  h1{max-width:100%}
+  .hero-sub{font-size:.84rem}
+  .sec{padding:40px 0}
+  .stats-row{grid-template-columns:1fr}
+  .card{padding:22px 18px}
+  .stat{padding:12px}
+  .faq summary{padding:10px 12px;font-size:.78rem}
+  .wa-float{width:48px;height:48px;bottom:16px;right:16px}
+  .wa-float svg{width:24px;height:24px}
+  .wa-float-label{display:none}
+}
+
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -620,7 +661,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -653,8 +694,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="trust-inner">
     <span class="trust-label">Security engagements delivered for</span>
     <div class="trust-logos">
-      <span class="trust-logo">Danske Bank</span>
-      <span class="trust-logo">Tier-1 African Banks across 5 countries</span>
+      <span class="trust-logo">Tier-1 European &amp; African banks across 6 countries</span>
     </div>
   </div>
 </div>
@@ -1065,6 +1105,24 @@ function toggleTheme(){
 }
 (function(){
   try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}
+})();
+
+/* Mobile menu */
+(function(){
+  var btn=document.querySelector('.menu-btn');
+  var nav=document.querySelector('.nav-links');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',nav.classList.contains('open'));
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
 })();
 
 /* Scroll reveal */
