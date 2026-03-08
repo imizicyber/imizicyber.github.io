@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Security Score Assessment for East African Organisations | imizicyber</title>
-<meta name="description" content="Answer 10 questions and get an instant security score for your organisation. Find out if you are at critical risk, high risk, or well protected. Free, instant, no registration required for the score.">
-<meta name="keywords" content="security score assessment, cybersecurity assessment Rwanda, free security audit East Africa, security maturity assessment, cybersecurity quiz Rwanda">
+<meta name="description" content="Answer 10 questions and get an instant security score for your organisation. Free PDF report with prioritised recommendations. No registration required.">
+<meta name="keywords" content="security score assessment, cybersecurity assessment Rwanda, free security audit East Africa, security maturity assessment, cybersecurity quiz Rwanda, offensive security East Africa">
 <meta property="og:title" content="Free Security Score Assessment | imizicyber">
-<meta property="og:description" content="10 questions. Instant score. Find your organisation's security posture, free.">
+<meta property="og:description" content="10 questions. Instant score. Free PDF report with prioritised security recommendations.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imizicyber.com/tools/security-score/">
 <meta property="og:image" content="https://imizicyber.com/og.png">
@@ -15,14 +15,14 @@
 <meta property="og:locale" content="en_RW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free Security Score Assessment | imizicyber">
-<meta name="twitter:description" content="10 questions. Instant score. Find your organisation's security posture, free.">
+<meta name="twitter:description" content="10 questions. Instant score. Free PDF report with prioritised security recommendations.">
 <meta name="twitter:image" content="https://imizicyber.com/og.png">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="RW">
 <meta name="geo.placename" content="Kigali">
 <meta name="theme-color" content="#0b1421">
 <link rel="canonical" href="https://imizicyber.com/tools/security-score/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Free Security Score Assessment","description":"Answer 10 questions and get an instant security score for your organisation.","url":"https://imizicyber.com/tools/security-score/","publisher":{"@type":"Organization","name":"imizicyber","url":"https://imizicyber.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Free Security Score Assessment","description":"Answer 10 questions and get an instant security score with a free PDF report.","url":"https://imizicyber.com/tools/security-score/","publisher":{"@type":"Organization","name":"imizicyber","url":"https://imizicyber.com"}}</script>
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
 <!-- Google tag (gtag.js) -->
@@ -37,6 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -49,6 +50,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,20,33,.92)
 .logo svg{width:32px;height:32px}
 .logo-text{font-size:1rem;letter-spacing:-.5px;font-weight:400;color:var(--txt2)}
 .logo-text b{font-weight:800;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{text-decoration:none;color:var(--txt3);font-size:.8rem;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-end{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:10px}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0;transition:all .25s ease}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 main{padding:88px 0 60px}
 .page-header{text-align:center;padding:32px 0 40px}
 .page-badge{display:inline-block;font-family:var(--mono);font-size:.62rem;color:var(--acc);letter-spacing:.1em;margin-bottom:14px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px}
@@ -120,22 +130,12 @@ main{padding:88px 0 60px}
 .btn-cta{display:inline-block;padding:11px 24px;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;background:var(--accdark);color:#fff;transition:background .2s}
 .btn-cta:hover{background:var(--acc2)}
 .msg-success{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);border-radius:8px;padding:14px 18px;font-size:.86rem;color:var(--acc);margin-bottom:16px;display:none}
-.msg-error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:14px 18px;font-size:.86rem;color:#ef4444;margin-bottom:16px;display:none}
 footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .footer-left{font-size:.68rem;color:var(--dim)}
 .footer-mid{display:flex;gap:14px}
 .footer-mid a{color:var(--dim);text-decoration:none;font-size:.68rem;font-weight:600}
 .footer-mid a:hover{color:var(--txt2)}
-.nav-links{display:flex;align-items:center;gap:20px}
-.nav-links a{text-decoration:none;color:var(--txt3);font-size:.8rem;font-weight:600;transition:color .2s}
-.nav-links a:hover{color:var(--white)}
-.nav-end{display:flex;align-items:center;gap:8px}
-.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:10px}
-.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0;transition:all .25s ease}
-.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
-.menu-btn.active span:nth-child(2){opacity:0}
-.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .theme-toggle{background:none;border:1.5px solid var(--dim);border-radius:6px;cursor:pointer;padding:5px 7px;display:flex;align-items:center;color:var(--txt3);transition:all .2s;line-height:0}
 .theme-toggle:hover{border-color:var(--acc);color:var(--acc)}
@@ -148,7 +148,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 [data-theme="light"] .option{background:#dde8f5;border-color:rgba(0,0,0,.08)}
 [data-theme="light"] .form-group input{background:#dde8f5;border-color:rgba(0,0,0,.1);color:var(--white)}
 [data-theme="light"] .theme-toggle .sun{display:block}[data-theme="light"] .theme-toggle .moon{display:none}
-[data-theme="light"] .btn-submit{color:#fff}
+[data-theme="light"] .btn-submit,[data-theme="light"] .btn-calc{color:#fff}
 [data-theme="light"] .nav-links.open{background:rgba(238,243,251,.98);border-bottom-color:rgba(0,0,0,.08)}
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:99;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .2s;text-decoration:none}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.45)}
@@ -203,7 +203,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 <div class="page-header">
   <div class="page-badge">FREE SECURITY ASSESSMENT</div>
   <h1>What is your organisation's security score?</h1>
-  <p>10 questions. 3 minutes. Instant score. Understand your security posture and find out where your biggest gaps are.</p>
+  <p>10 questions. 3 minutes. Instant score with a free PDF report containing prioritised recommendations.</p>
 </div>
 
 <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
@@ -237,7 +237,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="q-text">What level of security awareness training does your organisation provide?</div>
   <div class="options">
     <label class="option"><input type="radio" name="q3" value="0"> None</label>
-    <label class="option"><input type="radio" name="q3" value="1"> Ad hoc / informal conversations</label>
+    <label class="option"><input type="radio" name="q3" value="1"> Ad hoc or informal conversations</label>
     <label class="option"><input type="radio" name="q3" value="2"> Annual training sessions</label>
     <label class="option"><input type="radio" name="q3" value="3"> Regular training including phishing simulations</label>
   </div>
@@ -249,7 +249,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="options">
     <label class="option"><input type="radio" name="q4" value="0"> Shared passwords, no individual accounts</label>
     <label class="option"><input type="radio" name="q4" value="1"> Individual accounts but no MFA</label>
-    <label class="option"><input type="radio" name="q4" value="2"> MFA on some systems (email, banking systems)</label>
+    <label class="option"><input type="radio" name="q4" value="2"> MFA on some systems (email, banking)</label>
     <label class="option"><input type="radio" name="q4" value="3"> MFA enforced across all critical systems</label>
   </div>
 </div>
@@ -280,7 +280,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="q-num">QUESTION 7 OF 10</div>
   <div class="q-text">How is vulnerability management and patching handled?</div>
   <div class="options">
-    <label class="option"><input type="radio" name="q7" value="0"> Not managed / unknown patch status</label>
+    <label class="option"><input type="radio" name="q7" value="0"> Not managed or unknown patch status</label>
     <label class="option"><input type="radio" name="q7" value="1"> Reactive: we patch when something breaks</label>
     <label class="option"><input type="radio" name="q7" value="2"> Regular scanning with scheduled patching cycles</label>
     <label class="option"><input type="radio" name="q7" value="3"> Continuous vulnerability management with defined patch SLAs</label>
@@ -289,7 +289,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 
 <div class="quiz-card" id="q8">
   <div class="q-num">QUESTION 8 OF 10</div>
-  <div class="q-text">What web application and API security controls do you have in place?</div>
+  <div class="q-text">What web application and API security controls do you have?</div>
   <div class="options">
     <label class="option"><input type="radio" name="q8" value="0"> None</label>
     <label class="option"><input type="radio" name="q8" value="1"> Basic firewall only</label>
@@ -302,7 +302,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="q-num">QUESTION 9 OF 10</div>
   <div class="q-text">Who is responsible for cybersecurity in your organisation?</div>
   <div class="options">
-    <label class="option"><input type="radio" name="q9" value="0"> Nobody specifically (it falls through the cracks)</label>
+    <label class="option"><input type="radio" name="q9" value="0"> Nobody specifically</label>
     <label class="option"><input type="radio" name="q9" value="1"> The IT manager as an additional responsibility</label>
     <label class="option"><input type="radio" name="q9" value="2"> A dedicated security staff member or team</label>
     <label class="option"><input type="radio" name="q9" value="3"> CISO or equivalent with board-level reporting</label>
@@ -316,7 +316,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     <label class="option"><input type="radio" name="q10" value="0"> Unaware of requirements that apply to us</label>
     <label class="option"><input type="radio" name="q10" value="1"> Aware of requirements but not yet actioned</label>
     <label class="option"><input type="radio" name="q10" value="2"> Partially compliant: some controls in place</label>
-    <label class="option"><input type="radio" name="q10" value="3"> Fully compliant and certified/attested</label>
+    <label class="option"><input type="radio" name="q10" value="3"> Fully compliant and certified or attested</label>
   </div>
 </div>
 
@@ -340,10 +340,9 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   </div>
 
   <div class="gate-card">
-    <h2>Get your full personalised report</h2>
-    <p>Enter your work email below to unlock a detailed breakdown by category with prioritised recommendations specific to your score.</p>
-    <div id="gate-msg-success" class="msg-success">Thank you! Your full breakdown is now available below.</div>
-    <div id="gate-msg-error" class="msg-error">Something went wrong. Please try again or contact us directly.</div>
+    <h2>Download your full security report</h2>
+    <p>Enter your details below to download a personalised PDF report with a detailed breakdown by category and prioritised recommendations.</p>
+    <div id="gate-msg-success" class="msg-success">Your report is downloading now. Check your downloads folder.</div>
     <form id="gate-form" onsubmit="submitGate(event)">
       <div class="form-group">
         <label for="g-name">Name</label>
@@ -361,7 +360,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
       <input type="hidden" name="score" id="h-score" value="">
       <input type="hidden" name="band" id="h-band" value="">
       <input type="hidden" name="answers" id="h-answers" value="">
-      <button type="submit" class="btn-submit" id="gate-submit-btn">Unlock my full report</button>
+      <button type="submit" class="btn-submit" id="gate-submit-btn">Download my report (PDF) &darr;</button>
       <div class="form-note">We never share your email. You may receive a follow-up from our team; unsubscribe anytime.</div>
     </form>
   </div>
@@ -377,7 +376,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     </div>
     <div class="cta-report">
       <h3>Ready to close these gaps?</h3>
-      <p>Our OSCP-certified team can help you address every finding in this report. Based in Kigali, available across East Africa.</p>
+      <p>Our OSCP-certified team can help you address every finding in this report. Based in Kigali, available across East Africa and South Africa.</p>
       <a href="/#contact" class="btn-cta">Book a consultation</a>
       <p style="margin-top:14px;font-size:.82rem;color:var(--txt2)">Learn more: <a href="/blog/penetration-testing-rwanda/">Penetration testing in Rwanda</a> &middot; <a href="/blog/bnr-cybersecurity-requirements/">BNR compliance guide</a> &middot; <a href="/resources/">Free resources</a></p>
     </div>
@@ -392,13 +391,13 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 <div class="w">
   <div class="footer-inner">
     <span class="footer-left">&copy; 2026 imizicyber / Kigali, Rwanda</span>
-    <nav class="footer-mid">
+    <div class="footer-mid">
       <a href="/">Home</a>
       <a href="/#services">Services</a>
       <a href="/resources/">Resources</a>
       <a href="/#blog">Blog</a>
       <a href="/#contact">Contact</a>
-    </nav>
+    </div>
   </div>
 </div>
 </footer>
@@ -478,108 +477,113 @@ var BANDS=[
 
 var QUESTIONS=[
   {label:'Penetration Testing',recos:[
-    {pts:0,p:'p-critical',h:'Schedule a penetration test immediately',b:'You have never tested your systems. Any determined attacker can find vulnerabilities that are invisible to you right now. A professional penetration test is the first step.'},
-    {pts:1,p:'p-high',h:'Move to annual penetration testing',b:'Regulatory-only testing leaves you exposed for months after each test. Annual testing is the BNR minimum. Implement it proactively, not reactively.'},
-    {pts:2,p:'p-medium',h:'Consider quarterly testing for high-risk systems',b:'Annual testing is good. For payment systems, mobile banking, and APIs, quarterly assessments are best practice.'},
-    {pts:3,p:'p-low',h:'Maintain your current testing cadence',b:'Quarterly testing is excellent. Ensure test scope covers new systems and changes promptly.'}
+    {pts:0,p:'CRITICAL',h:'Schedule a penetration test immediately',b:'You have never tested your systems. Any determined attacker can find vulnerabilities that are invisible to you right now.'},
+    {pts:1,p:'HIGH',h:'Move to annual penetration testing',b:'Regulatory-only testing leaves you exposed for months. Annual testing is the BNR minimum.'},
+    {pts:2,p:'MEDIUM',h:'Consider quarterly testing for high-risk systems',b:'Annual testing is good. For payment systems, mobile banking, and APIs, quarterly assessments are best practice.'},
+    {pts:3,p:'LOW',h:'Maintain your current testing cadence',b:'Quarterly testing is excellent. Ensure test scope covers new systems and changes promptly.'}
   ]},
   {label:'Incident Response',recos:[
-    {pts:0,p:'p-critical',h:'Create an incident response plan now',b:'Without a plan, a breach will cause maximum damage. Even a basic documented plan reduces incident costs significantly.'},
-    {pts:1,p:'p-high',h:'Document your incident response procedures',b:'Informal knowledge is not enough. Document roles, escalation contacts, notification requirements (BNR), and response steps.'},
-    {pts:2,p:'p-medium',h:'Test your incident response plan',b:'A plan that has never been tested will fail when you need it. Run a tabletop exercise this quarter.'},
-    {pts:3,p:'p-low',h:'Continue regular IR drills',b:'Regular testing keeps the plan current. Update it after every actual incident.'}
+    {pts:0,p:'CRITICAL',h:'Create an incident response plan now',b:'Without a plan, a breach will cause maximum damage. Even a basic documented plan reduces incident costs significantly.'},
+    {pts:1,p:'HIGH',h:'Document your incident response procedures',b:'Informal knowledge is not enough. Document roles, escalation contacts, notification requirements (BNR), and response steps.'},
+    {pts:2,p:'MEDIUM',h:'Test your incident response plan',b:'A plan that has never been tested will fail when you need it. Run a tabletop exercise this quarter.'},
+    {pts:3,p:'LOW',h:'Continue regular IR drills',b:'Regular testing keeps the plan current. Update it after every actual incident.'}
   ]},
   {label:'Security Awareness Training',recos:[
-    {pts:0,p:'p-critical',h:'Implement security awareness training immediately',b:'Your staff are your biggest vulnerability. Phishing is the leading attack vector. Training is the only effective defence.'},
-    {pts:1,p:'p-high',h:'Formalise your security awareness programme',b:'Ad hoc conversations do not create lasting behaviour change. Implement structured annual training with phishing simulations.'},
-    {pts:2,p:'p-medium',h:'Add phishing simulations to your training',b:'Annual training without simulations loses effectiveness quickly. Add simulated phishing campaigns to measure and reinforce awareness.'},
-    {pts:3,p:'p-low',h:'Maintain your training programme',b:'Regular training with simulations is excellent. Ensure content is updated with current threats relevant to East Africa.'}
+    {pts:0,p:'CRITICAL',h:'Implement security awareness training immediately',b:'Your staff are your biggest vulnerability. Phishing is the leading attack vector.'},
+    {pts:1,p:'HIGH',h:'Formalise your security awareness programme',b:'Ad hoc conversations do not create lasting behaviour change. Implement structured annual training with phishing simulations.'},
+    {pts:2,p:'MEDIUM',h:'Add phishing simulations to your training',b:'Annual training without simulations loses effectiveness quickly.'},
+    {pts:3,p:'LOW',h:'Maintain your training programme',b:'Regular training with simulations is excellent. Keep content updated with current threats.'}
   ]},
   {label:'Access Management & MFA',recos:[
-    {pts:0,p:'p-critical',h:'Eliminate shared passwords immediately',b:'Shared credentials mean you cannot identify who did what during an incident or audit. This is a BNR violation and a critical risk. Implement individual accounts this week.'},
-    {pts:1,p:'p-high',h:'Enable MFA on all critical systems',b:'Password-only authentication is inadequate for banking systems. Credential theft and phishing attacks bypass it trivially. Implement MFA on email and banking systems immediately.'},
-    {pts:2,p:'p-medium',h:'Extend MFA to all remaining systems',b:'Good start. Ensure MFA covers all administrative access, VPN, and developer systems, not just user-facing applications.'},
-    {pts:3,p:'p-low',h:'Maintain your MFA coverage',b:'Full MFA enforcement is excellent. Regularly audit accounts and review MFA methods for modern best practices.'}
+    {pts:0,p:'CRITICAL',h:'Eliminate shared passwords immediately',b:'Shared credentials mean you cannot identify who did what during an incident or audit. This is a BNR violation.'},
+    {pts:1,p:'HIGH',h:'Enable MFA on all critical systems',b:'Password-only authentication is inadequate for banking systems. Credential theft bypasses it trivially.'},
+    {pts:2,p:'MEDIUM',h:'Extend MFA to all remaining systems',b:'Ensure MFA covers all administrative access, VPN, and developer systems.'},
+    {pts:3,p:'LOW',h:'Maintain your MFA coverage',b:'Full MFA enforcement is excellent. Regularly audit accounts and review MFA methods.'}
   ]},
   {label:'Third-Party Risk',recos:[
-    {pts:0,p:'p-critical',h:'Assess your critical vendors immediately',b:'Your vendors access your systems and data. A breach at a vendor is a breach at your organisation. Start with your cloud providers and payment processors.'},
-    {pts:1,p:'p-high',h:'Formalise vendor security assessments',b:'Informal conversations are not sufficient. Implement a standard vendor questionnaire and review process as part of procurement.'},
-    {pts:2,p:'p-medium',h:'Add ongoing monitoring to vendor reviews',b:'One-time documentation review is not enough. Implement ongoing monitoring and annual re-assessment of critical vendors.'},
-    {pts:3,p:'p-low',h:'Maintain your vendor risk programme',b:'Formal assessments with monitoring is excellent. Ensure your programme covers new vendors promptly.'}
+    {pts:0,p:'CRITICAL',h:'Assess your critical vendors immediately',b:'A breach at a vendor is a breach at your organisation. Start with cloud providers and payment processors.'},
+    {pts:1,p:'HIGH',h:'Formalise vendor security assessments',b:'Implement a standard vendor questionnaire and review process as part of procurement.'},
+    {pts:2,p:'MEDIUM',h:'Add ongoing monitoring to vendor reviews',b:'One-time documentation review is not enough. Implement annual re-assessment of critical vendors.'},
+    {pts:3,p:'LOW',h:'Maintain your vendor risk programme',b:'Formal assessments with monitoring is excellent. Ensure your programme covers new vendors promptly.'}
   ]},
   {label:'Data Encryption',recos:[
-    {pts:0,p:'p-critical',h:'Implement encryption on all data immediately',b:'Unencrypted customer data is catastrophic if breached. This is a BNR requirement and a data protection law violation. Implement HTTPS and database encryption now.'},
-    {pts:1,p:'p-high',h:'Add encryption at rest',b:'Transit encryption only means your database and stored files are exposed to anyone with server access. Implement encryption at rest for all sensitive data.'},
-    {pts:2,p:'p-medium',h:'Implement data classification',b:'Encryption is in place. Now classify your data so you can apply appropriate controls based on sensitivity.'},
-    {pts:3,p:'p-low',h:'Maintain your encryption controls',b:'Full encryption with classification is excellent. Regularly audit key management procedures.'}
+    {pts:0,p:'CRITICAL',h:'Implement encryption on all data immediately',b:'Unencrypted customer data is catastrophic if breached. This is a BNR requirement.'},
+    {pts:1,p:'HIGH',h:'Add encryption at rest',b:'Transit encryption only means your database and stored files are exposed to anyone with server access.'},
+    {pts:2,p:'MEDIUM',h:'Implement data classification',b:'Encryption is in place. Now classify your data so you can apply appropriate controls based on sensitivity.'},
+    {pts:3,p:'LOW',h:'Maintain your encryption controls',b:'Full encryption with classification is excellent. Regularly audit key management procedures.'}
   ]},
   {label:'Vulnerability Management',recos:[
-    {pts:0,p:'p-critical',h:'Start vulnerability scanning immediately',b:'You likely have unpatched critical vulnerabilities that are actively being exploited in the wild. Run an authenticated scan of your infrastructure this week.'},
-    {pts:1,p:'p-high',h:'Move to proactive patching',b:'Reactive patching means you are always behind attackers. Implement a scheduled patching cycle, at minimum monthly for non-critical, weekly for critical systems.'},
-    {pts:2,p:'p-medium',h:'Define patch SLAs and automate where possible',b:'Regular scanning is good. Define formal SLAs: critical patches within 72 hours, high within 7 days, medium within 30 days.'},
-    {pts:3,p:'p-low',h:'Maintain your vulnerability management programme',b:'Continuous management with SLAs is excellent. Ensure coverage includes cloud infrastructure and third-party components.'}
+    {pts:0,p:'CRITICAL',h:'Start vulnerability scanning immediately',b:'You likely have unpatched critical vulnerabilities that are actively being exploited in the wild.'},
+    {pts:1,p:'HIGH',h:'Move to proactive patching',b:'Reactive patching means you are always behind attackers. Implement a scheduled patching cycle.'},
+    {pts:2,p:'MEDIUM',h:'Define patch SLAs and automate where possible',b:'Define formal SLAs: critical patches within 72 hours, high within 7 days, medium within 30 days.'},
+    {pts:3,p:'LOW',h:'Maintain your vulnerability management programme',b:'Continuous management with SLAs is excellent. Ensure coverage includes cloud and third-party components.'}
   ]},
   {label:'Web & API Security',recos:[
-    {pts:0,p:'p-critical',h:'Deploy a WAF and conduct an application assessment',b:'Your web applications and APIs are exposed to the internet with no protection. This is your highest-risk attack surface. A WAF and penetration test are urgent.'},
-    {pts:1,p:'p-high',h:'Deploy a Web Application Firewall',b:'A basic firewall does not protect web applications. Implement a WAF in front of all internet-facing applications. This is table-stakes for any web-based banking service.'},
-    {pts:2,p:'p-medium',h:'Add regular application penetration testing',b:'A WAF alone is not sufficient; it misses application logic flaws and IDOR vulnerabilities. Add annual application-level penetration testing.'},
-    {pts:3,p:'p-low',h:'Maintain your WAF and testing programme',b:'WAF with regular testing is excellent. Ensure API security is specifically in scope for your penetration tests.'}
+    {pts:0,p:'CRITICAL',h:'Deploy a WAF and conduct an application assessment',b:'Your web applications and APIs are exposed with no protection. This is your highest-risk attack surface.'},
+    {pts:1,p:'HIGH',h:'Deploy a Web Application Firewall',b:'A basic firewall does not protect web applications. A WAF is table-stakes for any web-based banking service.'},
+    {pts:2,p:'MEDIUM',h:'Add regular application penetration testing',b:'A WAF alone misses application logic flaws and IDOR vulnerabilities. Add annual application-level testing.'},
+    {pts:3,p:'LOW',h:'Maintain your WAF and testing programme',b:'WAF with regular testing is excellent. Ensure API security is specifically in scope.'}
   ]},
   {label:'Security Governance',recos:[
-    {pts:0,p:'p-critical',h:'Assign security responsibility immediately',b:'Security without ownership means nothing gets done. Assign a responsible person for cybersecurity today, even if it is an existing IT staff member as a first step.'},
-    {pts:1,p:'p-high',h:'Dedicate security as a primary responsibility',b:'Security as an add-on to an IT manager role creates conflicts. Budget for dedicated security staff or an external managed security service.'},
-    {pts:2,p:'p-medium',h:'Establish board-level security reporting',b:'Dedicated security staff is good. Ensure security risks are reported to the board or leadership team; BNR requires board-level security governance.'},
-    {pts:3,p:'p-low',h:'Maintain your security governance structure',b:'CISO with board reporting is excellent. Ensure your governance structure is documented and remains effective as the organisation grows.'}
+    {pts:0,p:'CRITICAL',h:'Assign security responsibility immediately',b:'Security without ownership means nothing gets done. Assign a responsible person today.'},
+    {pts:1,p:'HIGH',h:'Dedicate security as a primary responsibility',b:'Security as an add-on creates conflicts. Budget for dedicated security staff or managed security.'},
+    {pts:2,p:'MEDIUM',h:'Establish board-level security reporting',b:'BNR requires board-level security governance. Ensure security risks are reported to leadership.'},
+    {pts:3,p:'LOW',h:'Maintain your security governance structure',b:'CISO with board reporting is excellent. Ensure governance remains effective as the organisation grows.'}
   ]},
   {label:'Regulatory Compliance',recos:[
-    {pts:0,p:'p-critical',h:'Identify your applicable compliance requirements immediately',b:'Unawareness of BNR requirements as a supervised institution is a serious regulatory risk. Engage a consultant to map requirements to your organisation.'},
-    {pts:1,p:'p-high',h:'Create a compliance implementation plan',b:'Awareness without action creates regulatory liability. Create a prioritised implementation plan with timelines. BNR inspections are increasing in frequency.'},
-    {pts:2,p:'p-medium',h:'Close your remaining compliance gaps',b:'Partial compliance is a good start. Document which controls are in place and create a roadmap to close remaining gaps, especially for high-risk areas like VAPT.'},
-    {pts:3,p:'p-low',h:'Maintain your compliance programme',b:'Full compliance is excellent. Ensure your compliance documentation is current and ready for regulatory inspection at any time.'}
+    {pts:0,p:'CRITICAL',h:'Identify your compliance requirements immediately',b:'Unawareness of BNR requirements is a serious regulatory risk. Engage a consultant to map requirements.'},
+    {pts:1,p:'HIGH',h:'Create a compliance implementation plan',b:'Awareness without action creates regulatory liability. BNR inspections are increasing in frequency.'},
+    {pts:2,p:'MEDIUM',h:'Close your remaining compliance gaps',b:'Document which controls are in place and create a roadmap to close remaining gaps.'},
+    {pts:3,p:'LOW',h:'Maintain your compliance programme',b:'Full compliance is excellent. Ensure documentation is ready for regulatory inspection at any time.'}
   ]}
 ];
 
+var quizAnswers=[];
+var quizTotal=0;
+var quizBand=null;
+
 function calculateScore(){
-  var answers=[];
-  var total=0;
+  quizAnswers=[];
+  quizTotal=0;
   for(var i=1;i<=10;i++){
     var v=parseInt(document.querySelector('input[name="q'+i+'"]:checked').value);
-    answers.push(v);
-    total+=v;
+    quizAnswers.push(v);
+    quizTotal+=v;
   }
-  var band=BANDS.find(function(b){return total>=b.min&&total<=b.max});
+  quizBand=BANDS.find(function(b){return quizTotal>=b.min&&quizTotal<=b.max});
   var circ=document.getElementById('score-circle');
-  circ.className='score-circle '+band.cls;
-  document.getElementById('score-display').className='score-circle-wrap '+band.cls;
-  document.getElementById('score-num').textContent=total;
-  document.getElementById('band-label').textContent=band.label;
-  document.getElementById('band-desc').textContent=band.desc;
+  circ.className='score-circle '+quizBand.cls;
+  document.getElementById('score-display').className='score-circle-wrap '+quizBand.cls;
+  document.getElementById('score-num').textContent=quizTotal;
+  document.getElementById('band-label').textContent=quizBand.label;
+  document.getElementById('band-desc').textContent=quizBand.desc;
 
   // Prelim bullets
   var bulletsHtml='';
-  answers.forEach(function(v,idx){
+  quizAnswers.forEach(function(v,idx){
     if(v<=1){bulletsHtml+='<div class="bullet"><span class="bullet-icon bi-warn">!</span><span>'+QUESTIONS[idx].label+': '+QUESTIONS[idx].recos[v].h+'</span></div>';}
-    else if(v>=3&&idx<3){bulletsHtml+='<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>'+QUESTIONS[idx].label+': strong. Keep it up</span></div>';}
+    else if(v>=3){bulletsHtml+='<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>'+QUESTIONS[idx].label+': strong</span></div>';}
   });
   document.getElementById('bullets-content').innerHTML=bulletsHtml||'<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>No critical gaps identified in your preliminary assessment.</span></div>';
 
   // Hidden fields
-  document.getElementById('h-score').value=total;
-  document.getElementById('h-band').value=band.label;
-  document.getElementById('h-answers').value=JSON.stringify(answers);
+  document.getElementById('h-score').value=quizTotal;
+  document.getElementById('h-band').value=quizBand.label;
+  document.getElementById('h-answers').value=JSON.stringify(quizAnswers);
 
-  // Build full report content (shown after gate)
+  // Build full report content (shown after download)
   var breakdownHtml='';
-  answers.forEach(function(v,idx){
+  quizAnswers.forEach(function(v,idx){
     var pct=Math.round(v/3*100);
     breakdownHtml+='<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.84rem;color:var(--white);font-weight:600">'+QUESTIONS[idx].label+'</span><span style="font-family:var(--mono);font-size:.72rem;color:var(--txt3)">'+v+'/3</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:3px"></div></div></div>';
   });
   document.getElementById('breakdown-content').innerHTML=breakdownHtml;
 
   var recosHtml='';
-  answers.forEach(function(v,idx){
+  quizAnswers.forEach(function(v,idx){
     var r=QUESTIONS[idx].recos[v];
-    recosHtml+='<div class="reco-item"><span class="reco-priority '+r.p+'">'+r.p.replace('p-','').toUpperCase()+'</span><div class="reco-text"><strong>'+r.h+'</strong>'+r.b+'</div></div>';
+    var pcls=r.p==='CRITICAL'?'p-critical':r.p==='HIGH'?'p-high':r.p==='MEDIUM'?'p-medium':'p-low';
+    recosHtml+='<div class="reco-item"><span class="reco-priority '+pcls+'">'+r.p+'</span><div class="reco-text"><strong>'+r.h+'</strong>'+r.b+'</div></div>';
   });
   document.getElementById('recos-content').innerHTML=recosHtml;
 
@@ -591,35 +595,190 @@ function calculateScore(){
   rs.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+function generatePDF(userName,userOrg){
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({unit:'mm',format:'a4'});
+  var w=doc.internal.pageSize.getWidth();
+  var margin=20;
+  var cw=w-margin*2;
+  var y=20;
+
+  // Header bar
+  doc.setFillColor(11,20,33);
+  doc.rect(0,0,w,36,'F');
+  doc.setFontSize(18);
+  doc.setTextColor(52,211,153);
+  doc.setFont('helvetica','bold');
+  doc.text('imizicyber',margin,16);
+  doc.setFontSize(9);
+  doc.setTextColor(132,148,167);
+  doc.setFont('helvetica','normal');
+  doc.text('Security Score Assessment Report',margin,24);
+  doc.text('imizicyber.com',w-margin,16,{align:'right'});
+  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),w-margin,24,{align:'right'});
+
+  y=46;
+
+  // Prepared for
+  doc.setFontSize(10);
+  doc.setTextColor(100,100,100);
+  doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),margin,y);
+  y+=12;
+
+  // Score
+  doc.setFontSize(36);
+  doc.setFont('helvetica','bold');
+  var bandColor=quizBand.cls==='band-critical'?[239,68,68]:quizBand.cls==='band-high'?[249,115,22]:quizBand.cls==='band-moderate'?[234,179,8]:quizBand.cls==='band-lowmod'?[96,165,250]:[52,211,153];
+  doc.setTextColor(bandColor[0],bandColor[1],bandColor[2]);
+  doc.text(quizTotal+' / 30',w/2,y,{align:'center'});
+  y+=10;
+  doc.setFontSize(14);
+  doc.setTextColor(40,40,40);
+  doc.text(quizBand.label,w/2,y,{align:'center'});
+  y+=8;
+  doc.setFontSize(9);
+  doc.setTextColor(100,100,100);
+  doc.setFont('helvetica','normal');
+  var descLines=doc.splitTextToSize(quizBand.desc,cw);
+  doc.text(descLines,w/2,y,{align:'center'});
+  y+=descLines.length*5+12;
+
+  // Divider
+  doc.setDrawColor(220,220,220);
+  doc.line(margin,y,w-margin,y);
+  y+=10;
+
+  // Category breakdown
+  doc.setFontSize(13);
+  doc.setTextColor(30,30,30);
+  doc.setFont('helvetica','bold');
+  doc.text('Score Breakdown by Category',margin,y);
+  y+=10;
+
+  quizAnswers.forEach(function(v,idx){
+    if(y>260){doc.addPage();y=20;}
+    var pct=Math.round(v/3*100);
+    doc.setFontSize(9);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(50,50,50);
+    doc.text(QUESTIONS[idx].label,margin,y);
+    doc.setFont('helvetica','normal');
+    doc.setTextColor(120,120,120);
+    doc.text(v+'/3',w-margin,y,{align:'right'});
+    y+=4;
+    // Bar background
+    doc.setFillColor(230,230,230);
+    doc.roundedRect(margin,y,cw,3,1.5,1.5,'F');
+    // Bar fill
+    if(pct>0){
+      var fillColor=v<=1?[249,115,22]:v===2?[234,179,8]:[52,211,153];
+      doc.setFillColor(fillColor[0],fillColor[1],fillColor[2]);
+      doc.roundedRect(margin,y,Math.max(cw*pct/100,3),3,1.5,1.5,'F');
+    }
+    y+=10;
+  });
+
+  y+=5;
+  if(y>240){doc.addPage();y=20;}
+
+  // Recommendations
+  doc.setDrawColor(220,220,220);
+  doc.line(margin,y,w-margin,y);
+  y+=10;
+  doc.setFontSize(13);
+  doc.setTextColor(30,30,30);
+  doc.setFont('helvetica','bold');
+  doc.text('Prioritised Recommendations',margin,y);
+  y+=10;
+
+  quizAnswers.forEach(function(v,idx){
+    if(y>255){doc.addPage();y=20;}
+    var r=QUESTIONS[idx].recos[v];
+    // Priority badge
+    var badgeColor=r.p==='CRITICAL'?[239,68,68]:r.p==='HIGH'?[249,115,22]:r.p==='MEDIUM'?[234,179,8]:[52,211,153];
+    doc.setFillColor(badgeColor[0],badgeColor[1],badgeColor[2]);
+    doc.roundedRect(margin,y-3,18,5,1,1,'F');
+    doc.setFontSize(6);
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold');
+    doc.text(r.p,margin+9,y,{align:'center'});
+    // Title
+    doc.setFontSize(9);
+    doc.setTextColor(30,30,30);
+    doc.text(r.h,margin+22,y);
+    y+=5;
+    // Description
+    doc.setFont('helvetica','normal');
+    doc.setTextColor(100,100,100);
+    doc.setFontSize(8);
+    var bLines=doc.splitTextToSize(r.b,cw-22);
+    doc.text(bLines,margin+22,y);
+    y+=bLines.length*4+8;
+  });
+
+  // Footer CTA
+  if(y>250){doc.addPage();y=20;}
+  y+=5;
+  doc.setDrawColor(52,211,153);
+  doc.setLineWidth(0.5);
+  doc.line(margin,y,w-margin,y);
+  y+=10;
+  doc.setFontSize(12);
+  doc.setTextColor(30,30,30);
+  doc.setFont('helvetica','bold');
+  doc.text('Ready to close these gaps?',margin,y);
+  y+=7;
+  doc.setFontSize(9);
+  doc.setTextColor(80,80,80);
+  doc.setFont('helvetica','normal');
+  var ctaLines=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing and security assessments for banks and regulated organisations across East Africa and South Africa. Contact us for a free scoping call.',cw);
+  doc.text(ctaLines,margin,y);
+  y+=ctaLines.length*5+8;
+  doc.setTextColor(52,211,153);
+  doc.setFont('helvetica','bold');
+  doc.text('Email: info@imizicyber.com',margin,y);
+  y+=5;
+  doc.text('Website: imizicyber.com',margin,y);
+  y+=5;
+  doc.text('WhatsApp: +250 793 146 617',margin,y);
+
+  // Save
+  var filename='imizicyber-security-score-'+(userOrg||'report').toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.pdf';
+  doc.save(filename);
+}
+
 function submitGate(e){
   e.preventDefault();
   var btn=document.getElementById('gate-submit-btn');
+  var name=document.getElementById('g-name').value;
+  var org=document.getElementById('g-org').value;
   btn.disabled=true;
-  btn.textContent='Sending…';
-  var form=document.getElementById('gate-form');
-  var data=new FormData(form);
-  fetch('https://formspree.io/f/mjgerrlv',{
-    method:'POST',
-    body:data,
-    headers:{Accept:'application/json'}
-  }).then(function(r){
-    if(r.ok){
+  btn.textContent='Generating report\u2026';
+
+  // Send lead data to Formspree in background (fire-and-forget)
+  try{
+    var form=document.getElementById('gate-form');
+    var data=new FormData(form);
+    fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:data,headers:{Accept:'application/json'}}).catch(function(){});
+  }catch(ex){}
+
+  // Generate and download PDF immediately
+  setTimeout(function(){
+    try{
+      generatePDF(name,org);
       document.getElementById('gate-msg-success').style.display='block';
-      form.style.display='none';
+      document.getElementById('gate-form').style.display='none';
+      // Also show the inline report
       var fr=document.getElementById('full-report');
       fr.style.display='block';
       fr.classList.add('visible');
       fr.scrollIntoView({behavior:'smooth',block:'start'});
-    }else{
-      document.getElementById('gate-msg-error').style.display='block';
+    }catch(ex){
       btn.disabled=false;
-      btn.textContent='Unlock my full report';
+      btn.textContent='Download my report (PDF) \u2193';
+      alert('Could not generate report. Please try a different browser or contact us directly at info@imizicyber.com');
     }
-  }).catch(function(){
-    document.getElementById('gate-msg-error').style.display='block';
-    btn.disabled=false;
-    btn.textContent='Unlock my full report';
-  });
+  },300);
 }
 </script>
 </body>

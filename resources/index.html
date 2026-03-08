@@ -37,6 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -153,13 +154,14 @@ main{padding:88px 0 60px}
     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="88" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity="0.5"/><line x1="50" y1="52" x2="76" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="82" r="3.5" fill="#34d399" opacity="0.45"/><circle cx="50" cy="88" r="3.5" fill="#34d399" opacity="0.3"/><circle cx="76" cy="82" r="3.5" fill="#34d399" opacity="0.45"/></svg>
     <span class="logo-text"><b>imizi</b>cyber</span>
   </a>
-  <div class="nav-end">
-      <div class="nav-links">
+  <div class="nav-links">
         <a href="/#services">Services</a>
         <a href="/#blog">Blog</a>
         <a href="/resources/">Resources</a>
         <a href="/#contact">Contact</a>
       </div>
+
+  <div class="nav-end">
       <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -205,9 +207,9 @@ main{padding:88px 0 60px}
         <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="bnr-checklist">
         <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r1">Get the checklist</button>
-        <div class="msg-ok" id="ok-r1">Done! Scroll down to read the checklist. Save or print this page as PDF.</div>
-        <div class="msg-err" id="err-r1">Something went wrong. Please try again.</div>
+        <button type="submit" class="btn-submit-res" id="sub-r1">Download checklist (PDF) &darr;</button>
+        <div class="msg-ok" id="ok-r1">Your PDF is downloading. You can also read the checklist below.</div>
+        <div class="msg-err" id="err-r1"></div>
       </form>
     </div>
     <div class="content-reveal" id="content-r1">
@@ -329,9 +331,9 @@ main{padding:88px 0 60px}
         <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="pentest-buyers-guide">
         <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r2">Get the guide</button>
-        <div class="msg-ok" id="ok-r2">Done! Scroll down to read the guide.</div>
-        <div class="msg-err" id="err-r2">Something went wrong. Please try again.</div>
+        <button type="submit" class="btn-submit-res" id="sub-r2">Download guide (PDF) &darr;</button>
+        <div class="msg-ok" id="ok-r2">Your PDF is downloading. You can also read the guide below.</div>
+        <div class="msg-err" id="err-r2"></div>
       </form>
     </div>
     <div class="content-reveal" id="content-r2">
@@ -413,9 +415,9 @@ main{padding:88px 0 60px}
         <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="security-awareness-template">
         <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r3">Get the template</button>
-        <div class="msg-ok" id="ok-r3">Done! Scroll down to read the template.</div>
-        <div class="msg-err" id="err-r3">Something went wrong. Please try again.</div>
+        <button type="submit" class="btn-submit-res" id="sub-r3">Download template (PDF) &darr;</button>
+        <div class="msg-ok" id="ok-r3">Your PDF is downloading. You can also read the template below.</div>
+        <div class="msg-err" id="err-r3"></div>
       </form>
     </div>
     <div class="content-reveal" id="content-r3">
@@ -527,29 +529,160 @@ function openForm(id){
   fw.classList.toggle('open');
 }
 
+var RESOURCE_DATA={
+  'bnr-checklist':{
+    title:'BNR Cybersecurity Compliance Checklist',
+    subtitle:'For banks, MFIs, insurance companies, payment service providers and mobile money operators supervised by the National Bank of Rwanda.',
+    filename:'imizicyber-bnr-compliance-checklist.pdf',
+    sections:[
+      {heading:'1. Governance & Policy',items:['Board-approved information security policy in place and reviewed annually','Designated information security officer or equivalent role','Board receives regular cybersecurity risk reports (at minimum quarterly)','IT risk register maintained and reviewed','Security roles and responsibilities documented for all staff']},
+      {heading:'2. Risk Assessment',items:['Annual information security risk assessment conducted','Risk assessment covers all critical systems and business processes','Risk treatment plan with assigned owners and timelines','Risk assessment methodology documented']},
+      {heading:'3. Vulnerability Assessment & Penetration Testing (VAPT)',items:['Annual VAPT conducted by a qualified external provider','VAPT covers all internet-facing systems (web apps, APIs, mobile, USSD)','VAPT conducted by OSCP-certified or equivalent tester','Formal written report delivered with severity ratings and remediation guidance','Critical and high findings remediated and re-tested','VAPT conducted after significant system changes']},
+      {heading:'4. Access Management',items:['All accounts are individual (no shared credentials)','Principle of least privilege applied to all accounts','Multi-factor authentication enabled for all staff on critical systems','Privileged account management policy and monitoring','Access review conducted at least quarterly','Terminated staff accounts disabled within 24 hours']},
+      {heading:'5. Incident Response',items:['Documented incident response plan (IRP)','IRP tested at least annually (tabletop exercise)','Designated incident response team with clear roles','BNR incident reporting procedure known and documented','Incident log maintained for all security events','Post-incident review process in place']},
+      {heading:'6. Security Awareness Training',items:['Security awareness training provided to all staff annually','Training covers phishing, social engineering, password security, incident reporting','Training completion records maintained','Phishing simulation conducted at least annually','Board and senior management receive security awareness briefing']},
+      {heading:'7. Data Protection & Encryption',items:['Customer and sensitive data classified','All data encrypted in transit (TLS 1.2 minimum)','Sensitive data encrypted at rest','Data retention and deletion policy','Data breach notification procedure documented']},
+      {heading:'8. Third-Party Risk Management',items:['Security due diligence conducted before engaging new vendors','Security clauses in all contracts with third parties accessing your systems or data','Annual review of critical third-party security posture','Cloud provider security assessment and data location documented']},
+      {heading:'9. Vulnerability & Patch Management',items:['Asset inventory of all hardware and software maintained','Monthly vulnerability scanning of all internet-facing assets','Critical patches applied within 72 hours; high within 7 days; medium within 30 days','End-of-life software identified and remediation plan in place']},
+      {heading:'10. Business Continuity & Disaster Recovery',items:['Business continuity plan (BCP) documented and tested annually','Data backups taken regularly and restoration tested','Recovery Time Objective (RTO) and Recovery Point Objective (RPO) defined','Alternative processing arrangements for critical systems documented']}
+    ]
+  },
+  'pentest-buyers-guide':{
+    title:"Penetration Testing Buyer's Guide for East Africa",
+    subtitle:'Everything you need to know before commissioning a penetration test in Rwanda or East Africa.',
+    filename:'imizicyber-pentest-buyers-guide.pdf',
+    sections:[
+      {heading:'What you are buying',text:'A penetration test is a structured, authorised attack on your systems by a skilled professional. The goal is to find and prove real vulnerabilities before attackers do. The deliverable is a written report with findings, proof of exploitation, severity ratings, and remediation guidance.'},
+      {heading:'Certifications to require',items:['OSCP (Offensive Security Certified Professional): the gold standard. Requires practical hacking under exam conditions.','CEH: knowledge-based certification, less practical than OSCP. CISM, CISSP: governance certifications. Not substitutes for OSCP for hands-on testing.','Ask to see the actual certificate, not just a claim on the website.']},
+      {heading:'Questions to ask every provider',items:['"Can I see a sample report?" A real provider will have a redacted sample. Thin 5-page reports that are mostly scanner output are a red flag.','"Who will actually conduct the test?" Verify the tester\'s credentials, not just the company branding.','"Do you include a free re-test of critical and high findings?" This should be standard.','"How do you handle testing of production systems?" Listen for safeguards: out-of-hours testing, scope limitations, rollback procedures.','"Can you provide signed Rules of Engagement before testing starts?" If they don\'t know what this is, look elsewhere.']},
+      {heading:'Red flags: walk away if you see these',items:['Promises to test everything in 1 day at a very low price','Report is purely scanner output (Nessus, Qualys) with no manual testing evidence','No Rules of Engagement or NDA before testing starts','Tester cannot name their certification or explain their methodology','Vague scope: a good pentest requires a precisely defined scope','No debrief call offered after the report is delivered']},
+      {heading:'What your report should contain',items:['Executive summary: in plain language, suitable for board presentation','Scope and methodology: what was tested, how, for how long','Findings: each with description, severity, proof of concept, business impact, and remediation guidance','Risk heat map: visual summary of all findings','Remediation roadmap: prioritised action list','Tester details: name, certifications held']},
+      {heading:'Scope: what to include',items:['All internet-facing web applications','All APIs (especially mobile banking and agent APIs)','Mobile banking apps (Android + iOS)','USSD gateways if applicable','External network perimeter (publicly reachable IPs)','Social engineering (phishing simulation), consider annually','Internal network, if budget allows, add at least every other year']}
+    ]
+  },
+  'security-awareness-template':{
+    title:'Security Awareness Training Session Template',
+    subtitle:'Estimated duration: 2 hours. Suitable for all staff levels. Adapt as needed for your organisation.',
+    filename:'imizicyber-security-awareness-template.pdf',
+    sections:[
+      {heading:'Session structure',items:['0:00-0:15 Introduction: why security matters, recent incidents in East Africa','0:15-0:35 Module 1: Phishing and email threats','0:35-0:55 Module 2: Passwords, MFA, and account security','0:55-1:10 Module 3: Social engineering and vishing (phone attacks)','1:10-1:25 Module 4: Incident reporting','1:25-1:45 Module 5: Mobile device and remote work security','1:45-2:00 Quiz and Q&A']},
+      {heading:'Module 1: Phishing',items:['Phishing emails often impersonate trusted sources: your IT team, BNR, RRA, MTN, or Airtel','Red flags: urgency, unexpected requests, mismatched sender domains','Never click links in unexpected emails. Go directly to the site by typing the address','Never enter credentials on a page you reached via an email link','Discussion prompt: "Has anyone received a suspicious email at work recently?"']},
+      {heading:'Module 2: Passwords & MFA',items:['Password reuse across accounts is the single biggest account security mistake','A strong password is long (14+ characters) and random. Use a password manager','MFA protects your account even if your password is stolen','Never share your MFA code with anyone, including people claiming to be IT support']},
+      {heading:'Module 3: Social engineering',items:['Social engineers exploit trust, urgency, and authority','A phone call claiming to be from the CEO, BNR, or IT support is not automatically legitimate','Verification: hang up, find the caller\'s number independently, call back','You are never "in trouble" for following verification procedures']},
+      {heading:'Module 4: Incident reporting',items:['Report suspicious activity immediately. The first hour matters most','Who to report to: [fill in your security contact]','No blame for reporting in good faith. Early reporting is celebrated','What to report: unexpected popups, suspected phishing, anything that looks wrong']},
+      {heading:'Post-session quiz (10 questions)',items:['1. What should you check first if you receive an unexpected password reset email?','2. If someone calls claiming to be from BNR and asks for credentials, what should you do?','3. What is multi-factor authentication and why does it matter?','4. What are three signs of a phishing email?','5. If you click a suspicious link by accident, what should you do?','6. What makes a password strong?','7. What is a social engineering attack?','8. How long can you wait before reporting a suspected security incident?','9. Is it okay to use your work laptop on public WiFi without a VPN?','10. If a colleague asks to borrow your access credentials, what should you do?']}
+    ]
+  }
+};
+
+function generateResourcePDF(resource,userName,userOrg){
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({unit:'mm',format:'a4'});
+  var data=RESOURCE_DATA[resource];
+  var w=doc.internal.pageSize.getWidth();
+  var margin=20;
+  var cw=w-margin*2;
+  var y=20;
+
+  // Header
+  doc.setFillColor(11,20,33);
+  doc.rect(0,0,w,32,'F');
+  doc.setFontSize(16);doc.setTextColor(52,211,153);doc.setFont('helvetica','bold');
+  doc.text('imizicyber',margin,14);
+  doc.setFontSize(8);doc.setTextColor(132,148,167);doc.setFont('helvetica','normal');
+  doc.text('imizicyber.com',w-margin,14,{align:'right'});
+  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),w-margin,22,{align:'right'});
+  if(userName){doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),margin,22);}
+  y=42;
+
+  // Title
+  doc.setFontSize(18);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
+  var titleLines=doc.splitTextToSize(data.title,cw);
+  doc.text(titleLines,margin,y);
+  y+=titleLines.length*8+4;
+  doc.setFontSize(9);doc.setTextColor(100,100,100);doc.setFont('helvetica','italic');
+  var subLines=doc.splitTextToSize(data.subtitle,cw);
+  doc.text(subLines,margin,y);
+  y+=subLines.length*5+10;
+
+  // Divider
+  doc.setDrawColor(52,211,153);doc.setLineWidth(0.5);
+  doc.line(margin,y,w-margin,y);
+  y+=10;
+
+  // Sections
+  data.sections.forEach(function(sec){
+    if(y>255){doc.addPage();y=20;}
+    doc.setFontSize(11);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
+    doc.text(sec.heading,margin,y);
+    y+=7;
+    if(sec.text){
+      doc.setFontSize(9);doc.setTextColor(60,60,60);doc.setFont('helvetica','normal');
+      var tl=doc.splitTextToSize(sec.text,cw);
+      if(y+tl.length*4>275){doc.addPage();y=20;}
+      doc.text(tl,margin,y);
+      y+=tl.length*4+6;
+    }
+    if(sec.items){
+      doc.setFontSize(9);doc.setFont('helvetica','normal');
+      sec.items.forEach(function(item){
+        if(y>270){doc.addPage();y=20;}
+        doc.setTextColor(52,211,153);
+        doc.text('\u2022',margin+2,y);
+        doc.setTextColor(60,60,60);
+        var il=doc.splitTextToSize(item,cw-8);
+        doc.text(il,margin+8,y);
+        y+=il.length*4+3;
+      });
+      y+=4;
+    }
+  });
+
+  // Footer CTA
+  if(y>250){doc.addPage();y=20;}
+  y+=5;
+  doc.setDrawColor(52,211,153);doc.line(margin,y,w-margin,y);
+  y+=8;
+  doc.setFontSize(11);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
+  doc.text('Need help implementing this?',margin,y);
+  y+=6;
+  doc.setFontSize(9);doc.setTextColor(80,80,80);doc.setFont('helvetica','normal');
+  var ctaLines=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing, security assessments, and training for banks and regulated organisations across East Africa and South Africa.',cw);
+  doc.text(ctaLines,margin,y);
+  y+=ctaLines.length*5+6;
+  doc.setTextColor(52,211,153);doc.setFont('helvetica','bold');
+  doc.text('Email: info@imizicyber.com  |  WhatsApp: +250 793 146 617  |  imizicyber.com',margin,y);
+
+  doc.save(data.filename);
+}
+
 function submitResource(e,id,resource){
   e.preventDefault();
   var btn=document.getElementById('sub-'+id);
-  btn.disabled=true;btn.textContent='Sending…';
   var form=e.target;
-  var data=new FormData(form);
-  fetch('https://formspree.io/f/mjgerrlv',{
-    method:'POST',body:data,headers:{Accept:'application/json'}
-  }).then(function(r){
-    if(r.ok){
+  var name=form.querySelector('input[name="name"]').value;
+  var org=form.querySelector('input[name="organisation"]').value;
+  btn.disabled=true;btn.textContent='Generating PDF\u2026';
+
+  // Send lead data to Formspree in background (fire-and-forget)
+  try{
+    var data=new FormData(form);
+    fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:data,headers:{Accept:'application/json'}}).catch(function(){});
+  }catch(ex){}
+
+  // Generate PDF immediately
+  setTimeout(function(){
+    try{
+      generateResourcePDF(resource,name,org);
       document.getElementById('ok-'+id).style.display='block';
       form.style.display='none';
       var content=document.getElementById('content-'+id);
       content.classList.add('visible');
       content.scrollIntoView({behavior:'smooth',block:'start'});
-    }else{
-      document.getElementById('err-'+id).style.display='block';
+    }catch(ex){
       btn.disabled=false;btn.textContent='Try again';
     }
-  }).catch(function(){
-    document.getElementById('err-'+id).style.display='block';
-    btn.disabled=false;btn.textContent='Try again';
-  });
+  },200);
 }
 </script>
 </body>

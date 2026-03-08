@@ -127,7 +127,7 @@ nav{
 
 /* HEADER */
 .breadcrumb{font-family:var(--mono);font-size:.64rem;color:var(--txt3);margin-bottom:16px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--txt3);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--acc)}.breadcrumb .sep{color:var(--dim)}
-.article-header{padding:48px 0 36px}
+.article-header{padding:100px 0 36px}
 .article-meta{
   font-family:var(--mono);font-size:.64rem;font-weight:500;
   letter-spacing:.12em;margin-bottom:18px;
@@ -161,6 +161,7 @@ h1{
 .article-body p{margin-bottom:14px;font-size:.88rem;color:var(--txt);line-height:1.75}
 .article-body a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
 .article-body a:hover{text-decoration:none}
+.article-body a.btn{text-decoration:none}
 .article-body ul{list-style:none;margin-bottom:18px;padding:0}
 .article-body li{
   padding:4px 0 4px 18px;position:relative;font-size:.84rem;line-height:1.7;color:var(--txt);
@@ -231,9 +232,9 @@ h1{
   padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:700;
   text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
 }
-.btn-fill{background:var(--accdark);color:#fff}
+.btn-fill,.article-body .btn-fill{background:var(--accdark);color:#fff}
 .btn-fill:hover{background:var(--acc2);box-shadow:0 4px 20px rgba(52,211,153,.15)}
-.btn-wa{background:#25D366;color:#fff}
+.btn-wa,.article-body .btn-wa{background:#25D366;color:#fff}
 .btn-wa:hover{background:#20BD5A;box-shadow:0 4px 20px rgba(37,211,102,.2)}
 .btn-wa svg{width:18px;height:18px;fill:#fff}
 
@@ -293,7 +294,7 @@ footer a:hover{color:var(--acc)}
   .cred-bar{flex-direction:column;align-items:flex-start;gap:6px}
   .cta-box{padding:24px}
   .cta-btns{flex-direction:column;align-items:center}
-  .article-header{padding:36px 0 24px}
+  .article-header{padding:76px 0 24px}
 }
 
 /* RESPONSIVE — SMALL PHONE */
@@ -342,13 +343,14 @@ footer a:hover{color:var(--acc)}
       <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="88" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity="0.5"/><line x1="50" y1="52" x2="76" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="82" r="3.5" fill="#34d399" opacity="0.45"/><circle cx="50" cy="88" r="3.5" fill="#34d399" opacity="0.3"/><circle cx="76" cy="82" r="3.5" fill="#34d399" opacity="0.45"/></svg>
       <span class="logo-text"><b>imizi</b>cyber</span>
     </a>
-    <div class="nav-end">
-      <div class="nav-links">
+    <div class="nav-links">
         <a href="/#services">Services</a>
         <a href="/#blog">Blog</a>
         <a href="/resources/">Resources</a>
         <a href="/#contact">Contact</a>
       </div>
+
+    <div class="nav-end">
       <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -363,7 +365,7 @@ footer a:hover{color:var(--acc)}
 <!-- HEADER -->
 <div class="w">
   <div class="article-header">
-    <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/#services">Services</a><span class="sep">/</span><span>This service</span></div>
+    <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/#services">Services</a><span class="sep">/</span><span>Penetration Testing</span></div>
     <div class="article-meta">
       <span class="label">SERVICE</span>
       <span class="sep">&middot;</span>
