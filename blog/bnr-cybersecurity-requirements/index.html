@@ -7,7 +7,7 @@
 <meta name="description" content="Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and payment providers in Rwanda. What you need to implement now.">
 <meta name="keywords" content="BNR cybersecurity regulation, BNR compliance Rwanda, bank security Rwanda, cybersecurity requirements Rwanda, National Bank of Rwanda, penetration testing BNR, VAPT Rwanda banks">
 <meta property="og:title" content="BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know">
-<meta property="og:description" content="Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and insurance companies in Rwanda.">
+<meta property="og:description" content="Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and payment providers in Rwanda.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://imizicyber.com/blog/bnr-cybersecurity-requirements/">
 <meta property="og:image" content="https://imizicyber.com/og.png">
@@ -15,10 +15,27 @@
 <meta name="twitter:title" content="BNR Cybersecurity Requirements for Banks in Rwanda">
 <meta name="twitter:description" content="Practical guide to BNR cybersecurity compliance from an OSCP-certified consultancy in Kigali.">
 <link rel="canonical" href="https://imizicyber.com/blog/bnr-cybersecurity-requirements/">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="RW">
+<meta name="geo.placename" content="Kigali">
+<meta name="theme-color" content="#0b1421">
+<meta property="og:site_name" content="imizicyber">
+<meta property="og:locale" content="en_RW">
+<meta name="twitter:image" content="https://imizicyber.com/og.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R7TC88KH9N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R7TC88KH9N');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know","description":"A practical breakdown of BNR cybersecurity regulation for banks in Rwanda","author":{"@type":"Organization","name":"imizicyber"},"publisher":{"@type":"Organization","name":"imizicyber","url":"https://imizicyber.com"},"datePublished":"2026-02-17","dateModified":"2026-02-17","url":"https://imizicyber.com/blog/bnr-cybersecurity-requirements/"}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -77,7 +94,27 @@ li{margin-bottom:6px;color:var(--txt);line-height:1.7}
   text-decoration:none;background:var(--accdark);color:var(--white);transition:all .2s;
 }
 .btn:hover{background:var(--acc2)}
-footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:center;font-size:.68rem;color:var(--dim)}
+footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;font-size:.68rem;color:var(--dim)}
+</style>
+<style>
+[data-theme="light"]{--bg:#eef3fb;--bg2:#e4ecf8;--bg3:#d8e5f5;--txt:#2d3748;--txt2:#4a5568;--txt3:#718096;--dim:#a0aec0;--white:#0f1923}
+[data-theme="light"] body{background-image:radial-gradient(circle,rgba(52,211,153,.15) 1px,transparent 1px),radial-gradient(circle,rgba(0,20,80,.05) 1px,transparent 1px)}
+[data-theme="light"] nav{background:rgba(238,243,251,.95);border-bottom-color:rgba(0,0,0,.08)}
+[data-theme="light"] .cta-box,[data-theme="light"] .callout{border-color:rgba(0,0,0,.1)}
+[data-theme="light"] footer{border-top-color:rgba(0,0,0,.08)}
+.nav-end-blog{display:flex;align-items:center;gap:10px}
+.theme-toggle{background:none;border:1.5px solid var(--dim);border-radius:6px;cursor:pointer;padding:5px 7px;display:flex;align-items:center;color:var(--txt3);transition:all .2s;line-height:0}
+.theme-toggle:hover{border-color:var(--acc);color:var(--acc)}
+.theme-toggle svg{width:15px;height:15px;stroke:currentColor}
+.theme-toggle .sun{display:none}.theme-toggle .moon{display:block}
+[data-theme="light"] .theme-toggle .sun{display:block}[data-theme="light"] .theme-toggle .moon{display:none}
+.footer-blog-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-blog-links{display:flex;gap:14px;flex-wrap:wrap}
+.footer-blog-links a{font-size:.68rem;color:var(--txt3);text-decoration:none;font-weight:600}
+.footer-blog-links a:hover{color:var(--acc)}
+.wa-float{position:fixed;bottom:20px;right:20px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:99;box-shadow:0 4px 20px rgba(37,211,102,.3);text-decoration:none;transition:all .2s}
+.wa-float:hover{background:#20BD5A;transform:scale(1.05)}.wa-float svg{width:28px;height:28px;fill:#fff}
+@media(max-width:600px){.footer-blog-inner{flex-direction:column;text-align:center}.footer-blog-links{justify-content:center}}
 </style>
 </head>
 <body>
@@ -87,7 +124,13 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:cent
     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/><line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/></svg>
     <span class="logo-text"><b>imizi</b>cyber</span>
   </a>
-  <a href="/#blog" class="back">&larr; All posts</a>
+  <div class="nav-end-blog">
+    <a href="/#blog" class="back">&larr; All posts</a>
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
 </div>
 </nav>
 
@@ -96,7 +139,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:cent
   <div class="meta">FEBRUARY 2026 &middot; 8 MIN READ</div>
   <h1>BNR cybersecurity requirements: what banks in Rwanda need to know</h1>
 
-  <p>The National Bank of Rwanda (BNR) has steadily increased its cybersecurity requirements for all regulated financial institutions. If you are a bank, microfinance institution, insurance company, or payment service provider operating in Rwanda, cybersecurity compliance is no longer optional.</p>
+  <p>The <a href="https://www.bnr.rw/" target="_blank" rel="noopener">National Bank of Rwanda (BNR)</a> has steadily increased its cybersecurity requirements for all regulated financial institutions. The <a href="https://rwandalii.org/akn/rw/act/reg/2018/2/eng@2018-05-02" target="_blank" rel="noopener">BNR Regulation on Cyber Security (2018)</a> establishes minimum prudent standards for banks. If you are a bank, microfinance institution, insurance company, or payment service provider operating in Rwanda, cybersecurity compliance is no longer optional.</p>
 
   <p>This guide covers what BNR expects, what your institution needs to implement, and how penetration testing fits into your compliance programme. For pricing guidance, see our <a href="/blog/penetration-testing-cost-rwanda/">penetration testing cost guide</a>.</p>
 
@@ -126,7 +169,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:cent
   <p>All employees must receive cybersecurity awareness training. This is not just for IT staff. BNR recognises that human error is behind most security breaches, so training must cover all levels of the organisation.</p>
 
   <h3>6. Data protection</h3>
-  <p>Sensitive customer data must be encrypted in transit and at rest. Access controls must be implemented to ensure only authorised personnel can access sensitive information. This aligns with Rwanda's broader data protection framework under the National Cyber Security Authority (NCSA).</p>
+  <p>Sensitive customer data must be encrypted in transit and at rest. Access controls must be implemented to ensure only authorised personnel can access sensitive information. This aligns with <a href="https://rwandalii.org/akn/rw/act/law/2021/58/eng@2021-10-15" target="_blank" rel="noopener">Rwanda's Data Protection and Privacy Law (No. 058/2021)</a>, enforced by the <a href="https://cyber.gov.rw/" target="_blank" rel="noopener">National Cyber Security Authority (NCSA)</a> as the designated supervisory authority.</p>
 
   <h3>7. Third-party risk management</h3>
   <p>If you use third-party service providers (cloud hosting, payment processors, software vendors), BNR expects you to assess and manage the security risks they introduce. This includes due diligence before contracting and ongoing monitoring.</p>
@@ -160,7 +203,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:cent
   <p>When selecting a provider, look for <strong>recognised certifications</strong> (OSCP is the industry gold standard for penetration testers), <strong>experience with financial institutions</strong>, and <strong>physical presence in Rwanda</strong> for on-site testing when needed.</p>
 
   
-  <p>For a detailed comparison of scanning versus manual testing, see <a href="/blog/penetration-testing-vs-vulnerability-scanning/">penetration testing vs vulnerability scanning</a>. If your institution uses USSD services, our <a href="/blog/ussd-security-testing/">USSD security testing guide</a> covers the specific risks.</p>
+  <p>For a complete introduction to security testing in Rwanda, read <a href="/blog/penetration-testing-rwanda/">our penetration testing guide</a>. For ISO 27001 alignment, see <a href="/blog/iso-27001-rwanda/">ISO 27001 certification in Rwanda</a>. For a comparison of scanning versus manual testing, see <a href="/blog/penetration-testing-vs-vulnerability-scanning/">penetration testing vs vulnerability scanning</a>. If your institution uses USSD services, our <a href="/blog/ussd-security-testing/">USSD security testing guide</a> covers the specific risks.</p>
   <div class="cta-box">
     <h3>Need help with BNR compliance?</h3>
     <p>We deliver OSCP-certified penetration testing and help regulated institutions meet BNR cybersecurity requirements. Based in Kigali.</p>
@@ -170,7 +213,26 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:18px 0;text-align:cent
 </article>
 
 <footer>
-<div class="w">&copy; 2026 imizicyber / Imizi Investment Group Ltd / Kigali, Rwanda</div>
+<div class="w">
+  <div class="footer-blog-inner">
+    <span>&copy; 2026 imizicyber / Kigali, Rwanda</span>
+    <nav class="footer-blog-links">
+      <a href="/">Home</a>
+      <a href="/#services">Services</a>
+      <a href="/resources/">Resources</a>
+      <a href="/#blog">Blog</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</div>
 </footer>
+
+<a href="https://wa.me/250793146617?text=Hi%20imizicyber%2C%20I%27d%20like%20to%20discuss%20security%20services" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.696-5.788-1.876l-.404-.3-2.645.886.886-2.645-.3-.404A9.724 9.724 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+</a>
+<script>
+function toggleTheme(){var h=document.documentElement;var n=h.dataset.theme==='light'?'dark':'light';h.dataset.theme=n;try{localStorage.setItem('imizi-theme',n)}catch(e){}}
+(function(){try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}})();
+</script>
 </body>
 </html>
