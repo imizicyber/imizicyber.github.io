@@ -60,7 +60,10 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 .nav-links a:hover{color:var(--white)}
 .nav-end{display:flex;align-items:center;gap:8px}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:10px}
-.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0;transition:all .25s ease}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 main{padding:88px 0 60px}
 .page-header{text-align:center;padding:32px 0 48px}
@@ -147,7 +150,7 @@ main{padding:88px 0 60px}
 <nav>
 <div class="nav-inner">
   <a href="/" class="logo">
-    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/><line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="88" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity="0.5"/><line x1="50" y1="52" x2="76" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="82" r="3.5" fill="#34d399" opacity="0.45"/><circle cx="50" cy="88" r="3.5" fill="#34d399" opacity="0.3"/><circle cx="76" cy="82" r="3.5" fill="#34d399" opacity="0.45"/></svg>
     <span class="logo-text"><b>imizi</b>cyber</span>
   </a>
   <div class="nav-end">
@@ -517,7 +520,7 @@ main{padding:88px 0 60px}
 <script>
 function toggleTheme(){var h=document.documentElement;var n=h.dataset.theme==='light'?'dark':'light';h.dataset.theme=n;try{localStorage.setItem('imizi-theme',n)}catch(e){}}
 (function(){try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}})();
-(function(){var btn=document.querySelector('.menu-btn');var nav=document.querySelector('.nav-links');if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')})})}})();
+(function(){var btn=document.querySelector('.menu-btn');var nav=document.querySelector('.nav-links');if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.classList.toggle('active');btn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false')})})}})();
 
 function openForm(id){
   var fw=document.getElementById('form-'+id);

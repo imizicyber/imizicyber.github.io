@@ -60,6 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,20,33,.92)
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo svg{width:36px;height:36px}
 .logo-text{font-size:1.05rem;letter-spacing:-.5px;font-weight:400;color:var(--txt2)}.logo-text b{font-weight:800;color:var(--white)}
 .back{font-size:.8rem;color:var(--txt3);text-decoration:none;font-weight:600}.back:hover{color:var(--acc)}
+.breadcrumb{font-family:var(--mono);font-size:.64rem;color:var(--txt3);margin-bottom:16px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.breadcrumb a{color:var(--txt3);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--acc)}.breadcrumb .sep{color:var(--dim)}
 article{padding:100px 0 60px}
 .meta{font-family:var(--mono);font-size:.64rem;color:var(--acc);letter-spacing:.08em;margin-bottom:12px}
 h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--white);margin-bottom:20px}
@@ -91,7 +92,10 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 .nav-links a:hover{color:var(--white)}
 .nav-end{display:flex;align-items:center;gap:8px}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:10px}
-.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--txt2);margin:4px 0;transition:all .25s ease}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 @media(max-width:600px){.scope-row{grid-template-columns:1fr}.scope-cell{padding:8px 16px}.scope-row.header{display:none}}
 </style>
@@ -135,7 +139,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 </head>
 <body>
 <nav><div class="nav-inner">
-  <a href="/" class="logo"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="10" r="4.5" fill="#34d399" opacity="0.6"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="52" x2="22" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="90" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/><line x1="50" y1="52" x2="78" y2="84" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/></svg><span class="logo-text"><b>imizi</b>cyber</span></a>
+  <a href="/" class="logo"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/><line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="52" x2="50" y2="88" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity="0.5"/><line x1="50" y1="52" x2="76" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="82" r="3.5" fill="#34d399" opacity="0.45"/><circle cx="50" cy="88" r="3.5" fill="#34d399" opacity="0.3"/><circle cx="76" cy="82" r="3.5" fill="#34d399" opacity="0.45"/></svg><span class="logo-text"><b>imizi</b>cyber</span></a>
   <div class="nav-end">
       <div class="nav-links">
         <a href="/#services">Services</a>
@@ -153,7 +157,9 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
     </div>
 </div></nav>
 
-<article><div class="w">
+<article>
+<div class="w">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/#blog">Blog</a><span class="sep">/</span><span>This article</span></div>
   <div class="meta">FEBRUARY 2026 &middot; 8 MIN READ</div>
   <h1>How much does penetration testing cost in Rwanda?</h1>
 
@@ -301,7 +307,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
 <script>
 function toggleTheme(){var h=document.documentElement;var n=h.dataset.theme==='light'?'dark':'light';h.dataset.theme=n;try{localStorage.setItem('imizi-theme',n)}catch(e){}}
 (function(){try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}})();
-(function(){var btn=document.querySelector('.menu-btn');var nav=document.querySelector('.nav-links');if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')})})}})();
+(function(){var btn=document.querySelector('.menu-btn');var nav=document.querySelector('.nav-links');if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.classList.toggle('active');btn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false')})})}})();
 </script>
 </body>
 </html>
