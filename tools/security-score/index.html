@@ -613,52 +613,81 @@ function generatePDF(userName,userOrg){
   var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   var bc=quizBand.cls==='band-critical'?'#ef4444':quizBand.cls==='band-high'?'#f97316':quizBand.cls==='band-moderate'?'#eab308':quizBand.cls==='band-lowmod'?'#60a5fa':'#34d399';
   var doc=new jspdf.jsPDF();
-  var y=20,m=20,pw=170;
-  // Header
+  var y=20,m=20,pw=170,pg=1;
+  function footer(){doc.setFontSize(7);doc.setTextColor(180);doc.text('imizicyber.com',105,290,{align:'center'});doc.text('Page '+pg,190,290,{align:'right'});pg++;}
+  function newPage(){footer();doc.addPage();y=20;}
+  // Header bar
   doc.setFillColor(11,20,33);doc.rect(0,0,210,28,'F');
   doc.setTextColor(52,211,153);doc.setFontSize(16);doc.setFont(undefined,'bold');doc.text('imizicyber',m,17);
   doc.setTextColor(132,148,167);doc.setFontSize(9);doc.setFont(undefined,'normal');doc.text('imizicyber.com | '+date,190,13,{align:'right'});
-  y=38;
-  if(userName){doc.setTextColor(100);doc.setFontSize(10);doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),m,y);y+=8;}
-  // Score
-  var r2=parseInt(bc.slice(1,3),16),g2=parseInt(bc.slice(3,5),16),b2=parseInt(bc.slice(5,7),16);
-  doc.setTextColor(r2,g2,b2);doc.setFontSize(36);doc.setFont(undefined,'bold');doc.text(quizTotal+' / 30',105,y+14,{align:'center'});y+=22;
-  doc.setTextColor(30);doc.setFontSize(14);doc.text(quizBand.label,105,y,{align:'center'});y+=6;
-  doc.setTextColor(100);doc.setFontSize(10);doc.setFont(undefined,'normal');
-  var desc=doc.splitTextToSize(quizBand.desc,pw);doc.text(desc,105,y,{align:'center'});y+=desc.length*5+8;
+  doc.setFontSize(8);doc.text('SECURITY SCORE REPORT',105,24,{align:'center'});
+  y=36;
+  if(userName){doc.setTextColor(100);doc.setFontSize(9);doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),m,y);y+=7;}
+  // Score display - compact
+  var cr2=parseInt(bc.slice(1,3),16),cg2=parseInt(bc.slice(3,5),16),cb2=parseInt(bc.slice(5,7),16);
+  doc.setTextColor(cr2,cg2,cb2);doc.setFontSize(32);doc.setFont(undefined,'bold');doc.text(quizTotal+' / 30',105,y+10,{align:'center'});y+=16;
+  doc.setTextColor(30);doc.setFontSize(12);doc.text(quizBand.label,105,y,{align:'center'});y+=5;
+  doc.setTextColor(100);doc.setFontSize(9);doc.setFont(undefined,'normal');
+  var desc=doc.splitTextToSize(quizBand.desc,140);doc.text(desc,105,y,{align:'center'});y+=desc.length*4+6;
   // Divider
-  doc.setDrawColor(52,211,153);doc.setLineWidth(0.8);doc.line(m,y,190,y);y+=8;
-  doc.setTextColor(30);doc.setFontSize(13);doc.setFont(undefined,'bold');doc.text('Score Breakdown by Category',m,y);y+=8;
+  doc.setDrawColor(52,211,153);doc.setLineWidth(0.6);doc.line(m,y,190,y);y+=6;
+  // Score Breakdown - compact 2-column layout
+  doc.setTextColor(30);doc.setFontSize(11);doc.setFont(undefined,'bold');doc.text('Score Breakdown',m,y);y+=6;
   quizAnswers.forEach(function(v,i){
-    if(y>270){doc.addPage();y=20;}
+    var col=i%2===0?0:1;
+    var cx=m+(col*88);
+    if(i%2===0&&i>0)y+=1;
+    if(i%2===0&&y>270){newPage();}
     var p=Math.round(v/3*100),fc=v<=1?'#f97316':v===2?'#eab308':'#34d399';
-    doc.setTextColor(30);doc.setFontSize(10);doc.setFont(undefined,'bold');doc.text(QUESTIONS[i].label,m,y);
-    doc.setFont(undefined,'normal');doc.setTextColor(120);doc.text(v+'/3',190,y,{align:'right'});y+=4;
-    doc.setFillColor(230,230,230);doc.roundedRect(m,y,pw,3,1,1,'F');
+    doc.setTextColor(60);doc.setFontSize(8);doc.setFont(undefined,'bold');doc.text(QUESTIONS[i].label,cx,y);
+    doc.setFont(undefined,'normal');doc.setTextColor(130);doc.text(v+'/3',cx+78,y,{align:'right'});
+    doc.setFillColor(230,230,230);doc.roundedRect(cx,y+1.5,78,2.5,1,1,'F');
     var fr2=parseInt(fc.slice(1,3),16),fg=parseInt(fc.slice(3,5),16),fb=parseInt(fc.slice(5,7),16);
-    doc.setFillColor(fr2,fg,fb);doc.roundedRect(m,y,Math.max(pw*(p/100),3),3,1,1,'F');y+=8;
+    doc.setFillColor(fr2,fg,fb);doc.roundedRect(cx,y+1.5,Math.max(78*(p/100),2),2.5,1,1,'F');
+    if(col===1)y+=7;
   });
-  y+=4;doc.setDrawColor(52,211,153);doc.setLineWidth(0.8);doc.line(m,y,190,y);y+=8;
-  doc.setTextColor(30);doc.setFontSize(13);doc.setFont(undefined,'bold');doc.text('Prioritised Recommendations',m,y);y+=8;
+  if(quizAnswers.length%2===1)y+=7;
+  y+=4;
+  // Divider
+  doc.setDrawColor(52,211,153);doc.setLineWidth(0.6);doc.line(m,y,190,y);y+=6;
+  // Recommendations
+  doc.setTextColor(30);doc.setFontSize(11);doc.setFont(undefined,'bold');doc.text('Prioritised Recommendations',m,y);y+=8;
   quizAnswers.forEach(function(v,i){
-    if(y>260){doc.addPage();y=20;}
     var r=QUESTIONS[i].recos[v],c=r.p==='CRITICAL'?'#ef4444':r.p==='HIGH'?'#f97316':r.p==='MEDIUM'?'#eab308':'#34d399';
-    var cr=parseInt(c.slice(1,3),16),cg=parseInt(c.slice(3,5),16),cb=parseInt(c.slice(5,7),16);
-    doc.setFillColor(cr,cg,cb);doc.roundedRect(m,y-3,2,12,0.5,0.5,'F');
-    doc.setFillColor(cr,cg,cb);doc.roundedRect(m+4,y-2.5,doc.getTextWidth(r.p)+4,5,1,1,'F');
-    doc.setTextColor(255);doc.setFontSize(7);doc.setFont(undefined,'bold');doc.text(r.p,m+6,y+1);
-    doc.setTextColor(30);doc.setFontSize(10);doc.setFont(undefined,'bold');doc.text(r.h,m+6+doc.getTextWidth(r.p)+6,y+1);y+=6;
-    doc.setTextColor(100);doc.setFontSize(9);doc.setFont(undefined,'normal');
-    var bl=doc.splitTextToSize(r.b,pw-8);doc.text(bl,m+4,y);y+=bl.length*4+6;
+    var pcr=parseInt(c.slice(1,3),16),pcg=parseInt(c.slice(3,5),16),pcb=parseInt(c.slice(5,7),16);
+    // Pre-calculate height
+    doc.setFontSize(8);doc.setFont(undefined,'normal');
+    var bl=doc.splitTextToSize(r.b,pw-10);
+    var itemH=7+bl.length*3.5+4;
+    if(y+itemH>278){newPage();}
+    // Left accent bar
+    doc.setFillColor(pcr,pcg,pcb);doc.rect(m,y-1,1.5,itemH-2,'F');
+    // Badge background
+    doc.setFontSize(6.5);doc.setFont(undefined,'bold');
+    var bw=doc.getTextWidth(r.p)+5;
+    doc.setFillColor(pcr,pcg,pcb);doc.roundedRect(m+5,y-1,bw,4.5,1,1,'F');
+    doc.setTextColor(255);doc.text(r.p,m+7.5,y+2);
+    // Category label
+    doc.setFontSize(7);doc.setTextColor(130);doc.setFont(undefined,'normal');
+    doc.text(QUESTIONS[i].label.toUpperCase(),m+5+bw+3,y+2);
+    y+=5.5;
+    // Title
+    doc.setFontSize(9.5);doc.setFont(undefined,'bold');doc.setTextColor(30);
+    doc.text(r.h,m+5,y);y+=4.5;
+    // Body
+    doc.setFontSize(8);doc.setFont(undefined,'normal');doc.setTextColor(100);
+    doc.text(bl,m+5,y);y+=bl.length*3.5+4;
   });
-  // Footer
-  if(y>250){doc.addPage();y=20;}
-  doc.setDrawColor(52,211,153);doc.setLineWidth(0.8);doc.line(m,y,190,y);y+=8;
-  doc.setTextColor(30);doc.setFontSize(12);doc.setFont(undefined,'bold');doc.text('Ready to close these gaps?',m,y);y+=7;
-  doc.setFont(undefined,'normal');doc.setFontSize(10);doc.setTextColor(80);
+  // CTA footer
+  if(y>258){newPage();}
+  y+=2;doc.setDrawColor(52,211,153);doc.setLineWidth(0.6);doc.line(m,y,190,y);y+=6;
+  doc.setTextColor(30);doc.setFontSize(11);doc.setFont(undefined,'bold');doc.text('Ready to close these gaps?',m,y);y+=6;
+  doc.setFont(undefined,'normal');doc.setFontSize(9);doc.setTextColor(80);
   var ft=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing and security assessments for banks and regulated organisations across East Africa.',pw);
-  doc.text(ft,m,y);y+=ft.length*5+6;
-  doc.setTextColor(52,211,153);doc.setFont(undefined,'bold');doc.text('info@imizicyber.com | +250 793 146 617 | imizicyber.com',m,y);
+  doc.text(ft,m,y);y+=ft.length*4+5;
+  doc.setTextColor(52,211,153);doc.setFont(undefined,'bold');doc.setFontSize(9);
+  doc.text('info@imizicyber.com | +250 793 146 617 | imizicyber.com',m,y);
+  footer();
   doc.save('imizicyber-security-report.pdf');
 }
 
