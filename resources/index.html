@@ -98,15 +98,6 @@ main{padding:88px 0 60px}
 .btn-submit-res:disabled{opacity:.5;cursor:not-allowed}
 .msg-ok{font-size:.78rem;color:var(--acc);margin-top:8px;display:none}
 .msg-err{font-size:.78rem;color:#ef4444;margin-top:8px;display:none}
-/* Content reveal */
-.content-reveal{display:none;padding:24px;border-top:1px solid rgba(255,255,255,.04);background:var(--bg3)}
-.content-reveal.visible{display:block}
-.content-reveal h3{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:12px}
-.content-reveal h4{font-size:.88rem;font-weight:700;color:var(--white);margin:16px 0 6px}
-.content-reveal p{font-size:.82rem;color:var(--txt2);margin-bottom:8px;line-height:1.7}
-.content-reveal ul{margin:0 0 10px 16px}
-.content-reveal ul li{font-size:.82rem;color:var(--txt2);margin-bottom:4px;line-height:1.6}
-.print-hint{font-size:.74rem;color:var(--txt3);margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.04)}
 .cta-bar{background:linear-gradient(135deg,rgba(52,211,153,.1),transparent);border:1px solid rgba(52,211,153,.2);border-radius:14px;padding:36px 32px;text-align:center;margin-top:20px}
 .cta-bar h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.5px}
 .cta-bar p{color:var(--txt2);font-size:.9rem;margin-bottom:20px}
@@ -207,7 +198,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="bnr-checklist">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r1">Download checklist (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r1">Your report has opened in a new tab. You can also read the checklist below.</div>
+        <div class="msg-ok" id="ok-r1">Your PDF is downloading now. Check your downloads folder.</div>
         <div class="msg-err" id="err-r1"></div>
       </form>
     </div>
@@ -331,7 +322,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="pentest-buyers-guide">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r2">Download guide (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r2">Your report has opened in a new tab. You can also read the guide below.</div>
+        <div class="msg-ok" id="ok-r2">Your PDF is downloading now. Check your downloads folder.</div>
         <div class="msg-err" id="err-r2"></div>
       </form>
     </div>
@@ -415,7 +406,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="security-awareness-template">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r3">Download template (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r3">Your report has opened in a new tab. You can also read the template below.</div>
+        <div class="msg-ok" id="ok-r3">Your PDF is downloading now. Check your downloads folder.</div>
         <div class="msg-err" id="err-r3"></div>
       </form>
     </div>
@@ -574,33 +565,70 @@ var RESOURCE_DATA={
   }
 };
 
+function loadJsPDF(){
+  return new Promise(function(resolve,reject){
+    if(window.jspdf){resolve();return;}
+    var urls=['https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js','https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js','https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js'];
+    function tryNext(i){
+      if(i>=urls.length){reject();return;}
+      var s=document.createElement('script');s.src=urls[i];
+      s.onload=function(){if(window.jspdf)resolve();else tryNext(i+1);};
+      s.onerror=function(){tryNext(i+1);};
+      document.head.appendChild(s);
+    }
+    tryNext(0);
+  });
+}
+
 function generateResourcePDF(resource,userName,userOrg){
   var data=RESOURCE_DATA[resource];
   var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+data.title+' - imizicyber</title><style>';
+  var doc=new jspdf.jsPDF();
+  var y=20,m=20,pw=170;
+  doc.setFillColor(11,20,33);doc.rect(0,0,210,28,'F');
+  doc.setTextColor(52,211,153);doc.setFontSize(16);doc.setFont(undefined,'bold');doc.text('imizicyber',m,17);
+  doc.setTextColor(132,148,167);doc.setFontSize(9);doc.setFont(undefined,'normal');doc.text('imizicyber.com | '+date,190,13,{align:'right'});
+  y=38;
+  if(userName){doc.setTextColor(100);doc.setFontSize(10);doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),m,y);y+=8;}
+  doc.setTextColor(30);doc.setFontSize(18);doc.setFont(undefined,'bold');
+  var tl=doc.splitTextToSize(data.title,pw);doc.text(tl,m,y);y+=tl.length*8+4;
+  doc.setTextColor(100);doc.setFontSize(10);doc.setFont(undefined,'italic');
+  var sl=doc.splitTextToSize(data.subtitle,pw);doc.text(sl,m,y);y+=sl.length*5+6;
+  doc.setDrawColor(52,211,153);doc.setLineWidth(0.8);doc.line(m,y,190,y);y+=10;
+  data.sections.forEach(function(sec){
+    if(y>260){doc.addPage();y=20;}
+    doc.setTextColor(30);doc.setFontSize(12);doc.setFont(undefined,'bold');doc.text(sec.heading,m,y);y+=7;
+    if(sec.text){doc.setFont(undefined,'normal');doc.setFontSize(10);doc.setTextColor(60);var lines=doc.splitTextToSize(sec.text,pw);lines.forEach(function(l){if(y>275){doc.addPage();y=20;}doc.text(l,m,y);y+=5;});y+=4;}
+    if(sec.items){doc.setFont(undefined,'normal');doc.setFontSize(10);doc.setTextColor(60);sec.items.forEach(function(item){var lines=doc.splitTextToSize(item,pw-6);if(y+(lines.length*5)>275){doc.addPage();y=20;}doc.setTextColor(52,211,153);doc.text('\u2022',m,y);doc.setTextColor(60);doc.text(lines,m+5,y);y+=lines.length*5+2;});y+=4;}
+  });
+  if(y>250){doc.addPage();y=20;}
+  doc.setDrawColor(52,211,153);doc.setLineWidth(0.8);doc.line(m,y,190,y);y+=8;
+  doc.setTextColor(30);doc.setFontSize(12);doc.setFont(undefined,'bold');doc.text('Need help implementing this?',m,y);y+=7;
+  doc.setFont(undefined,'normal');doc.setFontSize(10);doc.setTextColor(80);
+  var ft=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing, security assessments, and training for banks and regulated organisations across East Africa.',pw);
+  doc.text(ft,m,y);y+=ft.length*5+6;
+  doc.setTextColor(52,211,153);doc.setFont(undefined,'bold');doc.text('info@imizicyber.com | +250 793 146 617 | imizicyber.com',m,y);
+  doc.save(data.filename);
+}
+
+function fallbackHTML(resource,userName,userOrg){
+  var data=RESOURCE_DATA[resource];
+  var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+data.title+'</title><style>';
   h+='*{margin:0;padding:0;box-sizing:border-box}body{font-family:Helvetica,Arial,sans-serif;color:#222;max-width:700px;margin:0 auto;padding:20px 24px;font-size:13px}';
   h+='.hd{background:#0b1421;padding:16px 20px;margin:-20px -24px 20px;display:flex;justify-content:space-between;align-items:center}.hd .b{color:#34d399;font-size:18px;font-weight:700}.hd .m{text-align:right;color:#8494a7;font-size:11px}';
   h+='h1{font-size:20px;margin:16px 0 6px}h2{font-size:14px;margin:18px 0 8px}.sub{color:#666;font-size:12px;font-style:italic;margin-bottom:16px}';
   h+='hr{border:none;border-top:2px solid #34d399;margin:12px 0}';
-  h+='ul{margin:0 0 10px 20px;padding:0}li{font-size:12px;color:#444;margin-bottom:4px;line-height:1.5}li::marker{color:#34d399}';
+  h+='ul{margin:0 0 10px 20px}li{font-size:12px;color:#444;margin-bottom:4px;line-height:1.5}li::marker{color:#34d399}';
   h+='p.txt{font-size:12px;color:#444;line-height:1.5;margin-bottom:8px}';
-  h+='.ft{border-top:2px solid #34d399;padding-top:12px;margin-top:24px}.ft h3{font-size:13px;margin-bottom:4px}.ft p{font-size:11px;color:#555;margin-bottom:4px}.ft .c{color:#34d399;font-weight:700}';
-  h+='.pb{text-align:center;margin:12px 0}button{background:#34d399;color:#0b1421;border:none;padding:8px 20px;font-size:13px;font-weight:700;border-radius:4px;cursor:pointer}';
-  h+='@media print{.pb{display:none}}</style></head><body>';
+  h+='.ft{border-top:2px solid #34d399;padding-top:12px;margin-top:24px}.ft p{font-size:11px;color:#555;margin-bottom:4px}.ft .c{color:#34d399;font-weight:700}';
+  h+='</style></head><body>';
   h+='<div class="hd"><div class="b">imizicyber</div><div class="m">imizicyber.com<br>'+date+'</div></div>';
-  h+='<div class="pb"><button onclick="window.print()">Save as PDF / Print</button></div>';
   if(userName)h+='<p style="color:#666;font-size:11px;margin-bottom:6px">Prepared for: '+userName+(userOrg?' ('+userOrg+')':'')+'</p>';
   h+='<h1>'+data.title+'</h1><p class="sub">'+data.subtitle+'</p><hr>';
-  data.sections.forEach(function(sec){
-    h+='<h2>'+sec.heading+'</h2>';
-    if(sec.text)h+='<p class="txt">'+sec.text+'</p>';
-    if(sec.items){h+='<ul>';sec.items.forEach(function(item){h+='<li>'+item+'</li>';});h+='</ul>';}
-  });
-  h+='<div class="ft"><h3>Need help implementing this?</h3><p>Our OSCP-certified team specialises in penetration testing, security assessments, and training for banks and regulated organisations across East Africa and South Africa.</p>';
-  h+='<p class="c">info@imizicyber.com | +250 793 146 617 | imizicyber.com</p></div></body></html>';
-  var w=window.open('','_blank');
-  if(w){w.document.write(h);w.document.close();w.focus();setTimeout(function(){w.print();},400);}
-  else{var b=new Blob([h],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=data.filename.replace('.pdf','.html');document.body.appendChild(a);a.click();document.body.removeChild(a);}
+  data.sections.forEach(function(sec){h+='<h2>'+sec.heading+'</h2>';if(sec.text)h+='<p class="txt">'+sec.text+'</p>';if(sec.items){h+='<ul>';sec.items.forEach(function(item){h+='<li>'+item+'</li>';});h+='</ul>';}});
+  h+='<div class="ft"><p><strong>Need help?</strong> info@imizicyber.com | +250 793 146 617 | imizicyber.com</p></div></body></html>';
+  var b=new Blob([h],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=data.filename.replace('.pdf','.html');document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
 
 function submitResource(e,id,resource){
@@ -610,26 +638,16 @@ function submitResource(e,id,resource){
   var name=form.querySelector('input[name="name"]').value;
   var org=form.querySelector('input[name="organisation"]').value;
   btn.disabled=true;btn.textContent='Generating PDF\u2026';
-
-  // Send lead data to Formspree in background (fire-and-forget)
-  try{
-    var data=new FormData(form);
-    fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:data,headers:{Accept:'application/json'}}).catch(function(){});
-  }catch(ex){}
-
-  // Generate PDF immediately
-  setTimeout(function(){
-    try{
-      generateResourcePDF(resource,name,org);
-      document.getElementById('ok-'+id).style.display='block';
-      form.style.display='none';
-      var content=document.getElementById('content-'+id);
-      content.classList.add('visible');
-      content.scrollIntoView({behavior:'smooth',block:'start'});
-    }catch(ex){
-      btn.disabled=false;btn.textContent='Try again';
-    }
-  },200);
+  try{var fd=new FormData(form);fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:fd,headers:{Accept:'application/json'}}).catch(function(){});}catch(ex){}
+  loadJsPDF().then(function(){
+    generateResourcePDF(resource,name,org);
+    document.getElementById('ok-'+id).style.display='block';
+    btn.textContent='Downloaded \u2713';
+  }).catch(function(){
+    fallbackHTML(resource,name,org);
+    document.getElementById('ok-'+id).style.display='block';
+    btn.textContent='Downloaded \u2713';
+  });
 }
 </script>
 </body>
