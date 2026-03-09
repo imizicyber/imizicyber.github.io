@@ -37,7 +37,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -208,7 +207,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="bnr-checklist">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r1">Download checklist (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r1">Your PDF is downloading. You can also read the checklist below.</div>
+        <div class="msg-ok" id="ok-r1">Your report has opened in a new tab. You can also read the checklist below.</div>
         <div class="msg-err" id="err-r1"></div>
       </form>
     </div>
@@ -332,7 +331,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="pentest-buyers-guide">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r2">Download guide (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r2">Your PDF is downloading. You can also read the guide below.</div>
+        <div class="msg-ok" id="ok-r2">Your report has opened in a new tab. You can also read the guide below.</div>
         <div class="msg-err" id="err-r2"></div>
       </form>
     </div>
@@ -416,7 +415,7 @@ main{padding:88px 0 60px}
         <input type="hidden" name="resource" value="security-awareness-template">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r3">Download template (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r3">Your PDF is downloading. You can also read the template below.</div>
+        <div class="msg-ok" id="ok-r3">Your report has opened in a new tab. You can also read the template below.</div>
         <div class="msg-err" id="err-r3"></div>
       </form>
     </div>
@@ -576,84 +575,32 @@ var RESOURCE_DATA={
 };
 
 function generateResourcePDF(resource,userName,userOrg){
-  var jsPDF=window.jspdf.jsPDF;
-  var doc=new jsPDF({unit:'mm',format:'a4'});
   var data=RESOURCE_DATA[resource];
-  var w=doc.internal.pageSize.getWidth();
-  var margin=20;
-  var cw=w-margin*2;
-  var y=20;
-
-  // Header
-  doc.setFillColor(11,20,33);
-  doc.rect(0,0,w,32,'F');
-  doc.setFontSize(16);doc.setTextColor(52,211,153);doc.setFont('helvetica','bold');
-  doc.text('imizicyber',margin,14);
-  doc.setFontSize(8);doc.setTextColor(132,148,167);doc.setFont('helvetica','normal');
-  doc.text('imizicyber.com',w-margin,14,{align:'right'});
-  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),w-margin,22,{align:'right'});
-  if(userName){doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),margin,22);}
-  y=42;
-
-  // Title
-  doc.setFontSize(18);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
-  var titleLines=doc.splitTextToSize(data.title,cw);
-  doc.text(titleLines,margin,y);
-  y+=titleLines.length*8+4;
-  doc.setFontSize(9);doc.setTextColor(100,100,100);doc.setFont('helvetica','italic');
-  var subLines=doc.splitTextToSize(data.subtitle,cw);
-  doc.text(subLines,margin,y);
-  y+=subLines.length*5+10;
-
-  // Divider
-  doc.setDrawColor(52,211,153);doc.setLineWidth(0.5);
-  doc.line(margin,y,w-margin,y);
-  y+=10;
-
-  // Sections
+  var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+data.title+' - imizicyber</title><style>';
+  h+='*{margin:0;padding:0;box-sizing:border-box}body{font-family:Helvetica,Arial,sans-serif;color:#222;max-width:700px;margin:0 auto;padding:20px 24px;font-size:13px}';
+  h+='.hd{background:#0b1421;padding:16px 20px;margin:-20px -24px 20px;display:flex;justify-content:space-between;align-items:center}.hd .b{color:#34d399;font-size:18px;font-weight:700}.hd .m{text-align:right;color:#8494a7;font-size:11px}';
+  h+='h1{font-size:20px;margin:16px 0 6px}h2{font-size:14px;margin:18px 0 8px}.sub{color:#666;font-size:12px;font-style:italic;margin-bottom:16px}';
+  h+='hr{border:none;border-top:2px solid #34d399;margin:12px 0}';
+  h+='ul{margin:0 0 10px 20px;padding:0}li{font-size:12px;color:#444;margin-bottom:4px;line-height:1.5}li::marker{color:#34d399}';
+  h+='p.txt{font-size:12px;color:#444;line-height:1.5;margin-bottom:8px}';
+  h+='.ft{border-top:2px solid #34d399;padding-top:12px;margin-top:24px}.ft h3{font-size:13px;margin-bottom:4px}.ft p{font-size:11px;color:#555;margin-bottom:4px}.ft .c{color:#34d399;font-weight:700}';
+  h+='.pb{text-align:center;margin:12px 0}button{background:#34d399;color:#0b1421;border:none;padding:8px 20px;font-size:13px;font-weight:700;border-radius:4px;cursor:pointer}';
+  h+='@media print{.pb{display:none}}</style></head><body>';
+  h+='<div class="hd"><div class="b">imizicyber</div><div class="m">imizicyber.com<br>'+date+'</div></div>';
+  h+='<div class="pb"><button onclick="window.print()">Save as PDF / Print</button></div>';
+  if(userName)h+='<p style="color:#666;font-size:11px;margin-bottom:6px">Prepared for: '+userName+(userOrg?' ('+userOrg+')':'')+'</p>';
+  h+='<h1>'+data.title+'</h1><p class="sub">'+data.subtitle+'</p><hr>';
   data.sections.forEach(function(sec){
-    if(y>255){doc.addPage();y=20;}
-    doc.setFontSize(11);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
-    doc.text(sec.heading,margin,y);
-    y+=7;
-    if(sec.text){
-      doc.setFontSize(9);doc.setTextColor(60,60,60);doc.setFont('helvetica','normal');
-      var tl=doc.splitTextToSize(sec.text,cw);
-      if(y+tl.length*4>275){doc.addPage();y=20;}
-      doc.text(tl,margin,y);
-      y+=tl.length*4+6;
-    }
-    if(sec.items){
-      doc.setFontSize(9);doc.setFont('helvetica','normal');
-      sec.items.forEach(function(item){
-        if(y>270){doc.addPage();y=20;}
-        doc.setTextColor(52,211,153);
-        doc.text('\u2022',margin+2,y);
-        doc.setTextColor(60,60,60);
-        var il=doc.splitTextToSize(item,cw-8);
-        doc.text(il,margin+8,y);
-        y+=il.length*4+3;
-      });
-      y+=4;
-    }
+    h+='<h2>'+sec.heading+'</h2>';
+    if(sec.text)h+='<p class="txt">'+sec.text+'</p>';
+    if(sec.items){h+='<ul>';sec.items.forEach(function(item){h+='<li>'+item+'</li>';});h+='</ul>';}
   });
-
-  // Footer CTA
-  if(y>250){doc.addPage();y=20;}
-  y+=5;
-  doc.setDrawColor(52,211,153);doc.line(margin,y,w-margin,y);
-  y+=8;
-  doc.setFontSize(11);doc.setTextColor(30,30,30);doc.setFont('helvetica','bold');
-  doc.text('Need help implementing this?',margin,y);
-  y+=6;
-  doc.setFontSize(9);doc.setTextColor(80,80,80);doc.setFont('helvetica','normal');
-  var ctaLines=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing, security assessments, and training for banks and regulated organisations across East Africa and South Africa.',cw);
-  doc.text(ctaLines,margin,y);
-  y+=ctaLines.length*5+6;
-  doc.setTextColor(52,211,153);doc.setFont('helvetica','bold');
-  doc.text('Email: info@imizicyber.com  |  WhatsApp: +250 793 146 617  |  imizicyber.com',margin,y);
-
-  doc.save(data.filename);
+  h+='<div class="ft"><h3>Need help implementing this?</h3><p>Our OSCP-certified team specialises in penetration testing, security assessments, and training for banks and regulated organisations across East Africa and South Africa.</p>';
+  h+='<p class="c">info@imizicyber.com | +250 793 146 617 | imizicyber.com</p></div></body></html>';
+  var w=window.open('','_blank');
+  if(w){w.document.write(h);w.document.close();w.focus();setTimeout(function(){w.print();},400);}
+  else{var b=new Blob([h],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=data.filename.replace('.pdf','.html');document.body.appendChild(a);a.click();document.body.removeChild(a);}
 }
 
 function submitResource(e,id,resource){

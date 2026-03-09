@@ -37,7 +37,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -342,7 +341,7 @@ footer{border-top:1px solid rgba(255,255,255,.04);padding:24px 0}
   <div class="gate-card">
     <h2>Download your full security report</h2>
     <p>Enter your details below to download a personalised PDF report with a detailed breakdown by category and prioritised recommendations.</p>
-    <div id="gate-msg-success" class="msg-success">Your report is downloading now. Check your downloads folder.</div>
+    <div id="gate-msg-success" class="msg-success">Your report has opened in a new tab. Use "Save as PDF" in the print dialog to download it.</div>
     <form id="gate-form" onsubmit="submitGate(event)">
       <div class="form-group">
         <label for="g-name">Name</label>
@@ -596,155 +595,39 @@ function calculateScore(){
 }
 
 function generatePDF(userName,userOrg){
-  var jsPDF=window.jspdf.jsPDF;
-  var doc=new jsPDF({unit:'mm',format:'a4'});
-  var w=doc.internal.pageSize.getWidth();
-  var margin=20;
-  var cw=w-margin*2;
-  var y=20;
-
-  // Header bar
-  doc.setFillColor(11,20,33);
-  doc.rect(0,0,w,36,'F');
-  doc.setFontSize(18);
-  doc.setTextColor(52,211,153);
-  doc.setFont('helvetica','bold');
-  doc.text('imizicyber',margin,16);
-  doc.setFontSize(9);
-  doc.setTextColor(132,148,167);
-  doc.setFont('helvetica','normal');
-  doc.text('Security Score Assessment Report',margin,24);
-  doc.text('imizicyber.com',w-margin,16,{align:'right'});
-  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),w-margin,24,{align:'right'});
-
-  y=46;
-
-  // Prepared for
-  doc.setFontSize(10);
-  doc.setTextColor(100,100,100);
-  doc.text('Prepared for: '+userName+(userOrg?' ('+userOrg+')':''),margin,y);
-  y+=12;
-
-  // Score
-  doc.setFontSize(36);
-  doc.setFont('helvetica','bold');
-  var bandColor=quizBand.cls==='band-critical'?[239,68,68]:quizBand.cls==='band-high'?[249,115,22]:quizBand.cls==='band-moderate'?[234,179,8]:quizBand.cls==='band-lowmod'?[96,165,250]:[52,211,153];
-  doc.setTextColor(bandColor[0],bandColor[1],bandColor[2]);
-  doc.text(quizTotal+' / 30',w/2,y,{align:'center'});
-  y+=10;
-  doc.setFontSize(14);
-  doc.setTextColor(40,40,40);
-  doc.text(quizBand.label,w/2,y,{align:'center'});
-  y+=8;
-  doc.setFontSize(9);
-  doc.setTextColor(100,100,100);
-  doc.setFont('helvetica','normal');
-  var descLines=doc.splitTextToSize(quizBand.desc,cw);
-  doc.text(descLines,w/2,y,{align:'center'});
-  y+=descLines.length*5+12;
-
-  // Divider
-  doc.setDrawColor(220,220,220);
-  doc.line(margin,y,w-margin,y);
-  y+=10;
-
-  // Category breakdown
-  doc.setFontSize(13);
-  doc.setTextColor(30,30,30);
-  doc.setFont('helvetica','bold');
-  doc.text('Score Breakdown by Category',margin,y);
-  y+=10;
-
-  quizAnswers.forEach(function(v,idx){
-    if(y>260){doc.addPage();y=20;}
-    var pct=Math.round(v/3*100);
-    doc.setFontSize(9);
-    doc.setFont('helvetica','bold');
-    doc.setTextColor(50,50,50);
-    doc.text(QUESTIONS[idx].label,margin,y);
-    doc.setFont('helvetica','normal');
-    doc.setTextColor(120,120,120);
-    doc.text(v+'/3',w-margin,y,{align:'right'});
-    y+=4;
-    // Bar background
-    doc.setFillColor(230,230,230);
-    doc.roundedRect(margin,y,cw,3,1.5,1.5,'F');
-    // Bar fill
-    if(pct>0){
-      var fillColor=v<=1?[249,115,22]:v===2?[234,179,8]:[52,211,153];
-      doc.setFillColor(fillColor[0],fillColor[1],fillColor[2]);
-      doc.roundedRect(margin,y,Math.max(cw*pct/100,3),3,1.5,1.5,'F');
-    }
-    y+=10;
+  var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  var bc=quizBand.cls==='band-critical'?'#ef4444':quizBand.cls==='band-high'?'#f97316':quizBand.cls==='band-moderate'?'#eab308':quizBand.cls==='band-lowmod'?'#60a5fa':'#34d399';
+  var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Security Score Report - imizicyber</title><style>';
+  h+='*{margin:0;padding:0;box-sizing:border-box}body{font-family:Helvetica,Arial,sans-serif;color:#222;max-width:700px;margin:0 auto;padding:20px 24px;font-size:13px}';
+  h+='.hd{background:#0b1421;padding:16px 20px;margin:-20px -24px 20px;display:flex;justify-content:space-between;align-items:center}.hd .b{color:#34d399;font-size:18px;font-weight:700}.hd .m{text-align:right;color:#8494a7;font-size:11px}';
+  h+='.sc{text-align:center;font-size:40px;font-weight:700;margin:24px 0 6px}.bl{text-align:center;font-size:16px;margin-bottom:4px}.bd{text-align:center;color:#666;font-size:12px;margin-bottom:24px}';
+  h+='hr{border:none;border-top:1px solid #ddd;margin:16px 0}h2{font-size:14px;margin:16px 0 10px}';
+  h+='.ct{display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px}.ct b{color:#333}.ct span{color:#888}';
+  h+='.bg{background:#e6e6e6;border-radius:3px;height:5px;margin-bottom:10px}.bf{border-radius:3px;height:5px}';
+  h+='.rc{margin-bottom:12px;padding:6px 0 6px 10px;border-left:3px solid #ddd}.badge{display:inline-block;font-size:8px;font-weight:700;color:#fff;padding:1px 5px;border-radius:2px;margin-right:4px}.rt{font-size:12px;font-weight:700}.rb{font-size:11px;color:#666;margin-top:2px}';
+  h+='.ft{border-top:2px solid #34d399;padding-top:12px;margin-top:24px}.ft h3{font-size:13px;margin-bottom:4px}.ft p{font-size:11px;color:#555;margin-bottom:4px}.ft .c{color:#34d399;font-weight:700}';
+  h+='.pb{text-align:center;margin:12px 0}button{background:#34d399;color:#0b1421;border:none;padding:8px 20px;font-size:13px;font-weight:700;border-radius:4px;cursor:pointer}';
+  h+='@media print{.pb{display:none}}</style></head><body>';
+  h+='<div class="hd"><div class="b">imizicyber</div><div class="m">imizicyber.com<br>'+date+'</div></div>';
+  h+='<div class="pb"><button onclick="window.print()">Save as PDF / Print</button></div>';
+  if(userName)h+='<p style="color:#666;font-size:11px;margin-bottom:8px">Prepared for: '+userName+(userOrg?' ('+userOrg+')':'')+'</p>';
+  h+='<div class="sc" style="color:'+bc+'">'+quizTotal+' / 30</div>';
+  h+='<div class="bl">'+quizBand.label+'</div><div class="bd">'+quizBand.desc+'</div><hr><h2>Score Breakdown by Category</h2>';
+  quizAnswers.forEach(function(v,i){
+    var p=Math.round(v/3*100),fc=v<=1?'#f97316':v===2?'#eab308':'#34d399';
+    h+='<div class="ct"><b>'+QUESTIONS[i].label+'</b><span>'+v+'/3</span></div>';
+    h+='<div class="bg"><div class="bf" style="width:'+Math.max(p,3)+'%;background:'+fc+'"></div></div>';
   });
-
-  y+=5;
-  if(y>240){doc.addPage();y=20;}
-
-  // Recommendations
-  doc.setDrawColor(220,220,220);
-  doc.line(margin,y,w-margin,y);
-  y+=10;
-  doc.setFontSize(13);
-  doc.setTextColor(30,30,30);
-  doc.setFont('helvetica','bold');
-  doc.text('Prioritised Recommendations',margin,y);
-  y+=10;
-
-  quizAnswers.forEach(function(v,idx){
-    if(y>255){doc.addPage();y=20;}
-    var r=QUESTIONS[idx].recos[v];
-    // Priority badge
-    var badgeColor=r.p==='CRITICAL'?[239,68,68]:r.p==='HIGH'?[249,115,22]:r.p==='MEDIUM'?[234,179,8]:[52,211,153];
-    doc.setFillColor(badgeColor[0],badgeColor[1],badgeColor[2]);
-    doc.roundedRect(margin,y-3,18,5,1,1,'F');
-    doc.setFontSize(6);
-    doc.setTextColor(255,255,255);
-    doc.setFont('helvetica','bold');
-    doc.text(r.p,margin+9,y,{align:'center'});
-    // Title
-    doc.setFontSize(9);
-    doc.setTextColor(30,30,30);
-    doc.text(r.h,margin+22,y);
-    y+=5;
-    // Description
-    doc.setFont('helvetica','normal');
-    doc.setTextColor(100,100,100);
-    doc.setFontSize(8);
-    var bLines=doc.splitTextToSize(r.b,cw-22);
-    doc.text(bLines,margin+22,y);
-    y+=bLines.length*4+8;
+  h+='<hr><h2>Prioritised Recommendations</h2>';
+  quizAnswers.forEach(function(v,i){
+    var r=QUESTIONS[i].recos[v],c=r.p==='CRITICAL'?'#ef4444':r.p==='HIGH'?'#f97316':r.p==='MEDIUM'?'#eab308':'#34d399';
+    h+='<div class="rc" style="border-left-color:'+c+'"><span class="badge" style="background:'+c+'">'+r.p+'</span><span class="rt">'+r.h+'</span><div class="rb">'+r.b+'</div></div>';
   });
-
-  // Footer CTA
-  if(y>250){doc.addPage();y=20;}
-  y+=5;
-  doc.setDrawColor(52,211,153);
-  doc.setLineWidth(0.5);
-  doc.line(margin,y,w-margin,y);
-  y+=10;
-  doc.setFontSize(12);
-  doc.setTextColor(30,30,30);
-  doc.setFont('helvetica','bold');
-  doc.text('Ready to close these gaps?',margin,y);
-  y+=7;
-  doc.setFontSize(9);
-  doc.setTextColor(80,80,80);
-  doc.setFont('helvetica','normal');
-  var ctaLines=doc.splitTextToSize('Our OSCP-certified team specialises in penetration testing and security assessments for banks and regulated organisations across East Africa and South Africa. Contact us for a free scoping call.',cw);
-  doc.text(ctaLines,margin,y);
-  y+=ctaLines.length*5+8;
-  doc.setTextColor(52,211,153);
-  doc.setFont('helvetica','bold');
-  doc.text('Email: info@imizicyber.com',margin,y);
-  y+=5;
-  doc.text('Website: imizicyber.com',margin,y);
-  y+=5;
-  doc.text('WhatsApp: +250 793 146 617',margin,y);
-
-  // Save
-  var filename='imizicyber-security-score-'+(userOrg||'report').toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.pdf';
-  doc.save(filename);
+  h+='<div class="ft"><h3>Ready to close these gaps?</h3><p>Our OSCP-certified team specialises in penetration testing and security assessments for banks and regulated organisations across East Africa and South Africa.</p>';
+  h+='<p class="c">info@imizicyber.com | +250 793 146 617 | imizicyber.com</p></div></body></html>';
+  var w=window.open('','_blank');
+  if(w){w.document.write(h);w.document.close();w.focus();setTimeout(function(){w.print();},400);}
+  else{var b=new Blob([h],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='imizicyber-security-report.html';document.body.appendChild(a);a.click();document.body.removeChild(a);}
 }
 
 function submitGate(e){
