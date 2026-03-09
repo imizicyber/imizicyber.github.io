@@ -568,7 +568,7 @@ function calculateScore(){
   // Hidden fields
   document.getElementById('h-score').value=quizTotal;
   document.getElementById('h-band').value=quizBand.label;
-  document.getElementById('h-answers').value=JSON.stringify(quizAnswers);
+  document.getElementById('h-answers').value=quizAnswers.map(function(v,i){return QUESTIONS[i].label+': '+v+'/3';}).join(', ');
 
   // Build full report content (shown after download)
   var breakdownHtml='';
