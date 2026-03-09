@@ -665,7 +665,7 @@ function submitResource(e,id,resource){
   var name=form.querySelector('input[name="name"]').value;
   var org=form.querySelector('input[name="organisation"]').value;
   btn.disabled=true;btn.textContent='Generating PDF\u2026';
-  try{var fd=new FormData(form);fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:fd,headers:{Accept:'application/json'}}).catch(function(){});}catch(ex){}
+  try{var fd=new FormData(form);fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:fd,headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)r.json().then(function(d){console.warn('Formspree:',d.error||r.status);});}).catch(function(err){console.warn('Formspree network error:',err);});}catch(ex){}
   loadJsPDF().then(function(){
     generateResourcePDF(resource,name,org);
     document.getElementById('ok-'+id).style.display='block';

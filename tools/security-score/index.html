@@ -723,7 +723,7 @@ function submitGate(e){
   var org=document.getElementById('g-org').value;
   btn.disabled=true;
   btn.textContent='Generating report\u2026';
-  try{var form=document.getElementById('gate-form');var data=new FormData(form);fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:data,headers:{Accept:'application/json'}}).catch(function(){});}catch(ex){}
+  try{var form=document.getElementById('gate-form');var data=new FormData(form);fetch('https://formspree.io/f/mjgerrlv',{method:'POST',body:data,headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)r.json().then(function(d){console.warn('Formspree:',d.error||r.status);});}).catch(function(err){console.warn('Formspree network error:',err);});}catch(ex){}
   loadJsPDF().then(function(){
     generatePDF(name,org);
     document.getElementById('gate-msg-success').style.display='block';
