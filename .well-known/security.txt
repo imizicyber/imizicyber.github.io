@@ -7,4 +7,4 @@ Encryption: https://imizicyber.com/.well-known/pgp-key.asc
 Preferred-Languages: en
 Canonical: https://imizicyber.com/.well-known/security.txt
 Policy: https://imizicyber.com/responsible-disclosure/
-Expires: 2027-03-12T00:00:00.000Z
+Expires: 2027-03-12T00:00:00Z

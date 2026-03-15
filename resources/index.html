@@ -34,14 +34,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
 <link rel="manifest" href="/manifest.json">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R7TC88KH9N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-R7TC88KH9N');
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -49,7 +41,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-:root{--bg:#0b1421;--bg2:#0f1b2d;--bg3:#131f33;--txt:#d4dce8;--txt2:#8494a7;--txt3:#7b8d9f;--dim:#3a5068;--acc:#34d399;--acc2:#10b981;--accdark:#059669;--white:#f0f4f8;--sans:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
+:root{--bg:#0b1421;--bg2:#0f1b2d;--bg3:#131f33;--txt:#d4dce8;--txt2:#8494a7;--txt3:#94a3b8;--dim:#3a5068;--acc:#34d399;--acc2:#10b981;--accdark:#059669;--white:#f0f4f8;--sans:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
 body{font-family:var(--sans);color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.7;font-size:15px;background-image:radial-gradient(circle,rgba(52,211,153,.07) 1px,transparent 1px),radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px,32px 32px;background-position:0 0,16px 16px;min-height:100vh}
 .w{max-width:860px;margin:0 auto;padding:0 24px}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,20,33,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
@@ -151,6 +143,17 @@ main{padding:88px 0 60px}
 .footer-security{display:flex;gap:16px;margin-top:4px}
 .footer-security a{color:var(--txt3);text-decoration:none;font-size:.68rem;font-family:var(--mono);transition:color .2s}
 .footer-security a:hover{color:var(--acc)}
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg2);border-top:1px solid rgba(52,211,153,.15);padding:16px 24px;display:none;align-items:center;justify-content:center;gap:16px;font-size:.82rem;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+[data-theme="light"] .cookie-banner{border-top-color:rgba(0,0,0,.08)}
+.cookie-banner.visible{display:flex;flex-wrap:wrap}
+.cookie-banner p{margin:0;color:var(--txt);flex:1;min-width:240px}
+.cookie-banner a{color:var(--acc)}
+.cookie-btns{display:flex;gap:8px;flex-shrink:0}
+.cookie-btns button{padding:8px 18px;border-radius:6px;font-size:.78rem;font-weight:700;font-family:var(--sans);cursor:pointer;border:none;transition:all .2s}
+.btn-accept{background:var(--acc);color:var(--bg)}
+.btn-accept:hover{background:var(--acc2)}
+.btn-reject{background:transparent;border:1.5px solid var(--txt3)!important;color:var(--txt)}
+.btn-reject:hover{border-color:var(--acc)!important;color:var(--acc)}
 </style>
 </head>
 <body>
@@ -210,9 +213,9 @@ main{padding:88px 0 60px}
     <div class="res-form-wrap" id="form-r1">
       <form class="res-form" onsubmit="submitResource(event,'r1','bnr-checklist')">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label>Work email</label><input type="email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
+        <div class="form-group"><label for="r1-name">Name</label><input type="text" id="r1-name" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label for="r1-email">Work email</label><input type="email" id="r1-email" name="email" placeholder="you@company.com" required></div>
+        <div class="form-group"><label for="r1-org">Organisation</label><input type="text" id="r1-org" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="bnr-checklist">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r1">Download checklist (PDF) &darr;</button>
@@ -335,9 +338,9 @@ main{padding:88px 0 60px}
     <div class="res-form-wrap" id="form-r2">
       <form class="res-form" onsubmit="submitResource(event,'r2','pentest-buyers-guide')">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label>Work email</label><input type="email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
+        <div class="form-group"><label for="r2-name">Name</label><input type="text" id="r2-name" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label for="r2-email">Work email</label><input type="email" id="r2-email" name="email" placeholder="you@company.com" required></div>
+        <div class="form-group"><label for="r2-org">Organisation</label><input type="text" id="r2-org" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="pentest-buyers-guide">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r2">Download guide (PDF) &darr;</button>
@@ -420,9 +423,9 @@ main{padding:88px 0 60px}
     <div class="res-form-wrap" id="form-r3">
       <form class="res-form" onsubmit="submitResource(event,'r3','security-awareness-template')">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label>Work email</label><input type="email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label>Organisation</label><input type="text" name="organisation" placeholder="Bank / company name" required></div>
+        <div class="form-group"><label for="r3-name">Name</label><input type="text" id="r3-name" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label for="r3-email">Work email</label><input type="email" id="r3-email" name="email" placeholder="you@company.com" required></div>
+        <div class="form-group"><label for="r3-org">Organisation</label><input type="text" id="r3-org" name="organisation" placeholder="Bank / company name" required></div>
         <input type="hidden" name="resource" value="security-awareness-template">
         <input type="hidden" name="tool" value="resources">
         <button type="submit" class="btn-submit-res" id="sub-r3">Download template (PDF) &darr;</button>
@@ -518,6 +521,8 @@ main{padding:88px 0 60px}
     <a href="/.well-known/security.txt">security.txt</a>
     <a href="/.well-known/pgp-key.asc">PGP Key</a>
     <a href="/responsible-disclosure/">Disclosure Policy</a>
+    <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="resetCookieConsent()">Cookie Settings</a>
   </div>
 </div>
     <div class="footer-mid">
@@ -703,6 +708,21 @@ function submitResource(e,id,resource){
     btn.textContent='Downloaded \u2713';
   });
 }
+</script>
+
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="cookie-msg">
+  <p id="cookie-msg">We use cookies for analytics to improve our website. No tracking cookies are set without your consent. <a href="/privacy-policy/">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="btn-reject" onclick="handleCookieConsent(false)">Reject</button>
+    <button class="btn-accept" onclick="handleCookieConsent(true)">Accept</button>
+  </div>
+</div>
+<script>
+function handleCookieConsent(accepted){try{localStorage.setItem('imizi-cookie-consent',accepted?'accepted':'rejected')}catch(e){}document.getElementById('cookie-banner').classList.remove('visible');if(accepted)loadGA()}
+function loadGA(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-R7TC88KH9N';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','G-R7TC88KH9N')}
+function resetCookieConsent(){try{localStorage.removeItem('imizi-cookie-consent')}catch(e){}var b=document.getElementById('cookie-banner');b.classList.add('visible');b.querySelector('.btn-reject').focus()}
+(function(){try{var c=localStorage.getItem('imizi-cookie-consent');if(c==='accepted')loadGA();else if(c!=='rejected'){var b=document.getElementById('cookie-banner');b.classList.add('visible');b.querySelector('.btn-reject').focus()}}catch(e){document.getElementById('cookie-banner').classList.add('visible')}})();
 </script>
 </body>
 </html>

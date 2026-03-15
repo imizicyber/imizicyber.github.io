@@ -145,6 +145,17 @@ body{background:#f0f0f0;font-family:var(--sans);}
 }
 .skip-link{position:absolute;top:-100%;left:16px;z-index:999;background:#34d399;color:#0a1628;padding:8px 16px;border-radius:0 0 6px 6px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
 .skip-link:focus{top:0}
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg2);border-top:1px solid rgba(52,211,153,.15);padding:16px 24px;display:none;align-items:center;justify-content:center;gap:16px;font-size:.82rem;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+[data-theme="light"] .cookie-banner{border-top-color:rgba(0,0,0,.08)}
+.cookie-banner.visible{display:flex;flex-wrap:wrap}
+.cookie-banner p{margin:0;color:var(--txt);flex:1;min-width:240px}
+.cookie-banner a{color:var(--acc)}
+.cookie-btns{display:flex;gap:8px;flex-shrink:0}
+.cookie-btns button{padding:8px 18px;border-radius:6px;font-size:.78rem;font-weight:700;font-family:var(--sans);cursor:pointer;border:none;transition:all .2s}
+.btn-accept{background:var(--acc);color:var(--bg)}
+.btn-accept:hover{background:var(--acc2)}
+.btn-reject{background:transparent;border:1.5px solid var(--txt3)!important;color:var(--txt)}
+.btn-reject:hover{border-color:var(--acc)!important;color:var(--acc)}
 </style>
 </head>
 <body>
@@ -408,10 +419,24 @@ body{background:#f0f0f0;font-family:var(--sans);}
 
   <div class="page-footer">
     <span>imizicyber.com</span>
-
+    <span><a href="/privacy-policy/" style="color:var(--txt3);text-decoration:none;">Privacy Policy</a> &middot; <a href="javascript:void(0)" onclick="resetCookieConsent()" style="color:var(--txt3);text-decoration:none;">Cookie Settings</a></span>
     <span>Page 2 of 2</span>
   </div>
 </div>
 
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="cookie-msg">
+  <p id="cookie-msg">We use cookies for analytics to improve our website. No tracking cookies are set without your consent. <a href="/privacy-policy/">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="btn-reject" onclick="handleCookieConsent(false)">Reject</button>
+    <button class="btn-accept" onclick="handleCookieConsent(true)">Accept</button>
+  </div>
+</div>
+<script>
+function handleCookieConsent(accepted){try{localStorage.setItem('imizi-cookie-consent',accepted?'accepted':'rejected')}catch(e){}document.getElementById('cookie-banner').classList.remove('visible');if(accepted)loadGA()}
+function loadGA(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-R7TC88KH9N';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','G-R7TC88KH9N')}
+function resetCookieConsent(){try{localStorage.removeItem('imizi-cookie-consent')}catch(e){}var b=document.getElementById('cookie-banner');b.classList.add('visible');b.querySelector('.btn-reject').focus()}
+(function(){try{var c=localStorage.getItem('imizi-cookie-consent');if(c==='accepted')loadGA();else if(c!=='rejected'){var b=document.getElementById('cookie-banner');b.classList.add('visible');b.querySelector('.btn-reject').focus()}}catch(e){document.getElementById('cookie-banner').classList.add('visible')}})();
+</script>
 </body>
 </html>
