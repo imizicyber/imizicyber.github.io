@@ -1,0 +1,21 @@
+{
+  "name": "imizicyber — Offensive Security & Penetration Testing",
+  "short_name": "imizicyber",
+  "description": "OSCP-certified offensive security consultancy in Kigali, Rwanda. Penetration testing, red team operations, and managed security for banks and regulated organisations across East Africa.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1421",
+  "theme_color": "#0b1421",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

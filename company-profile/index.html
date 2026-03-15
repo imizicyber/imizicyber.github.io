@@ -5,9 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Company Profile - IMIZI Cyber Consulting Ltd</title>
 <meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://www.google-analytics.com; frame-ancestors 'none'">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0b1421">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -136,9 +143,12 @@ body{background:#f0f0f0;font-family:var(--sans);}
   .page{width:100%;height:auto;min-height:auto;margin:0;}
   .screen-spacer{height:52px;}
 }
+.skip-link{position:absolute;top:-100%;left:16px;z-index:999;background:#34d399;color:#0a1628;padding:8px 16px;border-radius:0 0 6px 6px;font-size:.82rem;font-weight:700;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <div class="print-bar no-print">
   <span>Save as PDF: click the button, then select <b>"Save as PDF"</b> as destination. Use <b>A4</b>, no margins.</span>
@@ -147,13 +157,14 @@ body{background:#f0f0f0;font-family:var(--sans);}
 <div class="screen-spacer no-print"></div>
 
 <!-- ═══════════════════ PAGE 1 ═══════════════════ -->
-<div class="page">
+<div class="page" id="main">
 
   <div class="hero">
     <div class="hero-top">
       <div class="header-left">
         <div class="header-logo">
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <title>imizicyber logo</title>
             <circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/>
             <line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/>
             <line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
@@ -254,6 +265,7 @@ body{background:#f0f0f0;font-family:var(--sans);}
     <div class="header-left">
       <div class="header-logo">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>imizicyber logo</title>
           <circle cx="50" cy="12" r="5" fill="#34d399" opacity="0.7"/>
           <line x1="50" y1="18" x2="50" y2="52" stroke="#34d399" stroke-width="4.5" stroke-linecap="round"/>
           <line x1="50" y1="52" x2="24" y2="82" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>

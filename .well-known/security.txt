@@ -1,0 +1,10 @@
+# IMIZI Cyber Consulting Ltd — Security Contact
+# https://imizicyber.com
+
+Contact: mailto:security@imizicyber.com
+Contact: https://wa.me/250793146617
+Encryption: https://imizicyber.com/.well-known/pgp-key.asc
+Preferred-Languages: en
+Canonical: https://imizicyber.com/.well-known/security.txt
+Policy: https://imizicyber.com/responsible-disclosure/
+Expires: 2027-03-12T00:00:00.000Z
