@@ -45,9 +45,7 @@ const navLinks: Link[] = isHome
           <a href="/.well-known/pgp-key.asc">PGP Key</a>
           <a href="/responsible-disclosure/">Disclosure Policy</a>
           <a href="/privacy-policy/">Privacy Policy</a>
-          <button type="button" class="link-btn" onclick="resetCookieConsent()"
-            >Cookie Settings</button
-          >
+          <button type="button" class="link-btn" id="cookie-settings-btn">Cookie Settings</button>
         </div>
       </div>
       <div class="footer-mid">
@@ -72,3 +70,18 @@ const navLinks: Link[] = isHome
     </div>
   </div>
 </footer>
+
+<script>
+  import { resetConsentState } from '@/scripts/cookie-consent';
+
+  const btn = document.getElementById('cookie-settings-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      resetConsentState();
+      const banner = document.getElementById('cookie-banner');
+      if (banner) {
+        banner.classList.add('visible');
+      }
+    });
+  }
+</script>
