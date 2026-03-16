@@ -1,0 +1,29 @@
+---
+/**
+ * Breadcrumb — renders breadcrumb navigation.
+ * @prop items - array of breadcrumb items; last item has no href (current page)
+ */
+interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="breadcrumb">
+  {items.map((item, i) => (
+    <>
+      {item.href ? (
+        <a href={item.href}>{item.name}</a>
+      ) : (
+        <span>{item.name}</span>
+      )}
+      {i < items.length - 1 && <span class="sep">/</span>}
+    </>
+  ))}
+</div>

@@ -1,0 +1,161 @@
+---
+/**
+ * BlogPostLayout — layout for blog articles.
+ * Adds breadcrumb, article header, CTA box, and auto-generates JSON-LD.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CtaBox from '../components/CtaBox.astro';
+import { SITE } from '../data/site';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  frontmatter: {
+    title: string;
+    headline: string;
+    description: string;
+    keywords?: string;
+    datePublished: string;
+    dateModified?: string;
+    readTime?: string;
+    metaLabel?: string;
+    breadcrumbName: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    twitterTitle?: string;
+    twitterDescription?: string;
+    ogImage?: string;
+    canonicalUrl: string;
+    faq?: FaqItem[];
+  };
+}
+
+const { frontmatter } = Astro.props;
+const fm = frontmatter;
+
+// Build schemas
+const schemas: Record<string, unknown>[] = [];
+
+// BlogPosting
+schemas.push({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: fm.headline,
+  description: fm.description,
+  author: {
+    '@type': 'Person',
+    name: 'Aristofanis Chionis',
+    url: 'https://www.linkedin.com/in/aristofanischionis/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE.url}/logo-192.png`,
+      width: 192,
+      height: 192,
+    },
+  },
+  datePublished: fm.datePublished,
+  dateModified: fm.dateModified || fm.datePublished,
+  url: fm.canonicalUrl.startsWith('http') ? fm.canonicalUrl : `${SITE.url}${fm.canonicalUrl}`,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': fm.canonicalUrl.startsWith('http') ? fm.canonicalUrl : `${SITE.url}${fm.canonicalUrl}`,
+  },
+  image: {
+    '@type': 'ImageObject',
+    url: `${SITE.url}${fm.ogImage || SITE.ogImage}`,
+    width: 1200,
+    height: 630,
+  },
+});
+
+// BreadcrumbList
+schemas.push({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog/` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: fm.breadcrumbName,
+      item: fm.canonicalUrl.startsWith('http') ? fm.canonicalUrl : `${SITE.url}${fm.canonicalUrl}`,
+    },
+  ],
+});
+
+// FAQPage (if faq provided)
+if (fm.faq && fm.faq.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: fm.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ');
+---
+
+<BaseLayout
+  title={fm.title}
+  description={fm.description}
+  keywords={fm.keywords}
+  ogTitle={fm.ogTitle}
+  ogDescription={fm.ogDescription}
+  ogType="article"
+  canonicalUrl={fm.canonicalUrl}
+  ogImage={fm.ogImage}
+  twitterTitle={fm.twitterTitle}
+  twitterDescription={fm.twitterDescription}
+  schemas={schemas}
+>
+  <main id="main">
+    <article>
+      <div class="w" style="max-width:680px">
+        <div style="padding:100px 0 0">
+          <Breadcrumb items={[
+            { name: 'Home', href: '/' },
+            { name: 'Blog', href: '/blog/' },
+            { name: fm.breadcrumbName },
+          ]} />
+          {metaDisplay && <div class="meta">{metaDisplay}</div>}
+          <h1>{fm.headline}</h1>
+        </div>
+
+        <div class="article-body">
+          <slot />
+        </div>
+
+        <CtaBox
+          title="Ready to secure your organisation?"
+          description="We are an OSCP-certified penetration testing firm based in Kigali. We work with banks, fintechs, and enterprises across Rwanda and East Africa. Get a scoped quote within 24 hours."
+          buttonText="Request a consultation"
+          buttonHref="/#contact"
+          whatsapp={true}
+        />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  article{padding-bottom:60px}
+  .meta{font-family:var(--mono);font-size:.64rem;color:var(--acc);letter-spacing:.08em;margin-bottom:12px}
+  h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--white);margin-bottom:20px}
+</style>

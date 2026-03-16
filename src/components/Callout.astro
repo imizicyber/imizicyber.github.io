@@ -1,0 +1,15 @@
+---
+/**
+ * Callout — styled callout/note box for blog/service content.
+ * @prop type - 'info' | 'warning' | 'tip' (default 'info')
+ */
+interface Props {
+  type?: 'info' | 'warning' | 'tip';
+}
+
+const { type = 'info' } = Astro.props;
+---
+
+<div class:list={['callout', type]}>
+  <slot />
+</div>

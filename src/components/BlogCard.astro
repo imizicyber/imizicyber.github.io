@@ -1,0 +1,37 @@
+---
+/**
+ * BlogCard — blog preview card matching the existing design.
+ * @prop title - article title
+ * @prop description - article excerpt
+ * @prop href - link to the blog post
+ * @prop date - display date string (e.g. "MAR 2026")
+ * @prop readTime - optional read time (e.g. "15 MIN READ")
+ * @prop featured - if true, spans 2 columns on desktop
+ */
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date: string;
+  readTime?: string;
+  featured?: boolean;
+}
+
+const { title, description, href, date, readTime, featured = false } = Astro.props;
+const dateDisplay = readTime ? `${date} \u00B7 ${readTime}` : date;
+---
+
+<a href={href} class:list={['blog-card', { featured }]}>
+  <div class="blog-date">{dateDisplay}</div>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <span class="blog-link">Read more &#8594;</span>
+</a>
+
+<style>
+  .blog-card.featured{grid-column:span 2}
+  .blog-card.featured h2{font-size:1.05rem}
+  @media(max-width:768px){
+    .blog-card.featured{grid-column:span 1}
+  }
+</style>

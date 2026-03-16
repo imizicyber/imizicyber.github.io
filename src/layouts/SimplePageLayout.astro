@@ -1,0 +1,38 @@
+---
+/**
+ * SimplePageLayout — wraps content in a centered container.
+ * Passes all props through to BaseLayout.
+ */
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  canonicalUrl: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  robots?: string;
+  schemas?: Record<string, unknown>[];
+  cspExtra?: string;
+  showWhatsApp?: boolean;
+  whatsappMessage?: string;
+  navVariant?: 'home' | 'inner';
+  footerVariant?: 'home' | 'inner';
+  showFreeTool?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <main id="main">
+    <div class="w">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

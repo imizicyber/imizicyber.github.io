@@ -1,0 +1,112 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "SWIFT CSP Compliance for Rwandan Banks | imizicyber"
+headline: "SWIFT CSP compliance: a practical guide for Rwandan banks"
+description: "How to achieve SWIFT CSP compliance in Rwanda. Mandatory controls, security assessment requirements, penetration testing, and the attestation process."
+keywords: "SWIFT CSP compliance Rwanda, SWIFT security Rwanda, SWIFT KYC security, bank SWIFT security Africa, SWIFT Customer Security Programme, SWIFT attestation Rwanda"
+datePublished: "2026-03-08"
+readTime: "9 MIN READ"
+metaLabel: "MARCH 2026"
+breadcrumbName: "SWIFT CSP Compliance in Rwanda"
+ogTitle: "SWIFT CSP Compliance: A Practical Guide for Rwandan Banks"
+ogDescription: "Mandatory SWIFT CSP controls, security testing requirements, and attestation process for Rwandan banks."
+twitterTitle: "SWIFT CSP Compliance: A Practical Guide for Rwandan Banks"
+twitterDescription: "Mandatory controls, penetration testing requirements, and attestation process for SWIFT CSP in Rwanda."
+canonicalUrl: "/blog/swift-csp-compliance-rwanda/"
+cardDescription: "How to achieve SWIFT CSP compliance in Rwanda: mandatory controls, security testing, penetration testing, and the attestation process."
+cardDate: "MAR 2026"
+---
+import Callout from '../../components/Callout.astro';
+
+If your bank connects to the [SWIFT](https://www.swift.com/) network, the Customer Security Programme (CSP) is not optional. In 2016, attackers stole $81 million from the Bangladesh Bank by sending fraudulent SWIFT payment messages, a case that exposed that SWIFT itself was not the vulnerability; the security controls at connected institutions were. In direct response, SWIFT created the Customer Security Programme and mandated that all connected institutions worldwide, including Rwandan banks, must implement a set of security controls and attest to their compliance annually. Non-compliance can result in your correspondent banks restricting or terminating your SWIFT connectivity.
+
+This guide covers the CSP framework, the mandatory controls most relevant to Rwandan banks, and what security testing is required as part of the attestation process.
+
+## What is SWIFT CSP?
+
+The [SWIFT Customer Security Programme](https://www.swift.com/myswift/customer-security-programme) is a security framework that all SWIFT network participants must follow. It consists of:
+
+- **Mandatory controls:** Security baseline that all institutions must implement. Non-compliance must be disclosed.
+- **Advisory controls:** Best practices recommended by SWIFT but not mandatory.
+- **Annual attestation:** All institutions must self-attest (or have a third-party assessment) via the SWIFT KYC Security Attestation application annually.
+
+The framework is updated annually. Controls are organised around three objectives: **Secure your Environment**, **Know and Limit Access**, and **Detect and Respond**.
+
+## The key mandatory controls for Rwandan banks
+
+### 1. Restrict internet access and protect critical systems from general IT environment (1.1)
+
+Your SWIFT environment must be segmented from the general IT network. Internet access to SWIFT systems must be restricted or eliminated. This typically requires network architecture changes, specifically a dedicated SWIFT DMZ with strict firewall rules.
+
+### 2. Privileged account control (1.2)
+
+Accounts with administrative access to SWIFT systems must be tightly controlled. Privileged accounts should not be used for general email and internet browsing. Multi-factor authentication is required for all privileged access to SWIFT components.
+
+### 3. Virtualisation platform security (1.3)
+
+If SWIFT components run on virtualised infrastructure, the hypervisor and host OS must be secured and access controlled separately from the SWIFT software layer.
+
+### 4. Security updates (2.2)
+
+SWIFT components and the underlying operating systems must receive security updates within defined timeframes. The CSCF specifies risk-based patching requirements, with critical security updates expected to be applied promptly.
+
+### 5. Backoffice data flow security (2.4A)
+
+Data flows between SWIFT components and back-office systems must be identified and secured with access controls and encryption where appropriate.
+
+### 6. Operator session confidentiality and integrity (2.6)
+
+Operator sessions to SWIFT systems must be protected against session hijacking, MitM attacks, and unauthorised access.
+
+### 7. Malware protection (6.1)
+
+SWIFT terminals and connected systems must have up-to-date malware protection. This must be validated as part of the assessment.
+
+### 8. Logging and monitoring (6.4) and incident response planning (7.1)
+
+Logging and monitoring of SWIFT activity is mandatory under control 6.4. Unusual transaction patterns, such as the anomalous activity seen in the Bangladesh heist, must trigger alerts. Control 7.1 requires a defined and tested cyber incident response plan to reduce the impact of real incidents.
+
+## Scope: what systems need to be secured?
+
+SWIFT defines a "Secure Zone" encompassing all components involved in the SWIFT message flow:
+
+- SWIFT interface components (Alliance Gateway, Alliance Access, SWIFT Connector)
+- Workstations used to operate SWIFT software
+- Authentication systems used for SWIFT operator access
+- Back-office systems that receive or send data to SWIFT components
+- Data stores containing SWIFT-related message files or logs
+
+## Security assessment for CSP compliance
+
+From 2021, SWIFT mandated that A1-category banks (the largest global banks) submit independent third-party assessments rather than self-attestations. In Rwanda, most banks are eligible to self-attest, but an independent assessment:
+
+- Provides significantly more credible attestation to correspondent banks
+- Identifies real gaps that self-assessment may miss
+- Satisfies BNR's broader requirement for independent security testing
+- Protects the institution legally if a SWIFT-related incident occurs
+
+An independent CSP assessment from imizicyber covers all mandatory controls in scope for your connectivity architecture, produces evidence documentation for each control, and provides a gap report with prioritised remediation guidance.
+
+## Penetration testing in SWIFT environments
+
+SWIFT CSP best practices recommend penetration testing of the SWIFT Secure Zone to validate that mandatory controls are working as intended. In practice, any serious correspondent bank will expect evidence of penetration testing before approving a new relationship.
+
+Penetration testing of SWIFT environments requires specific expertise: understanding of the SWIFT message flows, the Alliance Access/Gateway architecture, and the risk of testing live payment infrastructure without disrupting operations. We conduct SWIFT environment testing with careful scoping and scheduling to minimise operational risk.
+
+## Common CSP gaps we find in Rwandan banks
+
+- Insufficient network segmentation between SWIFT Secure Zone and general corporate network
+- SWIFT operator accounts used for general business tasks (email, internet browsing)
+- Delayed patch application on SWIFT components and host operating systems
+- Weak MFA implementation on SWIFT operator access
+- Insufficient logging: transaction logs not retained for the required period
+- Missing or untested anomaly detection for SWIFT transaction activity
+- Back-office data flows not fully documented or secured
+
+<Callout type="info">
+**Attestation deadline:** SWIFT CSP attestation must be completed annually before the end of each calendar year. Non-compliant institutions are flagged to their correspondent banks. Start your assessment at least 3 months before your deadline to allow time for remediation.
+</Callout>
+
+## How we help
+
+imizicyber provides SWIFT CSP compliance assessments that cover all mandatory controls, produce the documentation required for attestation, and identify gaps with prioritised remediation guidance. We also provide penetration testing of the SWIFT Secure Zone where applicable. Combined with our broader [penetration testing services](/services/penetration-testing/), we support your full BNR compliance programme. See also our guide on [BNR cybersecurity requirements](/blog/bnr-cybersecurity-requirements/).

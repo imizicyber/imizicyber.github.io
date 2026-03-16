@@ -1,0 +1,109 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "VAPT in Rwanda: Guide for Organisations | imizicyber"
+headline: "VAPT in Rwanda: the complete guide for organisations"
+description: "Complete guide to VAPT in Rwanda. Who needs it, BNR compliance requirements, how to choose a qualified provider, and pricing expectations for 2026."
+keywords: "VAPT Rwanda, vulnerability assessment Rwanda, penetration testing Rwanda, VAPT Kigali, VAPT certification Rwanda, VAPT services Rwanda, security testing Rwanda, cybersecurity audit Rwanda, VAPT for banks Rwanda"
+datePublished: "2026-02-17"
+readTime: "9 MIN READ"
+metaLabel: "FEBRUARY 2026"
+breadcrumbName: "VAPT in Rwanda"
+ogTitle: "VAPT in Rwanda: What Organisations Need to Know"
+ogDescription: "Complete guide to Vulnerability Assessment and Penetration Testing for organisations in Rwanda."
+twitterTitle: "VAPT in Rwanda: Complete Guide for Organisations"
+twitterDescription: "Who needs VAPT in Rwanda, what it covers, and how to choose a qualified provider."
+canonicalUrl: "/blog/vapt-rwanda/"
+cardDescription: "Complete guide to VAPT in Rwanda: who needs it, BNR compliance requirements, how to choose a qualified provider, and what to expect."
+cardDate: "FEB 2026"
+---
+import Callout from '../../components/Callout.astro';
+
+VAPT (Vulnerability Assessment and Penetration Testing) has become a baseline security requirement for organisations operating in Rwanda. Whether driven by BNR regulation, client requirements, or the reality of increasing cyber threats across East Africa, understanding what VAPT involves and how to get it done properly is essential for any organisation handling sensitive data.
+
+## What is VAPT?
+
+VAPT is a combined security testing approach that brings together two distinct activities.
+
+**Vulnerability Assessment (VA)** is the automated phase. Specialised scanning tools probe your systems (servers, web applications, APIs, network devices) for known vulnerabilities, misconfigurations, and outdated software. The output is a comprehensive list of potential weaknesses ranked by severity.
+
+**Penetration Testing (PT)** is the manual phase. A certified security tester actively attempts to exploit the vulnerabilities found during scanning, and goes further by looking for logic flaws, authentication bypasses, and attack chains that automated tools cannot detect. The tester simulates what a real attacker would do.
+
+Together, VA and PT provide both breadth (catching everything automated tools can find) and depth (proving what an attacker could actually achieve).
+
+## Who needs VAPT in Rwanda?
+
+The short answer: any organisation that handles sensitive data, processes payments, or operates under regulatory oversight. Specifically:
+
+- **Banks and microfinance institutions**: BNR requires regular security testing as part of cybersecurity compliance
+- **Insurance companies and pension funds**: also under BNR supervision
+- **Payment service providers and mobile money operators**: processing financial transactions
+- **Government agencies**: NCSA encourages security assessments for public sector IT systems
+- **Telecoms**: RURA-regulated entities handling millions of customer records
+- **Fintechs and startups**: increasingly required by investors, partners, and clients before integration
+- **Any organisation pursuing ISO 27001**: regular security testing is part of the standard
+
+## What does VAPT cover?
+
+A comprehensive VAPT engagement for a Rwandan organisation typically includes:
+
+### External testing
+
+Everything visible from the internet: your website, web applications, APIs, email servers, VPN endpoints, and any other publicly accessible services. This is what an attacker sees when they target your organisation from outside.
+
+### Internal testing
+
+Simulating an attacker who has already gained access to your internal network, whether through a compromised employee account, physical access, or a breached perimeter. Internal testing often reveals the most critical findings, because most organisations focus their security budget on the perimeter while leaving internal systems unprotected.
+
+### Web application testing
+
+Deep assessment of your web applications following the [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/) methodology. This covers authentication, session management, access controls, input validation, business logic, API security, and data protection. For banks, this means testing core banking interfaces, customer portals, and internal admin panels.
+
+### Mobile application testing
+
+Security assessment of Android and iOS applications. For Rwandan financial institutions, this typically means mobile banking apps and mobile money applications. Testing covers data storage, network communication, authentication, and reverse engineering resistance.
+
+### Network infrastructure
+
+Assessment of routers, switches, firewalls, Wi-Fi networks, and server configurations. Identifies default credentials, unnecessary services, and misconfigurations that could allow lateral movement.
+
+<Callout type="info">
+**USSD testing is often overlooked.** If your organisation offers USSD-based services (like \*182# banking), this must be included in scope. USSD platforms handle real financial transactions and are frequently under-tested. Read our [USSD security testing guide](/blog/ussd-security-testing/) for more detail.
+</Callout>
+
+## How to choose a VAPT provider in Rwanda
+
+The Rwandan market has several IT companies offering security services, but there are important differences in capability. Here is what to look for:
+
+### Certifications matter
+
+**OSCP (Offensive Security Certified Professional)** is the gold standard certification for penetration testers. It requires passing a nearly 24-hour hands-on exam where the candidate must compromise multiple systems. Other relevant certifications include OSCP+, PNPT, and OSWE (for web application testing). Be cautious of providers whose only credentials are vendor certifications from tool manufacturers.
+
+### Experience with your industry
+
+A tester who has worked with banks understands what regulators expect, knows where to look for financial application vulnerabilities, and can write reports that satisfy compliance requirements. Ask for case studies or references from similar organisations.
+
+### Manual testing, not just scanner output
+
+Some providers run automated scanners and deliver the raw output as a "penetration test report." This is a vulnerability scan, not a penetration test. A genuine VAPT report should include manual exploitation evidence, business impact analysis, and prioritised remediation guidance.
+
+### Physical presence
+
+For internal network testing, Wi-Fi assessments, and physical security reviews, you need a provider who can be physically present in your offices. Remote-only providers cannot cover this scope.
+
+### Clear deliverables
+
+Before engaging, understand exactly what you will receive. A professional VAPT report should include an executive summary for management, detailed technical findings with evidence, risk ratings, remediation guidance, and a retest to verify fixes.
+
+## VAPT for BNR compliance
+
+If you are a [BNR](https://www.bnr.rw/)-regulated institution, VAPT is not optional. BNR expects regular security testing as part of your cybersecurity programme. The testing should be performed by qualified external professionals, and the report should demonstrate real assessment depth, not just automated scan results.
+
+For more detail on BNR requirements, read our [BNR cybersecurity requirements guide](/blog/bnr-cybersecurity-requirements/). For a deeper look at what penetration testing in Rwanda covers, see our [complete penetration testing guide](/blog/penetration-testing-rwanda/).
+
+## How often should you do VAPT?
+
+At minimum, annually. However, best practice for financial institutions and organisations with critical systems is quarterly testing of internet-facing applications and annual comprehensive assessments. You should also test after any significant changes to your infrastructure, applications, or network.
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali, delivering VAPT engagements for banks, fintechs, telecom operators, and government institutions across Rwanda and East Africa. Our assessments combine automated scanning with deep manual testing by experienced consultants, and our reports are structured to satisfy BNR, ISO 27001, and PCI DSS requirements. [Contact us](/#contact) to scope your next VAPT engagement. We will provide a detailed proposal within 48 hours.

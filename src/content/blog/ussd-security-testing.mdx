@@ -1,0 +1,82 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "USSD Security Testing Rwanda & East Africa | imizicyber"
+headline: "Why USSD banking services in Rwanda need security testing"
+description: "Why *182# and USSD banking services need dedicated security testing. Common vulnerabilities, our testing methodology, and what we typically find."
+keywords: "USSD security testing, mobile money security Rwanda, USSD vulnerabilities, mobile banking security East Africa, *182# security, USSD penetration testing"
+datePublished: "2026-02-17"
+dateModified: "2026-03-08"
+readTime: "7 MIN READ"
+metaLabel: "FEBRUARY 2026"
+breadcrumbName: "USSD Security Testing"
+ogTitle: "Why USSD Banking Services Need Security Testing"
+ogDescription: "USSD is the backbone of financial inclusion in East Africa. Here's why it needs security testing."
+twitterTitle: "USSD Security Testing in East Africa | imizicyber"
+twitterDescription: "USSD is the backbone of financial inclusion in East Africa. Here's why it needs security testing."
+canonicalUrl: "/blog/ussd-security-testing/"
+cardDescription: "Why USSD banking services like *182# need dedicated security testing, common vulnerabilities we find, and our testing methodology."
+cardDate: "FEB 2026"
+---
+import Callout from '../../components/Callout.astro';
+
+In East Africa, USSD is not legacy technology. It is critical infrastructure. Millions of people across Rwanda, Uganda, Kenya, and Tanzania rely on `*182#` and similar short codes for banking, mobile money, and payments every day. USSD works on any phone, requires no internet, and reaches populations that smartphones and banking apps cannot.
+
+Yet USSD applications are among the most under-tested systems we encounter in security engagements. They sit behind telecom gateways, often overlooked in security assessments that focus on web and mobile apps.
+
+## Why USSD is a security target
+
+USSD services handle **real money and real data**. A typical USSD banking session involves authentication, account balance checks, fund transfers, bill payments, and airtime purchases. A vulnerability in any of these flows can lead to financial loss and regulatory consequences.
+
+Unlike web applications that benefit from decades of security tooling and research, USSD has a smaller security community and fewer off-the-shelf testing tools. This creates a false sense of security for many organisations.
+
+## Common USSD vulnerabilities
+
+From our experience testing USSD platforms for financial institutions, these are the vulnerability categories we find most often:
+
+### Session management flaws
+
+USSD is session-oriented at the protocol level, but sessions are short-lived and the application layer must track state across menu interactions. We frequently find session tokens that are predictable, sessions that do not expire properly, or sessions that can be hijacked by manipulating parameters at the gateway level.
+
+### Authentication bypasses
+
+USSD services often authenticate users by MSISDN (phone number) passed from the telecom gateway. If the application trusts this value without additional verification, an attacker with access to the gateway or API layer can impersonate any customer by simply changing the MSISDN parameter.
+
+### Insecure API backends
+
+USSD front-ends typically communicate with backend APIs (often the same APIs used by mobile banking apps). We test both the USSD-specific gateway interface and the underlying API to find issues like missing authorisation checks, IDOR vulnerabilities, and data exposure.
+
+### Input validation failures
+
+USSD menus accept numeric input, but the backend processing may be vulnerable to injection attacks if input is not properly sanitised before being passed to databases or downstream systems.
+
+### PIN handling weaknesses
+
+How the USSD application handles PINs is critical. We look for PINs transmitted in cleartext, PINs logged in application logs, lack of brute-force protection, and PINs that are not properly hashed at rest.
+
+<Callout type="info">
+**Real impact:** In one engagement for an African bank, we found that manipulating a single parameter in the USSD gateway API allowed us to view any customer's account balance and recent transactions. The fix took the development team less than a day. Without testing, this vulnerability could have remained undetected indefinitely.
+</Callout>
+
+## Our USSD testing methodology
+
+Testing USSD services requires a different approach than standard web application testing. Our methodology covers:
+
+- **Gateway interface testing**: intercepting and manipulating USSD requests at the telecom gateway integration point
+- **Session analysis**: mapping how sessions are created, maintained, and destroyed
+- **Authentication testing**: verifying that MSISDN validation cannot be bypassed
+- **Authorisation testing**: ensuring users can only access their own accounts and transactions
+- **Backend API testing**: full assessment of the APIs that power USSD menus
+- **PIN and credential handling**: verifying secure storage, transmission, and brute-force protection
+- **Business logic testing**: attempting to manipulate transaction flows, bypass limits, or exploit race conditions
+
+## For regulators and compliance teams
+
+If your institution offers USSD banking services and needs to demonstrate [BNR](https://www.bnr.rw/) compliance, your penetration testing scope should explicitly include USSD. A web-only assessment leaves a critical attack surface untested.
+
+When requesting proposals from security firms, ask specifically whether they have experience testing USSD platforms and what their methodology covers. Not all penetration testing providers have the expertise to test these systems effectively.
+
+USSD testing should be part of your broader [VAPT programme](/blog/vapt-rwanda/). For BNR-regulated institutions, our [BNR compliance guide](/blog/bnr-cybersecurity-requirements/) explains the full requirements. For mobile money platform security beyond USSD, read [mobile money security testing](/blog/mobile-money-security-testing/). For API-level vulnerabilities behind USSD gateways, see [API security in banking](/blog/api-security-banking/).
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali with specific expertise in USSD security testing. Most penetration testing providers do not test USSD at all. We do, and we have the methodology and tooling to assess gateway integrations, session management, and transaction flow manipulation that standard web application testing completely misses. [Contact us](/#contact) to include USSD in your next security assessment.

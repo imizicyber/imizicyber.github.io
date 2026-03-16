@@ -1,0 +1,148 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "Banking API Security: What We Find | imizicyber"
+headline: "API security in modern banking: common vulnerabilities we find"
+description: "The OWASP API Security Top 10 and real vulnerabilities we find in East African banking APIs. How to test and secure your financial APIs."
+keywords: "API security banking, REST API penetration testing, banking API vulnerabilities, OWASP API security, API security testing East Africa, fintech API security Rwanda"
+datePublished: "2026-03-08"
+readTime: "10 MIN READ"
+metaLabel: "MARCH 2026"
+breadcrumbName: "API Security in Banking"
+ogTitle: "API Security in Modern Banking: Common Vulnerabilities We Find"
+ogDescription: "The OWASP API Security Top 10, real vulnerabilities in East African banking APIs, and how we test them."
+twitterTitle: "API Security in Modern Banking: Common Vulnerabilities We Find"
+twitterDescription: "OWASP API Security Top 10, real banking API vulnerabilities, and how we test them in East Africa."
+canonicalUrl: "/blog/api-security-banking/"
+cardDescription: "Banking APIs are the most exploited attack vector in modern financial institutions. The OWASP API Security Top 10 and real findings from our assessments."
+cardDate: "MAR 2026"
+---
+
+Modern banking systems are API-first. The mobile app, the web portal, third-party fintech integrations, the payment processor connection, the agent network interface: all of these communicate through APIs. This makes APIs the single most critical attack surface in a modern bank, and the one that is most commonly undertested.
+
+This article covers the API vulnerabilities we find most often in East African banking environments, how they are exploited, and what a proper API security assessment looks like. We use the [OWASP API Security Top 10](https://owasp.org/www-project-api-security/) as our framework, the definitive reference for API security risks.
+
+## Why banking APIs are high-risk
+
+APIs in banking environments carry exceptional risk because:
+
+- They execute high-value operations: fund transfers, account modifications, loan disbursements
+- They aggregate sensitive data: full account details, transaction history, customer PII
+- They are accessible from the internet (mobile apps, partner integrations)
+- They are often built and deployed faster than they are secured, so features are added without comprehensive security review
+- Vulnerabilities affect all clients simultaneously. A flaw in the mobile app API is also a flaw in the web portal and any third-party integrations using the same endpoint.
+
+## The OWASP API Security Top 10
+
+The [OWASP API Security Top 10 (2023)](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) identifies the most critical API security risks. Here are the ones most relevant to banking, based on what we encounter in our assessments:
+
+### API1: Broken Object Level Authorization (BOLA)
+
+The most common critical finding in banking APIs. The API allows a user to access objects (accounts, transactions) they do not own by changing an identifier in the request.
+
+```
+GET /api/v1/accounts/123456/transactions
+Authorization: Bearer <user_A_token>
+
+> Returns user A's transactions (correct)
+
+GET /api/v1/accounts/123457/transactions
+Authorization: Bearer <user_A_token>
+
+> Returns user B's transactions (BOLA vulnerability)
+```
+
+In banking, BOLA can expose account balances, full transaction histories, beneficiary lists, and personal information of all customers. We find this in the majority of banking APIs we test for the first time.
+
+### API2: Broken Authentication
+
+Weak session token generation, missing token expiry, insecure token storage patterns, or authentication flows that can be bypassed. In banking apps, broken authentication can lead to full account takeover without ever knowing the customer's password.
+
+### API3: Broken Object Property Level Authorization
+
+The API returns more properties than it should. For example, a customer profile endpoint returns admin flags, internal credit scores, or other customers' linked account references that the requesting user has no business seeing.
+
+### API4: Unrestricted Resource Consumption
+
+Missing rate limits on API endpoints allow automated attacks. In banking, this enables:
+
+- PIN brute-forcing (4-digit PINs have only 10,000 combinations)
+- Account enumeration by phone number
+- OTP brute-forcing
+- Transaction fee testing at scale (probing which transactions attract fees)
+
+### API5: Broken Function Level Authorization
+
+Regular user accounts can call admin or privileged functions by simply knowing the endpoint URL. We have found banking APIs where a regular customer could call endpoints designed for bank staff: resetting other customers' PINs, increasing transaction limits, or approving pending transactions.
+
+### API6: Unrestricted Access to Sensitive Business Flows
+
+Business flows like loan applications, fund transfers, or account opening can be automated at scale, bypassing intended friction. This enables automated loan farming, mass account opening for fraud networks, or bypassing cooling-off periods designed to prevent fraud.
+
+### API7: Server Side Request Forgery (SSRF)
+
+Banking APIs that fetch data from internal services or third-party integrations can be abused to reach internal resources. An attacker supplies a crafted URL that the server-side code fetches, accessing internal microservices, cloud metadata endpoints, or private network resources that should never be reachable from external requests.
+
+### API8: Security Misconfiguration
+
+Default configurations, unnecessary HTTP methods enabled, verbose error messages that reveal internal stack traces, missing security headers, or CORS policies that allow any origin to call the API. These are consistently present in banking APIs and provide attackers with significant reconnaissance information.
+
+## Real vulnerabilities we have found in banking APIs
+
+Without naming clients, here are examples of what we find in East African banking API assessments:
+
+### Account takeover via PIN reset BOLA
+
+The PIN reset flow accepted a phone number and new PIN. The API did not verify that the authenticated session matched the phone number being reset. Any logged-in user could reset any customer's PIN by supplying a different phone number.
+
+### Transaction replay enabling double-credits
+
+Completed transactions could be replayed by resending the exact same POST request. The API lacked idempotency keys. Each replay resulted in a new transaction being processed, effectively multiplying the credit amount.
+
+### IDOR on beneficiary management
+
+The endpoint `DELETE /api/beneficiaries/{id}` deleted the beneficiary by ID without verifying ownership. Iterating through IDs allowed deletion of any customer's saved beneficiaries, a significant denial-of-service against other customers' payment flows.
+
+### Internal admin endpoints exposed
+
+An endpoint documented only in internal API specifications (`/api/admin/adjustBalance`) was accessible to authenticated regular users and accepted the same JWT tokens issued to customers. The endpoint allowed arbitrary balance adjustments.
+
+## Authentication and authorization flaws
+
+Authorization issues are distinct from authentication issues. Authentication asks "who are you?" while authorization asks "what are you allowed to do?" Banking APIs frequently get authentication right (you must be logged in) but get authorization wrong (once logged in, you can do things you shouldn't be able to).
+
+Key patterns we look for:
+
+- Horizontal privilege escalation: User A accessing User B's data at the same privilege level
+- Vertical privilege escalation: Regular user accessing admin functions
+- Missing authorization on state-changing operations (PATCH, PUT, DELETE)
+- JWT algorithm confusion attacks (`alg: none` bypass)
+- Token scope not enforced at endpoint level
+
+## How we conduct API security testing
+
+Our API security assessments follow a structured methodology:
+
+1. **API discovery and mapping:** Enumerate all API endpoints, parameters, and authentication flows. We use both provided documentation and active discovery.
+2. **Authentication testing:** Test token generation, expiry, rotation, and all authentication flows including OTP, PIN, and biometric.
+3. **Authorization testing:** For every endpoint, attempt access from accounts at different privilege levels. Test horizontal (BOLA) and vertical (BFLA) authorization.
+4. **Business logic testing:** Map transaction flows and test for bypass conditions, race conditions, and replay vulnerabilities.
+5. **Input validation:** Test for injection vulnerabilities, mass assignment, parameter pollution.
+6. **Rate limiting and enumeration:** Test all sensitive endpoints for missing rate limits.
+7. **Security headers and configuration:** Review CORS, content security policies, TLS configuration.
+
+## Remediating API vulnerabilities
+
+The most impactful remediations for banking APIs:
+
+- **Enforce object-level authorization on every endpoint**: never trust user-supplied identifiers without checking ownership against the authenticated session
+- **Implement rate limiting on all authentication and sensitive endpoints**: use a dedicated rate-limiting layer, not application-level logic
+- **Use idempotency keys for state-changing operations**: prevent transaction replay
+- **Restrict HTTP methods**: if an endpoint only supports GET, disable POST/PUT/DELETE
+- **Minimise data exposure**: return only the fields the client needs, nothing more
+- **Use an API gateway**: centralise authentication, rate limiting, and logging
+
+For more on how API security fits into your overall security programme, see our guides on [mobile banking security assessment](/blog/mobile-banking-security-assessment/), [mobile money security testing](/blog/mobile-money-security-testing/), and our [penetration testing services](/services/penetration-testing/).
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali, specialising in API security assessments for banks and fintechs across East Africa. API testing is not an add-on to our engagements. It is where the most critical findings live, and it is at the centre of every banking assessment we deliver. If your APIs have never been tested by someone who understands BOLA, transaction replay, and the OWASP API Security Top 10 in the context of East African financial services, [contact us](/#contact) to scope an assessment.

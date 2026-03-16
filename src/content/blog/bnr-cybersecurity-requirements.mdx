@@ -1,0 +1,98 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "BNR Cybersecurity Requirements for Banks | imizicyber"
+headline: "BNR cybersecurity requirements: what banks in Rwanda need to know"
+description: "Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and payment providers in Rwanda. What you need to implement now."
+keywords: "BNR cybersecurity regulation, BNR compliance Rwanda, bank security Rwanda, cybersecurity requirements Rwanda, National Bank of Rwanda, penetration testing BNR, VAPT Rwanda banks"
+datePublished: "2026-02-17"
+readTime: "8 MIN READ"
+metaLabel: "FEBRUARY 2026"
+breadcrumbName: "BNR Cybersecurity Requirements"
+ogTitle: "BNR Cybersecurity Requirements: What Banks in Rwanda Need to Know"
+ogDescription: "Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and payment providers in Rwanda."
+twitterTitle: "BNR Cybersecurity Requirements for Banks in Rwanda"
+twitterDescription: "Practical guide to BNR cybersecurity compliance from an OSCP-certified consultancy in Kigali."
+canonicalUrl: "/blog/bnr-cybersecurity-requirements/"
+cardDescription: "Practical breakdown of BNR cybersecurity regulation for banks, MFIs, and payment providers in Rwanda."
+cardDate: "FEB 2026"
+---
+import Callout from '../../components/Callout.astro';
+
+The [National Bank of Rwanda (BNR)](https://www.bnr.rw/) has steadily increased its cybersecurity requirements for all regulated financial institutions. The [BNR Regulation on Cyber Security (2018)](https://rwandalii.org/akn/rw/act/reg/2018/2/eng@2018-05-02) establishes minimum prudent standards for banks. If you are a bank, microfinance institution, insurance company, or payment service provider operating in Rwanda, cybersecurity compliance is no longer optional.
+
+This guide covers what BNR expects, what your institution needs to implement, and how penetration testing fits into your compliance programme. For pricing guidance, see our [penetration testing cost guide](/blog/penetration-testing-cost-rwanda/).
+
+## Who does this apply to?
+
+BNR cybersecurity regulation applies to all institutions supervised by the National Bank of Rwanda, including commercial banks, microfinance institutions (MFIs), insurance companies, pension funds, payment service providers, mobile money operators, and electronic money issuers.
+
+## Core requirements
+
+BNR expects regulated institutions to have a documented and operational cybersecurity programme. The key areas include:
+
+### 1. Cybersecurity governance
+
+Your institution must have a **board-approved cybersecurity policy** and a designated officer responsible for information security. The board must receive regular reports on cybersecurity risks and the status of the security programme.
+
+### 2. Risk assessment
+
+BNR requires regular risk assessments to identify threats and vulnerabilities to your IT systems and data. This means understanding what assets you have, what could go wrong, and how likely it is.
+
+### 3. Vulnerability assessment and penetration testing
+
+This is where our work comes in. BNR expects institutions to conduct **regular vulnerability assessments and penetration tests** on their systems. This includes web applications, mobile banking platforms, APIs, network infrastructure, and any internet-facing services.
+
+<Callout type="info">
+**What does "regular" mean?** BNR recommends at minimum annual penetration testing, and after any significant changes to systems or infrastructure. For critical systems like mobile banking and payment processing, quarterly testing is the standard we see among well-prepared institutions.
+</Callout>
+
+### 4. Incident response
+
+You need a documented incident response plan that covers detection, containment, eradication, recovery, and post-incident review. BNR expects institutions to report significant cyber incidents promptly.
+
+### 5. Security awareness training
+
+All employees must receive cybersecurity awareness training. This is not just for IT staff. BNR recognises that human error is behind most security breaches, so training must cover all levels of the organisation.
+
+### 6. Data protection
+
+Sensitive customer data must be encrypted in transit and at rest. Access controls must be implemented to ensure only authorised personnel can access sensitive information. This aligns with [Rwanda's Data Protection and Privacy Law (No. 058/2021)](https://rwandalii.org/akn/rw/act/law/2021/58/eng@2021-10-15), enforced by the [National Cyber Security Authority (NCSA)](https://cyber.gov.rw/) as the designated supervisory authority.
+
+### 7. Third-party risk management
+
+If you use third-party service providers (cloud hosting, payment processors, software vendors), BNR expects you to assess and manage the security risks they introduce. This includes due diligence before contracting and ongoing monitoring.
+
+## What does a BNR-compliant pentest look like?
+
+A penetration test for BNR compliance should cover:
+
+- **External testing**: assessing all internet-facing systems including websites, APIs, mobile banking endpoints, and USSD gateways
+- **Internal testing**: simulating an attacker who has gained access to the internal network
+- **Web application testing**: deep-dive into your core banking web interface and customer-facing applications
+- **Mobile application testing**: security assessment of your mobile banking apps on Android and iOS
+- **Social engineering**: testing employee resilience to phishing and other social engineering attacks
+
+The deliverable is a detailed report that includes findings ranked by severity, proof of exploitation, and clear remediation guidance that your IT team can act on.
+
+## Common gaps we find
+
+From our experience testing financial institutions across Africa, the most common issues include:
+
+- Insecure Direct Object References (IDOR) in banking APIs allowing access to other customers' data
+- Weak or missing authentication on internal APIs
+- USSD session handling vulnerabilities
+- Default credentials on network equipment
+- Missing security headers and TLS misconfigurations
+- Insufficient input validation leading to injection attacks
+
+## How to get started
+
+If your institution needs to meet BNR cybersecurity requirements and you do not have an in-house security testing capability, the most practical approach is to engage an external penetration testing firm.
+
+When selecting a provider, look for **recognised certifications** (OSCP is the industry gold standard for penetration testers), **experience with financial institutions**, and **physical presence in Rwanda** for on-site testing when needed.
+
+For a complete introduction to security testing in Rwanda, read [our penetration testing guide](/blog/penetration-testing-rwanda/). For ISO 27001 alignment, see [ISO 27001 certification in Rwanda](/blog/iso-27001-rwanda/). For a comparison of scanning versus manual testing, see [penetration testing vs vulnerability scanning](/blog/penetration-testing-vs-vulnerability-scanning/). If your institution uses USSD services, our [USSD security testing guide](/blog/ussd-security-testing/) covers the specific risks.
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali. We work with BNR-regulated institutions across Rwanda to deliver the security assessments that compliance requires: web application testing, API security, mobile banking, USSD, network infrastructure, and social engineering. Our reports are structured to satisfy BNR examination requirements and give your compliance team the documentation they need. [Contact us](/#contact) to scope your next BNR-compliant VAPT engagement.

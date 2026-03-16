@@ -1,0 +1,128 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "Mobile Money Security Testing | imizicyber"
+headline: "Mobile money security testing: MoMo, M-Pesa and USSD platforms"
+description: "How we test mobile money platforms for security vulnerabilities. Covers USSD, mobile apps, APIs, and agent networks for East African operators."
+keywords: "mobile money security testing, MoMo security, M-Pesa security testing, USSD security, mobile money penetration testing East Africa, mobile money fraud prevention"
+datePublished: "2026-03-08"
+readTime: "9 MIN READ"
+metaLabel: "MARCH 2026"
+breadcrumbName: "Mobile Money Security Testing"
+ogTitle: "Mobile Money Security Testing: MoMo, M-Pesa & USSD Platforms"
+ogDescription: "How we test mobile money platforms for security vulnerabilities across USSD, apps, APIs, and agent networks."
+twitterTitle: "Mobile Money Security Testing: MoMo, M-Pesa & USSD Platforms"
+twitterDescription: "Security testing for mobile money platforms in East Africa: USSD, apps, APIs, agent networks."
+canonicalUrl: "/blog/mobile-money-security-testing/"
+cardDescription: "How we test mobile money platforms (MoMo, M-Pesa, Airtel Money) for security vulnerabilities across USSD, apps, APIs, and agent networks."
+cardDate: "MAR 2026"
+---
+import Callout from '../../components/Callout.astro';
+
+Mobile money is the backbone of East African financial services. MTN MoMo, Airtel Money, and M-Pesa collectively serve tens of millions of users across Rwanda, Kenya, Uganda, and Tanzania. This scale, combined with the speed of transactions and the diversity of access channels (USSD, apps, APIs), creates a rich target for attackers and complex security challenges for operators.
+
+This article covers how we approach security testing for mobile money platforms: the unique attack surface, the vulnerabilities we find, and what a thorough assessment covers.
+
+## Why mobile money is a high-value target
+
+Mobile money platforms are attractive to attackers for several reasons:
+
+- **Transaction speed:** Unlike bank transfers, mobile money transactions settle in seconds. Fraudulent transactions can be irreversible before anyone notices.
+- **Scale:** Millions of daily users and transactions mean that even small per-transaction vulnerabilities can be exploited at massive scale.
+- **Agent network complexity:** Mobile money relies on extensive agent networks with variable security controls, creating entry points that are hard to secure centrally.
+- **Multiple access channels:** USSD, mobile app, web portal, merchant API, and agent interface all need separate security assessments.
+- **SIM swap vulnerability:** SIM-based authentication is fundamental to mobile money but SIM swap fraud is prevalent across East Africa.
+
+## The mobile money architecture
+
+A typical mobile money platform consists of several interconnected components, each with its own attack surface:
+
+- **USSD gateway:** The core interaction channel for feature phone users. Sessions are short-lived and text-based, but transaction logic runs through this channel.
+- **Mobile application (Android/iOS):** Higher capability interface with additional features and attack vectors.
+- **Core platform (transaction engine, wallet management):** The backend system processing all transactions. Usually vendor-supplied (e.g., Huawei Mobile Money Platform, Comviva mobiquity).
+- **Management API:** Used by agents, merchants, and internal systems. Often the highest-risk API endpoint.
+- **Third-party integrations:** Bank partner APIs, merchant payment APIs, government service integrations.
+- **Telco infrastructure:** SIM card management, subscriber databases, HLR (Home Location Register), under the telco's control but in scope for comprehensive assessments.
+
+## USSD-specific vulnerabilities
+
+USSD is a critical and often overlooked attack surface. Our dedicated USSD testing methodology covers:
+
+### Session management flaws
+
+USSD sessions are stateful but short-lived. Weak session ID generation, failure to invalidate sessions after timeout, and session fixation attacks can allow attackers to inject into an active transaction. We've found platforms where a session could be hijacked mid-transaction by knowing the session ID format.
+
+### Transaction flow manipulation
+
+USSD menus implement complex multi-step transaction flows. Sending crafted USSD strings that skip expected menu states, or replay confirmed transactions, can bypass authorisation steps or double-process transactions.
+
+### Enumeration attacks
+
+USSD balance-check and account-lookup features often leak whether a phone number is a registered customer, enabling mass enumeration of account holders for targeted fraud campaigns.
+
+### PIN brute-forcing
+
+Many USSD platforms have weak rate limiting on PIN verification, allowing automated brute-force attacks against 4-digit PINs (only 10,000 combinations).
+
+For a deep dive, see our dedicated article: [USSD security testing: how we assess mobile USSD and mobile money platforms](/blog/ussd-security-testing/).
+
+## Mobile application security testing
+
+The mobile app (Android and/or iOS) is tested using a combination of static analysis, dynamic analysis, and traffic interception:
+
+### Static analysis
+
+We decompile and analyse the application source code and resources. We look for hardcoded credentials, API keys, sensitive strings in the APK/IPA, insecure cryptographic implementations, and debug features left enabled in production builds.
+
+### Dynamic analysis
+
+Running the application on a controlled device (rooted Android, jailbroken iOS), we observe runtime behaviour: file system writes, memory contents, network traffic, and inter-process communication. We test for insecure data storage, including PIN codes, session tokens, or transaction data written to the device in cleartext.
+
+### Traffic interception
+
+All API traffic between the app and the backend is intercepted and analysed. We test the app's certificate pinning implementation and attempt to bypass it. We then replay and modify captured requests to test for authorisation bypass and business logic flaws.
+
+## API and backend testing
+
+The most critical component of a mobile money security assessment is the backend API. This is where transaction logic lives, and vulnerabilities here are the most impactful. We test for:
+
+- **Broken object-level authorisation (BOLA/IDOR):** Can I query or modify another customer's account by changing a parameter?
+- **Broken function-level authorisation:** Can a regular user access admin or agent-level functions?
+- **Mass assignment:** Can I manipulate object properties (e.g., transaction amount) by adding parameters not intended to be user-controlled?
+- **Replay attacks:** Can I resend a completed transaction request to duplicate a payment?
+- **Rate limiting:** Are transaction endpoints protected against automated fraud scripts?
+- **Authentication weaknesses:** Token expiry, refresh token security, OAuth implementation flaws.
+
+## What our mobile money assessment covers
+
+A comprehensive mobile money security assessment from imizicyber includes:
+
+1. Scope definition and threat modelling: understanding your platform architecture and the attacker personas relevant to your environment
+2. USSD gateway testing (session management, flow manipulation, enumeration)
+3. Mobile application testing for Android (and iOS if applicable)
+4. Backend API penetration testing (OWASP API Security Top 10)
+5. Agent portal and merchant API testing
+6. Integration testing (bank partner APIs, payment processors)
+7. Authentication and authorisation deep-dive
+8. Detailed report with severity ratings, proof of concept, and remediation guidance
+9. Debrief call with your technical team
+10. Free re-test of critical and high findings after remediation
+
+<Callout type="info">
+**Regulatory requirement:** BNR-supervised mobile money operators in Rwanda are required to conduct regular VAPT. A mobile money security assessment from imizicyber satisfies this requirement and produces the documentation your compliance team needs.
+</Callout>
+
+## Common findings in mobile money assessments
+
+Across our engagements with mobile money platforms and fintechs in East Africa, the most common critical and high findings include:
+
+- IDOR on account balance and transaction history endpoints: accessing other customers' data by changing a phone number or account ID parameter
+- Lack of rate limiting on PIN verification, enabling brute-force attacks
+- Sensitive data (session tokens, transaction logs) stored in cleartext on device
+- Broken certificate pinning, allowing easy traffic interception with basic tools
+- Missing transaction idempotency checks, enabling transaction replay
+- USSD session fixation allowing mid-transaction hijacking
+- Insecure direct object references in agent management APIs
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali with deep experience testing mobile money platforms across East Africa. We understand USSD gateway architecture, agent network security, and the business logic that attackers exploit in mobile money environments. If your platform has not been tested by someone who understands these systems from the inside, [contact us](/#contact) to scope an assessment.

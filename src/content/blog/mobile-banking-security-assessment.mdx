@@ -1,0 +1,116 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "Mobile Banking App Security Assessment | imizicyber"
+headline: "Why your mobile banking app needs a security assessment"
+description: "Mobile banking apps are the primary attack surface for East African banks. What a security assessment covers, common findings, and test frequency."
+keywords: "mobile banking security assessment, mobile app security testing East Africa, mobile banking penetration testing Rwanda, banking app security, OWASP mobile security"
+datePublished: "2026-03-08"
+readTime: "8 MIN READ"
+metaLabel: "MARCH 2026"
+breadcrumbName: "Mobile Banking Security Assessment"
+ogTitle: "Why Your Mobile Banking App Needs a Security Assessment"
+ogDescription: "Mobile banking apps are the primary attack surface for East African banks. What a security assessment covers, common findings, and test frequency."
+twitterTitle: "Why Your Mobile Banking App Needs a Security Assessment"
+twitterDescription: "Mobile banking apps are the primary attack surface for East African banks. What a security assessment covers, common findings, and test frequency."
+canonicalUrl: "/blog/mobile-banking-security-assessment/"
+cardDescription: "Mobile banking apps are the primary attack surface for East African banks. What a security assessment covers, what we find, and how often to test."
+cardDate: "MAR 2026"
+---
+
+Your mobile banking app is the most attacked component of your digital infrastructure. It runs on devices you do not control, connects to backends you do control, and is downloaded by millions of customers who are targets in their own right. Yet it is one of the most commonly under-tested components we encounter.
+
+This article explains what a mobile banking security assessment actually covers, what we typically find in East African banking apps, and why the backend API (not just the app itself) is often where the most critical vulnerabilities live.
+
+## Mobile banking in East Africa: a rich target
+
+East Africa has some of the highest mobile banking adoption rates in the world. In Rwanda, the [National Bank of Rwanda](https://www.bnr.rw/) reports continued growth in mobile banking transactions. This adoption makes mobile banking apps a high-value target: compromising one app can potentially expose hundreds of thousands of customer accounts and transaction capabilities.
+
+The attack surface is larger than most banks realise:
+
+- The Android APK and/or iOS IPA (the application itself)
+- The backend APIs the app communicates with
+- The authentication infrastructure (session management, token handling)
+- The CDN and web services serving app updates
+- Deep links and inter-app communication
+
+## What can go wrong: real attack scenarios
+
+### Scenario 1: IDOR on account endpoints
+
+The app calls `GET /api/accounts/12345/balance` to fetch your balance. If the backend doesn't verify that user ID 12345 belongs to the authenticated user, any logged-in customer can fetch any account balance, and potentially transaction history, personal details, and account numbers. This is one of the most common critical findings we make.
+
+### Scenario 2: Insecure session token storage
+
+The app stores the authentication token in the device's shared storage or in an unprotected location. A malicious app installed on the same device, or physical access to an unlocked phone, allows token theft and therefore full account access without any credentials.
+
+### Scenario 3: Broken certificate pinning
+
+The app is supposed to verify that it is only communicating with your legitimate server (certificate pinning). The implementation is weak or bypassed. An attacker on the same WiFi network (airport, hotel, cafe) can intercept all traffic between the app and your servers, capturing credentials and session tokens.
+
+### Scenario 4: Business logic bypass
+
+The app enforces a daily transaction limit of 500,000 RWF. This limit is enforced client-side (in the app code), not server-side. An attacker modifying requests can send transactions for arbitrary amounts, bypassing the limit entirely.
+
+## What we test in a mobile banking security assessment
+
+### Static application analysis
+
+We decompile the APK (Android) or unpack the IPA (iOS) and review the code for:
+
+- Hardcoded credentials, API keys, or secrets in the binary
+- Insecure cryptographic implementations (weak keys, ECB mode encryption)
+- Sensitive data in app resources, config files, or compiled strings
+- Debug features left enabled in production (logging sensitive data, debug endpoints)
+- Improper use of Android intents or iOS URL schemes enabling deep-link attacks
+
+### Dynamic analysis
+
+We run the app on a controlled device and instrument it at runtime:
+
+- Monitor all file system writes: does the app store PINs, tokens, or transaction data in cleartext?
+- Inspect memory for sensitive data at rest
+- Hook into the app's SSL/TLS handling to bypass certificate pinning
+- Test for runtime manipulation using tools like Frida
+
+### API security testing
+
+Every API call the app makes is captured and tested manually. This is where the most critical findings usually are. We test against the [OWASP API Security Top 10](https://owasp.org/www-project-api-security/):
+
+- Broken Object Level Authorization (BOLA): accessing other users' data
+- Broken Authentication: token weaknesses, session fixation
+- Broken Object Property Level Authorization: exposing fields that should be hidden
+- Unrestricted Resource Consumption: missing rate limits
+- Broken Function Level Authorization: accessing admin or higher-privilege operations
+
+### Network and transport security
+
+We verify that all traffic is encrypted with current TLS versions (TLS 1.2 minimum, TLS 1.3 preferred), that certificate pinning is correctly implemented and not trivially bypassable, and that no sensitive data is transmitted in URL parameters (which appear in server logs).
+
+## iOS vs Android: key differences in testing
+
+Android and iOS have different security models, and both need testing if your app is on both platforms:
+
+- **Android:** More accessible for testing (APK extraction, rooted devices, sideloading). Higher market share in East Africa means higher attack volume.
+- **iOS:** More restricted (jailbreak required for deep testing). App Store review provides some security gatekeeping but does not substitute for testing.
+- **Common to both:** Backend API vulnerabilities affect both platforms equally. IDOR on the server doesn't care which client is making the request.
+
+## The banking API: the backend nobody tests
+
+Most banks test the mobile app but not the API it talks to. This is backward. The API is where business logic runs, where transactions are executed, and where the most critical vulnerabilities live. A vulnerability in the API affects all clients simultaneously: mobile app, web portal, third-party integrations.
+
+See our dedicated article on [API security in modern banking](/blog/api-security-banking/) for the full breakdown of common API vulnerabilities we find.
+
+## How often should you test?
+
+At minimum:
+
+- Before releasing a new major version of the app to the public
+- After significant backend changes (new APIs, new features, new third-party integrations)
+- Annually as part of your BNR VAPT programme
+- After any security incident involving the app or its backend
+
+For high-transaction mobile banking apps, we recommend a quarterly assessment cycle aligned with your release schedule. See our [penetration testing cost guide](/blog/penetration-testing-cost-rwanda/) for what this looks like in practice.
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali. Mobile banking security assessment is one of our core specialisations. We test the app, the APIs behind it, and the business logic that ties them together. If your mobile banking app has never been tested by someone who understands certificate pinning bypass, BOLA on banking endpoints, and USSD-to-app transaction flows, [contact us](/#contact) to scope an assessment. We deliver reports that satisfy BNR requirements and give your development team clear, actionable remediation guidance.

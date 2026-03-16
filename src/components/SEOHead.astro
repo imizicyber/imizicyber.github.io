@@ -1,0 +1,58 @@
+---
+/**
+ * SEOHead — renders all SEO meta tags (OG, Twitter, canonical, hreflang, geo).
+ */
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  canonicalUrl: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  robots?: string;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  ogTitle,
+  ogDescription,
+  ogType = 'website',
+  canonicalUrl,
+  ogImage = SITE.ogImage,
+  twitterTitle,
+  twitterDescription,
+  robots = 'index, follow',
+} = Astro.props;
+
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE.url}${ogImage}`;
+const fullCanonical = canonicalUrl.startsWith('http') ? canonicalUrl : `${SITE.url}${canonicalUrl}`;
+---
+
+<meta name="description" content={description}>
+{keywords && <meta name="keywords" content={keywords} />}
+<meta property="og:title" content={ogTitle || title}>
+<meta property="og:description" content={ogDescription || description}>
+<meta property="og:type" content={ogType}>
+<meta property="og:url" content={fullCanonical}>
+<meta property="og:locale" content={SITE.locale}>
+<meta property="og:image" content={fullOgImage}>
+<meta property="og:image:width" content={SITE.ogImageWidth}>
+<meta property="og:image:height" content={SITE.ogImageHeight}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={twitterTitle || ogTitle || title}>
+<meta name="twitter:description" content={twitterDescription || ogDescription || description}>
+<meta name="twitter:image" content={fullOgImage}>
+<meta name="robots" content={robots}>
+<link rel="canonical" href={fullCanonical}>
+<link rel="alternate" hreflang={SITE.lang} href={fullCanonical}>
+<link rel="alternate" hreflang="x-default" href={fullCanonical}>
+<meta name="geo.region" content={SITE.region}>
+<meta name="geo.placename" content={SITE.placename}>

@@ -1,0 +1,55 @@
+---
+/**
+ * CookieBanner — cookie consent banner with GA loading.
+ * Uses is:inline since it must execute immediately before hydration.
+ */
+import { ANALYTICS } from '../data/site';
+
+const gaId = ANALYTICS.gaId;
+---
+
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="cookie-msg">
+  <p id="cookie-msg">We use cookies for analytics to improve our website. No tracking cookies are set without your consent. <a href="/privacy-policy/">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="btn-reject" onclick="handleCookieConsent(false)">Reject</button>
+    <button class="btn-accept" onclick="handleCookieConsent(true)">Accept</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ gaId }}>
+function handleCookieConsent(accepted){
+  try{localStorage.setItem('imizi-cookie-consent',accepted?'accepted':'rejected')}catch(e){}
+  document.getElementById('cookie-banner').classList.remove('visible');
+  if(accepted) loadGA();
+}
+function loadGA(){
+  var s=document.createElement('script');
+  s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id='+gaId;
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config',gaId);
+}
+function resetCookieConsent(){
+  try{localStorage.removeItem('imizi-cookie-consent')}catch(e){}
+  var b=document.getElementById('cookie-banner');
+  b.classList.add('visible');
+  b.querySelector('.btn-reject').focus();
+}
+(function(){
+  try{
+    var c=localStorage.getItem('imizi-cookie-consent');
+    if(c==='accepted') loadGA();
+    else if(c!=='rejected'){
+      var b=document.getElementById('cookie-banner');
+      b.classList.add('visible');
+      b.querySelector('.btn-reject').focus();
+    }
+  }catch(e){
+    document.getElementById('cookie-banner').classList.add('visible');
+  }
+})();
+</script>

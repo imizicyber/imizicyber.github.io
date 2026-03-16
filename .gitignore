@@ -19,8 +19,12 @@ credentials.json
 # Claude Code
 .claude/
 
-# Node (if ever used)
+# Node
 node_modules/
+
+# Astro
+dist/
+.astro/
 
 # Temp files
 *.tmp
