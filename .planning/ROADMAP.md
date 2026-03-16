@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 3. Running `npm run test` executes the Vitest suite with coverage output
 4. Attempting to commit code with lint errors is blocked by husky pre-commit hook
 5. Dark and light theme toggle works correctly in browser with localStorage persistence across page loads
-   **Plans:** 3 plans
+   **Plans:** 3/3 plans complete
 
 Plans:
 
