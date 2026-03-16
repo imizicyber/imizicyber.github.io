@@ -1,11 +1,7 @@
 ---
 /**
  * CookieBanner — cookie consent banner with GA loading.
- * Uses is:inline since it must execute immediately before hydration.
  */
-import { ANALYTICS } from '../data/site';
-
-const gaId = ANALYTICS.gaId;
 ---
 
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="cookie-msg">
@@ -16,42 +12,7 @@ const gaId = ANALYTICS.gaId;
   </div>
 </div>
 
-<script is:inline define:vars={{ gaId }}>
-window.handleCookieConsent=function(accepted){
-  try{localStorage.setItem('imizi-cookie-consent',accepted?'accepted':'rejected')}catch(e){}
-  document.getElementById('cookie-banner').classList.remove('visible');
-  if(accepted) window.loadGA();
-};
-window.loadGA=function(){
-  var s=document.createElement('script');
-  s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id='+gaId;
-  document.head.appendChild(s);
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments)}
-  window.gtag=gtag;
-  gtag('js',new Date());
-  gtag('config',gaId);
-};
-window.resetCookieConsent=function(){
-  try{localStorage.removeItem('imizi-cookie-consent')}catch(e){}
-  var b=document.getElementById('cookie-banner');
-  b.classList.add('visible');
-  b.querySelector('.btn-reject').focus();
-};
-document.getElementById('cookie-accept').addEventListener('click',function(){window.handleCookieConsent(true)});
-document.getElementById('cookie-reject').addEventListener('click',function(){window.handleCookieConsent(false)});
-(function(){
-  try{
-    var c=localStorage.getItem('imizi-cookie-consent');
-    if(c==='accepted') window.loadGA();
-    else if(c!=='rejected'){
-      var b=document.getElementById('cookie-banner');
-      b.classList.add('visible');
-      b.querySelector('.btn-reject').focus();
-    }
-  }catch(e){
-    document.getElementById('cookie-banner').classList.add('visible');
-  }
-})();
+<script>
+  import { initCookieBanner } from '@/scripts/cookie-consent';
+  initCookieBanner();
 </script>
