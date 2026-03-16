@@ -747,34 +747,12 @@ const faqItems = [
   </main>
 </BaseLayout>
 
-<script is:inline>
-  /* Scroll reveal */
-  const obs = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.08 },
-  );
-  document.querySelectorAll('.reveal').forEach(function (el) {
-    obs.observe(el);
-  });
+<script>
+  import { initScrollReveal } from '@/scripts/scroll-reveal';
+  import { initEmailObfuscation } from '@/scripts/email-obfuscation';
 
-  /* Email obfuscation */
-  (function () {
-    const u = 'info';
-    const d = 'imizicyber.com';
-    const full = u + '@' + d;
-    const el = document.getElementById('email-link');
-    if (el) {
-      el.href = 'mai' + 'lto:' + full;
-      el.textContent = full;
-    }
-  })();
+  initScrollReveal();
+  initEmailObfuscation();
 </script>
 
 <style>

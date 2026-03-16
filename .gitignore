@@ -26,6 +26,9 @@ node_modules/
 dist/
 .astro/
 
+# Test coverage
+coverage/
+
 # Temp files
 *.tmp
 *.log

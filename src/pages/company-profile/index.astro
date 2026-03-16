@@ -3,7 +3,7 @@
  * Company Profile - standalone print-optimised page.
  * Does NOT use BaseLayout; has its own minimal layout for PDF/print output.
  */
-import { SITE, CONTACT, ANALYTICS } from '../../data/site';
+import { SITE, CONTACT } from '../../data/site';
 ---
 
 <!doctype html>
@@ -472,46 +472,13 @@ import { SITE, CONTACT, ANALYTICS } from '../../data/site';
         your consent. <a href="/privacy-policy/">Privacy Policy</a>
       </p>
       <div class="cookie-btns">
-        <button class="btn-reject" onclick="handleCookieConsent(false)">Reject</button>
-        <button class="btn-accept" onclick="handleCookieConsent(true)">Accept</button>
+        <button class="btn-reject" id="cookie-reject">Reject</button>
+        <button class="btn-accept" id="cookie-accept">Accept</button>
       </div>
     </div>
-    <script is:inline define:vars={{ gaId: ANALYTICS.gaId }}>
-      window.handleCookieConsent = function handleCookieConsent(accepted) {
-        try {
-          localStorage.setItem('imizi-cookie-consent', accepted ? 'accepted' : 'rejected');
-        } catch {
-          /* localStorage unavailable */
-        }
-        document.getElementById('cookie-banner').classList.remove('visible');
-        if (accepted) loadGA();
-      };
-      function loadGA() {
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(...args) {
-          window.dataLayer.push(args);
-        }
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', gaId);
-      }
-      (function () {
-        try {
-          const c = localStorage.getItem('imizi-cookie-consent');
-          if (c === 'accepted') loadGA();
-          else if (c !== 'rejected') {
-            const b = document.getElementById('cookie-banner');
-            b.classList.add('visible');
-            b.querySelector('.btn-reject').focus();
-          }
-        } catch {
-          /* localStorage unavailable */
-        }
-      })();
+    <script>
+      import { initCookieBanner } from '@/scripts/cookie-consent';
+      initCookieBanner();
     </script>
   </body>
 </html>
