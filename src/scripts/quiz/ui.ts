@@ -8,6 +8,96 @@ let quizAnswers: number[] = [];
 let quizTotal = 0;
 let quizBand: ScoreBand | null = null;
 
+/** Create a bullet element for score summary */
+export function createBullet(iconClass: string, iconText: string, labelText: string): HTMLElement {
+  const div = document.createElement('div');
+  div.className = 'bullet';
+
+  const icon = document.createElement('span');
+  icon.className = `bullet-icon ${iconClass}`;
+  icon.textContent = iconText;
+
+  const label = document.createElement('span');
+  label.textContent = labelText;
+
+  div.appendChild(icon);
+  div.appendChild(label);
+  return div;
+}
+
+/** Create a breakdown bar element for category scores */
+export function createBreakdownBar(label: string, score: number): HTMLElement {
+  const pct = Math.round((score / 3) * 100);
+
+  const wrapper = document.createElement('div');
+  wrapper.style.marginBottom = '12px';
+
+  const header = document.createElement('div');
+  header.style.display = 'flex';
+  header.style.justifyContent = 'space-between';
+  header.style.marginBottom = '4px';
+
+  const labelSpan = document.createElement('span');
+  labelSpan.style.fontSize = '.84rem';
+  labelSpan.style.color = 'var(--white)';
+  labelSpan.style.fontWeight = '600';
+  labelSpan.textContent = label;
+
+  const scoreSpan = document.createElement('span');
+  scoreSpan.style.fontFamily = 'var(--mono)';
+  scoreSpan.style.fontSize = '.72rem';
+  scoreSpan.style.color = 'var(--txt3)';
+  scoreSpan.textContent = `${score}/3`;
+
+  header.appendChild(labelSpan);
+  header.appendChild(scoreSpan);
+
+  const track = document.createElement('div');
+  track.style.height = '6px';
+  track.style.background = 'var(--bg3)';
+  track.style.borderRadius = '3px';
+  track.style.overflow = 'hidden';
+
+  const fill = document.createElement('div');
+  fill.style.height = '100%';
+  fill.style.width = `${pct}%`;
+  fill.style.background = 'linear-gradient(90deg,var(--acc2),var(--acc))';
+  fill.style.borderRadius = '3px';
+
+  track.appendChild(fill);
+  wrapper.appendChild(header);
+  wrapper.appendChild(track);
+  return wrapper;
+}
+
+/** Create a recommendation item element */
+export function createRecoItem(
+  priority: string,
+  priorityClass: string,
+  heading: string,
+  body: string,
+): HTMLElement {
+  const div = document.createElement('div');
+  div.className = 'reco-item';
+
+  const prioritySpan = document.createElement('span');
+  prioritySpan.className = `reco-priority ${priorityClass}`;
+  prioritySpan.textContent = priority;
+
+  const textDiv = document.createElement('div');
+  textDiv.className = 'reco-text';
+
+  const strong = document.createElement('strong');
+  strong.textContent = heading;
+
+  textDiv.appendChild(strong);
+  textDiv.appendChild(document.createTextNode(body));
+
+  div.appendChild(prioritySpan);
+  div.appendChild(textDiv);
+  return div;
+}
+
 export function initQuiz(): void {
   const cards = document.querySelectorAll<HTMLElement>('.quiz-card');
   const calcBtn = document.getElementById('calc-btn') as HTMLButtonElement | null;
@@ -94,27 +184,32 @@ export function initQuiz(): void {
     if (bandDesc) bandDesc.textContent = quizBand.desc;
 
     // Prelim bullets
-    let bulletsHtml = '';
-    quizAnswers.forEach(function (v, idx) {
-      if (v <= 1) {
-        bulletsHtml +=
-          '<div class="bullet"><span class="bullet-icon bi-warn">!</span><span>' +
-          QUESTIONS[idx].label +
-          ': ' +
-          QUESTIONS[idx].recos[v].h +
-          '</span></div>';
-      } else if (v >= 3) {
-        bulletsHtml +=
-          '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>' +
-          QUESTIONS[idx].label +
-          ': strong</span></div>';
-      }
-    });
     const bulletsContent = document.getElementById('bullets-content');
     if (bulletsContent) {
-      bulletsContent.innerHTML =
-        bulletsHtml ||
-        '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>No critical gaps identified in your preliminary assessment.</span></div>';
+      bulletsContent.replaceChildren();
+      let hasBullets = false;
+      quizAnswers.forEach(function (v, idx) {
+        if (v <= 1) {
+          bulletsContent.appendChild(
+            createBullet('bi-warn', '!', QUESTIONS[idx].label + ': ' + QUESTIONS[idx].recos[v].h),
+          );
+          hasBullets = true;
+        } else if (v >= 3) {
+          bulletsContent.appendChild(
+            createBullet('bi-ok', '\u2713', QUESTIONS[idx].label + ': strong'),
+          );
+          hasBullets = true;
+        }
+      });
+      if (!hasBullets) {
+        bulletsContent.appendChild(
+          createBullet(
+            'bi-ok',
+            '\u2713',
+            'No critical gaps identified in your preliminary assessment.',
+          ),
+        );
+      }
     }
 
     // Hidden fields
@@ -131,45 +226,30 @@ export function initQuiz(): void {
         .join(', ');
 
     // Build full report content (shown after download)
-    let breakdownHtml = '';
-    quizAnswers.forEach(function (v, idx) {
-      const pct = Math.round((v / 3) * 100);
-      breakdownHtml +=
-        '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.84rem;color:var(--white);font-weight:600">' +
-        QUESTIONS[idx].label +
-        '</span><span style="font-family:var(--mono);font-size:.72rem;color:var(--txt3)">' +
-        v +
-        '/3</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:' +
-        pct +
-        '%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:3px"></div></div></div>';
-    });
     const breakdownContent = document.getElementById('breakdown-content');
-    if (breakdownContent) breakdownContent.innerHTML = breakdownHtml;
+    if (breakdownContent) {
+      breakdownContent.replaceChildren();
+      quizAnswers.forEach(function (v, idx) {
+        breakdownContent.appendChild(createBreakdownBar(QUESTIONS[idx].label, v));
+      });
+    }
 
-    let recosHtml = '';
-    quizAnswers.forEach(function (v, idx) {
-      const r = QUESTIONS[idx].recos[v];
-      const pcls =
-        r.p === 'CRITICAL'
-          ? 'p-critical'
-          : r.p === 'HIGH'
-            ? 'p-high'
-            : r.p === 'MEDIUM'
-              ? 'p-medium'
-              : 'p-low';
-      recosHtml +=
-        '<div class="reco-item"><span class="reco-priority ' +
-        pcls +
-        '">' +
-        r.p +
-        '</span><div class="reco-text"><strong>' +
-        r.h +
-        '</strong>' +
-        r.b +
-        '</div></div>';
-    });
     const recosContent = document.getElementById('recos-content');
-    if (recosContent) recosContent.innerHTML = recosHtml;
+    if (recosContent) {
+      recosContent.replaceChildren();
+      quizAnswers.forEach(function (v, idx) {
+        const r = QUESTIONS[idx].recos[v];
+        const pcls =
+          r.p === 'CRITICAL'
+            ? 'p-critical'
+            : r.p === 'HIGH'
+              ? 'p-high'
+              : r.p === 'MEDIUM'
+                ? 'p-medium'
+                : 'p-low';
+        recosContent.appendChild(createRecoItem(r.p, pcls, r.h, r.b));
+      });
+    }
 
     // Show result
     const quizForm = document.getElementById('quiz-form');

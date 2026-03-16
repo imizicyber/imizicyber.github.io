@@ -64,16 +64,22 @@ describe('cookie-consent', () => {
 
   describe('initCookieBanner', () => {
     beforeEach(() => {
-      document.body.innerHTML = `
-        <div id="cookie-banner">
-          <button id="cookie-accept">Accept</button>
-          <button id="cookie-reject">Reject</button>
-        </div>
-      `;
+      document.body.replaceChildren();
+      const banner = document.createElement('div');
+      banner.id = 'cookie-banner';
+      const acceptBtn = document.createElement('button');
+      acceptBtn.id = 'cookie-accept';
+      acceptBtn.textContent = 'Accept';
+      const rejectBtn = document.createElement('button');
+      rejectBtn.id = 'cookie-reject';
+      rejectBtn.textContent = 'Reject';
+      banner.appendChild(acceptBtn);
+      banner.appendChild(rejectBtn);
+      document.body.appendChild(banner);
     });
 
     it('returns early if banner elements not found', () => {
-      document.body.innerHTML = '';
+      document.body.replaceChildren();
       initCookieBanner();
     });
 

@@ -48,7 +48,7 @@ describe('quiz scoring', () => {
 
   describe('getAnswersFromDOM', () => {
     beforeEach(() => {
-      document.body.innerHTML = '';
+      document.body.replaceChildren();
     });
 
     it('returns zeros when no radio buttons are checked', () => {
@@ -58,12 +58,20 @@ describe('quiz scoring', () => {
     });
 
     it('reads checked radio button values', () => {
-      // Create radio buttons for questions 1-3
-      document.body.innerHTML = `
-        <input type="radio" name="q1" value="2" checked />
-        <input type="radio" name="q2" value="3" checked />
-        <input type="radio" name="q3" value="1" checked />
-      `;
+      // Create radio buttons for questions 1-3 using DOM API
+      const radios = [
+        { name: 'q1', value: '2' },
+        { name: 'q2', value: '3' },
+        { name: 'q3', value: '1' },
+      ];
+      radios.forEach(({ name, value }) => {
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = name;
+        input.value = value;
+        input.checked = true;
+        document.body.appendChild(input);
+      });
       const answers = getAnswersFromDOM();
       expect(answers[0]).toBe(2);
       expect(answers[1]).toBe(3);

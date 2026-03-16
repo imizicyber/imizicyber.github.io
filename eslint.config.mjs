@@ -19,6 +19,23 @@ export default tseslint.config(
     },
   },
   {
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "AssignmentExpression[left.property.name='innerHTML']",
+          message:
+            'innerHTML is banned. Use DOM API (createElement + textContent + appendChild) instead.',
+        },
+        {
+          selector: "MemberExpression[property.name='innerHTML']",
+          message:
+            'innerHTML is banned. Use DOM API (createElement + textContent + appendChild) instead.',
+        },
+      ],
+    },
+  },
+  {
     ignores: ['dist/', '.astro/', 'node_modules/'],
   },
 );
