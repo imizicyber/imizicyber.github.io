@@ -57,7 +57,13 @@ Plans:
 3. Security score quiz works without innerHTML — all DOM manipulation uses safe API methods
 4. `git log` and `git grep` reveal no API keys, tokens, or Formspree endpoint secrets in repository history
 5. axe-core accessibility scan embedded in Playwright tests reports zero critical violations on all tested pages
-   **Plans**: TBD
+   **Plans:** 3 plans
+
+Plans:
+
+- [ ] 02-01-PLAN.md — Eliminate innerHTML from quiz UI, add ESLint ban rule
+- [ ] 02-02-PLAN.md — Enable Astro CSP (no unsafe-inline), run gitleaks secret scan, add pre-commit hook
+- [ ] 02-03-PLAN.md — Install Playwright with axe-core, write E2E tests, create CI workflow
 
 ### Phase 3: Component Architecture and Visual Redesign
 
@@ -159,12 +165,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
 | Phase                                         | Plans Complete | Status      | Completed  |
 | --------------------------------------------- | -------------- | ----------- | ---------- |
 | 1. Code Quality Tooling                       | 3/3            | Complete    | 2026-03-16 |
-| 2. Security Hardening and Test Coverage       | 0/TBD          | Not started | -          |
+| 2. Security Hardening and Test Coverage       | 0/3            | Planned     | -          |
 | 3. Component Architecture and Visual Redesign | 0/TBD          | Not started | -          |
 | 4. Performance and Accessibility              | 0/TBD          | Not started | -          |
 | 5. Analytics and Conversion Tracking          | 0/TBD          | Not started | -          |
