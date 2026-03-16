@@ -1,0 +1,13 @@
+title = "Imizi Cyber Gitleaks Config"
+
+[allowlist]
+  description = "Intentionally public identifiers"
+  regexTarget = "match"
+  regexes = [
+    '''G-R7TC88KH9N''',
+    '''https://formspree\.io/f/''',
+  ]
+  paths = [
+    '''\.planning/.*''',
+    '''\.gitleaks\.toml''',
+  ]
