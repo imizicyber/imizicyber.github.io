@@ -54,79 +54,88 @@ const {
   showFreeTool = false,
 } = Astro.props;
 
-const baseCSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://www.google-analytics.com; frame-ancestors 'none'";
+const baseCSP =
+  "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://www.google-analytics.com; frame-ancestors 'none'";
 
 let csp = baseCSP;
 if (cspExtra) {
   csp = csp.replace(
     "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
-    `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com ${cspExtra}`
+    `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com ${cspExtra}`,
   );
 }
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
 
-  <SEOHead
-    title={title}
-    description={description}
-    keywords={keywords}
-    ogTitle={ogTitle}
-    ogDescription={ogDescription}
-    ogType={ogType}
-    canonicalUrl={canonicalUrl}
-    ogImage={ogImage}
-    twitterTitle={twitterTitle}
-    twitterDescription={twitterDescription}
-    robots={robots}
-  />
+    <SEOHead
+      title={title}
+      description={description}
+      keywords={keywords}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogType={ogType}
+      canonicalUrl={canonicalUrl}
+      ogImage={ogImage}
+      twitterTitle={twitterTitle}
+      twitterDescription={twitterDescription}
+      robots={robots}
+    />
 
-  <meta name="theme-color" content="#0b1421">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content={csp}>
+    <meta name="theme-color" content="#0b1421" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content={csp} />
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png">
-  <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/logo-192.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-  <meta name="dns-prefetch" content="//formspree.io">
-  <meta property="og:site_name" content={SITE.name}>
+    <meta name="dns-prefetch" content="//formspree.io" />
+    <meta property="og:site_name" content={SITE.name} />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  >
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
 
-  {schemas && schemas.length > 0 && <SchemaOrg schemas={schemas} />}
+    {schemas && schemas.length > 0 && <SchemaOrg schemas={schemas} />}
 
-  <!-- Theme init — must be in head to prevent FOUC -->
-  <script is:inline>
-    (function(){
-      try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}
-    })();
-  </script>
-</head>
-<body>
-  <SkipLink />
-  <Nav variant={navVariant} showFreeTool={showFreeTool} />
+    <!-- Theme init — must be in head to prevent FOUC -->
+    <script is:inline>
+      (function () {
+        try {
+          const s = localStorage.getItem('imizi-theme');
+          if (s) document.documentElement.dataset.theme = s;
+        } catch {
+          /* localStorage unavailable */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <SkipLink />
+    <Nav variant={navVariant} showFreeTool={showFreeTool} />
 
-  <slot />
+    <slot />
 
-  <Footer variant={footerVariant} />
-  {showWhatsApp && <WhatsAppFloat message={whatsappMessage} />}
-  <CookieBanner />
-</body>
+    <Footer variant={footerVariant} />
+    {showWhatsApp && <WhatsAppFloat message={whatsappMessage} />}
+    <CookieBanner />
+  </body>
 </html>

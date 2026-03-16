@@ -129,11 +129,13 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
     <article>
       <div class="w" style="max-width:680px">
         <div style="padding:100px 0 0">
-          <Breadcrumb items={[
-            { name: 'Home', href: '/' },
-            { name: 'Blog', href: '/blog/' },
-            { name: fm.breadcrumbName },
-          ]} />
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Blog', href: '/blog/' },
+              { name: fm.breadcrumbName },
+            ]}
+          />
           {metaDisplay && <div class="meta">{metaDisplay}</div>}
           <h1>{fm.headline}</h1>
         </div>
@@ -155,7 +157,22 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
 </BaseLayout>
 
 <style>
-  article{padding-bottom:60px}
-  .meta{font-family:var(--mono);font-size:.64rem;color:var(--acc);letter-spacing:.08em;margin-bottom:12px}
-  h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--white);margin-bottom:20px}
+  article {
+    padding-bottom: 60px;
+  }
+  .meta {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
 </style>

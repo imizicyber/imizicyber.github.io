@@ -3,14 +3,21 @@ import SimplePageLayout from '../../layouts/SimplePageLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 
-const schemas = [{
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Responsible Disclosure', item: `${SITE.url}/responsible-disclosure/` },
-  ],
-}];
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Responsible Disclosure',
+        item: `${SITE.url}/responsible-disclosure/`,
+      },
+    ],
+  },
+];
 ---
 
 <SimplePageLayout
@@ -26,17 +33,26 @@ const schemas = [{
   <article class="policy-article">
     <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Responsible Disclosure' }]} />
     <h1>Responsible Disclosure Policy</h1>
-    <p>At imizicyber, we take security seriously -- not only for our clients, but for our own systems as well. We welcome and appreciate security researchers who take the time to report vulnerabilities responsibly.</p>
+    <p>
+      At imizicyber, we take security seriously -- not only for our clients, but for our own systems
+      as well. We welcome and appreciate security researchers who take the time to report
+      vulnerabilities responsibly.
+    </p>
 
     <h2>Scope</h2>
-    <p>This policy applies to the following assets owned and operated by IMIZI Cyber Consulting Ltd:</p>
+    <p>
+      This policy applies to the following assets owned and operated by IMIZI Cyber Consulting Ltd:
+    </p>
     <ul>
       <li><code>imizicyber.com</code> and all subdomains</li>
       <li>Any publicly accessible services or APIs operated by imizicyber</li>
     </ul>
 
     <h2>How to report a vulnerability</h2>
-    <p>Please send your report to <strong>security@imizicyber.com</strong>. We strongly encourage you to encrypt your report using our <a href="/.well-known/pgp-key.asc">PGP public key</a>.</p>
+    <p>
+      Please send your report to <strong>security@imizicyber.com</strong>. We strongly encourage you
+      to encrypt your report using our <a href="/.well-known/pgp-key.asc">PGP public key</a>.
+    </p>
     <p>Your report should include:</p>
     <ul>
       <li>A clear description of the vulnerability</li>
@@ -48,9 +64,16 @@ const schemas = [{
 
     <h2>What to expect</h2>
     <ul>
-      <li><strong>Acknowledgement:</strong> We will acknowledge receipt of your report within 48 hours</li>
-      <li><strong>Triage:</strong> We will assess the report and provide an initial severity rating within 5 business days</li>
-      <li><strong>Updates:</strong> We will keep you informed of our progress towards remediation</li>
+      <li>
+        <strong>Acknowledgement:</strong> We will acknowledge receipt of your report within 48 hours
+      </li>
+      <li>
+        <strong>Triage:</strong> We will assess the report and provide an initial severity rating within
+        5 business days
+      </li>
+      <li>
+        <strong>Updates:</strong> We will keep you informed of our progress towards remediation
+      </li>
       <li><strong>Resolution:</strong> We will notify you when the vulnerability has been fixed</li>
     </ul>
 
@@ -68,14 +91,19 @@ const schemas = [{
       <li>Do not access, modify, or delete data that does not belong to you</li>
       <li>Do not perform denial-of-service attacks</li>
       <li>Do not perform social engineering attacks against our staff</li>
-      <li>Do not publicly disclose the vulnerability until we have had a reasonable opportunity to remediate</li>
+      <li>
+        Do not publicly disclose the vulnerability until we have had a reasonable opportunity to
+        remediate
+      </li>
       <li>Make a good-faith effort to avoid privacy violations and disruption to our services</li>
     </ul>
 
     <div class="callout">
-      <strong>Contact:</strong> security@imizicyber.com<br>
-      <strong>PGP Key:</strong> <a href="/.well-known/pgp-key.asc">/.well-known/pgp-key.asc</a><br>
-      <strong>security.txt:</strong> <a href="/.well-known/security.txt">/.well-known/security.txt</a>
+      <strong>Contact:</strong> security@imizicyber.com<br />
+      <strong>PGP Key:</strong>
+      <a href="/.well-known/pgp-key.asc">/.well-known/pgp-key.asc</a><br />
+      <strong>security.txt:</strong>
+      <a href="/.well-known/security.txt">/.well-known/security.txt</a>
     </div>
 
     <p>Thank you for helping us keep our systems and our clients secure.</p>
@@ -83,13 +111,50 @@ const schemas = [{
 </SimplePageLayout>
 
 <style>
-  .policy-article{padding:100px 0 60px}
-  h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--white);margin-bottom:20px}
-  h2{font-size:1.2rem;font-weight:800;color:var(--white);margin:32px 0 10px;letter-spacing:-.5px}
-  p{margin-bottom:14px;color:var(--txt);line-height:1.8}
-  ul{margin:0 0 14px 24px;color:var(--txt);line-height:1.8}
-  li{margin-bottom:6px}
-  a{color:var(--acc);text-decoration:none}
-  a:hover{text-decoration:underline}
-  code{font-family:var(--mono);font-size:.85em;background:var(--bg2);padding:2px 6px;border-radius:4px;color:var(--acc)}
+  .policy-article {
+    padding: 100px 0 60px;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin: 32px 0 10px;
+    letter-spacing: -0.5px;
+  }
+  p {
+    margin-bottom: 14px;
+    color: var(--txt);
+    line-height: 1.8;
+  }
+  ul {
+    margin: 0 0 14px 24px;
+    color: var(--txt);
+    line-height: 1.8;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  a {
+    color: var(--acc);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--bg2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--acc);
+  }
 </style>

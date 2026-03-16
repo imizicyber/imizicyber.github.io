@@ -32,9 +32,17 @@ const contactHref = isHome ? '#contact' : '/#contact';
         <a href={blogHref}>Blog</a>
         <a href="/resources/">Resources</a>
         <a href={contactHref}>Contact</a>
-        {showFreeTool && (
-          <a href="/tools/security-score/" class="nav-cta" style="background:transparent;border:1.5px solid var(--acc);color:var(--acc) !important">Free Score</a>
-        )}
+        {
+          showFreeTool && (
+            <a
+              href="/tools/security-score/"
+              class="nav-cta"
+              style="background:transparent;border:1.5px solid var(--acc);color:var(--acc) !important"
+            >
+              Free Score
+            </a>
+          )
+        }
         <a href={contactHref} class="nav-cta">Get in Touch</a>
       </div>
       <div class="nav-end">
@@ -48,17 +56,17 @@ const contactHref = isHome ? '#contact' : '/#contact';
 </nav>
 
 <script>
-  (function(){
-    var btn = document.querySelector('.menu-btn');
-    var nav = document.querySelector('.nav-links');
-    if(btn && nav){
-      btn.addEventListener('click', function(){
+  (function () {
+    const btn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav-links');
+    if (btn && nav) {
+      btn.addEventListener('click', function () {
         nav.classList.toggle('open');
         btn.classList.toggle('active');
         btn.setAttribute('aria-expanded', nav.classList.contains('open').toString());
       });
-      nav.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
           nav.classList.remove('open');
           btn.classList.remove('active');
           btn.setAttribute('aria-expanded', 'false');

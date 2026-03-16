@@ -10,6 +10,4 @@ interface Props {
 const { schemas } = Astro.props;
 ---
 
-{schemas.map((schema) => (
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-))}
+{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

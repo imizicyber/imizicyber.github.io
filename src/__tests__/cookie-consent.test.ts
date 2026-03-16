@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import {
   getConsentState,
   setConsentState,
@@ -74,46 +74,48 @@ describe('cookie-consent', () => {
 
     it('returns early if banner elements not found', () => {
       document.body.innerHTML = '';
-      // Should not throw
       initCookieBanner();
     });
 
     it('shows banner when no consent stored', () => {
       initCookieBanner();
-      const banner = document.getElementById('cookie-banner')!;
-      expect(banner.classList.contains('visible')).toBe(true);
+      const banner = document.getElementById('cookie-banner');
+      expect(banner).not.toBeNull();
+      expect(banner?.classList.contains('visible')).toBe(true);
     });
 
     it('hides banner and stores consent on accept click', () => {
       initCookieBanner();
-      const acceptBtn = document.getElementById('cookie-accept')!;
-      acceptBtn.click();
-      const banner = document.getElementById('cookie-banner')!;
-      expect(banner.classList.contains('visible')).toBe(false);
+      const acceptBtn = document.getElementById('cookie-accept');
+      expect(acceptBtn).not.toBeNull();
+      acceptBtn?.click();
+      const banner = document.getElementById('cookie-banner');
+      expect(banner?.classList.contains('visible')).toBe(false);
       expect(getConsentState()).toBe('accepted');
     });
 
     it('hides banner and stores rejection on reject click', () => {
       initCookieBanner();
-      const rejectBtn = document.getElementById('cookie-reject')!;
-      rejectBtn.click();
-      const banner = document.getElementById('cookie-banner')!;
-      expect(banner.classList.contains('visible')).toBe(false);
+      const rejectBtn = document.getElementById('cookie-reject');
+      expect(rejectBtn).not.toBeNull();
+      rejectBtn?.click();
+      const banner = document.getElementById('cookie-banner');
+      expect(banner?.classList.contains('visible')).toBe(false);
       expect(getConsentState()).toBe('rejected');
     });
 
     it('does not show banner if already accepted', () => {
       setConsentState(true);
       initCookieBanner();
-      const banner = document.getElementById('cookie-banner')!;
-      expect(banner.classList.contains('visible')).toBe(false);
+      const banner = document.getElementById('cookie-banner');
+      expect(banner?.classList.contains('visible')).toBe(false);
     });
 
     it('does not show banner if already rejected', () => {
       setConsentState(false);
       initCookieBanner();
-      const banner = document.getElementById('cookie-banner')!;
-      expect(banner.classList.contains('visible')).toBe(false);
+      const banner = document.getElementById('cookie-banner');
+      expect(banner?.classList.contains('visible')).toBe(false);
     });
   });
 });

@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { SITE, CONTACT } from '../../../data/site';
+import { SITE } from '../../../data/site';
 
 const schemas = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Security Awareness Training',
-    description: 'On-site and remote security awareness training, phishing simulations, and cybersecurity education for organisations in Rwanda and East Africa.',
+    description:
+      'On-site and remote security awareness training, phishing simulations, and cybersecurity education for organisations in Rwanda and East Africa.',
     provider: {
       '@type': 'Organization',
       name: 'imizicyber',
@@ -23,7 +24,12 @@ const schemas = [
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
       { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/#services` },
-      { '@type': 'ListItem', position: 3, name: 'Security Training', item: `${SITE.url}/services/security-training/` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Security Training',
+        item: `${SITE.url}/services/security-training/`,
+      },
     ],
   },
 ];
@@ -43,221 +49,556 @@ const schemas = [
   navVariant="inner"
   footerVariant="inner"
 >
-
-<main id="main">
-<div class="hero">
-<div class="w">
-  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/#services">Services</a><span class="sep">/</span><span>Security Training</span></div>
-  <span class="hero-badge">SECURITY AWARENESS TRAINING</span>
-  <h1>Your staff are your<br>strongest defence.</h1>
-  <p>The majority of breaches involve a non-malicious human element, whether through errors or social engineering (<a href="https://www.verizon.com/business/resources/reports/dbir/" target="_blank" rel="noopener noreferrer">Verizon DBIR</a>). We train your people to recognise attacks, respond correctly, and become your strongest line of defence.</p>
-  <a href="/#contact" class="btn">Request a training programme</a>
-  <a href="/tools/security-score/" class="btn btn-ghost">Assess your posture</a>
-</div>
-</div>
-
-<div class="section">
-<div class="wn">
-  <div class="stat-row">
-    <div class="stat-card">
-      <span class="stat-num">30%</span>
-      <span class="stat-label">of breaches linked to third-party involvement (<a href="https://www.verizon.com/business/resources/reports/dbir/" target="_blank" rel="noopener noreferrer" style="color:inherit">Verizon DBIR 2025</a>)</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">44%</span>
-      <span class="stat-label">of breaches analysed involved ransomware (<a href="https://www.verizon.com/business/resources/reports/dbir/" target="_blank" rel="noopener noreferrer" style="color:inherit">Verizon DBIR 2025</a>)</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">1 in 3</span>
-      <span class="stat-label">untrained staff typically click simulated phishing emails (industry average)</span>
-    </div>
-  </div>
-
-  <h2>Why security training in East Africa is different</h2>
-  <p>Generic security awareness training fails because it uses examples from Western contexts: phishing emails impersonating PayPal, phishing sites pretending to be UK banks, scenarios that your staff in Kigali will not recognise as relevant.</p>
-
-  <p>We design training specifically for East African organisations:</p>
-  <ul>
-    <li>Examples use local brands: BNR, RDB, banks operating in Rwanda, MTN, Airtel</li>
-    <li>Attack scenarios reflect actual threats targeting East African institutions, not US or European case studies</li>
-    <li>Phishing simulations use locally-relevant pretexts (BNR compliance notifications, RRA tax alerts, local bank security notices)</li>
-    <li>Social engineering scenarios include mobile money agent fraud, SIM swap pretexts, and vishing using local phone conventions</li>
-    <li>Available in English; French and Kinyarwanda versions available on request</li>
-  </ul>
-</div>
-</div>
-
-<div class="section">
-<div class="w">
-  <h2 style="text-align:center;margin-bottom:8px">Training modules</h2>
-  <p style="text-align:center;color:var(--txt2);margin-bottom:0">Delivered as standalone sessions or as a full annual programme</p>
-  <div class="modules-grid">
-    <div class="module-card">
-      <div class="module-num">MODULE 01</div>
-      <h3>Phishing & Email Security</h3>
-      <p>Recognising phishing emails, spear phishing, BEC attacks. How to verify sender identity. What to do when you suspect an email is malicious. Includes hands-on exercises with real examples.</p>
-    </div>
-    <div class="module-card">
-      <div class="module-num">MODULE 02</div>
-      <h3>Password Hygiene & MFA</h3>
-      <p>Why password reuse is catastrophic. How to use a password manager. Setting up MFA correctly. What happens when credentials are stolen, and how to tell.</p>
-    </div>
-    <div class="module-card">
-      <div class="module-num">MODULE 03</div>
-      <h3>Social Engineering & Vishing</h3>
-      <p>Recognising manipulation techniques. How to verify caller identity. Refusing unusual requests from apparent authority figures. Reporting suspicious contacts.</p>
-    </div>
-    <div class="module-card">
-      <div class="module-num">MODULE 04</div>
-      <h3>Incident Reporting</h3>
-      <p>What counts as a security incident. How and where to report it. Why fast reporting is critical. No-blame culture and why hiding incidents makes things worse.</p>
-    </div>
-    <div class="module-card">
-      <div class="module-num">MODULE 05</div>
-      <h3>Mobile & Remote Work Security</h3>
-      <p>Safe use of public WiFi. Mobile device security. Secure remote access via VPN. BYOD risks. What not to do with a bank laptop in a cafe.</p>
-    </div>
-    <div class="module-card">
-      <div class="module-num">MODULE 06</div>
-      <h3>Data Protection & Compliance</h3>
-      <p>What data you handle, how to classify it, and how to protect it. BNR data handling requirements. Rwanda data protection law. Practical clean desk and clear screen habits.</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="section">
-<div class="wn">
-  <h2>How a training programme works</h2>
-  <div class="process-steps">
-    <div class="step">
-      <span class="step-num">1</span>
-      <div class="step-content">
-        <h3>Baseline phishing simulation</h3>
-        <p>We run a simulated phishing campaign before any training to establish your current click and report rates. This gives us a baseline and identifies which departments need the most attention.</p>
+  <main id="main">
+    <div class="hero">
+      <div class="w">
+        <div class="breadcrumb">
+          <a href="/">Home</a><span class="sep">/</span><a href="/#services">Services</a><span
+            class="sep">/</span
+          ><span>Security Training</span>
+        </div>
+        <span class="hero-badge">SECURITY AWARENESS TRAINING</span>
+        <h1>Your staff are your<br />strongest defence.</h1>
+        <p>
+          The majority of breaches involve a non-malicious human element, whether through errors or
+          social engineering (<a
+            href="https://www.verizon.com/business/resources/reports/dbir/"
+            target="_blank"
+            rel="noopener noreferrer">Verizon DBIR</a
+          >). We train your people to recognise attacks, respond correctly, and become your
+          strongest line of defence.
+        </p>
+        <a href="/#contact" class="btn">Request a training programme</a>
+        <a href="/tools/security-score/" class="btn btn-ghost">Assess your posture</a>
       </div>
     </div>
-    <div class="step">
-      <span class="step-num">2</span>
-      <div class="step-content">
-        <h3>Training delivery</h3>
-        <p>On-site sessions (half-day or full-day) or live-online sessions. We tailor content to your industry, your typical threat scenarios, and your staff roles. Management briefings available separately.</p>
+
+    <div class="section">
+      <div class="wn">
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-num">30%</span>
+            <span class="stat-label"
+              >of breaches linked to third-party involvement (<a
+                href="https://www.verizon.com/business/resources/reports/dbir/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color:inherit">Verizon DBIR 2025</a
+              >)</span
+            >
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">44%</span>
+            <span class="stat-label"
+              >of breaches analysed involved ransomware (<a
+                href="https://www.verizon.com/business/resources/reports/dbir/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color:inherit">Verizon DBIR 2025</a
+              >)</span
+            >
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">1 in 3</span>
+            <span class="stat-label"
+              >untrained staff typically click simulated phishing emails (industry average)</span
+            >
+          </div>
+        </div>
+
+        <h2>Why security training in East Africa is different</h2>
+        <p>
+          Generic security awareness training fails because it uses examples from Western contexts:
+          phishing emails impersonating PayPal, phishing sites pretending to be UK banks, scenarios
+          that your staff in Kigali will not recognise as relevant.
+        </p>
+
+        <p>We design training specifically for East African organisations:</p>
+        <ul>
+          <li>Examples use local brands: BNR, RDB, banks operating in Rwanda, MTN, Airtel</li>
+          <li>
+            Attack scenarios reflect actual threats targeting East African institutions, not US or
+            European case studies
+          </li>
+          <li>
+            Phishing simulations use locally-relevant pretexts (BNR compliance notifications, RRA
+            tax alerts, local bank security notices)
+          </li>
+          <li>
+            Social engineering scenarios include mobile money agent fraud, SIM swap pretexts, and
+            vishing using local phone conventions
+          </li>
+          <li>Available in English; French and Kinyarwanda versions available on request</li>
+        </ul>
       </div>
     </div>
-    <div class="step">
-      <span class="step-num">3</span>
-      <div class="step-content">
-        <h3>Follow-up phishing simulation</h3>
-        <p>4-6 weeks after training, we run a second simulation with a different scenario. Comparing click rates and report rates measures training effectiveness.</p>
+
+    <div class="section">
+      <div class="w">
+        <h2 style="text-align:center;margin-bottom:8px">Training modules</h2>
+        <p style="text-align:center;color:var(--txt2);margin-bottom:0">
+          Delivered as standalone sessions or as a full annual programme
+        </p>
+        <div class="modules-grid">
+          <div class="module-card">
+            <div class="module-num">MODULE 01</div>
+            <h3>Phishing & Email Security</h3>
+            <p>
+              Recognising phishing emails, spear phishing, BEC attacks. How to verify sender
+              identity. What to do when you suspect an email is malicious. Includes hands-on
+              exercises with real examples.
+            </p>
+          </div>
+          <div class="module-card">
+            <div class="module-num">MODULE 02</div>
+            <h3>Password Hygiene & MFA</h3>
+            <p>
+              Why password reuse is catastrophic. How to use a password manager. Setting up MFA
+              correctly. What happens when credentials are stolen, and how to tell.
+            </p>
+          </div>
+          <div class="module-card">
+            <div class="module-num">MODULE 03</div>
+            <h3>Social Engineering & Vishing</h3>
+            <p>
+              Recognising manipulation techniques. How to verify caller identity. Refusing unusual
+              requests from apparent authority figures. Reporting suspicious contacts.
+            </p>
+          </div>
+          <div class="module-card">
+            <div class="module-num">MODULE 04</div>
+            <h3>Incident Reporting</h3>
+            <p>
+              What counts as a security incident. How and where to report it. Why fast reporting is
+              critical. No-blame culture and why hiding incidents makes things worse.
+            </p>
+          </div>
+          <div class="module-card">
+            <div class="module-num">MODULE 05</div>
+            <h3>Mobile & Remote Work Security</h3>
+            <p>
+              Safe use of public WiFi. Mobile device security. Secure remote access via VPN. BYOD
+              risks. What not to do with a bank laptop in a cafe.
+            </p>
+          </div>
+          <div class="module-card">
+            <div class="module-num">MODULE 06</div>
+            <h3>Data Protection & Compliance</h3>
+            <p>
+              What data you handle, how to classify it, and how to protect it. BNR data handling
+              requirements. Rwanda data protection law. Practical clean desk and clear screen
+              habits.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <span class="step-num">4</span>
-      <div class="step-content">
-        <h3>Completion certificates & reporting</h3>
-        <p>All attendees receive a completion certificate. You receive a programme report with participation rates, simulation results before and after, and recommendations for ongoing training cadence.</p>
+
+    <div class="section">
+      <div class="wn">
+        <h2>How a training programme works</h2>
+        <div class="process-steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <h3>Baseline phishing simulation</h3>
+              <p>
+                We run a simulated phishing campaign before any training to establish your current
+                click and report rates. This gives us a baseline and identifies which departments
+                need the most attention.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <h3>Training delivery</h3>
+              <p>
+                On-site sessions (half-day or full-day) or live-online sessions. We tailor content
+                to your industry, your typical threat scenarios, and your staff roles. Management
+                briefings available separately.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <h3>Follow-up phishing simulation</h3>
+              <p>
+                4-6 weeks after training, we run a second simulation with a different scenario.
+                Comparing click rates and report rates measures training effectiveness.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <h3>Completion certificates & reporting</h3>
+              <p>
+                All attendees receive a completion certificate. You receive a programme report with
+                participation rates, simulation results before and after, and recommendations for
+                ongoing training cadence.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">5</span>
+            <div class="step-content">
+              <h3>Quarterly refresh (optional)</h3>
+              <p>
+                Security awareness fades. Ongoing quarterly micro-sessions (30-45 minutes) and
+                phishing simulations maintain high awareness levels throughout the year.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>BNR compliance:</strong> The <a
+            href="https://www.bnr.rw/"
+            target="_blank"
+            rel="noopener noreferrer">National Bank of Rwanda</a
+          > requires all supervised institutions to provide regular security awareness training to all
+          staff. Our programme satisfies this requirement and provides the documentation evidence your
+          compliance team needs: participation records, training content overview, and assessment results.
+        </div>
+
+        <h2>Delivery formats</h2>
+        <ul>
+          <li>
+            <strong>On-site, Kigali:</strong> Full or half-day sessions at your offices. Best for initial
+            training and management briefings.
+          </li>
+          <li>
+            <strong>On-site, regional:</strong> Available across East Africa with advance notice.
+          </li>
+          <li>
+            <strong>Live-online:</strong> Interactive sessions via video conference. Suitable for remote
+            or distributed teams.
+          </li>
+          <li>
+            <strong>Blended:</strong> On-site for core modules, online for quarterly refreshers.
+          </li>
+        </ul>
+
+        <p>
+          For the full picture of social engineering threats and why training matters, see our
+          article: <a href="/blog/social-engineering-east-africa-banks/"
+            >social engineering threats facing East African financial institutions</a
+          >. For information on our other services: <a href="/services/penetration-testing/"
+            >penetration testing</a
+          > and <a href="/services/managed-security/">managed security</a>.
+        </p>
       </div>
     </div>
-    <div class="step">
-      <span class="step-num">5</span>
-      <div class="step-content">
-        <h3>Quarterly refresh (optional)</h3>
-        <p>Security awareness fades. Ongoing quarterly micro-sessions (30-45 minutes) and phishing simulations maintain high awareness levels throughout the year.</p>
+
+    <div class="wn">
+      <div class="cta-section">
+        <h2>Request a training programme</h2>
+        <p>
+          Tell us your team size, location, and training objectives. We will design a programme that
+          fits your needs and budget.
+        </p>
+        <a href="/#contact" class="btn">Request a training programme</a>
+        <a href="/resources/" class="btn btn-ghost">Download free resources</a>
       </div>
     </div>
-  </div>
-
-  <div class="callout">
-    <strong>BNR compliance:</strong> The <a href="https://www.bnr.rw/" target="_blank" rel="noopener noreferrer">National Bank of Rwanda</a> requires all supervised institutions to provide regular security awareness training to all staff. Our programme satisfies this requirement and provides the documentation evidence your compliance team needs: participation records, training content overview, and assessment results.
-  </div>
-
-  <h2>Delivery formats</h2>
-  <ul>
-    <li><strong>On-site, Kigali:</strong> Full or half-day sessions at your offices. Best for initial training and management briefings.</li>
-    <li><strong>On-site, regional:</strong> Available across East Africa with advance notice.</li>
-    <li><strong>Live-online:</strong> Interactive sessions via video conference. Suitable for remote or distributed teams.</li>
-    <li><strong>Blended:</strong> On-site for core modules, online for quarterly refreshers.</li>
-  </ul>
-
-  <p>For the full picture of social engineering threats and why training matters, see our article: <a href="/blog/social-engineering-east-africa-banks/">social engineering threats facing East African financial institutions</a>. For information on our other services: <a href="/services/penetration-testing/">penetration testing</a> and <a href="/services/managed-security/">managed security</a>.</p>
-</div>
-</div>
-
-<div class="wn">
-<div class="cta-section">
-  <h2>Request a training programme</h2>
-  <p>Tell us your team size, location, and training objectives. We will design a programme that fits your needs and budget.</p>
-  <a href="/#contact" class="btn">Request a training programme</a>
-  <a href="/resources/" class="btn btn-ghost">Download free resources</a>
-</div>
-</div>
-</main>
-
+  </main>
 </BaseLayout>
 
 <style>
-  .w{max-width:860px;margin:0 auto;padding:0 24px}
-  .wn{max-width:680px;margin:0 auto;padding:0 24px}
+  .w {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .wn {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-  .hero{padding:120px 0 60px;text-align:center}
-  .hero-badge{display:inline-block;font-family:var(--mono);font-size:.64rem;color:var(--acc);letter-spacing:.1em;margin-bottom:16px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:5px 14px}
-  .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--white);margin-bottom:20px}
-  .breadcrumb{font-family:var(--mono);font-size:.64rem;color:var(--txt3);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
-  .breadcrumb a{color:var(--txt3);text-decoration:none;transition:color .2s}
-  .breadcrumb a:hover{color:var(--acc)}
-  .breadcrumb .sep{color:var(--dim)}
-  .hero p{font-size:1.08rem;color:var(--txt2);max-width:540px;margin:0 auto 32px;line-height:1.75}
-  .hero a{color:#fff}
-  .btn{display:inline-block;padding:13px 28px;border-radius:8px;font-size:.9rem;font-weight:700;text-decoration:none;background:var(--accdark);color:#fff;transition:all .2s}
-  .btn:hover{background:var(--acc2)}
-  .btn-ghost{background:transparent;border:1.5px solid var(--dim);color:var(--txt2);margin-left:12px}
-  .btn-ghost:hover{border-color:var(--acc);color:var(--acc);background:transparent}
-  .section{padding:60px 0}
-  h2{font-size:1.7rem;font-weight:800;letter-spacing:-1px;color:var(--white);margin-bottom:12px}
-  h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px}
-  p{margin-bottom:14px;color:var(--txt);line-height:1.8}
-  strong{color:var(--white)}
-  a{color:var(--acc)}
-  ul,ol{margin:0 0 14px 20px}
-  li{margin-bottom:6px;color:var(--txt);line-height:1.7}
-  .modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:32px 0}
-  .module-card{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px}
-  .module-num{font-family:var(--mono);font-size:.7rem;color:var(--acc);letter-spacing:.08em;margin-bottom:10px}
-  .module-card h3{font-size:.95rem;margin-bottom:6px}
-  .module-card p{font-size:.84rem;color:var(--txt2);margin:0}
-  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:32px 0}
-  .stat-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:20px;text-align:center}
-  .stat-num{font-size:2rem;font-weight:800;color:var(--acc);line-height:1.1;display:block;margin-bottom:6px}
-  .stat-label{font-size:.76rem;color:var(--txt2)}
-  .callout{background:var(--bg2);border-left:3px solid var(--acc);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-size:.88rem}
-  .process-steps{counter-reset:steps;margin:24px 0}
-  .step{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
-  .step-num{background:rgba(52,211,153,.15);border:1.5px solid rgba(52,211,153,.3);color:var(--acc);font-weight:800;font-size:.8rem;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-  .step-content h3{margin-bottom:4px;font-size:.95rem}
-  .step-content p{font-size:.86rem;color:var(--txt2);margin:0}
-  .cta-section{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:48px 40px;margin:60px 0;text-align:center}
-  .cta-section h2{margin-bottom:12px}
-  .cta-section p{color:var(--txt2);max-width:480px;margin:0 auto 28px}
+  .hero {
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    color: var(--acc);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 20px;
+    padding: 5px 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .breadcrumb {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    color: var(--txt3);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--txt3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover {
+    color: var(--acc);
+  }
+  .breadcrumb .sep {
+    color: var(--dim);
+  }
+  .hero p {
+    font-size: 1.08rem;
+    color: var(--txt2);
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.75;
+  }
+  .hero a {
+    color: #fff;
+  }
+  .btn {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--accdark);
+    color: #fff;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: var(--acc2);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--dim);
+    color: var(--txt2);
+    margin-left: 12px;
+  }
+  .btn-ghost:hover {
+    border-color: var(--acc);
+    color: var(--acc);
+    background: transparent;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  p {
+    margin-bottom: 14px;
+    color: var(--txt);
+    line-height: 1.8;
+  }
+  strong {
+    color: var(--white);
+  }
+  a {
+    color: var(--acc);
+  }
+  ul,
+  ol {
+    margin: 0 0 14px 20px;
+  }
+  li {
+    margin-bottom: 6px;
+    color: var(--txt);
+    line-height: 1.7;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .module-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .module-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .module-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .module-card p {
+    font-size: 0.84rem;
+    color: var(--txt2);
+    margin: 0;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--acc);
+    line-height: 1.1;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 0.76rem;
+    color: var(--txt2);
+  }
+  .callout {
+    background: var(--bg2);
+    border-left: 3px solid var(--acc);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.88rem;
+  }
+  .process-steps {
+    counter-reset: steps;
+    margin: 24px 0;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: rgba(52, 211, 153, 0.15);
+    border: 1.5px solid rgba(52, 211, 153, 0.3);
+    color: var(--acc);
+    font-weight: 800;
+    font-size: 0.8rem;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h3 {
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+  }
+  .step-content p {
+    font-size: 0.86rem;
+    color: var(--txt2);
+    margin: 0;
+  }
+  .cta-section {
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 48px 40px;
+    margin: 60px 0;
+    text-align: center;
+  }
+  .cta-section h2 {
+    margin-bottom: 12px;
+  }
+  .cta-section p {
+    color: var(--txt2);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
 
   /* LIGHT THEME */
-  [data-theme="light"] .module-card,[data-theme="light"] .stat-card,[data-theme="light"] .callout,[data-theme="light"] .cta-section{border-color:rgba(0,0,0,.1)}
-  [data-theme="light"] .btn,[data-theme="light"] .btn:hover{color:#fff}
-  [data-theme="light"] .btn.btn-ghost{background:transparent;border-color:#4a5568;color:#2d3748}
-  [data-theme="light"] .btn.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  [data-theme='light'] .module-card,
+  [data-theme='light'] .stat-card,
+  [data-theme='light'] .callout,
+  [data-theme='light'] .cta-section {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  [data-theme='light'] .btn,
+  [data-theme='light'] .btn:hover {
+    color: #fff;
+  }
+  [data-theme='light'] .btn.btn-ghost {
+    background: transparent;
+    border-color: #4a5568;
+    color: #2d3748;
+  }
+  [data-theme='light'] .btn.btn-ghost:hover {
+    border-color: var(--acc);
+    color: var(--acc);
+  }
 
   /* RESPONSIVE - MOBILE */
-  @media(max-width:768px){
-    .hero{padding:96px 0 48px}
-    .btn-ghost{margin-left:0;margin-top:8px}
-    .cta-section{padding:36px 24px}
+  @media (max-width: 768px) {
+    .hero {
+      padding: 96px 0 48px;
+    }
+    .btn-ghost {
+      margin-left: 0;
+      margin-top: 8px;
+    }
+    .cta-section {
+      padding: 36px 24px;
+    }
   }
 
   /* RESPONSIVE - SMALL PHONE */
-  @media(max-width:480px){
-    .w,.wn{padding:0 16px}
-    .hero{padding:80px 0 36px}
-    .hero p{font-size:.94rem}
-    .section{padding:40px 0}
-    .module-card{padding:20px}
+  @media (max-width: 480px) {
+    .w,
+    .wn {
+      padding: 0 16px;
+    }
+    .hero {
+      padding: 80px 0 36px;
+    }
+    .hero p {
+      font-size: 0.94rem;
+    }
+    .section {
+      padding: 40px 0;
+    }
+    .module-card {
+      padding: 20px;
+    }
   }
 </style>

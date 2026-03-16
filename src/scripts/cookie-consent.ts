@@ -53,9 +53,10 @@ export function initCookieBanner(): void {
 
   if (!banner || !acceptBtn || !rejectBtn) return;
 
+  const bannerEl = banner;
   function handleConsent(accepted: boolean): void {
     setConsentState(accepted);
-    banner!.classList.remove('visible');
+    bannerEl.classList.remove('visible');
     if (accepted) loadGA();
   }
 

@@ -7,7 +7,8 @@ const schemas = [
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Free Cybersecurity Resources for East African Organisations',
-    description: "BNR compliance checklist, penetration testing buyer's guide, and security awareness training templates for banks and fintechs.",
+    description:
+      "BNR compliance checklist, penetration testing buyer's guide, and security awareness training templates for banks and fintechs.",
     url: `${SITE.url}/resources/`,
     publisher: {
       '@type': 'Organization',
@@ -38,385 +39,886 @@ const schemas = [
   schemas={schemas}
   cspExtra="https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net"
 >
-
-<main id="main">
-<div class="w">
-
-<div class="page-header">
-  <div class="page-badge">FREE RESOURCES</div>
-  <h1>Practical security resources for East African organisations</h1>
-  <p>Download free guides, checklists, and templates to strengthen your cybersecurity programme. Enter your work email to access.</p>
-</div>
-
-<div class="resources-grid">
-
-  <!-- Resource 1: BNR Checklist -->
-  <div class="resource-card">
-    <div class="res-header">
-      <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-      <div><div class="res-type">CHECKLIST</div><div class="res-title">BNR Cybersecurity Compliance Checklist</div></div>
-    </div>
-    <div class="res-body">
-      <p>A practical checklist of BNR cybersecurity requirements for supervised financial institutions in Rwanda. Map your current controls against what BNR expects and identify gaps before an inspection.</p>
-      <div class="res-meta">
-        <span class="res-tag">BNR</span>
-        <span class="res-tag">COMPLIANCE</span>
-        <span class="res-tag">BANKS</span>
-        <span class="res-tag">FINTECH</span>
+  <main id="main">
+    <div class="w">
+      <div class="page-header">
+        <div class="page-badge">FREE RESOURCES</div>
+        <h1>Practical security resources for East African organisations</h1>
+        <p>
+          Download free guides, checklists, and templates to strengthen your cybersecurity
+          programme. Enter your work email to access.
+        </p>
       </div>
-      <button class="btn-download" onclick="openForm('r1')">Download free checklist</button>
-    </div>
-    <div class="res-form-wrap" id="form-r1">
-      <form class="res-form" onsubmit="submitResource(event,'r1','bnr-checklist')">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label for="r1-name">Name</label><input type="text" id="r1-name" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label for="r1-email">Work email</label><input type="email" id="r1-email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label for="r1-org">Organisation</label><input type="text" id="r1-org" name="organisation" placeholder="Bank / company name" required></div>
-        <input type="hidden" name="resource" value="bnr-checklist">
-        <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r1">Download checklist (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r1">Your PDF is downloading now. Check your downloads folder.</div>
-        <div class="msg-err" id="err-r1"></div>
-      </form>
-    </div>
-    <div class="content-reveal" id="content-r1">
-      <h2>BNR Cybersecurity Compliance Checklist</h2>
-      <p><em>For banks, MFIs, insurance companies, payment service providers and mobile money operators supervised by the National Bank of Rwanda.</em></p>
 
-      <h3>1. Governance &amp; Policy</h3>
-      <ul>
-        <li>Board-approved information security policy in place and reviewed annually</li>
-        <li>Designated information security officer or equivalent role</li>
-        <li>Board receives regular cybersecurity risk reports (at minimum quarterly)</li>
-        <li>IT risk register maintained and reviewed</li>
-        <li>Security roles and responsibilities documented for all staff</li>
-      </ul>
+      <div class="resources-grid">
+        <!-- Resource 1: BNR Checklist -->
+        <div class="resource-card">
+          <div class="res-header">
+            <div class="res-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M9 11l3 3L22 4"></path><path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg
+              >
+            </div>
+            <div>
+              <div class="res-type">CHECKLIST</div><div class="res-title">
+                BNR Cybersecurity Compliance Checklist
+              </div>
+            </div>
+          </div>
+          <div class="res-body">
+            <p>
+              A practical checklist of BNR cybersecurity requirements for supervised financial
+              institutions in Rwanda. Map your current controls against what BNR expects and
+              identify gaps before an inspection.
+            </p>
+            <div class="res-meta">
+              <span class="res-tag">BNR</span>
+              <span class="res-tag">COMPLIANCE</span>
+              <span class="res-tag">BANKS</span>
+              <span class="res-tag">FINTECH</span>
+            </div>
+            <button class="btn-download" onclick="openForm('r1')">Download free checklist</button>
+          </div>
+          <div class="res-form-wrap" id="form-r1">
+            <form class="res-form" onsubmit="submitResource(event,'r1','bnr-checklist')">
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <div class="form-group">
+                <label for="r1-name">Name</label><input
+                  type="text"
+                  id="r1-name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r1-email">Work email</label><input
+                  type="email"
+                  id="r1-email"
+                  name="email"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r1-org">Organisation</label><input
+                  type="text"
+                  id="r1-org"
+                  name="organisation"
+                  placeholder="Bank / company name"
+                  required
+                />
+              </div>
+              <input type="hidden" name="resource" value="bnr-checklist" />
+              <input type="hidden" name="tool" value="resources" />
+              <button type="submit" class="btn-submit-res" id="sub-r1"
+                >Download checklist (PDF) &darr;</button
+              >
+              <div class="msg-ok" id="ok-r1">
+                Your PDF is downloading now. Check your downloads folder.
+              </div>
+              <div class="msg-err" id="err-r1"></div>
+            </form>
+          </div>
+          <div class="content-reveal" id="content-r1">
+            <h2>BNR Cybersecurity Compliance Checklist</h2>
+            <p>
+              <em
+                >For banks, MFIs, insurance companies, payment service providers and mobile money
+                operators supervised by the National Bank of Rwanda.</em
+              >
+            </p>
 
-      <h3>2. Risk Assessment</h3>
-      <ul>
-        <li>Annual information security risk assessment conducted</li>
-        <li>Risk assessment covers all critical systems and business processes</li>
-        <li>Risk treatment plan with assigned owners and timelines</li>
-        <li>Risk assessment methodology documented</li>
-      </ul>
+            <h3>1. Governance &amp; Policy</h3>
+            <ul>
+              <li>Board-approved information security policy in place and reviewed annually</li>
+              <li>Designated information security officer or equivalent role</li>
+              <li>Board receives regular cybersecurity risk reports (at minimum quarterly)</li>
+              <li>IT risk register maintained and reviewed</li>
+              <li>Security roles and responsibilities documented for all staff</li>
+            </ul>
 
-      <h3>3. Vulnerability Assessment &amp; Penetration Testing (VAPT)</h3>
-      <ul>
-        <li>Annual VAPT conducted by a qualified external provider</li>
-        <li>VAPT covers all internet-facing systems (web apps, APIs, mobile, USSD)</li>
-        <li>VAPT conducted by OSCP-certified or equivalent tester</li>
-        <li>Formal written report delivered with severity ratings and remediation guidance</li>
-        <li>Critical and high findings remediated and re-tested</li>
-        <li>VAPT conducted after significant system changes</li>
-      </ul>
+            <h3>2. Risk Assessment</h3>
+            <ul>
+              <li>Annual information security risk assessment conducted</li>
+              <li>Risk assessment covers all critical systems and business processes</li>
+              <li>Risk treatment plan with assigned owners and timelines</li>
+              <li>Risk assessment methodology documented</li>
+            </ul>
 
-      <h3>4. Access Management</h3>
-      <ul>
-        <li>All accounts are individual (no shared credentials)</li>
-        <li>Principle of least privilege applied to all accounts</li>
-        <li>Multi-factor authentication enabled for all staff on critical systems</li>
-        <li>Privileged account management policy and monitoring</li>
-        <li>Access review conducted at least quarterly</li>
-        <li>Terminated staff accounts disabled within 24 hours</li>
-      </ul>
+            <h3>3. Vulnerability Assessment &amp; Penetration Testing (VAPT)</h3>
+            <ul>
+              <li>Annual VAPT conducted by a qualified external provider</li>
+              <li>VAPT covers all internet-facing systems (web apps, APIs, mobile, USSD)</li>
+              <li>VAPT conducted by OSCP-certified or equivalent tester</li>
+              <li>
+                Formal written report delivered with severity ratings and remediation guidance
+              </li>
+              <li>Critical and high findings remediated and re-tested</li>
+              <li>VAPT conducted after significant system changes</li>
+            </ul>
 
-      <h3>5. Incident Response</h3>
-      <ul>
-        <li>Documented incident response plan (IRP)</li>
-        <li>IRP tested at least annually (tabletop exercise)</li>
-        <li>Designated incident response team with clear roles</li>
-        <li>BNR incident reporting procedure known and documented</li>
-        <li>Incident log maintained for all security events</li>
-        <li>Post-incident review process in place</li>
-      </ul>
+            <h3>4. Access Management</h3>
+            <ul>
+              <li>All accounts are individual (no shared credentials)</li>
+              <li>Principle of least privilege applied to all accounts</li>
+              <li>Multi-factor authentication enabled for all staff on critical systems</li>
+              <li>Privileged account management policy and monitoring</li>
+              <li>Access review conducted at least quarterly</li>
+              <li>Terminated staff accounts disabled within 24 hours</li>
+            </ul>
 
-      <h3>6. Security Awareness Training</h3>
-      <ul>
-        <li>Security awareness training provided to all staff annually</li>
-        <li>Training covers phishing, social engineering, password security, incident reporting</li>
-        <li>Training completion records maintained</li>
-        <li>Phishing simulation conducted at least annually</li>
-        <li>Board and senior management receive security awareness briefing</li>
-      </ul>
+            <h3>5. Incident Response</h3>
+            <ul>
+              <li>Documented incident response plan (IRP)</li>
+              <li>IRP tested at least annually (tabletop exercise)</li>
+              <li>Designated incident response team with clear roles</li>
+              <li>BNR incident reporting procedure known and documented</li>
+              <li>Incident log maintained for all security events</li>
+              <li>Post-incident review process in place</li>
+            </ul>
 
-      <h3>7. Data Protection &amp; Encryption</h3>
-      <ul>
-        <li>Customer and sensitive data classified</li>
-        <li>All data encrypted in transit (TLS 1.2 minimum)</li>
-        <li>Sensitive data encrypted at rest</li>
-        <li>Data retention and deletion policy</li>
-        <li>Data breach notification procedure documented</li>
-      </ul>
+            <h3>6. Security Awareness Training</h3>
+            <ul>
+              <li>Security awareness training provided to all staff annually</li>
+              <li>
+                Training covers phishing, social engineering, password security, incident reporting
+              </li>
+              <li>Training completion records maintained</li>
+              <li>Phishing simulation conducted at least annually</li>
+              <li>Board and senior management receive security awareness briefing</li>
+            </ul>
 
-      <h3>8. Third-Party Risk Management</h3>
-      <ul>
-        <li>Security due diligence conducted before engaging new vendors</li>
-        <li>Security clauses in all contracts with third parties accessing your systems or data</li>
-        <li>Annual review of critical third-party security posture</li>
-        <li>Cloud provider security assessment and data location documented</li>
-      </ul>
+            <h3>7. Data Protection &amp; Encryption</h3>
+            <ul>
+              <li>Customer and sensitive data classified</li>
+              <li>All data encrypted in transit (TLS 1.2 minimum)</li>
+              <li>Sensitive data encrypted at rest</li>
+              <li>Data retention and deletion policy</li>
+              <li>Data breach notification procedure documented</li>
+            </ul>
 
-      <h3>9. Vulnerability &amp; Patch Management</h3>
-      <ul>
-        <li>Asset inventory of all hardware and software maintained</li>
-        <li>Monthly vulnerability scanning of all internet-facing assets</li>
-        <li>Critical patches applied within 72 hours; high within 7 days; medium within 30 days</li>
-        <li>End-of-life software identified and remediation plan in place</li>
-      </ul>
+            <h3>8. Third-Party Risk Management</h3>
+            <ul>
+              <li>Security due diligence conducted before engaging new vendors</li>
+              <li>
+                Security clauses in all contracts with third parties accessing your systems or data
+              </li>
+              <li>Annual review of critical third-party security posture</li>
+              <li>Cloud provider security assessment and data location documented</li>
+            </ul>
 
-      <h3>10. Business Continuity &amp; Disaster Recovery</h3>
-      <ul>
-        <li>Business continuity plan (BCP) documented and tested annually</li>
-        <li>Data backups taken regularly and restoration tested</li>
-        <li>Recovery Time Objective (RTO) and Recovery Point Objective (RPO) defined</li>
-        <li>Alternative processing arrangements for critical systems documented</li>
-      </ul>
+            <h3>9. Vulnerability &amp; Patch Management</h3>
+            <ul>
+              <li>Asset inventory of all hardware and software maintained</li>
+              <li>Monthly vulnerability scanning of all internet-facing assets</li>
+              <li>
+                Critical patches applied within 72 hours; high within 7 days; medium within 30 days
+              </li>
+              <li>End-of-life software identified and remediation plan in place</li>
+            </ul>
 
-      <div class="print-hint">To save this checklist: in your browser, go to File > Print > Save as PDF. Or right-click and select Print.</div>
-    </div>
-  </div>
+            <h3>10. Business Continuity &amp; Disaster Recovery</h3>
+            <ul>
+              <li>Business continuity plan (BCP) documented and tested annually</li>
+              <li>Data backups taken regularly and restoration tested</li>
+              <li>Recovery Time Objective (RTO) and Recovery Point Objective (RPO) defined</li>
+              <li>Alternative processing arrangements for critical systems documented</li>
+            </ul>
 
-  <!-- Resource 2: Pentest Buyer's Guide -->
-  <div class="resource-card">
-    <div class="res-header">
-      <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-      <div><div class="res-type">GUIDE</div><div class="res-title">Penetration Testing Buyer's Guide for East Africa</div></div>
-    </div>
-    <div class="res-body">
-      <p>Everything you need to know before commissioning a penetration test in Rwanda or East Africa. What to look for in a provider, what questions to ask, red flags to avoid, and what the final report should contain.</p>
-      <div class="res-meta">
-        <span class="res-tag">PENTEST</span>
-        <span class="res-tag">PROCUREMENT</span>
-        <span class="res-tag">RWANDA</span>
+            <div class="print-hint">
+              To save this checklist: in your browser, go to File &gt; Print &gt; Save as PDF. Or
+              right-click and select Print.
+            </div>
+          </div>
+        </div>
+
+        <!-- Resource 2: Pentest Buyer's Guide -->
+        <div class="resource-card">
+          <div class="res-header">
+            <div class="res-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path><polyline points="14 2 14 8 20 8"></polyline><line
+                  x1="16"
+                  y1="13"
+                  x2="8"
+                  y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline
+                  points="10 9 9 9 8 9"></polyline></svg
+              >
+            </div>
+            <div>
+              <div class="res-type">GUIDE</div><div class="res-title">
+                Penetration Testing Buyer's Guide for East Africa
+              </div>
+            </div>
+          </div>
+          <div class="res-body">
+            <p>
+              Everything you need to know before commissioning a penetration test in Rwanda or East
+              Africa. What to look for in a provider, what questions to ask, red flags to avoid, and
+              what the final report should contain.
+            </p>
+            <div class="res-meta">
+              <span class="res-tag">PENTEST</span>
+              <span class="res-tag">PROCUREMENT</span>
+              <span class="res-tag">RWANDA</span>
+            </div>
+            <button class="btn-download" onclick="openForm('r2')">Download free guide</button>
+          </div>
+          <div class="res-form-wrap" id="form-r2">
+            <form class="res-form" onsubmit="submitResource(event,'r2','pentest-buyers-guide')">
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <div class="form-group">
+                <label for="r2-name">Name</label><input
+                  type="text"
+                  id="r2-name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r2-email">Work email</label><input
+                  type="email"
+                  id="r2-email"
+                  name="email"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r2-org">Organisation</label><input
+                  type="text"
+                  id="r2-org"
+                  name="organisation"
+                  placeholder="Bank / company name"
+                  required
+                />
+              </div>
+              <input type="hidden" name="resource" value="pentest-buyers-guide" />
+              <input type="hidden" name="tool" value="resources" />
+              <button type="submit" class="btn-submit-res" id="sub-r2"
+                >Download guide (PDF) &darr;</button
+              >
+              <div class="msg-ok" id="ok-r2">
+                Your PDF is downloading now. Check your downloads folder.
+              </div>
+              <div class="msg-err" id="err-r2"></div>
+            </form>
+          </div>
+          <div class="content-reveal" id="content-r2">
+            <h2>Penetration Testing Buyer's Guide for East Africa</h2>
+
+            <h3>What you are buying</h3>
+            <p>
+              A penetration test is a structured, authorised attack on your systems by a skilled
+              professional. The goal is to find and prove real vulnerabilities before attackers do.
+              The deliverable is a written report with findings, proof of exploitation, severity
+              ratings, and remediation guidance.
+            </p>
+
+            <h3>Certifications to require</h3>
+            <ul>
+              <li>
+                <strong>OSCP (Offensive Security Certified Professional)</strong>: the gold
+                standard. Requires practical hacking under exam conditions. Cannot be passed by
+                memorising content.
+              </li>
+              <li>
+                <strong>CEH</strong>: knowledge-based technical certification, less practical than
+                OSCP. <strong>CISM, CISSP</strong>: governance and management certifications. None
+                are substitutes for OSCP when evaluating a hands-on tester.
+              </li>
+              <li>Ask to see the actual certificate, not just a claim on the website.</li>
+            </ul>
+
+            <h3>Questions to ask every provider</h3>
+            <ul>
+              <li>
+                "Can I see a sample report from a previous engagement?" A real provider will have a
+                redacted sample. Thin reports (5 pages) that are mostly scanner output are a red
+                flag.
+              </li>
+              <li>
+                "Who will actually conduct the test?" Verify the tester's credentials, not just the
+                company's branding.
+              </li>
+              <li>
+                "Do you include a free re-test of critical and high findings?" This should be
+                standard, not an extra charge.
+              </li>
+              <li>
+                "How do you handle testing of production systems?" Listen for safeguards:
+                out-of-hours testing, scope limitations, rollback procedures.
+              </li>
+              <li>
+                "Can you provide a signed Rules of Engagement before testing starts?" If they don't
+                know what this is, look elsewhere.
+              </li>
+            </ul>
+
+            <h3>Red flags: walk away if you see these</h3>
+            <ul>
+              <li>
+                Promises to test everything in 1 day at a very low price. Real testing takes days,
+                not hours
+              </li>
+              <li>
+                Report is purely scanner output (Nessus, Qualys) with no manual testing evidence
+              </li>
+              <li>No Rules of Engagement or NDA before testing starts</li>
+              <li>Tester cannot name their certification or explain their methodology</li>
+              <li>Vague scope: a good pentest requires a precisely defined scope</li>
+              <li>No debrief call offered after the report is delivered</li>
+            </ul>
+
+            <h3>What your report should contain</h3>
+            <ul>
+              <li>Executive summary: in plain language, suitable for board presentation</li>
+              <li>Scope and methodology: what was tested, how, for how long</li>
+              <li>
+                Findings: each with description, severity, proof of concept (screenshots/steps),
+                business impact, and specific remediation guidance
+              </li>
+              <li>Risk heat map: visual summary of all findings</li>
+              <li>Remediation roadmap: prioritised action list</li>
+              <li>Tester details: name, certifications held</li>
+            </ul>
+
+            <h3>Scope: what to include</h3>
+            <ul>
+              <li>All internet-facing web applications</li>
+              <li>All APIs (especially mobile banking and agent APIs)</li>
+              <li>Mobile banking apps (Android + iOS)</li>
+              <li>USSD gateways if applicable</li>
+              <li>External network perimeter (publicly reachable IPs)</li>
+              <li>Social engineering (phishing simulation), consider annually</li>
+              <li>Internal network, if budget allows, add at least every other year</li>
+            </ul>
+
+            <div class="print-hint">
+              Save as PDF: File &gt; Print &gt; Save as PDF in your browser.
+            </div>
+          </div>
+        </div>
+
+        <!-- Resource 3: Security Awareness Template -->
+        <div class="resource-card">
+          <div class="res-header">
+            <div class="res-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle
+                  cx="9"
+                  cy="7"
+                  r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                  d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
+              >
+            </div>
+            <div>
+              <div class="res-type">TEMPLATE</div><div class="res-title">
+                Security Awareness Training Template
+              </div>
+            </div>
+          </div>
+          <div class="res-body">
+            <p>
+              A ready-to-use template for running a security awareness session at your organisation.
+              Includes session plan, key topics, discussion prompts, and a short quiz to test
+              retention. Adapted for East African organisations.
+            </p>
+            <div class="res-meta">
+              <span class="res-tag">TRAINING</span>
+              <span class="res-tag">TEMPLATE</span>
+              <span class="res-tag">BNR COMPLIANT</span>
+            </div>
+            <button class="btn-download" onclick="openForm('r3')">Download free template</button>
+          </div>
+          <div class="res-form-wrap" id="form-r3">
+            <form
+              class="res-form"
+              onsubmit="submitResource(event,'r3','security-awareness-template')"
+            >
+              <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <div class="form-group">
+                <label for="r3-name">Name</label><input
+                  type="text"
+                  id="r3-name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r3-email">Work email</label><input
+                  type="email"
+                  id="r3-email"
+                  name="email"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="r3-org">Organisation</label><input
+                  type="text"
+                  id="r3-org"
+                  name="organisation"
+                  placeholder="Bank / company name"
+                  required
+                />
+              </div>
+              <input type="hidden" name="resource" value="security-awareness-template" />
+              <input type="hidden" name="tool" value="resources" />
+              <button type="submit" class="btn-submit-res" id="sub-r3"
+                >Download template (PDF) &darr;</button
+              >
+              <div class="msg-ok" id="ok-r3">
+                Your PDF is downloading now. Check your downloads folder.
+              </div>
+              <div class="msg-err" id="err-r3"></div>
+            </form>
+          </div>
+          <div class="content-reveal" id="content-r3">
+            <h2>Security Awareness Training Session Template</h2>
+            <p>
+              <em
+                >Estimated duration: 2 hours. Suitable for all staff levels. Adapt as needed for
+                your organisation.</em
+              >
+            </p>
+
+            <h3>Session structure</h3>
+            <ul>
+              <li>
+                <strong>0:00-0:15</strong> Introduction: why security matters for your organisation, recent
+                incidents in East Africa
+              </li>
+              <li><strong>0:15-0:35</strong> Module 1: Phishing and email threats</li>
+              <li><strong>0:35-0:55</strong> Module 2: Passwords, MFA, and account security</li>
+              <li>
+                <strong>0:55-1:10</strong> Module 3: Social engineering and vishing (phone attacks)
+              </li>
+              <li>
+                <strong>1:10-1:25</strong> Module 4: Incident reporting, what to do when something looks
+                wrong
+              </li>
+              <li><strong>1:25-1:45</strong> Module 5: Mobile device and remote work security</li>
+              <li><strong>1:45-2:00</strong> Quiz and Q&amp;A</li>
+            </ul>
+
+            <h3>Module 1: Phishing, key messages</h3>
+            <ul>
+              <li>
+                Phishing emails often impersonate trusted sources: your bank's IT team, BNR, RRA,
+                MTN, or Airtel
+              </li>
+              <li>
+                Red flags: urgency, unexpected requests, mismatched sender domains (check the full
+                email address, not just the display name)
+              </li>
+              <li>
+                Never click links in unexpected emails. Go directly to the site by typing the
+                address
+              </li>
+              <li>Never enter credentials on a page you reached via a link in an email</li>
+              <li>
+                Discussion prompt: "Has anyone received a suspicious email at work in the last 6
+                months? What did you do?"
+              </li>
+            </ul>
+
+            <h3>Module 2: Passwords &amp; MFA, key messages</h3>
+            <ul>
+              <li>Password reuse across accounts is the single biggest account security mistake</li>
+              <li>A strong password is long (14+ characters) and random. Use a password manager</li>
+              <li>
+                MFA (the code on your phone) protects your account even if your password is stolen
+              </li>
+              <li>
+                Never share your MFA code with anyone, including people claiming to be IT support
+              </li>
+            </ul>
+
+            <h3>Module 3: Social engineering, key messages</h3>
+            <ul>
+              <li>
+                Social engineers exploit trust, urgency, and authority, not technical
+                vulnerabilities
+              </li>
+              <li>
+                A phone call claiming to be from the CEO, BNR, or IT support is not automatically
+                legitimate
+              </li>
+              <li>
+                Verification procedure: hang up, find the caller's number independently, call back
+              </li>
+              <li>
+                You are never "in trouble" for following verification procedures. Management should
+                back you
+              </li>
+            </ul>
+
+            <h3>Module 4: Incident reporting, key messages</h3>
+            <ul>
+              <li>
+                Report suspicious activity immediately. The first hour matters most in a breach
+              </li>
+              <li>Who to report to: [fill in your organisation's security contact here]</li>
+              <li>
+                No blame for reporting in good faith. Early reporting is celebrated, not punished
+              </li>
+              <li>
+                What to report: unexpected popups, suspected phishing, anything that looks wrong
+              </li>
+            </ul>
+
+            <h3>Post-session quiz (10 questions)</h3>
+            <p>
+              Use these questions to test retention after the session. Review answers as a group.
+            </p>
+            <ol>
+              <li>
+                What is the first thing you should check if you receive an unexpected email asking
+                you to reset your password?
+              </li>
+              <li>
+                If someone calls you claiming to be from BNR and asks for your login credentials,
+                what should you do?
+              </li>
+              <li>What is multi-factor authentication and why does it matter?</li>
+              <li>What are three signs that an email might be a phishing attempt?</li>
+              <li>If you click on a suspicious link by accident, what should you do next?</li>
+              <li>What makes a password strong?</li>
+              <li>What is a social engineering attack?</li>
+              <li>How long can you wait before reporting a suspected security incident?</li>
+              <li>Is it okay to use your work laptop on a public WiFi at a cafe without a VPN?</li>
+              <li>
+                If a colleague asks to borrow your access credentials because they forgot theirs,
+                what should you do?
+              </li>
+            </ol>
+
+            <div class="print-hint">
+              Save as PDF: File &gt; Print &gt; Save as PDF. Then adapt for your organisation's
+              branding and specific scenarios.
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="btn-download" onclick="openForm('r2')">Download free guide</button>
-    </div>
-    <div class="res-form-wrap" id="form-r2">
-      <form class="res-form" onsubmit="submitResource(event,'r2','pentest-buyers-guide')">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label for="r2-name">Name</label><input type="text" id="r2-name" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label for="r2-email">Work email</label><input type="email" id="r2-email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label for="r2-org">Organisation</label><input type="text" id="r2-org" name="organisation" placeholder="Bank / company name" required></div>
-        <input type="hidden" name="resource" value="pentest-buyers-guide">
-        <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r2">Download guide (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r2">Your PDF is downloading now. Check your downloads folder.</div>
-        <div class="msg-err" id="err-r2"></div>
-      </form>
-    </div>
-    <div class="content-reveal" id="content-r2">
-      <h2>Penetration Testing Buyer's Guide for East Africa</h2>
 
-      <h3>What you are buying</h3>
-      <p>A penetration test is a structured, authorised attack on your systems by a skilled professional. The goal is to find and prove real vulnerabilities before attackers do. The deliverable is a written report with findings, proof of exploitation, severity ratings, and remediation guidance.</p>
-
-      <h3>Certifications to require</h3>
-      <ul>
-        <li><strong>OSCP (Offensive Security Certified Professional)</strong>: the gold standard. Requires practical hacking under exam conditions. Cannot be passed by memorising content.</li>
-        <li><strong>CEH</strong>: knowledge-based technical certification, less practical than OSCP. <strong>CISM, CISSP</strong>: governance and management certifications. None are substitutes for OSCP when evaluating a hands-on tester.</li>
-        <li>Ask to see the actual certificate, not just a claim on the website.</li>
-      </ul>
-
-      <h3>Questions to ask every provider</h3>
-      <ul>
-        <li>"Can I see a sample report from a previous engagement?" A real provider will have a redacted sample. Thin reports (5 pages) that are mostly scanner output are a red flag.</li>
-        <li>"Who will actually conduct the test?" Verify the tester's credentials, not just the company's branding.</li>
-        <li>"Do you include a free re-test of critical and high findings?" This should be standard, not an extra charge.</li>
-        <li>"How do you handle testing of production systems?" Listen for safeguards: out-of-hours testing, scope limitations, rollback procedures.</li>
-        <li>"Can you provide a signed Rules of Engagement before testing starts?" If they don't know what this is, look elsewhere.</li>
-      </ul>
-
-      <h3>Red flags: walk away if you see these</h3>
-      <ul>
-        <li>Promises to test everything in 1 day at a very low price. Real testing takes days, not hours</li>
-        <li>Report is purely scanner output (Nessus, Qualys) with no manual testing evidence</li>
-        <li>No Rules of Engagement or NDA before testing starts</li>
-        <li>Tester cannot name their certification or explain their methodology</li>
-        <li>Vague scope: a good pentest requires a precisely defined scope</li>
-        <li>No debrief call offered after the report is delivered</li>
-      </ul>
-
-      <h3>What your report should contain</h3>
-      <ul>
-        <li>Executive summary: in plain language, suitable for board presentation</li>
-        <li>Scope and methodology: what was tested, how, for how long</li>
-        <li>Findings: each with description, severity, proof of concept (screenshots/steps), business impact, and specific remediation guidance</li>
-        <li>Risk heat map: visual summary of all findings</li>
-        <li>Remediation roadmap: prioritised action list</li>
-        <li>Tester details: name, certifications held</li>
-      </ul>
-
-      <h3>Scope: what to include</h3>
-      <ul>
-        <li>All internet-facing web applications</li>
-        <li>All APIs (especially mobile banking and agent APIs)</li>
-        <li>Mobile banking apps (Android + iOS)</li>
-        <li>USSD gateways if applicable</li>
-        <li>External network perimeter (publicly reachable IPs)</li>
-        <li>Social engineering (phishing simulation), consider annually</li>
-        <li>Internal network, if budget allows, add at least every other year</li>
-      </ul>
-
-      <div class="print-hint">Save as PDF: File > Print > Save as PDF in your browser.</div>
-    </div>
-  </div>
-
-  <!-- Resource 3: Security Awareness Template -->
-  <div class="resource-card">
-    <div class="res-header">
-      <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <div><div class="res-type">TEMPLATE</div><div class="res-title">Security Awareness Training Template</div></div>
-    </div>
-    <div class="res-body">
-      <p>A ready-to-use template for running a security awareness session at your organisation. Includes session plan, key topics, discussion prompts, and a short quiz to test retention. Adapted for East African organisations.</p>
-      <div class="res-meta">
-        <span class="res-tag">TRAINING</span>
-        <span class="res-tag">TEMPLATE</span>
-        <span class="res-tag">BNR COMPLIANT</span>
+      <div class="cta-bar">
+        <h2>Need more than a template?</h2>
+        <p>
+          We deliver professional security awareness training designed specifically for East African
+          banks and fintechs, on-site in Kigali or live-online. BNR-compliant, certifiable
+          completion.
+        </p>
+        <a href="/services/security-training/" class="btn-cta"
+          >Learn about our training programme &rarr;</a
+        >
+        <p style="margin-top:12px;font-size:.82rem">
+          <a href="/tools/security-score/">Take our free Security Score assessment</a> to see where your
+          organisation stands.
+        </p>
       </div>
-      <button class="btn-download" onclick="openForm('r3')">Download free template</button>
     </div>
-    <div class="res-form-wrap" id="form-r3">
-      <form class="res-form" onsubmit="submitResource(event,'r3','security-awareness-template')">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group"><label for="r3-name">Name</label><input type="text" id="r3-name" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label for="r3-email">Work email</label><input type="email" id="r3-email" name="email" placeholder="you@company.com" required></div>
-        <div class="form-group"><label for="r3-org">Organisation</label><input type="text" id="r3-org" name="organisation" placeholder="Bank / company name" required></div>
-        <input type="hidden" name="resource" value="security-awareness-template">
-        <input type="hidden" name="tool" value="resources">
-        <button type="submit" class="btn-submit-res" id="sub-r3">Download template (PDF) &darr;</button>
-        <div class="msg-ok" id="ok-r3">Your PDF is downloading now. Check your downloads folder.</div>
-        <div class="msg-err" id="err-r3"></div>
-      </form>
-    </div>
-    <div class="content-reveal" id="content-r3">
-      <h2>Security Awareness Training Session Template</h2>
-      <p><em>Estimated duration: 2 hours. Suitable for all staff levels. Adapt as needed for your organisation.</em></p>
-
-      <h3>Session structure</h3>
-      <ul>
-        <li><strong>0:00-0:15</strong> Introduction: why security matters for your organisation, recent incidents in East Africa</li>
-        <li><strong>0:15-0:35</strong> Module 1: Phishing and email threats</li>
-        <li><strong>0:35-0:55</strong> Module 2: Passwords, MFA, and account security</li>
-        <li><strong>0:55-1:10</strong> Module 3: Social engineering and vishing (phone attacks)</li>
-        <li><strong>1:10-1:25</strong> Module 4: Incident reporting, what to do when something looks wrong</li>
-        <li><strong>1:25-1:45</strong> Module 5: Mobile device and remote work security</li>
-        <li><strong>1:45-2:00</strong> Quiz and Q&amp;A</li>
-      </ul>
-
-      <h3>Module 1: Phishing, key messages</h3>
-      <ul>
-        <li>Phishing emails often impersonate trusted sources: your bank's IT team, BNR, RRA, MTN, or Airtel</li>
-        <li>Red flags: urgency, unexpected requests, mismatched sender domains (check the full email address, not just the display name)</li>
-        <li>Never click links in unexpected emails. Go directly to the site by typing the address</li>
-        <li>Never enter credentials on a page you reached via a link in an email</li>
-        <li>Discussion prompt: "Has anyone received a suspicious email at work in the last 6 months? What did you do?"</li>
-      </ul>
-
-      <h3>Module 2: Passwords &amp; MFA, key messages</h3>
-      <ul>
-        <li>Password reuse across accounts is the single biggest account security mistake</li>
-        <li>A strong password is long (14+ characters) and random. Use a password manager</li>
-        <li>MFA (the code on your phone) protects your account even if your password is stolen</li>
-        <li>Never share your MFA code with anyone, including people claiming to be IT support</li>
-      </ul>
-
-      <h3>Module 3: Social engineering, key messages</h3>
-      <ul>
-        <li>Social engineers exploit trust, urgency, and authority, not technical vulnerabilities</li>
-        <li>A phone call claiming to be from the CEO, BNR, or IT support is not automatically legitimate</li>
-        <li>Verification procedure: hang up, find the caller's number independently, call back</li>
-        <li>You are never "in trouble" for following verification procedures. Management should back you</li>
-      </ul>
-
-      <h3>Module 4: Incident reporting, key messages</h3>
-      <ul>
-        <li>Report suspicious activity immediately. The first hour matters most in a breach</li>
-        <li>Who to report to: [fill in your organisation's security contact here]</li>
-        <li>No blame for reporting in good faith. Early reporting is celebrated, not punished</li>
-        <li>What to report: unexpected popups, suspected phishing, anything that looks wrong</li>
-      </ul>
-
-      <h3>Post-session quiz (10 questions)</h3>
-      <p>Use these questions to test retention after the session. Review answers as a group.</p>
-      <ol>
-        <li>What is the first thing you should check if you receive an unexpected email asking you to reset your password?</li>
-        <li>If someone calls you claiming to be from BNR and asks for your login credentials, what should you do?</li>
-        <li>What is multi-factor authentication and why does it matter?</li>
-        <li>What are three signs that an email might be a phishing attempt?</li>
-        <li>If you click on a suspicious link by accident, what should you do next?</li>
-        <li>What makes a password strong?</li>
-        <li>What is a social engineering attack?</li>
-        <li>How long can you wait before reporting a suspected security incident?</li>
-        <li>Is it okay to use your work laptop on a public WiFi at a cafe without a VPN?</li>
-        <li>If a colleague asks to borrow your access credentials because they forgot theirs, what should you do?</li>
-      </ol>
-
-      <div class="print-hint">Save as PDF: File > Print > Save as PDF. Then adapt for your organisation's branding and specific scenarios.</div>
-    </div>
-  </div>
-
-</div>
-
-<div class="cta-bar">
-  <h2>Need more than a template?</h2>
-  <p>We deliver professional security awareness training designed specifically for East African banks and fintechs, on-site in Kigali or live-online. BNR-compliant, certifiable completion.</p>
-  <a href="/services/security-training/" class="btn-cta">Learn about our training programme &rarr;</a>
-  <p style="margin-top:12px;font-size:.82rem"><a href="/tools/security-score/">Take our free Security Score assessment</a> to see where your organisation stands.</p>
-</div>
-
-</div>
-</main>
-
+  </main>
 </BaseLayout>
 
 <style>
-  .w{max-width:860px;margin:0 auto;padding:0 24px}
-  main{padding:88px 0 60px}
-  .page-header{text-align:center;padding:32px 0 48px}
-  .page-badge{display:inline-block;font-family:var(--mono);font-size:.62rem;color:var(--acc);letter-spacing:.1em;margin-bottom:14px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px}
-  .page-header h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--white);margin-bottom:14px}
-  .page-header p{color:var(--txt2);font-size:1rem;max-width:520px;margin:0 auto}
-  .resources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:60px}
-  .resource-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:border-color .2s}
-  .resource-card:hover{border-color:rgba(52,211,153,.3)}
-  .res-header{padding:24px 24px 0;display:flex;align-items:flex-start;gap:14px}
-  .res-icon{width:48px;height:48px;background:rgba(52,211,153,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .res-icon svg{width:24px;height:24px;stroke:var(--acc)}
-  .res-type{font-family:var(--mono);font-size:.6rem;color:var(--acc);letter-spacing:.08em;margin-bottom:4px}
-  .res-title{font-size:1rem;font-weight:700;color:var(--white);line-height:1.3}
-  .res-body{padding:12px 24px 20px}
-  .res-body p{font-size:.84rem;color:var(--txt2);margin-bottom:14px}
-  .res-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-  .res-tag{font-family:var(--mono);font-size:.62rem;color:var(--txt3);background:var(--bg3);border-radius:4px;padding:2px 7px}
-  .btn-download{display:block;padding:10px 20px;border-radius:8px;background:var(--accdark);color:#fff;font-size:.84rem;font-weight:700;cursor:pointer;border:none;font-family:var(--sans);text-align:center;transition:background .2s;width:100%}
-  .btn-download:hover{background:var(--acc2)}
-  .res-form-wrap{max-height:0;overflow:hidden;transition:max-height .4s ease}
-  .res-form-wrap.open{max-height:400px}
-  .res-form{padding:0 24px 24px;border-top:1px solid rgba(255,255,255,.04);margin-top:-1px}
-  .form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
-  .form-group label{font-size:.75rem;color:var(--txt2);font-weight:600}
-  .form-group input{background:var(--bg3);border:1.5px solid rgba(255,255,255,.06);border-radius:6px;padding:8px 12px;font-size:.86rem;color:var(--white);font-family:var(--sans);transition:border .2s}
-  .form-group input:focus{outline:none;border-color:var(--acc2)}
-  .form-group input::placeholder{color:var(--txt3)}
-  .btn-submit-res{display:block;width:100%;padding:10px;border:none;border-radius:6px;background:var(--accdark);color:#fff;font-size:.84rem;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;margin-top:4px}
-  .btn-submit-res:hover{background:var(--acc2)}
-  .btn-submit-res:disabled{opacity:.5;cursor:not-allowed}
-  .msg-ok{font-size:.78rem;color:var(--acc);margin-top:8px;display:none}
-  .msg-err{font-size:.78rem;color:#ef4444;margin-top:8px;display:none}
-  .content-reveal{display:none}
-  .cta-bar{background:linear-gradient(135deg,rgba(52,211,153,.1),transparent);border:1px solid rgba(52,211,153,.2);border-radius:14px;padding:36px 32px;text-align:center;margin-top:20px}
-  .cta-bar h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.5px}
-  .cta-bar p{color:var(--txt2);font-size:.9rem;margin-bottom:20px}
-  .btn-cta{display:inline-block;padding:12px 28px;border-radius:8px;background:var(--accdark);color:#fff;font-size:.9rem;font-weight:700;text-decoration:none;transition:background .2s}
-  .btn-cta:hover{background:var(--acc2)}
-  [data-theme="light"] .resource-card,
-  [data-theme="light"] .cta-bar{border-color:rgba(0,0,0,.1)}
-  [data-theme="light"] .form-group input{background:#d0dcf0;border-color:rgba(0,0,0,.1);color:var(--white)}
-  [data-theme="light"] .btn{color:#fff}
-  @media(max-width:480px){
-    .w{padding:0 16px}
-    .page-header{padding:80px 0 36px}
+  .w {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  main {
+    padding: 88px 0 60px;
+  }
+  .page-header {
+    text-align: center;
+    padding: 32px 0 48px;
+  }
+  .page-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--acc);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .page-header p {
+    color: var(--txt2);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .resource-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .resource-card:hover {
+    border-color: rgba(52, 211, 153, 0.3);
+  }
+  .res-header {
+    padding: 24px 24px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .res-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(52, 211, 153, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .res-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--acc);
+  }
+  .res-type {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .res-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .res-body {
+    padding: 12px 24px 20px;
+  }
+  .res-body p {
+    font-size: 0.84rem;
+    color: var(--txt2);
+    margin-bottom: 14px;
+  }
+  .res-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .res-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--txt3);
+    background: var(--bg3);
+    border-radius: 4px;
+    padding: 2px 7px;
+  }
+  .btn-download {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--accdark);
+    color: #fff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+    text-align: center;
+    transition: background 0.2s;
+    width: 100%;
+  }
+  .btn-download:hover {
+    background: var(--acc2);
+  }
+  .res-form-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .res-form-wrap.open {
+    max-height: 400px;
+  }
+  .res-form {
+    padding: 0 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: -1px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .form-group label {
+    font-size: 0.75rem;
+    color: var(--txt2);
+    font-weight: 600;
+  }
+  .form-group input {
+    background: var(--bg3);
+    border: 1.5px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.86rem;
+    color: var(--white);
+    font-family: var(--sans);
+    transition: border 0.2s;
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--acc2);
+  }
+  .form-group input::placeholder {
+    color: var(--txt3);
+  }
+  .btn-submit-res {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accdark);
+    color: #fff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .btn-submit-res:hover {
+    background: var(--acc2);
+  }
+  .btn-submit-res:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .msg-ok {
+    font-size: 0.78rem;
+    color: var(--acc);
+    margin-top: 8px;
+    display: none;
+  }
+  .msg-err {
+    font-size: 0.78rem;
+    color: #ef4444;
+    margin-top: 8px;
+    display: none;
+  }
+  .content-reveal {
+    display: none;
+  }
+  .cta-bar {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), transparent);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 14px;
+    padding: 36px 32px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .cta-bar h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .cta-bar p {
+    color: var(--txt2);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .btn-cta {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    background: var(--accdark);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-cta:hover {
+    background: var(--acc2);
+  }
+  [data-theme='light'] .resource-card,
+  [data-theme='light'] .cta-bar {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  [data-theme='light'] .form-group input {
+    background: #d0dcf0;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--white);
+  }
+  [data-theme='light'] .btn {
+    color: #fff;
+  }
+  @media (max-width: 480px) {
+    .w {
+      padding: 0 16px;
+    }
+    .page-header {
+      padding: 80px 0 36px;
+    }
   }
 </style>
 

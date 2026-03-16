@@ -16,8 +16,9 @@ export function initQuiz(): void {
 
   if (!cards.length || !calcBtn) return;
 
+  const calcButton = calcBtn;
   cards[0].classList.add('active');
-  calcBtn.style.display = 'none';
+  calcButton.style.display = 'none';
 
   // Add back buttons to cards after the first
   for (let i = 1; i < cards.length; i++) {
@@ -31,7 +32,7 @@ export function initQuiz(): void {
 
   document.querySelectorAll<HTMLButtonElement>('.q-back').forEach(function (b) {
     b.addEventListener('click', function () {
-      goToStep(parseInt(b.getAttribute('data-step')!, 10) - 1);
+      goToStep(parseInt(b.getAttribute('data-step') ?? '1', 10) - 1);
     });
   });
 
@@ -47,7 +48,9 @@ export function initQuiz(): void {
   document.querySelectorAll('.options').forEach(function (og, idx) {
     og.querySelectorAll<HTMLElement>('.option').forEach(function (opt) {
       opt.addEventListener('click', function () {
-        og.querySelectorAll('.option').forEach(function (o) { o.classList.remove('selected'); });
+        og.querySelectorAll('.option').forEach(function (o) {
+          o.classList.remove('selected');
+        });
         opt.classList.add('selected');
         updateProgress();
         if (advanceTimer) clearTimeout(advanceTimer);
@@ -55,9 +58,9 @@ export function initQuiz(): void {
           if (idx < cards.length - 1) {
             goToStep(idx + 1);
           } else {
-            calcBtn!.style.display = 'block';
-            calcBtn!.disabled = false;
-            calcBtn!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            calcButton.style.display = 'block';
+            calcButton.disabled = false;
+            calcButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         }, 500);
       });
@@ -70,7 +73,7 @@ export function initQuiz(): void {
       if (document.querySelector('input[name="q' + i + '"]:checked')) answered++;
     }
     const progress = document.getElementById('progress');
-    if (progress) progress.style.width = (answered / 10 * 100) + '%';
+    if (progress) progress.style.width = (answered / 10) * 100 + '%';
   }
 
   function showScore(): void {
@@ -94,14 +97,24 @@ export function initQuiz(): void {
     let bulletsHtml = '';
     quizAnswers.forEach(function (v, idx) {
       if (v <= 1) {
-        bulletsHtml += '<div class="bullet"><span class="bullet-icon bi-warn">!</span><span>' + QUESTIONS[idx].label + ': ' + QUESTIONS[idx].recos[v].h + '</span></div>';
+        bulletsHtml +=
+          '<div class="bullet"><span class="bullet-icon bi-warn">!</span><span>' +
+          QUESTIONS[idx].label +
+          ': ' +
+          QUESTIONS[idx].recos[v].h +
+          '</span></div>';
       } else if (v >= 3) {
-        bulletsHtml += '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>' + QUESTIONS[idx].label + ': strong</span></div>';
+        bulletsHtml +=
+          '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>' +
+          QUESTIONS[idx].label +
+          ': strong</span></div>';
       }
     });
     const bulletsContent = document.getElementById('bullets-content');
     if (bulletsContent) {
-      bulletsContent.innerHTML = bulletsHtml || '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>No critical gaps identified in your preliminary assessment.</span></div>';
+      bulletsContent.innerHTML =
+        bulletsHtml ||
+        '<div class="bullet"><span class="bullet-icon bi-ok">&#10003;</span><span>No critical gaps identified in your preliminary assessment.</span></div>';
     }
 
     // Hidden fields
@@ -110,13 +123,25 @@ export function initQuiz(): void {
     const hBand = document.getElementById('h-band') as HTMLInputElement | null;
     if (hBand) hBand.value = quizBand.label;
     const hAnswers = document.getElementById('h-answers') as HTMLInputElement | null;
-    if (hAnswers) hAnswers.value = quizAnswers.map(function (v, i) { return QUESTIONS[i].label + ': ' + v + '/3'; }).join(', ');
+    if (hAnswers)
+      hAnswers.value = quizAnswers
+        .map(function (v, i) {
+          return QUESTIONS[i].label + ': ' + v + '/3';
+        })
+        .join(', ');
 
     // Build full report content (shown after download)
     let breakdownHtml = '';
     quizAnswers.forEach(function (v, idx) {
-      const pct = Math.round(v / 3 * 100);
-      breakdownHtml += '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.84rem;color:var(--white);font-weight:600">' + QUESTIONS[idx].label + '</span><span style="font-family:var(--mono);font-size:.72rem;color:var(--txt3)">' + v + '/3</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:3px"></div></div></div>';
+      const pct = Math.round((v / 3) * 100);
+      breakdownHtml +=
+        '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:.84rem;color:var(--white);font-weight:600">' +
+        QUESTIONS[idx].label +
+        '</span><span style="font-family:var(--mono);font-size:.72rem;color:var(--txt3)">' +
+        v +
+        '/3</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:' +
+        pct +
+        '%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:3px"></div></div></div>';
     });
     const breakdownContent = document.getElementById('breakdown-content');
     if (breakdownContent) breakdownContent.innerHTML = breakdownHtml;
@@ -124,8 +149,24 @@ export function initQuiz(): void {
     let recosHtml = '';
     quizAnswers.forEach(function (v, idx) {
       const r = QUESTIONS[idx].recos[v];
-      const pcls = r.p === 'CRITICAL' ? 'p-critical' : r.p === 'HIGH' ? 'p-high' : r.p === 'MEDIUM' ? 'p-medium' : 'p-low';
-      recosHtml += '<div class="reco-item"><span class="reco-priority ' + pcls + '">' + r.p + '</span><div class="reco-text"><strong>' + r.h + '</strong>' + r.b + '</div></div>';
+      const pcls =
+        r.p === 'CRITICAL'
+          ? 'p-critical'
+          : r.p === 'HIGH'
+            ? 'p-high'
+            : r.p === 'MEDIUM'
+              ? 'p-medium'
+              : 'p-low';
+      recosHtml +=
+        '<div class="reco-item"><span class="reco-priority ' +
+        pcls +
+        '">' +
+        r.p +
+        '</span><div class="reco-text"><strong>' +
+        r.h +
+        '</strong>' +
+        r.b +
+        '</div></div>';
     });
     const recosContent = document.getElementById('recos-content');
     if (recosContent) recosContent.innerHTML = recosHtml;
@@ -161,27 +202,38 @@ export function initQuiz(): void {
           method: 'POST',
           body: data,
           headers: { Accept: 'application/json' },
-        }).then(function (r) {
-          if (!r.ok) r.json().then(function (d: Record<string, unknown>) { console.warn('Formspree:', d.error || r.status); });
-        }).catch(function (err: unknown) { console.warn('Formspree network error:', err); });
+        })
+          .then(function (r) {
+            if (!r.ok)
+              r.json().then(function (d: Record<string, unknown>) {
+                console.warn('Formspree:', d.error || r.status);
+              });
+          })
+          .catch(function (err: unknown) {
+            console.warn('Formspree network error:', err);
+          });
       }
-    } catch { /* noop */ }
+    } catch {
+      /* noop */
+    }
 
-    loadJsPDF().then(function () {
-      generatePDF(quizTotal, quizBand!, quizAnswers, name, org);
-      const fullReport = document.getElementById('full-report');
-      if (fullReport) fullReport.classList.add('visible');
-      const msg = document.getElementById('gate-msg-success');
-      if (msg) msg.style.display = 'block';
-      btn.textContent = 'Downloaded \u2713';
-    }).catch(function () {
-      fallbackHTML(quizTotal, quizBand!, quizAnswers, name, org);
-      const fullReport = document.getElementById('full-report');
-      if (fullReport) fullReport.classList.add('visible');
-      const msg = document.getElementById('gate-msg-success');
-      if (msg) msg.style.display = 'block';
-      btn.textContent = 'Downloaded \u2713';
-    });
+    loadJsPDF()
+      .then(function () {
+        generatePDF(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
+        const fullReport = document.getElementById('full-report');
+        if (fullReport) fullReport.classList.add('visible');
+        const msg = document.getElementById('gate-msg-success');
+        if (msg) msg.style.display = 'block';
+        btn.textContent = 'Downloaded \u2713';
+      })
+      .catch(function () {
+        fallbackHTML(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
+        const fullReport = document.getElementById('full-report');
+        if (fullReport) fullReport.classList.add('visible');
+        const msg = document.getElementById('gate-msg-success');
+        if (msg) msg.style.display = 'block';
+        btn.textContent = 'Downloaded \u2713';
+      });
   }
 
   // Bind calculate button

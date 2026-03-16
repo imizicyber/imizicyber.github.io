@@ -1,22 +1,23 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: "USSD Security Testing Rwanda & East Africa | imizicyber"
-headline: "Why USSD banking services in Rwanda need security testing"
-description: "Why *182# and USSD banking services need dedicated security testing. Common vulnerabilities, our testing methodology, and what we typically find."
-keywords: "USSD security testing, mobile money security Rwanda, USSD vulnerabilities, mobile banking security East Africa, *182# security, USSD penetration testing"
-datePublished: "2026-02-17"
-dateModified: "2026-03-08"
-readTime: "7 MIN READ"
-metaLabel: "FEBRUARY 2026"
-breadcrumbName: "USSD Security Testing"
-ogTitle: "Why USSD Banking Services Need Security Testing"
+title: 'USSD Security Testing Rwanda & East Africa | imizicyber'
+headline: 'Why USSD banking services in Rwanda need security testing'
+description: 'Why *182# and USSD banking services need dedicated security testing. Common vulnerabilities, our testing methodology, and what we typically find.'
+keywords: 'USSD security testing, mobile money security Rwanda, USSD vulnerabilities, mobile banking security East Africa, *182# security, USSD penetration testing'
+datePublished: '2026-02-17'
+dateModified: '2026-03-08'
+readTime: '7 MIN READ'
+metaLabel: 'FEBRUARY 2026'
+breadcrumbName: 'USSD Security Testing'
+ogTitle: 'Why USSD Banking Services Need Security Testing'
 ogDescription: "USSD is the backbone of financial inclusion in East Africa. Here's why it needs security testing."
-twitterTitle: "USSD Security Testing in East Africa | imizicyber"
+twitterTitle: 'USSD Security Testing in East Africa | imizicyber'
 twitterDescription: "USSD is the backbone of financial inclusion in East Africa. Here's why it needs security testing."
-canonicalUrl: "/blog/ussd-security-testing/"
-cardDescription: "Why USSD banking services like *182# need dedicated security testing, common vulnerabilities we find, and our testing methodology."
-cardDate: "FEB 2026"
+canonicalUrl: '/blog/ussd-security-testing/'
+cardDescription: 'Why USSD banking services like *182# need dedicated security testing, common vulnerabilities we find, and our testing methodology.'
+cardDate: 'FEB 2026'
 ---
+
 import Callout from '../../components/Callout.astro';
 
 In East Africa, USSD is not legacy technology. It is critical infrastructure. Millions of people across Rwanda, Uganda, Kenya, and Tanzania rely on `*182#` and similar short codes for banking, mobile money, and payments every day. USSD works on any phone, requires no internet, and reaches populations that smartphones and banking apps cannot.
@@ -54,7 +55,10 @@ USSD menus accept numeric input, but the backend processing may be vulnerable to
 How the USSD application handles PINs is critical. We look for PINs transmitted in cleartext, PINs logged in application logs, lack of brute-force protection, and PINs that are not properly hashed at rest.
 
 <Callout type="info">
-**Real impact:** In one engagement for an African bank, we found that manipulating a single parameter in the USSD gateway API allowed us to view any customer's account balance and recent transactions. The fix took the development team less than a day. Without testing, this vulnerability could have remained undetected indefinitely.
+  **Real impact:** In one engagement for an African bank, we found that manipulating a single
+  parameter in the USSD gateway API allowed us to view any customer's account balance and recent
+  transactions. The fix took the development team less than a day. Without testing, this
+  vulnerability could have remained undetected indefinitely.
 </Callout>
 
 ## Our USSD testing methodology
