@@ -93,10 +93,7 @@ const {
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
     />
 
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'sha256-HScIUIrZYH+2eRA1s/vEuemJw0jeTFtiTTPLhWPtglE=' 'sha256-sAVZ7AIm6WOG2fyd3SdExaYRqQUxXmYAPbZeXycB9NI=' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://www.google-analytics.com; frame-ancestors 'none'"
-    />
+    <!-- CSP meta tag injected at build time by scripts/inject-csp.mjs -->
 
     {schemas && schemas.length > 0 && <SchemaOrg schemas={schemas} />}
 
