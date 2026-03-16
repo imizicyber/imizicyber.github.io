@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-03-16T15:14:35.595Z"
-last_activity: 2026-03-16 — Completed Plan 01-01 (Code Quality Toolchain)
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-03-16T15:43:51Z"
+last_activity: 2026-03-16 — Completed Plan 01-02 (Inline Script Extraction)
 progress:
   total_phases: 9
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 33
 ---
 
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 ## Current Position
 
 Phase: 1 of 9 (Code Quality Tooling)
-Plan: 1 of 3 in current phase (completed)
+Plan: 2 of 3 in current phase (completed)
 Status: Executing phase 1
-Last activity: 2026-03-16 — Completed Plan 01-01 (Code Quality Toolchain)
+Last activity: 2026-03-16 — Completed Plan 01-02 (Inline Script Extraction)
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -51,6 +51,7 @@ Progress: [███░░░░░░░] 33%
 
 *Updated after each plan completion*
 | Phase 01 P01 | 3min | 2 tasks | 7 files |
+| Phase 01 P02 | 28min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -63,6 +64,8 @@ Recent decisions affecting current work:
 - [Init]: Three flagship services (Pentest, Assessment, Custom Tooling) — clear positioning, training secondary
 - [Init]: Book a Consultation as primary CTA — qualifies leads through conversation
 - [Phase 01]: Pinned @eslint/js to ^9 to match eslint ^9 peer dependency (eslint 10 compat unverified for eslint-plugin-astro)
+- [Phase 01 P02]: Shared loadJsPDF in quiz/pdf.ts imported by resources.ts (eliminates duplication)
+- [Phase 01 P02]: Cookie consent uses ANALYTICS import from @/data/site instead of define:vars pattern
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T15:14:35.592Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-03-16T15:43:51Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None

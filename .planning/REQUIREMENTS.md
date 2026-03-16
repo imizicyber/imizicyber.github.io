@@ -7,14 +7,14 @@
 
 ### Code Quality
 
-- [ ] **QUAL-01**: Theme toggle works correctly in both dark and light mode with localStorage persistence
+- [x] **QUAL-01**: Theme toggle works correctly in both dark and light mode with localStorage persistence
 - [x] **QUAL-02**: ESLint 9 with flat config and eslint-plugin-astro enforces consistent code style
 - [x] **QUAL-03**: Prettier formats all files consistently on save and pre-commit
 - [x] **QUAL-04**: TypeScript strict mode enabled with no implicit any
 - [ ] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
 - [x] **QUAL-06**: Vitest test framework configured with coverage reporting
 - [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
-- [ ] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
+- [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
 - [ ] **QUAL-09**: CSP header uses hashes or nonces instead of unsafe-inline for scripts
 - [ ] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
 - [ ] **QUAL-11**: No sensitive data (API keys, tokens, passwords) committed to repository
@@ -114,13 +114,13 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| QUAL-01 | Phase 1 | Pending |
+| QUAL-01 | Phase 1 | Complete |
 | QUAL-02 | Phase 1 | Complete |
 | QUAL-03 | Phase 1 | Complete |
 | QUAL-04 | Phase 1 | Complete |
 | QUAL-05 | Phase 1 | Pending |
 | QUAL-06 | Phase 1 | Complete |
-| QUAL-08 | Phase 1 | Pending |
+| QUAL-08 | Phase 1 | Complete |
 | QUAL-07 | Phase 2 | Pending |
 | QUAL-09 | Phase 2 | Pending |
 | QUAL-10 | Phase 2 | Pending |
