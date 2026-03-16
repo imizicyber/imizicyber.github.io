@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import { resolve } from 'path';
 
 export default defineConfig({
   site: 'https://imizicyber.com',
@@ -15,4 +16,11 @@ export default defineConfig({
     }),
     mdx(),
   ],
+  vite: {
+    resolve: {
+      alias: {
+        '@': resolve('./src'),
+      },
+    },
+  },
 });
