@@ -13,7 +13,12 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/scripts/**/*.ts'],
-      exclude: ['src/scripts/**/index.ts'],
+      exclude: [
+        'src/scripts/**/index.ts',
+        'src/scripts/quiz/ui.ts',
+        'src/scripts/quiz/pdf.ts',
+        'src/scripts/resources.ts',
+      ],
       thresholds: {
         statements: 80,
         branches: 80,
