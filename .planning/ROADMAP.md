@@ -34,7 +34,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Running `npm run test` executes the Vitest suite with coverage output
   4. Attempting to commit code with lint errors is blocked by husky pre-commit hook
   5. Dark and light theme toggle works correctly in browser with localStorage persistence across page loads
-**Plans**: TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Install toolchain and configure ESLint, Prettier, Vitest, path alias
+- [ ] 01-02-PLAN.md — Extract all inline scripts to typed modules, fix theme toggle
+- [ ] 01-03-PLAN.md — Write unit tests, fix all violations, wire pre-commit hook
 
 ### Phase 2: Security Hardening and Test Coverage
 **Goal**: The public codebase passes scrutiny from a technical evaluator at a regulated enterprise — no XSS risks, no unsafe-inline CSP, no secrets, tests covering critical paths
@@ -138,7 +143,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Code Quality Tooling | 0/TBD | Not started | - |
+| 1. Code Quality Tooling | 0/3 | Planning complete | - |
 | 2. Security Hardening and Test Coverage | 0/TBD | Not started | - |
 | 3. Component Architecture and Visual Redesign | 0/TBD | Not started | - |
 | 4. Performance and Accessibility | 0/TBD | Not started | - |
