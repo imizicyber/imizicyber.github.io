@@ -11,7 +11,7 @@
 - [x] **QUAL-02**: ESLint 9 with flat config and eslint-plugin-astro enforces consistent code style
 - [x] **QUAL-03**: Prettier formats all files consistently on save and pre-commit
 - [x] **QUAL-04**: TypeScript strict mode enabled with no implicit any
-- [ ] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
+- [x] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
 - [x] **QUAL-06**: Vitest test framework configured with coverage reporting
 - [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
 - [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
@@ -99,82 +99,84 @@
 
 ## Out of Scope
 
-| Feature | Reason |
-|---------|--------|
+| Feature                            | Reason                                                                                  |
+| ---------------------------------- | --------------------------------------------------------------------------------------- |
 | Live chat widget (Crisp, Intercom) | WhatsApp float serves this purpose better for East Africa; chat widgets add 60-200kb JS |
-| Client portal or login system | Static site on GitHub Pages; consulting delivered via encrypted email |
-| Booking widget (Calendly) | Enterprise CISOs call, not self-schedule; form + WhatsApp is the right model |
-| Blog comments | Requires moderation, creates reputational exposure; CTA to WhatsApp instead |
-| Popups or exit-intent overlays | Enterprise buyers are allergic to popups; undermines trust positioning |
-| Auto-playing video | Heavy on metered African connections; CSS terminal animation is sufficient |
-| E-commerce or payments | Consulting sold through proposals, not checkout; adds PCI scope |
-| Multi-language (v1) | English is procurement language for regulated enterprises in Rwanda |
+| Client portal or login system      | Static site on GitHub Pages; consulting delivered via encrypted email                   |
+| Booking widget (Calendly)          | Enterprise CISOs call, not self-schedule; form + WhatsApp is the right model            |
+| Blog comments                      | Requires moderation, creates reputational exposure; CTA to WhatsApp instead             |
+| Popups or exit-intent overlays     | Enterprise buyers are allergic to popups; undermines trust positioning                  |
+| Auto-playing video                 | Heavy on metered African connections; CSS terminal animation is sufficient              |
+| E-commerce or payments             | Consulting sold through proposals, not checkout; adds PCI scope                         |
+| Multi-language (v1)                | English is procurement language for regulated enterprises in Rwanda                     |
 
 ## Traceability
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| QUAL-01 | Phase 1 | Complete |
-| QUAL-02 | Phase 1 | Complete |
-| QUAL-03 | Phase 1 | Complete |
-| QUAL-04 | Phase 1 | Complete |
-| QUAL-05 | Phase 1 | Pending |
-| QUAL-06 | Phase 1 | Complete |
-| QUAL-08 | Phase 1 | Complete |
-| QUAL-07 | Phase 2 | Pending |
-| QUAL-09 | Phase 2 | Pending |
-| QUAL-10 | Phase 2 | Pending |
-| QUAL-11 | Phase 2 | Pending |
-| QUAL-12 | Phase 2 | Pending |
-| UIUX-01 | Phase 3 | Pending |
-| UIUX-02 | Phase 3 | Pending |
-| UIUX-03 | Phase 3 | Pending |
-| UIUX-04 | Phase 4 | Pending |
-| UIUX-05 | Phase 4 | Pending |
-| UIUX-06 | Phase 4 | Pending |
-| UIUX-07 | Phase 4 | Pending |
-| UIUX-08 | Phase 4 | Pending |
-| UIUX-09 | Phase 4 | Pending |
-| UIUX-10 | Phase 4 | Pending |
-| ANLT-01 | Phase 5 | Pending |
-| ANLT-02 | Phase 5 | Pending |
-| ANLT-03 | Phase 5 | Pending |
-| ANLT-04 | Phase 5 | Pending |
-| ANLT-05 | Phase 5 | Pending |
-| ANLT-06 | Phase 5 | Pending |
-| ANLT-07 | Phase 5 | Pending |
-| ANLT-08 | Phase 5 | Pending |
-| TRST-01 | Phase 6 | Pending |
-| TRST-02 | Phase 6 | Pending |
-| TRST-03 | Phase 6 | Pending |
-| TRST-04 | Phase 6 | Pending |
-| TRST-05 | Phase 6 | Pending |
-| TRST-06 | Phase 6 | Pending |
-| SRVC-01 | Phase 7 | Pending |
-| SRVC-02 | Phase 7 | Pending |
-| SRVC-03 | Phase 7 | Pending |
-| SRVC-04 | Phase 7 | Pending |
-| SRVC-05 | Phase 7 | Pending |
-| SRVC-06 | Phase 7 | Pending |
-| SRVC-07 | Phase 8 | Pending |
-| SRVC-08 | Phase 8 | Pending |
-| SRVC-09 | Phase 8 | Pending |
-| SRVC-10 | Phase 8 | Pending |
-| SRVC-11 | Phase 8 | Pending |
-| LEAD-01 | Phase 9 | Pending |
-| LEAD-02 | Phase 9 | Pending |
-| LEAD-03 | Phase 9 | Pending |
-| LEAD-04 | Phase 9 | Pending |
-| LEAD-05 | Phase 9 | Pending |
-| LEAD-06 | Phase 9 | Pending |
-| LEAD-07 | Phase 9 | Pending |
-| LEAD-08 | Phase 9 | Pending |
+| Requirement | Phase   | Status   |
+| ----------- | ------- | -------- |
+| QUAL-01     | Phase 1 | Complete |
+| QUAL-02     | Phase 1 | Complete |
+| QUAL-03     | Phase 1 | Complete |
+| QUAL-04     | Phase 1 | Complete |
+| QUAL-05     | Phase 1 | Complete |
+| QUAL-06     | Phase 1 | Complete |
+| QUAL-08     | Phase 1 | Complete |
+| QUAL-07     | Phase 2 | Pending  |
+| QUAL-09     | Phase 2 | Pending  |
+| QUAL-10     | Phase 2 | Pending  |
+| QUAL-11     | Phase 2 | Pending  |
+| QUAL-12     | Phase 2 | Pending  |
+| UIUX-01     | Phase 3 | Pending  |
+| UIUX-02     | Phase 3 | Pending  |
+| UIUX-03     | Phase 3 | Pending  |
+| UIUX-04     | Phase 4 | Pending  |
+| UIUX-05     | Phase 4 | Pending  |
+| UIUX-06     | Phase 4 | Pending  |
+| UIUX-07     | Phase 4 | Pending  |
+| UIUX-08     | Phase 4 | Pending  |
+| UIUX-09     | Phase 4 | Pending  |
+| UIUX-10     | Phase 4 | Pending  |
+| ANLT-01     | Phase 5 | Pending  |
+| ANLT-02     | Phase 5 | Pending  |
+| ANLT-03     | Phase 5 | Pending  |
+| ANLT-04     | Phase 5 | Pending  |
+| ANLT-05     | Phase 5 | Pending  |
+| ANLT-06     | Phase 5 | Pending  |
+| ANLT-07     | Phase 5 | Pending  |
+| ANLT-08     | Phase 5 | Pending  |
+| TRST-01     | Phase 6 | Pending  |
+| TRST-02     | Phase 6 | Pending  |
+| TRST-03     | Phase 6 | Pending  |
+| TRST-04     | Phase 6 | Pending  |
+| TRST-05     | Phase 6 | Pending  |
+| TRST-06     | Phase 6 | Pending  |
+| SRVC-01     | Phase 7 | Pending  |
+| SRVC-02     | Phase 7 | Pending  |
+| SRVC-03     | Phase 7 | Pending  |
+| SRVC-04     | Phase 7 | Pending  |
+| SRVC-05     | Phase 7 | Pending  |
+| SRVC-06     | Phase 7 | Pending  |
+| SRVC-07     | Phase 8 | Pending  |
+| SRVC-08     | Phase 8 | Pending  |
+| SRVC-09     | Phase 8 | Pending  |
+| SRVC-10     | Phase 8 | Pending  |
+| SRVC-11     | Phase 8 | Pending  |
+| LEAD-01     | Phase 9 | Pending  |
+| LEAD-02     | Phase 9 | Pending  |
+| LEAD-03     | Phase 9 | Pending  |
+| LEAD-04     | Phase 9 | Pending  |
+| LEAD-05     | Phase 9 | Pending  |
+| LEAD-06     | Phase 9 | Pending  |
+| LEAD-07     | Phase 9 | Pending  |
+| LEAD-08     | Phase 9 | Pending  |
 
 **Coverage:**
+
 - v1 requirements: 55 total (note: REQUIREMENTS.md initially stated 48; actual count from defined IDs is 55)
 - Mapped to phases: 55
 - Unmapped: 0
 
 ---
-*Requirements defined: 2026-03-16*
-*Last updated: 2026-03-16 — traceability populated after roadmap creation*
+
+_Requirements defined: 2026-03-16_
+_Last updated: 2026-03-16 — traceability populated after roadmap creation_
