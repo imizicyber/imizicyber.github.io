@@ -39,13 +39,13 @@ key-files:
     - src/pages/resources/index.astro
 
 key-decisions:
-  - "Shared loadJsPDF in quiz/pdf.ts imported by resources.ts (eliminates duplication)"
-  - "Resources initResources() reads onclick/onsubmit attrs from HTML then rebinds via addEventListener (preserves existing HTML structure)"
-  - "Quiz ui.ts binds calcBtn via addEventListener instead of inline onclick (removes global function dependency)"
+  - 'Shared loadJsPDF in quiz/pdf.ts imported by resources.ts (eliminates duplication)'
+  - 'Resources initResources() reads onclick/onsubmit attrs from HTML then rebinds via addEventListener (preserves existing HTML structure)'
+  - 'Quiz ui.ts binds calcBtn via addEventListener instead of inline onclick (removes global function dependency)'
 
 patterns-established:
-  - "Module extraction pattern: create typed TS module in src/scripts/, import in Astro component via <script> tag"
-  - "Cookie consent imports ANALYTICS from @/data/site instead of using define:vars (enables module bundling)"
+  - 'Module extraction pattern: create typed TS module in src/scripts/, import in Astro component via <script> tag'
+  - 'Cookie consent imports ANALYTICS from @/data/site instead of using define:vars (enables module bundling)'
 
 requirements-completed: [QUAL-01, QUAL-08]
 
@@ -67,6 +67,7 @@ completed: 2026-03-16
 - **Files modified:** 11
 
 ## Accomplishments
+
 - Fixed broken theme toggle (QUAL-01): replaced undefined onclick="toggleTheme()" with module import and addEventListener binding
 - Extracted all inline scripts from 4 .astro files into 7 typed TypeScript modules in src/scripts/
 - Replaced CookieBanner define:vars pattern with direct ANALYTICS import from @/data/site
@@ -81,6 +82,7 @@ Each task was committed atomically:
 2. **Task 2: Extract security-score quiz and resources page scripts** - `b7a8c65` (feat)
 
 ## Files Created/Modified
+
 - `src/scripts/theme.ts` - Theme toggle with getStoredTheme, setTheme, toggleTheme
 - `src/scripts/cookie-consent.ts` - Cookie consent state + GA loading via ANALYTICS import
 - `src/scripts/quiz/data.ts` - 10 Question objects and 5 ScoreBand objects with TypeScript interfaces
@@ -94,6 +96,7 @@ Each task was committed atomically:
 - `src/pages/resources/index.astro` - Replaced 162-line inline script with 3-line module import
 
 ## Decisions Made
+
 - Shared loadJsPDF in quiz/pdf.ts imported by resources.ts to eliminate duplication
 - Resources initResources() reads existing onclick/onsubmit attributes from HTML and rebinds via addEventListener to preserve HTML structure without edits
 - Used ANALYTICS.formspreeUrl from @/data/site instead of hardcoded URL in quiz submitGate
@@ -104,6 +107,7 @@ Each task was committed atomically:
 ### Auto-fixed Issues
 
 **1. [Rule 2 - Missing Critical] Removed unused ANALYTICS imports from page frontmatter**
+
 - **Found during:** Task 2 (quiz and resources extraction)
 - **Issue:** After extracting inline scripts, ANALYTICS import in page frontmatter became unused (would cause lint warnings)
 - **Fix:** Changed `import { SITE, ANALYTICS }` to `import { SITE }` in both pages
@@ -112,6 +116,7 @@ Each task was committed atomically:
 - **Committed in:** b7a8c65 (Task 2 commit)
 
 **2. [Rule 2 - Missing Critical] Removed inline onclick/onsubmit from security-score HTML**
+
 - **Found during:** Task 2
 - **Issue:** Calculate button had onclick="calculateScore()" and gate form had onsubmit="submitGate(event)" referencing globals that no longer exist after module extraction
 - **Fix:** Removed inline handlers; initQuiz() binds via addEventListener on calc-btn and gate-form
@@ -125,16 +130,20 @@ Each task was committed atomically:
 **Impact on plan:** Both auto-fixes necessary for correctness after extraction. No scope creep.
 
 ## Issues Encountered
+
 None
 
 ## User Setup Required
+
 None - no external service configuration required.
 
 ## Next Phase Readiness
+
 - All client-side scripts are now in typed, importable modules ready for testing in Plan 01-03
 - Remaining inline scripts (company-profile, index.astro) are outside this plan's scope
 - BaseLayout FOUC prevention script correctly preserved as inline
 
 ---
-*Phase: 01-code-quality-tooling*
-*Completed: 2026-03-16*
+
+_Phase: 01-code-quality-tooling_
+_Completed: 2026-03-16_

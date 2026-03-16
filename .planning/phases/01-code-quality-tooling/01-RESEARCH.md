@@ -13,9 +13,11 @@ The toolchain is well-established: ESLint 9 flat config with `eslint-plugin-astr
 **Primary recommendation:** Install the full quality toolchain, extract all inline scripts to `src/scripts/` modules, fix the broken theme toggle, write unit tests for extracted modules, and wire up a pre-commit hook that blocks bad code from reaching the public repo.
 
 <user_constraints>
+
 ## User Constraints (from CONTEXT.md)
 
 ### Locked Decisions
+
 - Fix ALL existing violations in Phase 1 -- clean slate, no legacy debt tolerated
 - Strict ESLint rules: eslint:recommended + typescript-eslint strict + eslint-plugin-astro recommended
 - This is a public repo for a cybersecurity firm -- code quality is a credibility signal
@@ -34,6 +36,7 @@ The toolchain is well-established: ESLint 9 flat config with `eslint-plugin-astr
 - If any check fails, commit is blocked
 
 ### Claude's Discretion
+
 - Exact ESLint rule configuration beyond strict presets
 - Coverage threshold percentage (recommend 80%)
 - Vitest configuration details (happy-dom vs jsdom for DOM testing)
@@ -41,54 +44,61 @@ The toolchain is well-established: ESLint 9 flat config with `eslint-plugin-astr
 - lint-staged glob patterns
 
 ### Deferred Ideas (OUT OF SCOPE)
+
 None -- discussion stayed within phase scope
 </user_constraints>
 
 <phase_requirements>
+
 ## Phase Requirements
 
-| ID | Description | Research Support |
-|----|-------------|-----------------|
+| ID      | Description                                                                            | Research Support                                                                                                                                      |
+| ------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | QUAL-01 | Theme toggle works correctly in both dark and light mode with localStorage persistence | Theme toggle fix pattern documented; `toggleTheme()` must be defined in extracted theme script; FOUC prevention via `is:inline` head script preserved |
-| QUAL-02 | ESLint 9 with flat config and eslint-plugin-astro enforces consistent code style | Full flat config setup verified with eslint-plugin-astro 1.6.0, typescript-eslint 8.57.0, ESLint 10.0.3; code examples provided |
-| QUAL-03 | Prettier formats all files consistently on save and pre-commit | Prettier 3.8.1 + prettier-plugin-astro 0.14.1; lint-staged auto-formats on commit |
-| QUAL-04 | TypeScript strict mode enabled with no implicit any | Already extends `astro/tsconfigs/strict`; add `@/` path alias; typescript-eslint strict preset adds type-aware rules |
-| QUAL-05 | Husky pre-commit hooks run linting and type checking before every commit | Husky 9.1.7 + lint-staged 16.4.0; full gate: lint + typecheck + format + test |
-| QUAL-06 | Vitest test framework configured with coverage reporting | Vitest 4.1.0 + @vitest/coverage-v8 4.1.0; happy-dom for DOM tests; coverage threshold enforcement |
-| QUAL-08 | All inline scripts extracted to external files or Astro script modules | 5 extraction targets identified with specific module breakdown; FOUC-safe pattern for theme init |
+| QUAL-02 | ESLint 9 with flat config and eslint-plugin-astro enforces consistent code style       | Full flat config setup verified with eslint-plugin-astro 1.6.0, typescript-eslint 8.57.0, ESLint 10.0.3; code examples provided                       |
+| QUAL-03 | Prettier formats all files consistently on save and pre-commit                         | Prettier 3.8.1 + prettier-plugin-astro 0.14.1; lint-staged auto-formats on commit                                                                     |
+| QUAL-04 | TypeScript strict mode enabled with no implicit any                                    | Already extends `astro/tsconfigs/strict`; add `@/` path alias; typescript-eslint strict preset adds type-aware rules                                  |
+| QUAL-05 | Husky pre-commit hooks run linting and type checking before every commit               | Husky 9.1.7 + lint-staged 16.4.0; full gate: lint + typecheck + format + test                                                                         |
+| QUAL-06 | Vitest test framework configured with coverage reporting                               | Vitest 4.1.0 + @vitest/coverage-v8 4.1.0; happy-dom for DOM tests; coverage threshold enforcement                                                     |
+| QUAL-08 | All inline scripts extracted to external files or Astro script modules                 | 5 extraction targets identified with specific module breakdown; FOUC-safe pattern for theme init                                                      |
+
 </phase_requirements>
 
 ## Standard Stack
 
 ### Core
-| Library | Version | Purpose | Why Standard |
-|---------|---------|---------|--------------|
-| `eslint` | `^10.0.3` | JavaScript/TypeScript linting | Current stable; flat config is default format |
-| `typescript-eslint` | `^8.57.0` | Unified TS-ESLint package (parser + plugin + configs) | Replaces separate `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin`; provides `tseslint.configs.strict` |
-| `@eslint/js` | `^10.x` | ESLint core recommended rules | Peer of ESLint 10; provides `eslint.configs.recommended` |
-| `eslint-plugin-astro` | `^1.6.0` | Astro component linting | Official Astro linting; supports ESLint 9+ flat config via `configs.recommended` |
-| `eslint-plugin-jsx-a11y` | `^6.10.2` | Accessibility linting | Peer dependency of eslint-plugin-astro a11y configs |
-| `prettier` | `^3.8.1` | Code formatting | De facto standard formatter |
-| `prettier-plugin-astro` | `^0.14.1` | Format .astro files | Required for Prettier to understand Astro component syntax |
-| `vitest` | `^4.1.0` | Unit/integration test runner | Vite-native; zero config friction with Astro's Vite pipeline |
-| `@vitest/coverage-v8` | `^4.1.0` | Coverage reporting | V8-based coverage; faster than Istanbul |
-| `happy-dom` | latest | DOM environment for Vitest | 3-10x faster than jsdom; sufficient for localStorage, DOM manipulation tests in extracted scripts |
-| `husky` | `^9.1.7` | Git hooks manager | Standard for pre-commit hooks |
-| `lint-staged` | `^16.4.0` | Run linters on staged files only | Keeps pre-commit fast |
+
+| Library                  | Version   | Purpose                                               | Why Standard                                                                                                             |
+| ------------------------ | --------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `eslint`                 | `^10.0.3` | JavaScript/TypeScript linting                         | Current stable; flat config is default format                                                                            |
+| `typescript-eslint`      | `^8.57.0` | Unified TS-ESLint package (parser + plugin + configs) | Replaces separate `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin`; provides `tseslint.configs.strict` |
+| `@eslint/js`             | `^10.x`   | ESLint core recommended rules                         | Peer of ESLint 10; provides `eslint.configs.recommended`                                                                 |
+| `eslint-plugin-astro`    | `^1.6.0`  | Astro component linting                               | Official Astro linting; supports ESLint 9+ flat config via `configs.recommended`                                         |
+| `eslint-plugin-jsx-a11y` | `^6.10.2` | Accessibility linting                                 | Peer dependency of eslint-plugin-astro a11y configs                                                                      |
+| `prettier`               | `^3.8.1`  | Code formatting                                       | De facto standard formatter                                                                                              |
+| `prettier-plugin-astro`  | `^0.14.1` | Format .astro files                                   | Required for Prettier to understand Astro component syntax                                                               |
+| `vitest`                 | `^4.1.0`  | Unit/integration test runner                          | Vite-native; zero config friction with Astro's Vite pipeline                                                             |
+| `@vitest/coverage-v8`    | `^4.1.0`  | Coverage reporting                                    | V8-based coverage; faster than Istanbul                                                                                  |
+| `happy-dom`              | latest    | DOM environment for Vitest                            | 3-10x faster than jsdom; sufficient for localStorage, DOM manipulation tests in extracted scripts                        |
+| `husky`                  | `^9.1.7`  | Git hooks manager                                     | Standard for pre-commit hooks                                                                                            |
+| `lint-staged`            | `^16.4.0` | Run linters on staged files only                      | Keeps pre-commit fast                                                                                                    |
 
 ### Supporting
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| `eslint-config-prettier` | latest | Disable ESLint rules that conflict with Prettier | Always -- prevents ESLint/Prettier conflicts |
-| `globals` | latest | Provide browser/node global variable definitions for flat config | Required in flat config to replace `env: { browser: true }` |
+
+| Library                  | Version | Purpose                                                          | When to Use                                                 |
+| ------------------------ | ------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| `eslint-config-prettier` | latest  | Disable ESLint rules that conflict with Prettier                 | Always -- prevents ESLint/Prettier conflicts                |
+| `globals`                | latest  | Provide browser/node global variable definitions for flat config | Required in flat config to replace `env: { browser: true }` |
 
 ### Alternatives Considered
-| Instead of | Could Use | Tradeoff |
-|------------|-----------|----------|
-| `happy-dom` | `jsdom` | jsdom has more complete browser API coverage but is 3-10x slower; happy-dom is sufficient for this project's DOM testing needs (localStorage, classList, getElementById) |
-| `typescript-eslint` unified | separate `@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin` | Separate packages still work but unified package is the current recommended approach |
+
+| Instead of                  | Could Use                                                                 | Tradeoff                                                                                                                                                                 |
+| --------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `happy-dom`                 | `jsdom`                                                                   | jsdom has more complete browser API coverage but is 3-10x slower; happy-dom is sufficient for this project's DOM testing needs (localStorage, classList, getElementById) |
+| `typescript-eslint` unified | separate `@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin` | Separate packages still work but unified package is the current recommended approach                                                                                     |
 
 **Installation:**
+
 ```bash
 # Linting
 npm install -D eslint @eslint/js typescript-eslint eslint-plugin-astro eslint-plugin-jsx-a11y eslint-config-prettier globals
@@ -106,6 +116,7 @@ npm install -D husky lint-staged
 ## Architecture Patterns
 
 ### Recommended Project Structure (new files)
+
 ```
 src/
 ├── scripts/                    # Extracted script modules
@@ -134,6 +145,7 @@ src/
 ```
 
 ### Pattern 1: ESLint 9 Flat Config for Astro + TypeScript
+
 **What:** Single `eslint.config.mjs` combining all rule sources
 **When to use:** This is the only config file needed for linting
 
@@ -168,6 +180,7 @@ export default tseslint.config(
 ```
 
 ### Pattern 2: Script Extraction with FOUC Prevention
+
 **What:** Extract inline scripts while preserving critical timing for theme init
 **When to use:** For BaseLayout theme init script
 
@@ -211,8 +224,11 @@ if (typeof window !== 'undefined') {
 ```astro
 <!-- BaseLayout.astro head — FOUC prevention (keep is:inline, keep tiny) -->
 <script is:inline>
-  (function(){
-    try{var s=localStorage.getItem('imizi-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}
+  (function () {
+    try {
+      var s = localStorage.getItem('imizi-theme');
+      if (s) document.documentElement.dataset.theme = s;
+    } catch (e) {}
   })();
 </script>
 
@@ -223,6 +239,7 @@ if (typeof window !== 'undefined') {
 ```
 
 ### Pattern 3: Testable Module Extraction
+
 **What:** Extract inline script logic into pure functions + side-effect-free modules
 **When to use:** For all script extractions (cookie consent, quiz scoring, resources)
 
@@ -262,6 +279,7 @@ export function resetConsentState(): void {
 The key pattern: **pure logic functions** (testable without DOM) separate from **DOM binding code** (runs on import, wires up event listeners). Tests import only the pure functions.
 
 ### Pattern 4: Vitest Config for Astro Project
+
 **What:** Vitest configuration with happy-dom and coverage thresholds
 **When to use:** Project test configuration
 
@@ -295,6 +313,7 @@ export default defineConfig({
 ```
 
 ### Pattern 5: Pre-commit Hook (Full Gate)
+
 **What:** Husky + lint-staged blocking bad commits
 **When to use:** Every commit
 
@@ -302,17 +321,9 @@ export default defineConfig({
 // package.json lint-staged config
 {
   "lint-staged": {
-    "*.{ts,mjs,js}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.astro": [
-      "eslint --fix",
-      "prettier --write --plugin=prettier-plugin-astro"
-    ],
-    "*.{css,json,md,mdx}": [
-      "prettier --write"
-    ]
+    "*.{ts,mjs,js}": ["eslint --fix", "prettier --write"],
+    "*.astro": ["eslint --fix", "prettier --write --plugin=prettier-plugin-astro"],
+    "*.{css,json,md,mdx}": ["prettier --write"]
   }
 }
 ```
@@ -327,6 +338,7 @@ npx lint-staged
 **Note on ordering:** `typecheck` and `test` run on the full codebase (not just staged files). `lint-staged` runs ESLint + Prettier only on staged files. This ensures type-check catches cross-file issues that staged-only linting would miss.
 
 ### Pattern 6: Path Alias Configuration
+
 **What:** `@/` alias for clean imports
 **When to use:** All new imports; refactor existing deep relative imports
 
@@ -361,6 +373,7 @@ export default defineConfig({
 ```
 
 ### Anti-Patterns to Avoid
+
 - **Leaving theme init in a module script:** Module scripts are deferred. Theme init MUST be `is:inline` in `<head>` or the page flashes the wrong theme (FOUC).
 - **Using `define:vars` in extracted scripts:** The `define:vars` Astro directive only works with `is:inline`. Extracted modules should import constants from TypeScript files instead.
 - **Running ESLint on dist/ or .astro/:** These are generated directories. Always ignore them.
@@ -368,55 +381,62 @@ export default defineConfig({
 
 ## Don't Hand-Roll
 
-| Problem | Don't Build | Use Instead | Why |
-|---------|-------------|-------------|-----|
-| ESLint config merging | Custom config merge logic | `tseslint.config()` helper | Handles array spreading, rule precedence, and TypeScript parser setup correctly |
-| Prettier + ESLint conflicts | Manual rule disabling | `eslint-config-prettier` | Automatically disables all ESLint rules that conflict with Prettier |
-| Coverage thresholds | Custom coverage checking script | Vitest `thresholds` config | Built-in; fails test run if thresholds not met |
-| Git hook installation | Manual `.git/hooks/` scripts | Husky `prepare` script | Auto-installs hooks on `npm install` for any contributor |
-| Staged file filtering | Custom `git diff` parsing | `lint-staged` | Handles partial staging, binary files, deleted files correctly |
+| Problem                     | Don't Build                     | Use Instead                | Why                                                                             |
+| --------------------------- | ------------------------------- | -------------------------- | ------------------------------------------------------------------------------- |
+| ESLint config merging       | Custom config merge logic       | `tseslint.config()` helper | Handles array spreading, rule precedence, and TypeScript parser setup correctly |
+| Prettier + ESLint conflicts | Manual rule disabling           | `eslint-config-prettier`   | Automatically disables all ESLint rules that conflict with Prettier             |
+| Coverage thresholds         | Custom coverage checking script | Vitest `thresholds` config | Built-in; fails test run if thresholds not met                                  |
+| Git hook installation       | Manual `.git/hooks/` scripts    | Husky `prepare` script     | Auto-installs hooks on `npm install` for any contributor                        |
+| Staged file filtering       | Custom `git diff` parsing       | `lint-staged`              | Handles partial staging, binary files, deleted files correctly                  |
 
 **Key insight:** Every tool in this stack has a "just works" configuration path. The main risk is over-customization, not under-configuration.
 
 ## Common Pitfalls
 
 ### Pitfall 1: eslint-plugin-astro Flat Config Import Path
+
 **What goes wrong:** Using `eslintPluginAstro.configs['flat/recommended']` in ESM when you should use `eslintPluginAstro.configs.recommended`
 **Why it happens:** The `flat/` prefix is only needed in CommonJS. ESM exports use the direct property name.
 **How to avoid:** Use ESM format (`eslint.config.mjs`) and access `configs.recommended` directly.
 **Warning signs:** "Cannot read property of undefined" errors when running eslint.
 
 ### Pitfall 2: Theme Toggle FOUC
+
 **What goes wrong:** Extracting the theme init script to a module causes flash of wrong theme on page load.
 **Why it happens:** Astro module scripts are deferred by default. The theme must be applied before first paint.
 **How to avoid:** Keep a minimal `is:inline` script in `<head>` that reads localStorage and sets `data-theme`. Load the full theme module (with `toggleTheme()`) as a regular script tag.
 **Warning signs:** Page briefly flashes light theme before switching to dark (or vice versa).
 
 ### Pitfall 3: define:vars in Extracted Scripts
+
 **What goes wrong:** Trying to use Astro `define:vars` in an extracted module script.
 **Why it happens:** `define:vars` only works with `is:inline` scripts. Once you extract to a `.ts` module, you lose access to Astro template variables.
 **How to avoid:** For the GA ID currently passed via `define:vars={{ gaId }}` in CookieBanner, move the ID to a constants file (`src/data/site.ts` already has `ANALYTICS.gaId`) and import it in the extracted module.
 **Warning signs:** `gaId is not defined` runtime errors.
 
 ### Pitfall 4: TypeScript Strict + Existing Code
+
 **What goes wrong:** Enabling strict TypeScript rules causes hundreds of errors in existing `.astro` files.
 **Why it happens:** While `tsconfig.json` already extends `astro/tsconfigs/strict`, the inline scripts use `var` declarations, implicit `any`, and untyped DOM operations.
 **How to avoid:** Fix violations file-by-file during extraction. The extracted `.ts` modules will naturally be strict-compatible. Astro component frontmatter is already mostly typed.
 **Warning signs:** `tsc --noEmit` exit code 1 with dozens of errors.
 
 ### Pitfall 5: Coverage Threshold Blocking Initial Setup
+
 **What goes wrong:** Setting 80% coverage threshold before writing tests causes every commit to fail.
 **Why it happens:** Coverage thresholds are enforced globally. With zero tests, coverage is 0%.
 **How to avoid:** Write the initial test suite in the same wave as enabling the threshold. Do NOT enable thresholds before tests exist.
 **Warning signs:** Pre-commit hook fails with "Coverage threshold not met" before any tests are written.
 
 ### Pitfall 6: lint-staged + Prettier Plugin Loading
+
 **What goes wrong:** Prettier fails to format `.astro` files in lint-staged because the plugin is not found.
 **Why it happens:** lint-staged runs Prettier in a subprocess that may not resolve plugins from the project root.
 **How to avoid:** Add `--plugin=prettier-plugin-astro` explicitly in the lint-staged command for `.astro` files, or configure the plugin in `.prettierrc`.
 **Warning signs:** Prettier silently fails or produces malformed output on `.astro` files.
 
 ### Pitfall 7: Husky Not Installing on Clone
+
 **What goes wrong:** New contributors clone the repo and pre-commit hooks don't work.
 **Why it happens:** Husky hooks require running the `prepare` script.
 **How to avoid:** Add `"prepare": "husky"` to `package.json` scripts. Husky 9 simplified this -- just the one-word `husky` command.
@@ -425,6 +445,7 @@ export default defineConfig({
 ## Code Examples
 
 ### Unit Test for Theme Toggle
+
 ```typescript
 // src/__tests__/theme.test.ts
 import { describe, it, expect, beforeEach, vi } from 'vitest';
@@ -466,6 +487,7 @@ describe('theme', () => {
 ```
 
 ### Unit Test for Quiz Scoring
+
 ```typescript
 // src/__tests__/quiz/scoring.test.ts
 import { describe, it, expect } from 'vitest';
@@ -488,6 +510,7 @@ describe('quiz scoring', () => {
 ```
 
 ### Prettier Configuration
+
 ```json
 // .prettierrc
 {
@@ -509,6 +532,7 @@ describe('quiz scoring', () => {
 ```
 
 ### .prettierignore
+
 ```
 dist/
 .astro/
@@ -519,6 +543,7 @@ package-lock.json
 ```
 
 ### package.json Scripts
+
 ```json
 {
   "scripts": {
@@ -540,15 +565,16 @@ package-lock.json
 
 ## State of the Art
 
-| Old Approach | Current Approach | When Changed | Impact |
-|--------------|------------------|--------------|--------|
-| `.eslintrc` + separate TS parser/plugin | `eslint.config.mjs` + `typescript-eslint` unified package | ESLint 9 (2024), typescript-eslint v8 (2024) | Single flat config file, simpler imports |
-| `@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin` separate | `typescript-eslint` unified package | typescript-eslint v8 (2024) | One import, one package, `tseslint.config()` helper |
-| Husky v4 `.huskyrc` | Husky v9 `.husky/` directory | Husky v9 (2024) | Simpler setup, `"prepare": "husky"` in package.json |
-| Jest for Vite projects | Vitest | Vitest 1.0 (2023) | Native Vite transforms, no config duplication |
-| `jsdom` default | `happy-dom` recommended for speed | 2024+ | 3-10x faster DOM tests |
+| Old Approach                                                              | Current Approach                                          | When Changed                                 | Impact                                              |
+| ------------------------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------- |
+| `.eslintrc` + separate TS parser/plugin                                   | `eslint.config.mjs` + `typescript-eslint` unified package | ESLint 9 (2024), typescript-eslint v8 (2024) | Single flat config file, simpler imports            |
+| `@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin` separate | `typescript-eslint` unified package                       | typescript-eslint v8 (2024)                  | One import, one package, `tseslint.config()` helper |
+| Husky v4 `.huskyrc`                                                       | Husky v9 `.husky/` directory                              | Husky v9 (2024)                              | Simpler setup, `"prepare": "husky"` in package.json |
+| Jest for Vite projects                                                    | Vitest                                                    | Vitest 1.0 (2023)                            | Native Vite transforms, no config duplication       |
+| `jsdom` default                                                           | `happy-dom` recommended for speed                         | 2024+                                        | 3-10x faster DOM tests                              |
 
 **Deprecated/outdated:**
+
 - `.eslintrc.json` / `.eslintrc.js` -- deprecated in ESLint 9, removed in ESLint 10
 - `@typescript-eslint/parser` as separate install -- still works but unified package is recommended
 - `husky install` command -- replaced by just `husky` in v9
@@ -558,19 +584,20 @@ package-lock.json
 
 ### Scripts to Extract
 
-| Source File | Lines | Module Target | Complexity | Notes |
-|-------------|-------|---------------|------------|-------|
-| `BaseLayout.astro` | 116-120 | Keep `is:inline` (FOUC) + `src/scripts/theme.ts` | Low | Tiny init stays inline; `toggleTheme()` goes to module |
-| `ThemeToggle.astro` | 7 | Import `src/scripts/theme.ts` | Low | Replace `onclick="toggleTheme()"` with module import + addEventListener |
-| `CookieBanner.astro` | 19-56 | `src/scripts/cookie-consent.ts` | Medium | Uses `define:vars={{ gaId }}` -- must replace with import from `site.ts` |
-| `security-score/index.astro` | 322-649 | `src/scripts/quiz/data.ts`, `scoring.ts`, `ui.ts`, `pdf.ts` | High | 327 lines; largest extraction; quiz data structures, scoring bands, step navigation, PDF generation |
-| `resources/index.astro` | 423+ | `src/scripts/resources.ts` | Medium | Form toggle, PDF generation with resource data |
+| Source File                  | Lines   | Module Target                                               | Complexity | Notes                                                                                               |
+| ---------------------------- | ------- | ----------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| `BaseLayout.astro`           | 116-120 | Keep `is:inline` (FOUC) + `src/scripts/theme.ts`            | Low        | Tiny init stays inline; `toggleTheme()` goes to module                                              |
+| `ThemeToggle.astro`          | 7       | Import `src/scripts/theme.ts`                               | Low        | Replace `onclick="toggleTheme()"` with module import + addEventListener                             |
+| `CookieBanner.astro`         | 19-56   | `src/scripts/cookie-consent.ts`                             | Medium     | Uses `define:vars={{ gaId }}` -- must replace with import from `site.ts`                            |
+| `security-score/index.astro` | 322-649 | `src/scripts/quiz/data.ts`, `scoring.ts`, `ui.ts`, `pdf.ts` | High       | 327 lines; largest extraction; quiz data structures, scoring bands, step navigation, PDF generation |
+| `resources/index.astro`      | 423+    | `src/scripts/resources.ts`                                  | Medium     | Form toggle, PDF generation with resource data                                                      |
 
 ### ThemeToggle Fix Plan
 
 **Current state:** `ThemeToggle.astro` line 7 has `onclick="toggleTheme()"` but `toggleTheme()` is never defined anywhere in the codebase. The theme init script in `BaseLayout.astro` only reads localStorage and sets `data-theme` -- it does not define a toggle function.
 
 **Fix:**
+
 1. Create `src/scripts/theme.ts` with `toggleTheme()` function
 2. In `ThemeToggle.astro`, replace inline `onclick` with a `<script>` tag that imports the theme module and attaches the click handler via `addEventListener`
 3. Keep the tiny FOUC prevention script in `BaseLayout.astro` `<head>` as `is:inline`
@@ -578,30 +605,34 @@ package-lock.json
 ## Validation Architecture
 
 ### Test Framework
-| Property | Value |
-|----------|-------|
-| Framework | Vitest 4.1.0 + happy-dom |
-| Config file | `vitest.config.ts` (Wave 0 -- does not exist yet) |
-| Quick run command | `npx vitest run` |
-| Full suite command | `npx vitest run --coverage` |
+
+| Property           | Value                                             |
+| ------------------ | ------------------------------------------------- |
+| Framework          | Vitest 4.1.0 + happy-dom                          |
+| Config file        | `vitest.config.ts` (Wave 0 -- does not exist yet) |
+| Quick run command  | `npx vitest run`                                  |
+| Full suite command | `npx vitest run --coverage`                       |
 
 ### Phase Requirements -> Test Map
-| Req ID | Behavior | Test Type | Automated Command | File Exists? |
-|--------|----------|-----------|-------------------|-------------|
-| QUAL-01 | Theme toggle switches dark/light, persists to localStorage | unit | `npx vitest run src/__tests__/theme.test.ts` | No -- Wave 0 |
-| QUAL-02 | ESLint catches real violations in src/ | smoke | `npx eslint src/ --max-warnings 0` | No -- Wave 0 (config file) |
-| QUAL-03 | Prettier formats all files consistently | smoke | `npx prettier --check .` | No -- Wave 0 (config file) |
-| QUAL-04 | TypeScript strict mode, no implicit any | smoke | `npx tsc --noEmit` | Partial -- tsconfig exists |
-| QUAL-05 | Pre-commit hook blocks bad commits | manual-only | Manual: stage a lint error, attempt commit, verify blocked | No -- Wave 0 |
-| QUAL-06 | Vitest runs with coverage output | smoke | `npx vitest run --coverage` | No -- Wave 0 |
-| QUAL-08 | All inline scripts extracted to external files | unit | `npx vitest run src/__tests__/` | No -- Wave 0 |
+
+| Req ID  | Behavior                                                   | Test Type   | Automated Command                                          | File Exists?               |
+| ------- | ---------------------------------------------------------- | ----------- | ---------------------------------------------------------- | -------------------------- |
+| QUAL-01 | Theme toggle switches dark/light, persists to localStorage | unit        | `npx vitest run src/__tests__/theme.test.ts`               | No -- Wave 0               |
+| QUAL-02 | ESLint catches real violations in src/                     | smoke       | `npx eslint src/ --max-warnings 0`                         | No -- Wave 0 (config file) |
+| QUAL-03 | Prettier formats all files consistently                    | smoke       | `npx prettier --check .`                                   | No -- Wave 0 (config file) |
+| QUAL-04 | TypeScript strict mode, no implicit any                    | smoke       | `npx tsc --noEmit`                                         | Partial -- tsconfig exists |
+| QUAL-05 | Pre-commit hook blocks bad commits                         | manual-only | Manual: stage a lint error, attempt commit, verify blocked | No -- Wave 0               |
+| QUAL-06 | Vitest runs with coverage output                           | smoke       | `npx vitest run --coverage`                                | No -- Wave 0               |
+| QUAL-08 | All inline scripts extracted to external files             | unit        | `npx vitest run src/__tests__/`                            | No -- Wave 0               |
 
 ### Sampling Rate
+
 - **Per task commit:** `npx vitest run`
 - **Per wave merge:** `npx vitest run --coverage && npx eslint src/ && npx tsc --noEmit && npx prettier --check .`
 - **Phase gate:** Full suite green before `/gsd:verify-work`
 
 ### Wave 0 Gaps
+
 - [ ] `vitest.config.ts` -- Vitest configuration with happy-dom and coverage
 - [ ] `eslint.config.mjs` -- ESLint 9 flat config
 - [ ] `.prettierrc` + `.prettierignore` -- Prettier configuration
@@ -631,6 +662,7 @@ package-lock.json
 ## Sources
 
 ### Primary (HIGH confidence)
+
 - [eslint-plugin-astro user guide](https://ota-meshi.github.io/eslint-plugin-astro/user-guide/) -- flat config setup, available configs, peer dependencies
 - [typescript-eslint getting started](https://typescript-eslint.io/getting-started/) -- unified package, flat config with `tseslint.config()`
 - [typescript-eslint v8 announcement](https://typescript-eslint.io/blog/announcing-typescript-eslint-v8/) -- ESLint 9 support confirmation
@@ -638,17 +670,20 @@ package-lock.json
 - Direct codebase inspection -- current tsconfig, package.json, astro.config, inline scripts
 
 ### Secondary (MEDIUM confidence)
+
 - [Astro dark mode patterns](https://astro-tips.dev/recipes/dark-mode/) -- FOUC prevention with `is:inline`
 - [Vitest jsdom vs happy-dom discussion](https://github.com/vitest-dev/vitest/discussions/1607) -- performance comparison
 - [Prettier pre-commit docs](https://prettier.io/docs/precommit.html) -- lint-staged integration pattern
 - [Husky + lint-staged guide](https://betterstack.com/community/guides/scaling-nodejs/husky-and-lint-staged/) -- setup process for Husky 9
 
 ### Tertiary (LOW confidence)
+
 - ESLint 10 compatibility -- version 10.0.3 is latest per npm, but no official docs verified for plugin compat; recommend pinning to v9
 
 ## Metadata
 
 **Confidence breakdown:**
+
 - Standard stack: HIGH -- all versions verified via npm registry, flat config support confirmed by official docs
 - Architecture: HIGH -- script extraction patterns are straightforward TypeScript module patterns; FOUC prevention is well-documented
 - Pitfalls: HIGH -- all pitfalls are based on verified technical constraints (define:vars, is:inline, flat config import paths)

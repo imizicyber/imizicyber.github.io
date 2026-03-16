@@ -64,11 +64,11 @@ The enhancement milestone does not require an architectural rethink. It requires
 
 **Target expansion:**
 
-| File | Contents | Replaces |
-|------|----------|----------|
-| `src/data/site.ts` | Brand, contact, social (existing) | No change |
+| File                   | Contents                                            | Replaces                                  |
+| ---------------------- | --------------------------------------------------- | ----------------------------------------- |
+| `src/data/site.ts`     | Brand, contact, social (existing)                   | No change                                 |
 | `src/data/services.ts` | Service definitions (name, slug, description, CTAs) | Hardcoded repetition across service pages |
-| `src/data/nav.ts` | Navigation link definitions | Hardcoded nav items in Nav.astro |
+| `src/data/nav.ts`      | Navigation link definitions                         | Hardcoded nav items in Nav.astro          |
 
 ### Layer 2: Content Layer (depends on Data)
 
@@ -80,10 +80,10 @@ The enhancement milestone does not require an architectural rethink. It requires
 
 **Target expansion:**
 
-| Collection | Description |
-|------------|-------------|
-| `blog` | Blog posts — existing, maintain |
-| *(future)* `resources` | Downloadable resources if structured content grows |
+| Collection             | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `blog`                 | Blog posts — existing, maintain                    |
+| _(future)_ `resources` | Downloadable resources if structured content grows |
 
 ### Layer 3: Component Layer (depends on Data, no circular deps)
 
@@ -94,18 +94,18 @@ The enhancement milestone does not require an architectural rethink. It requires
 
 **Component taxonomy (current + target):**
 
-| Category | Components | Notes |
-|----------|------------|-------|
-| Structural | `Nav.astro`, `Footer.astro`, `SkipLink.astro` | Navigation and page frame |
-| SEO | `SEOHead.astro`, `SchemaOrg.astro` | Head meta and structured data |
-| Content display | `BlogCard.astro`, `Breadcrumb.astro`, `Callout.astro`, `CtaBox.astro` | Rendering content items |
-| Lead generation | `ContactForm.astro`, `WhatsAppFloat.astro` | Conversion touchpoints |
-| Consent & analytics | `CookieBanner.astro` | Consent gate for analytics loading |
-| Interactive tools | `ThemeToggle.astro` | Client-side UI state |
-| *Target new* | `BookingCTA.astro` | Reusable "Book a Consultation" CTA block |
-| *Target new* | `ServiceCard.astro` | Service offering card for homepage grid |
-| *Target new* | `CredentialBadge.astro` | Founder cert/credential display unit |
-| *Target new* | `TrustBar.astro` | Trust signals strip (stats, logos, certifications) |
+| Category            | Components                                                            | Notes                                              |
+| ------------------- | --------------------------------------------------------------------- | -------------------------------------------------- |
+| Structural          | `Nav.astro`, `Footer.astro`, `SkipLink.astro`                         | Navigation and page frame                          |
+| SEO                 | `SEOHead.astro`, `SchemaOrg.astro`                                    | Head meta and structured data                      |
+| Content display     | `BlogCard.astro`, `Breadcrumb.astro`, `Callout.astro`, `CtaBox.astro` | Rendering content items                            |
+| Lead generation     | `ContactForm.astro`, `WhatsAppFloat.astro`                            | Conversion touchpoints                             |
+| Consent & analytics | `CookieBanner.astro`                                                  | Consent gate for analytics loading                 |
+| Interactive tools   | `ThemeToggle.astro`                                                   | Client-side UI state                               |
+| _Target new_        | `BookingCTA.astro`                                                    | Reusable "Book a Consultation" CTA block           |
+| _Target new_        | `ServiceCard.astro`                                                   | Service offering card for homepage grid            |
+| _Target new_        | `CredentialBadge.astro`                                               | Founder cert/credential display unit               |
+| _Target new_        | `TrustBar.astro`                                                      | Trust signals strip (stats, logos, certifications) |
 
 **Boundary enforcement:** Each component gets a typed `Props` interface. No component should reach into global state except through its props or the explicit `site.ts` import.
 
@@ -117,11 +117,11 @@ The enhancement milestone does not require an architectural rethink. It requires
 
 **Current layouts:**
 
-| Layout | Purpose | Used By |
-|--------|---------|---------|
-| `BaseLayout.astro` | Root wrapper: head, nav, footer, CSP, analytics, cookie banner | All pages |
-| `BlogPostLayout.astro` | Blog article frame: article element, auto-generated schemas, breadcrumb | Blog post pages |
-| `SimplePageLayout.astro` | Light wrapper for legal/static pages | Privacy policy, responsible disclosure |
+| Layout                   | Purpose                                                                 | Used By                                |
+| ------------------------ | ----------------------------------------------------------------------- | -------------------------------------- |
+| `BaseLayout.astro`       | Root wrapper: head, nav, footer, CSP, analytics, cookie banner          | All pages                              |
+| `BlogPostLayout.astro`   | Blog article frame: article element, auto-generated schemas, breadcrumb | Blog post pages                        |
+| `SimplePageLayout.astro` | Light wrapper for legal/static pages                                    | Privacy policy, responsible disclosure |
 
 **Target state:** No new layouts needed. `BaseLayout` may be split to separate concerns if it exceeds ~100 lines of logic. The CSP string construction belongs in a utility function, not inline in the layout.
 
@@ -136,15 +136,15 @@ The enhancement milestone does not require an architectural rethink. It requires
 
 **Target page section components (extracted from index.astro):**
 
-| Component | Section | Notes |
-|-----------|---------|-------|
-| `HeroSection.astro` | Homepage hero | Primary CTA placement |
-| `ServicesSection.astro` | Services grid | Driven by `src/data/services.ts` |
-| `ProcessSection.astro` | How we work steps | |
-| `CredentialsSection.astro` | Founder profile, certifications | Core credibility section |
-| `BlogFeedSection.astro` | Latest blog posts preview | |
-| `FAQSection.astro` | FAQ accordion | Drives FAQPage schema |
-| `ContactSection.astro` | Contact form wrapper | |
+| Component                  | Section                         | Notes                            |
+| -------------------------- | ------------------------------- | -------------------------------- |
+| `HeroSection.astro`        | Homepage hero                   | Primary CTA placement            |
+| `ServicesSection.astro`    | Services grid                   | Driven by `src/data/services.ts` |
+| `ProcessSection.astro`     | How we work steps               |                                  |
+| `CredentialsSection.astro` | Founder profile, certifications | Core credibility section         |
+| `BlogFeedSection.astro`    | Latest blog posts preview       |                                  |
+| `FAQSection.astro`         | FAQ accordion                   | Drives FAQPage schema            |
+| `ContactSection.astro`     | Contact form wrapper            |                                  |
 
 ### Layer 6: Analytics & Consent Subsystem (cross-cutting, runtime only)
 
@@ -176,12 +176,12 @@ User action → Event function call → gtag() (if consented) → GA4
 
 **Target test surface:**
 
-| Test Type | Tool | What It Covers |
-|-----------|------|----------------|
-| Unit | Vitest | Utility functions, schema validation logic, data transformation |
-| Component | Vitest + Astro testing utilities | Props contracts, conditional rendering |
-| Integration/E2E | Playwright | Cookie consent flow, form submission, quiz complete-to-PDF, nav, 404 |
-| Build | CI (GitHub Actions) | `astro build` passes, no TypeScript errors, no linting errors |
+| Test Type       | Tool                             | What It Covers                                                       |
+| --------------- | -------------------------------- | -------------------------------------------------------------------- |
+| Unit            | Vitest                           | Utility functions, schema validation logic, data transformation      |
+| Component       | Vitest + Astro testing utilities | Props contracts, conditional rendering                               |
+| Integration/E2E | Playwright                       | Cookie consent flow, form submission, quiz complete-to-PDF, nav, 404 |
+| Build           | CI (GitHub Actions)              | `astro build` passes, no TypeScript errors, no linting errors        |
 
 ---
 
@@ -305,13 +305,10 @@ export function track(eventName: string, params?: Record<string, unknown>) {
 Structured data is always generated at build time. It never relies on client-side DOM construction. Each page passes a `schemas` array to `BaseLayout`, which passes it to `SchemaOrg` for render in `<head>`.
 
 ```astro
-// Pattern: page defines schemas, layout renders them
-const schemas = [
-  buildOrganizationSchema(SITE),
-  buildBreadcrumbSchema([...])
-];
+// Pattern: page defines schemas, layout renders them const schemas = [
+buildOrganizationSchema(SITE), buildBreadcrumbSchema([...]) ];
 
-<BaseLayout schemas={schemas} ...>
+<BaseLayout schemas={schemas} ... />
 ```
 
 ### Pattern 4: Thin Pages, Fat Components
@@ -332,12 +329,12 @@ src/pages/index.astro (~80 lines max after refactor)
 ```typescript
 // src/data/site.ts — public IDs only, safe to commit
 export const ANALYTICS = {
-  gaId: 'G-XXXXXXXX',           // public, safe
-  linkedinPartnerId: '123456',   // public, safe
+  gaId: 'G-XXXXXXXX', // public, safe
+  linkedinPartnerId: '123456', // public, safe
 } as const;
 
 // .env (gitignored) — secrets only
-FORMSPREE_SECRET_KEY=xxx
+FORMSPREE_SECRET_KEY = xxx;
 ```
 
 ### Pattern 6: Progressive Enhancement for Interactive Components
@@ -405,6 +402,7 @@ Flow:
 ```
 
 **Conversion events to instrument:**
+
 1. `generate_lead` — Contact form submit (primary conversion)
 2. `generate_lead` — Quiz PDF gate submit (secondary conversion, source: 'quiz_pdf')
 3. `cta_click` — "Book a Consultation" button click (micro-conversion)
@@ -439,15 +437,15 @@ Mobile networks in sub-Saharan Africa commonly operate at 2G-3G speeds with high
 
 **Critical performance rules:**
 
-| Rule | Implementation | Boundary |
-|------|---------------|---------|
-| Font loading non-blocking | `rel="preload" onload` pattern (already in BaseLayout) | Maintain |
-| No render-blocking scripts | `is:inline` IIFE for theme init only; all else deferred | BaseLayout, CookieBanner |
-| Image optimization | All images use Astro `<Image />` component — produces WebP + srcset | Every img element |
-| No framework JavaScript by default | Astro SSG zero-JS baseline | No `client:load` directives unless essential |
-| Third-party scripts deferred | GA, LinkedIn load only on consent and asynchronously | CookieBanner |
-| CSS budget | No unused utility classes; scoped component styles | global.css stays lean |
-| Core Web Vitals targets | LCP < 2.5s on 3G, CLS = 0, FID < 100ms | Measured via Lighthouse CI |
+| Rule                               | Implementation                                                      | Boundary                                     |
+| ---------------------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
+| Font loading non-blocking          | `rel="preload" onload` pattern (already in BaseLayout)              | Maintain                                     |
+| No render-blocking scripts         | `is:inline` IIFE for theme init only; all else deferred             | BaseLayout, CookieBanner                     |
+| Image optimization                 | All images use Astro `<Image />` component — produces WebP + srcset | Every img element                            |
+| No framework JavaScript by default | Astro SSG zero-JS baseline                                          | No `client:load` directives unless essential |
+| Third-party scripts deferred       | GA, LinkedIn load only on consent and asynchronously                | CookieBanner                                 |
+| CSS budget                         | No unused utility classes; scoped component styles                  | global.css stays lean                        |
+| Core Web Vitals targets            | LCP < 2.5s on 3G, CLS = 0, FID < 100ms                              | Measured via Lighthouse CI                   |
 
 **Image architecture:**
 
@@ -460,6 +458,7 @@ All images → src/assets/images/
 ```
 
 **Font strategy:**
+
 - Plus Jakarta Sans: preload critical weights (600, 700) only; load 400/500/800 via `font-display: swap`
 - JetBrains Mono: used only in code/badge elements — can be loaded lazily
 - Self-hosting fonts (future): eliminates Google Fonts round-trip entirely for constrained networks
@@ -468,14 +467,14 @@ All images → src/assets/images/
 
 ## Scalability Considerations
 
-| Concern | Current (0-5 pages/mo) | Target (5-20 pages/mo) | At scale (100+ posts) |
-|---------|----------------------|----------------------|----------------------|
-| Blog content | Manual MDX in repo | Same — no change needed | Consider Astro DB or Notion integration |
-| Build time | < 30s | < 60s | Incremental builds via Astro 5 content layer |
-| Image storage | `/public/` | Astro assets pipeline | Git LFS or external storage |
-| Analytics data | GA4 free tier | GA4 free tier | GA4 free tier (adequate) |
-| Lead capture | Formspree free (50/mo) | Formspree paid or alternative | Consider CRM integration |
-| SEO | Sitemap + schemas | Add programmatic internal links | Blog category pages, tag pages |
+| Concern        | Current (0-5 pages/mo) | Target (5-20 pages/mo)          | At scale (100+ posts)                        |
+| -------------- | ---------------------- | ------------------------------- | -------------------------------------------- |
+| Blog content   | Manual MDX in repo     | Same — no change needed         | Consider Astro DB or Notion integration      |
+| Build time     | < 30s                  | < 60s                           | Incremental builds via Astro 5 content layer |
+| Image storage  | `/public/`             | Astro assets pipeline           | Git LFS or external storage                  |
+| Analytics data | GA4 free tier          | GA4 free tier                   | GA4 free tier (adequate)                     |
+| Lead capture   | Formspree free (50/mo) | Formspree paid or alternative   | Consider CRM integration                     |
+| SEO            | Sitemap + schemas      | Add programmatic internal links | Blog category pages, tag pages               |
 
 ---
 
@@ -547,4 +546,4 @@ No circular dependencies exist in this model. Data flows in one direction: data 
 
 ---
 
-*Architecture research: 2026-03-16*
+_Architecture research: 2026-03-16_

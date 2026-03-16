@@ -7,6 +7,7 @@
 **Overall:** Static Site Generation (SSG) with component-based UI architecture
 
 **Key Characteristics:**
+
 - Astro-powered static site with zero runtime JavaScript by default
 - Content collections for blog posts with schema validation
 - Multi-layout system for different page types (base, blog posts, services)
@@ -17,6 +18,7 @@
 ## Layers
 
 **Page Layer:**
+
 - Purpose: Route handling and page-level composition
 - Location: `src/pages/`
 - Contains: Astro route files (`.astro`) that render layouts and components
@@ -24,6 +26,7 @@
 - Used by: Astro router (automatic routing based on file structure)
 
 **Layout Layer:**
+
 - Purpose: Wrapper templates that define page structure (head, nav, footer, main content)
 - Location: `src/layouts/`
 - Contains: `BaseLayout.astro` (root wrapper for all pages), `SimplePageLayout.astro`, `BlogPostLayout.astro` (extends BaseLayout with article structure)
@@ -31,6 +34,7 @@
 - Used by: Pages inject content via `<slot />`
 
 **Component Layer:**
+
 - Purpose: Reusable UI elements with specific responsibilities
 - Location: `src/components/`
 - Contains: Structural (Nav, Footer), SEO (SEOHead, SchemaOrg), content (BlogCard, Breadcrumb), interactive (ContactForm, CookieBanner, ThemeToggle), utility (Logo, SkipLink, WhatsAppFloat)
@@ -38,6 +42,7 @@
 - Used by: Layouts and pages compose components into page structure
 
 **Content Layer:**
+
 - Purpose: Typed MDX content with frontmatter validation
 - Location: `src/content/blog/`
 - Contains: Blog posts (`.mdx` files) with structured frontmatter (title, datePublished, faq, keywords, og tags)
@@ -45,6 +50,7 @@
 - Used by: Blog index page (`src/pages/blog/index.astro`) and dynamic route (`src/pages/blog/[...slug].astro`)
 
 **Data Layer:**
+
 - Purpose: Site configuration and constants
 - Location: `src/data/site.ts`
 - Contains: SITE (name, url, locale, metadata), CONTACT (email, phone, WhatsApp), SOCIAL (links), ANALYTICS (GA ID, Formspree ID)
@@ -52,6 +58,7 @@
 - Used by: All components and pages for consistent branding and integration points
 
 **Style Layer:**
+
 - Purpose: Global CSS and component-scoped styles
 - Location: `src/styles/global.css` (global variables, utilities, base styles) + component `<style>` blocks (component-scoped)
 - Contains: CSS custom properties (--white, --txt, --acc, --bg, --mono), utility classes, responsive breakpoints, theme toggle (light/dark)
@@ -102,26 +109,31 @@
 ## Key Abstractions
 
 **Layout Composition:**
+
 - Purpose: Wrap pages with consistent structure (head, nav, footer, styles)
 - Examples: `src/layouts/BaseLayout.astro`, `src/layouts/BlogPostLayout.astro`
 - Pattern: Astro components accepting `<slot />` to inject page content
 
 **Schema Generation:**
+
 - Purpose: Embed structured data for SEO (search engines, social media, rich results)
 - Examples: `src/components/SchemaOrg.astro` injects JSON-LD, `BlogPostLayout` auto-generates BlogPosting + BreadcrumbList + FAQPage schemas
 - Pattern: Array of schema objects passed to layout, rendered as `<script type="application/ld+json">`
 
 **Component Variants:**
+
 - Purpose: Single component, multiple visual/behavioral states
 - Examples: Nav component with `variant="home"` (anchor links) vs `variant="inner"` (absolute paths), Footer with `variant="home"` vs `variant="inner"`
 - Pattern: Props passed to component, conditional rendering based on variant
 
 **Content Collection:**
+
 - Purpose: Type-safe, validated MDX content with frontmatter
 - Examples: Blog posts in `src/content/blog/` with Zod schema in `content.config.ts`
 - Pattern: Astro Content API with loader (glob), schema validation, render at build time
 
 **SEO Head:**
+
 - Purpose: Centralize SEO meta tag generation
 - Examples: `src/components/SEOHead.astro` renders OG, Twitter, canonical, hreflang, geo tags
 - Pattern: Props interface matches typical SEO metadata, component renders conditional meta tags
@@ -129,31 +141,37 @@
 ## Entry Points
 
 **Homepage:**
+
 - Location: `src/pages/index.astro`
 - Triggers: Site visit to `/`
 - Responsibilities: Render hero, trust stats, why-us section, services grid, process steps, about/credentials, blog feed, FAQ, CTAs, contact form
 
 **Blog Index:**
+
 - Location: `src/pages/blog/index.astro`
 - Triggers: Visit to `/blog/`
 - Responsibilities: Fetch and sort all blog posts by datePublished (descending), render as grid with BlogCard component
 
 **Dynamic Blog Post:**
+
 - Location: `src/pages/blog/[...slug].astro`
 - Triggers: Visit to `/blog/{slug}/`
 - Responsibilities: Load post by slug via getCollection, render with BlogPostLayout (which auto-generates schemas), pass MDX content to layout slot
 
 **Service Pages:**
+
 - Location: `src/pages/services/{managed-security,penetration-testing,security-training}/index.astro`
 - Triggers: Visit to `/services/{service}/`
 - Responsibilities: Render service-specific details, schemas, FAQs, process steps, CTA
 
 **Tools:**
+
 - Location: `src/pages/tools/security-score/index.astro`
 - Triggers: Visit to `/tools/security-score/` (linked as "Free Score" from nav)
 - Responsibilities: Interactive security assessment tool (embedded on page)
 
 **Static Pages:**
+
 - Location: `src/pages/{privacy-policy,resources,responsible-disclosure,company-profile}/index.astro`
 - Triggers: Visit to respective routes
 - Responsibilities: Render informational/legal/company content
@@ -175,12 +193,14 @@
 **Logging:** None. This is static site generation; no server logs. Browser console used for debugging only (e.g., form submission console.log not present but could be added).
 
 **Validation:**
+
 - Content: Zod schema in `content.config.ts` validates blog frontmatter at build time
 - Forms: HTML5 validation (required, email type) + client-side check in ContactForm before POST
 
 **Authentication:** Not applicable. Static site with optional form submission to Formspree (no user sessions).
 
 **Security:**
+
 - CSP (Content Security Policy) header set in BaseLayout head: `default-src 'self'`, script-src allows self + unsafe-inline + googletagmanager.com, style-src allows self + unsafe-inline + fonts.googleapis.com
 - Canonical URLs prevent duplicate content indexing
 - Robots meta tag controls crawler behavior
@@ -188,4 +208,4 @@
 
 ---
 
-*Architecture analysis: 2026-03-16*
+_Architecture analysis: 2026-03-16_

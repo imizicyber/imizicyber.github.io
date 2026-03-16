@@ -24,6 +24,7 @@ The existing stack is correct and should not be changed. Astro 6, GitHub Pages, 
 One important non-npm addition: `@astrojs/image` (already in Astro 6 core via Sharp) should be activated by replacing all raw `<img>` tags with Astro's `<Image>` component. This is the single highest-leverage performance change available with zero new dependencies. Self-hosting Google Fonts via `@astrojs/fonts` is worth evaluating once stability in Astro 6.x is confirmed — it eliminates the only remaining external DNS round-trip on page load.
 
 **Core technologies:**
+
 - Astro 6 SSG: framework — do not migrate, already optimal for static B2B site
 - Vitest 3 + Playwright 1: test stack — native Vite integration, zero config friction with Astro
 - axe-core/playwright: accessibility CI — WCAG 2.1 AA automated checks without manual audits per deploy
@@ -35,6 +36,7 @@ One important non-npm addition: `@astrojs/image` (already in Astro 6 core via Sh
 ### Expected Features
 
 **Must have (table stakes — missing = enterprise buyers leave or lose trust):**
+
 - Prominent founder credentials on homepage above the fold (OSCP, OSCP+, BlackHat Arsenal — named explicitly, not just logos)
 - Standalone `/about/` founder page (standalone URL usable in proposals, LinkedIn, email signatures)
 - Anonymised case studies — 2-3 minimum (highest single conversion impact; standard at Bishop Fox, NCC Group)
@@ -46,6 +48,7 @@ One important non-npm addition: `@astrojs/image` (already in Astro 6 core via Sh
 - Fast load on African mobile networks (LCP < 2.5s on 3G — measurable conversion impact)
 
 **Should have (differentiators — set Imizi Cyber apart in the Rwandan market):**
+
 - Compliance-mapped service pages with specific BNR directive numbers (not just "we support BNR compliance")
 - Security score quiz refactored (replace innerHTML with DOM API, bundle jsPDF locally, add GA4 event)
 - WhatsApp pre-filled messages on every service page + GA4 click tracking
@@ -55,6 +58,7 @@ One important non-npm addition: `@astrojs/image` (already in Astro 6 core via Sh
 - Google Search Console configured and sitemap submitted
 
 **Defer to later:**
+
 - Email follow-up sequences (requires Formspree plan upgrade or Brevo/Mailchimp integration)
 - Self-hosted fonts via @astrojs/fonts (verify Astro 6 stability first)
 - Additional lead magnet resources (track existing ones first)
@@ -67,6 +71,7 @@ One important non-npm addition: `@astrojs/image` (already in Astro 6 core via Sh
 The existing architecture is sound: a clean 6-layer dependency hierarchy (data → content → components → layouts → pages → browser) with no circular dependencies. The enhancement work adds three new subsystems (analytics with consent gating, test infrastructure, performance pipeline) and enforces cleaner boundaries in the existing layers. The most important structural change is extracting the monolithic `index.astro` (~500+ lines of inline sections) into named section components — this is required before testing or safe refactoring can happen. The `src/data/` layer needs two new modules (`services.ts`, `nav.ts`) to eliminate hardcoded repetition across service pages and navigation. A shared `src/lib/analytics.ts` utility wraps all `window.gtag` calls with a consent check, making analytics testable and preventing any event from firing before consent.
 
 **Major components:**
+
 1. Data layer (`src/data/site.ts` + new `services.ts`, `nav.ts`) — single source of truth; all components import from here
 2. Analytics subsystem (`src/lib/analytics.ts` + `CookieBanner.astro`) — consent gate with typed event wrapper
 3. Test infrastructure (`src/tests/` + `e2e/`) — Vitest unit tests + Playwright E2E; must exist before major refactoring
@@ -174,12 +179,12 @@ Based on combined research, the architecture's build-order constraints and the p
 
 ## Confidence Assessment
 
-| Area | Confidence | Notes |
-|------|------------|-------|
-| Stack | HIGH | Existing stack directly inspected from source; additions are verified Astro community standards. Verify eslint-plugin-astro ESLint 9 compatibility and @astrojs/fonts Astro 6.x stability before installation. |
-| Features | HIGH for "what exists"; MEDIUM for "what converts" | Current state confirmed by direct codebase audit. Conversion impact rankings based on established B2B services marketing patterns, not Rwanda-specific A/B data. |
-| Architecture | HIGH | Architecture derived from direct codebase reading. Layer model and data flow match the actual source structure. Astro-specific patterns align with framework conventions at training cutoff (August 2025). |
-| Pitfalls | HIGH for technical pitfalls; MEDIUM for market pitfalls | Technical pitfalls (CSP, innerHTML, tests) are confirmed from source. Market pitfalls (SEO keyword competition, enterprise buyer behaviour in Rwanda) are based on established B2B patterns without live local market data. |
+| Area         | Confidence                                              | Notes                                                                                                                                                                                                                       |
+| ------------ | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stack        | HIGH                                                    | Existing stack directly inspected from source; additions are verified Astro community standards. Verify eslint-plugin-astro ESLint 9 compatibility and @astrojs/fonts Astro 6.x stability before installation.              |
+| Features     | HIGH for "what exists"; MEDIUM for "what converts"      | Current state confirmed by direct codebase audit. Conversion impact rankings based on established B2B services marketing patterns, not Rwanda-specific A/B data.                                                            |
+| Architecture | HIGH                                                    | Architecture derived from direct codebase reading. Layer model and data flow match the actual source structure. Astro-specific patterns align with framework conventions at training cutoff (August 2025).                  |
+| Pitfalls     | HIGH for technical pitfalls; MEDIUM for market pitfalls | Technical pitfalls (CSP, innerHTML, tests) are confirmed from source. Market pitfalls (SEO keyword competition, enterprise buyer behaviour in Rwanda) are based on established B2B patterns without live local market data. |
 
 **Overall confidence:** MEDIUM-HIGH
 
@@ -202,12 +207,14 @@ Based on combined research, the architecture's build-order constraints and the p
 ## Sources
 
 ### Primary (HIGH confidence — direct codebase inspection)
+
 - `/src/` codebase audit — all pages, layouts, components, data, content collections
 - `.planning/PROJECT.md` — project constraints and scope
 - `.planning/codebase/ARCHITECTURE.md` — existing architectural documentation
 - `.planning/codebase/CONCERNS.md` — documented issues and known bugs
 
 ### Secondary (MEDIUM confidence — domain expertise and established patterns)
+
 - B2B cybersecurity firm website patterns: Bishop Fox, Cobalt.io, NCC Group, Rapid7, Trustwave
 - Astro 6 official documentation patterns (training data August 2025; verify against current docs)
 - B2B conversion research: consultation booking trust signals, enterprise procurement patterns
@@ -215,6 +222,7 @@ Based on combined research, the architecture's build-order constraints and the p
 - East Africa B2B communication patterns: WhatsApp penetration, LinkedIn enterprise adoption
 
 ### Tertiary (LOW confidence — verify before acting)
+
 - Rwanda-specific keyword volume and competition: requires live tool validation
 - Current BNR cybersecurity directive numbers: verify at `bnr.rw`
 - Current Rwanda DPA specifics: verify at RURA official publications
@@ -223,5 +231,5 @@ Based on combined research, the architecture's build-order constraints and the p
 
 ---
 
-*Research completed: 2026-03-16*
-*Ready for roadmap: yes*
+_Research completed: 2026-03-16_
+_Ready for roadmap: yes_

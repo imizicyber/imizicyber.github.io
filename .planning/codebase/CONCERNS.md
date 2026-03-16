@@ -5,6 +5,7 @@
 ## Security Issues
 
 **innerHTML with Dynamic Content:**
+
 - Issue: The security-score page uses `innerHTML` to inject dynamically generated HTML content into the DOM from quiz responses
 - Files: `src/pages/tools/security-score/index.astro` (lines 471-495)
 - Impact: While the content is generated from safe Question/Band data structures, using `innerHTML` for dynamic content is a code smell and creates XSS risk if data sources change in the future
@@ -12,6 +13,7 @@
 - Fix approach: Replace `innerHTML` with `textContent` for text-only content, or use proper DOM API methods like `createElement()` and `appendChild()` for structured content. Implement an HTML escaping function (note: `esc()` function exists at line 505 but is not used for innerHTML operations)
 
 **Content Security Policy Permissiveness:**
+
 - Issue: CSP allows `'unsafe-inline'` for scripts and styles, which weakens XSS protection
 - Files: `src/layouts/BaseLayout.astro` (lines 57-65), `src/pages/company-profile/index.astro` (line 16)
 - Impact: Reduces effectiveness of CSP as a defense against inline script injection
@@ -19,6 +21,7 @@
 - Recommendation: Consider moving inline scripts to external files or using nonces instead of `'unsafe-inline'` for production hardening
 
 **Inline Script Dependencies:**
+
 - Issue: Multiple critical functions are defined in `is:inline` scripts making them hard to test and maintain
 - Files: `src/components/CookieBanner.astro` (line 19), `src/layouts/BaseLayout.astro` (line 116), `src/pages/tools/security-score/index.astro` (line 322), `src/pages/resources/index.astro` (line 423)
 - Impact: Functions like `handleCookieConsent()`, `loadGA()`, `toggleTheme()`, etc. are tightly coupled to markup and difficult to unit test
@@ -27,6 +30,7 @@
 ## Tech Debt
 
 **Large Single-Page Files:**
+
 - Issue: Multiple page files exceed 500 lines with HTML, styles, and scripts all co-located
 - Files:
   - `src/pages/tools/security-score/index.astro` (649 lines)
@@ -38,6 +42,7 @@
 - Fix approach: Extract quiz logic from security-score into reusable components, move embedded data structures to separate data files
 
 **Hardcoded Analytics and Form IDs:**
+
 - Issue: Google Analytics ID and Formspree ID are hard-coded in source files
 - Files: `src/data/site.ts` (lines 27-31)
 - Current approach: Stored as constants, not using environment variables
@@ -45,6 +50,7 @@
 - Recommendation: Consider migrating to environment variables for flexibility, though current approach works for static sites
 
 **Missing Error Handling for PDF Generation:**
+
 - Issue: PDF generation in security-score page loads external jsPDF library from multiple CDNs but error handling is minimal
 - Files: `src/pages/tools/security-score/index.astro` (lines 507-519)
 - Impact: If all CDNs fail, user gets silent failure with no clear error message
@@ -52,6 +58,7 @@
 - Fix approach: Add explicit user-facing error message when PDF library fails to load from any CDN
 
 **Form Submission Error Handling:**
+
 - Issue: ContactForm.astro's fetch error handling doesn't distinguish between network errors and API errors
 - Files: `src/components/ContactForm.astro` (lines 52-57)
 - Impact: User sees generic "Something went wrong" message for both network timeouts and API rejections
@@ -60,6 +67,7 @@
 ## Performance Concerns
 
 **Background Pattern Rendering:**
+
 - Issue: Global CSS renders decorative background patterns using CSS radial gradients and background-position
 - Files: `src/styles/global.css` (lines 28-40)
 - Impact: Gradient patterns with multiple radial gradients on every page adds memory and render cost, especially on mobile devices
@@ -67,6 +75,7 @@
 - Optimization: Consider disabling pattern on mobile or replacing with simpler single-gradient background
 
 **Multiple External Font Imports:**
+
 - Issue: Page imports two font families (Plus Jakarta Sans and JetBrains Mono) from Google Fonts with multiple weights
 - Files: `src/layouts/BaseLayout.astro` (lines 101-111)
 - Impact: Increases page load time and render-blocking resource count
@@ -74,6 +83,7 @@
 - Recommendation: Review if both fonts are necessary, consider system-ui fallback more prominently in CSS
 
 **Quiz Form Auto-Advance Timer:**
+
 - Issue: Security score quiz has 500ms auto-advance timer that can't be disabled or customized
 - Files: `src/pages/tools/security-score/index.astro` (lines 361-365)
 - Impact: Users with slower devices or accessibility needs may have difficulty answering questions before auto-advance
@@ -82,12 +92,14 @@
 ## Fragile Areas
 
 **Cookie Banner Markup and Script Coupling:**
+
 - Files: `src/components/CookieBanner.astro`
 - Why fragile: Script relies on specific DOM IDs (`cookie-banner`, `cookie-accept`, `cookie-reject`) and querySelector patterns. Any HTML refactor risks breaking functionality
 - Safe modification: Ensure `id="cookie-banner"` and button IDs remain unchanged; document the coupling
 - Test coverage: Manual only - no unit tests exist
 
 **Theme Toggle Logic:**
+
 - Files: `src/components/ThemeToggle.astro`, `src/layouts/BaseLayout.astro` (line 118), `src/styles/global.css`
 - Why fragile: Theme state stored in localStorage and DOM attribute (`data-theme`). Multiple places must stay in sync:
   - Line 118: init script reads from localStorage
@@ -97,6 +109,7 @@
 - Note: `toggleTheme()` function referenced but not defined anywhere in codebase - this likely exists in unshown build artifacts or is a bug
 
 **Security Score Quiz Data Structure:**
+
 - Files: `src/pages/tools/security-score/index.astro` (lines 376-445)
 - Why fragile: Quiz logic tightly couples question count (10) with band scoring (0-30 max) with recommendation data
 - Risk: Adding or removing questions requires updates to: BANDS array, QUESTIONS array, progress calculation, form field names, hidden field calculations
@@ -105,6 +118,7 @@
 ## Known Issues
 
 **Theme Toggle Function Missing:**
+
 - Issue: ThemeToggle.astro references `toggleTheme()` function but it's not defined anywhere in source
 - Files: `src/components/ThemeToggle.astro` (line 7)
 - Impact: Theme toggle button likely non-functional (though theme initialization script at BaseLayout line 116-120 works)
@@ -112,6 +126,7 @@
 - Recommendation: Verify function exists or implement it explicitly
 
 **No Accessibility Labels for Resource Downloads:**
+
 - Issue: Resources page (src/pages/resources/index.astro) has PDF download buttons without proper aria-labels or download hints
 - Impact: Screen reader users don't know content type before download
 - Fix: Add `aria-label="Download PDF: [Document Name]"` and file type badge to buttons
@@ -119,6 +134,7 @@
 ## Missing Test Coverage
 
 **No Test Files:**
+
 - Issue: No test files found in codebase (no .test.ts, .spec.ts, or test directory)
 - Files: N/A
 - Risk: All components and pages lack automated testing
@@ -131,11 +147,13 @@
 ## Dependency Management
 
 **No Outdated Package Warnings:**
+
 - Current stack: Astro ^6.0.4, @astrojs/mdx ^5.0.0, @astrojs/sitemap ^3.7.1
 - Check: All dependencies are recent (as of March 2026)
 - Recommendation: Monitor for security updates; package-lock.json should be committed
 
 **No Linting or Type Checking Configuration:**
+
 - Issue: No .eslintrc, tsconfig strict mode configuration, or type checking detected
 - Files: `tsconfig.json` is minimal (just extends Astro's config)
 - Impact: No automated code quality checks prevent regressions
@@ -143,4 +161,4 @@
 
 ---
 
-*Concerns audit: 2026-03-16*
+_Concerns audit: 2026-03-16_

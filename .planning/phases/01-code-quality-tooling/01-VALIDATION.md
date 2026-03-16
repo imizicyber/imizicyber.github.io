@@ -15,13 +15,13 @@ created: 2026-03-16
 
 ## Test Infrastructure
 
-| Property | Value |
-|----------|-------|
-| **Framework** | vitest 4.x with happy-dom |
-| **Config file** | vitest.config.ts (created in this phase) |
-| **Quick run command** | `npx vitest run --reporter=verbose` |
-| **Full suite command** | `npx vitest run --coverage` |
-| **Estimated runtime** | ~5 seconds |
+| Property               | Value                                    |
+| ---------------------- | ---------------------------------------- |
+| **Framework**          | vitest 4.x with happy-dom                |
+| **Config file**        | vitest.config.ts (created in this phase) |
+| **Quick run command**  | `npx vitest run --reporter=verbose`      |
+| **Full suite command** | `npx vitest run --coverage`              |
+| **Estimated runtime**  | ~5 seconds                               |
 
 ---
 
@@ -36,11 +36,11 @@ created: 2026-03-16
 
 ## Per-Task Verification Map
 
-| Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
-|---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| (populated during planning) | | | | | | | ⬜ pending |
+| Task ID                     | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status     |
+| --------------------------- | ---- | ---- | ----------- | --------- | ----------------- | ----------- | ---------- |
+| (populated during planning) |      |      |             |           |                   |             | ⬜ pending |
 
-*Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+_Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky_
 
 ---
 
@@ -50,16 +50,16 @@ created: 2026-03-16
 - [ ] `tests/setup.ts` — shared test setup (happy-dom environment)
 - [ ] `vitest` + `@vitest/coverage-v8` + `happy-dom` — dev dependencies installed
 
-*Note: This phase CREATES the test infrastructure, so Wave 0 is part of Phase 1 itself.*
+_Note: This phase CREATES the test infrastructure, so Wave 0 is part of Phase 1 itself._
 
 ---
 
 ## Manual-Only Verifications
 
-| Behavior | Requirement | Why Manual | Test Instructions |
-|----------|-------------|------------|-------------------|
-| Theme toggle visual | QUAL-01 | Visual confirmation needed | Click toggle, verify colors change, refresh page, verify persistence |
-| Pre-commit hook blocks | QUAL-05 | Requires actual git commit attempt | Introduce lint error, attempt `git commit`, verify rejection |
+| Behavior               | Requirement | Why Manual                         | Test Instructions                                                    |
+| ---------------------- | ----------- | ---------------------------------- | -------------------------------------------------------------------- |
+| Theme toggle visual    | QUAL-01     | Visual confirmation needed         | Click toggle, verify colors change, refresh page, verify persistence |
+| Pre-commit hook blocks | QUAL-05     | Requires actual git commit attempt | Introduce lint error, attempt `git commit`, verify rejection         |
 
 ---
 

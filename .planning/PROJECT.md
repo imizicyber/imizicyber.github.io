@@ -77,15 +77,16 @@ A decision-maker at a Rwandan bank lands on this site and immediately trusts Imi
 
 ## Key Decisions
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| Premium boutique positioning | Higher rates, fewer clients needed, matches regulated enterprise market | — Pending |
-| English-only | Professional B2B standard in East Africa cybersecurity, reduces complexity | — Pending |
-| Book a Consultation as primary CTA | Qualifies leads through conversation, suits high-value services | — Pending |
-| Maintain Astro SSG | Already in place, excellent for performance/SEO, no reason to migrate | — Pending |
-| Full analytics stack behind cookie consent | Need conversion data to optimize, must respect privacy laws | — Pending |
-| TDD approach | Public repo means code quality is visible, prevents regressions | — Pending |
-| Three flagship services (Pentest, Assessment, Custom Tooling) | Clear positioning, training as secondary offering | — Pending |
+| Decision                                                      | Rationale                                                                  | Outcome   |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------- | --------- |
+| Premium boutique positioning                                  | Higher rates, fewer clients needed, matches regulated enterprise market    | — Pending |
+| English-only                                                  | Professional B2B standard in East Africa cybersecurity, reduces complexity | — Pending |
+| Book a Consultation as primary CTA                            | Qualifies leads through conversation, suits high-value services            | — Pending |
+| Maintain Astro SSG                                            | Already in place, excellent for performance/SEO, no reason to migrate      | — Pending |
+| Full analytics stack behind cookie consent                    | Need conversion data to optimize, must respect privacy laws                | — Pending |
+| TDD approach                                                  | Public repo means code quality is visible, prevents regressions            | — Pending |
+| Three flagship services (Pentest, Assessment, Custom Tooling) | Clear positioning, training as secondary offering                          | — Pending |
 
 ---
-*Last updated: 2026-03-16 after initialization*
+
+_Last updated: 2026-03-16 after initialization_
