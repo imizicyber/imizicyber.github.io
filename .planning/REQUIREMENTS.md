@@ -114,13 +114,67 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (To be populated during roadmap creation) | | |
+| QUAL-01 | Phase 1 | Pending |
+| QUAL-02 | Phase 1 | Pending |
+| QUAL-03 | Phase 1 | Pending |
+| QUAL-04 | Phase 1 | Pending |
+| QUAL-05 | Phase 1 | Pending |
+| QUAL-06 | Phase 1 | Pending |
+| QUAL-08 | Phase 1 | Pending |
+| QUAL-07 | Phase 2 | Pending |
+| QUAL-09 | Phase 2 | Pending |
+| QUAL-10 | Phase 2 | Pending |
+| QUAL-11 | Phase 2 | Pending |
+| QUAL-12 | Phase 2 | Pending |
+| UIUX-01 | Phase 3 | Pending |
+| UIUX-02 | Phase 3 | Pending |
+| UIUX-03 | Phase 3 | Pending |
+| UIUX-04 | Phase 4 | Pending |
+| UIUX-05 | Phase 4 | Pending |
+| UIUX-06 | Phase 4 | Pending |
+| UIUX-07 | Phase 4 | Pending |
+| UIUX-08 | Phase 4 | Pending |
+| UIUX-09 | Phase 4 | Pending |
+| UIUX-10 | Phase 4 | Pending |
+| ANLT-01 | Phase 5 | Pending |
+| ANLT-02 | Phase 5 | Pending |
+| ANLT-03 | Phase 5 | Pending |
+| ANLT-04 | Phase 5 | Pending |
+| ANLT-05 | Phase 5 | Pending |
+| ANLT-06 | Phase 5 | Pending |
+| ANLT-07 | Phase 5 | Pending |
+| ANLT-08 | Phase 5 | Pending |
+| TRST-01 | Phase 6 | Pending |
+| TRST-02 | Phase 6 | Pending |
+| TRST-03 | Phase 6 | Pending |
+| TRST-04 | Phase 6 | Pending |
+| TRST-05 | Phase 6 | Pending |
+| TRST-06 | Phase 6 | Pending |
+| SRVC-01 | Phase 7 | Pending |
+| SRVC-02 | Phase 7 | Pending |
+| SRVC-03 | Phase 7 | Pending |
+| SRVC-04 | Phase 7 | Pending |
+| SRVC-05 | Phase 7 | Pending |
+| SRVC-06 | Phase 7 | Pending |
+| SRVC-07 | Phase 8 | Pending |
+| SRVC-08 | Phase 8 | Pending |
+| SRVC-09 | Phase 8 | Pending |
+| SRVC-10 | Phase 8 | Pending |
+| SRVC-11 | Phase 8 | Pending |
+| LEAD-01 | Phase 9 | Pending |
+| LEAD-02 | Phase 9 | Pending |
+| LEAD-03 | Phase 9 | Pending |
+| LEAD-04 | Phase 9 | Pending |
+| LEAD-05 | Phase 9 | Pending |
+| LEAD-06 | Phase 9 | Pending |
+| LEAD-07 | Phase 9 | Pending |
+| LEAD-08 | Phase 9 | Pending |
 
 **Coverage:**
-- v1 requirements: 48 total
-- Mapped to phases: 0
-- Unmapped: 48
+- v1 requirements: 55 total (note: REQUIREMENTS.md initially stated 48; actual count from defined IDs is 55)
+- Mapped to phases: 55
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-16*
-*Last updated: 2026-03-16 after initial definition*
+*Last updated: 2026-03-16 — traceability populated after roadmap creation*
