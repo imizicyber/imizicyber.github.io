@@ -11,7 +11,7 @@ const pages = ['/', '/blog/', '/services/penetration-testing/'];
 test.describe('CTA Visibility (UIUX-02)', () => {
   for (const vp of viewports) {
     for (const pagePath of pages) {
-      test.fixme(`"Book a Consultation" visible above fold on ${pagePath} at ${vp.name} (${vp.width}px)`, async ({
+      test(`"Book a Consultation" visible above fold on ${pagePath} at ${vp.name} (${vp.width}px)`, async ({
         page,
       }) => {
         await page.setViewportSize({ width: vp.width, height: vp.height });
