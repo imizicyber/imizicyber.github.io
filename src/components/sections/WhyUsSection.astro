@@ -1,0 +1,112 @@
+<section class="why">
+  <div class="w reveal">
+    <h2 class="sr-only">Why choose imizicyber</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+            ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline
+              points="9 12 11 14 15 10"></polyline></svg
+          >
+        </div>
+        <div class="why-num">01</div>
+        <h3>OSCP-certified, in Kigali</h3>
+        <p>
+          OSCP and OSCP+ certified penetration tester physically based in Rwanda. Not remote
+          contractors, not scanner output.
+        </p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+            ><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline
+              points="6 10 10 14 6 18"></polyline><line x1="14" y1="18" x2="18" y2="18"></line></svg
+          >
+        </div>
+        <div class="why-num">02</div>
+        <h3>We build custom tooling</h3>
+        <p>
+          Security validation tools in Python, Go, and JavaScript tailored to your specific APIs and
+          systems.
+        </p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+            ><polygon points="12 2 2 7 2 10 22 10 22 7 12 2"></polygon><line
+              x1="6"
+              y1="10"
+              x2="6"
+              y2="18"></line><line x1="10" y1="10" x2="10" y2="18"></line><line
+              x1="14"
+              y1="10"
+              x2="14"
+              y2="18"></line><line x1="18" y1="10" x2="18" y2="18"></line><rect
+              x="2"
+              y="18"
+              width="20"
+              height="2"></rect></svg
+          >
+        </div>
+        <div class="why-num">03</div>
+        <h3>Banking red team experience</h3>
+        <p>
+          Our consultants come from threat-led red team operations at European banks protecting
+          millions of customers.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    padding: 52px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .why-item {
+    padding-left: 14px;
+    border-left: 2px solid rgba(52, 211, 153, 0.3);
+  }
+  .why-icon {
+    margin-bottom: 8px;
+  }
+  .why-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--acc);
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .why-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+  .why-item h3 {
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 3px;
+    letter-spacing: -0.2px;
+  }
+  .why-item p {
+    font-size: 0.74rem;
+    color: var(--txt3);
+    line-height: 1.6;
+  }
+
+  /* RESPONSIVE - TABLET */
+  @media (max-width: 1024px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
