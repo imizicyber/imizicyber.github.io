@@ -10,6 +10,12 @@ test.describe('Navigation', () => {
     await expect(nav.getByRole('link', { name: /contact/i })).toBeVisible();
   });
 
+  test('Free Score CTA is visible on homepage', async ({ page }) => {
+    await page.goto('/');
+    const nav = page.locator('nav');
+    await expect(nav.getByRole('link', { name: /free score|security score/i })).toBeVisible();
+  });
+
   test('service pages load successfully', async ({ page }) => {
     const servicePages = [
       '/services/penetration-testing/',
