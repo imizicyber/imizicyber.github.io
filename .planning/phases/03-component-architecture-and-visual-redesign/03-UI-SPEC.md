@@ -32,50 +32,55 @@ created: 2026-03-17
 
 Declared values (multiples of 4, 8px base grid):
 
-| Token | CSS Custom Property | Value         | Usage                                                  |
-| ----- | ------------------- | ------------- | ------------------------------------------------------ |
-| xs    | `--space-1`         | 4px (0.25rem) | Icon gaps, inline padding, tight element margins       |
-| sm    | `--space-2`         | 8px (0.5rem)  | Compact element spacing, button icon gaps              |
-| md    | `--space-4`         | 16px (1rem)   | Default element spacing, card internal padding         |
-| lg    | `--space-6`         | 24px (1.5rem) | Section heading margins, card gaps in grids            |
-| xl    | `--space-8`         | 32px (2rem)   | Layout gaps between card groups, form field spacing    |
-| 2xl   | `--space-12`        | 48px (3rem)   | Section vertical padding (top/bottom)                  |
-| 3xl   | `--space-16`        | 64px (4rem)   | Major section breaks, hero vertical padding            |
-| 4xl   | `--space-20`        | 80px (5rem)   | Page-level top/bottom spacing, hero padding on desktop |
-
-Additional tokens for intermediate use:
-
-| Token | CSS Custom Property | Value          | Usage                          |
-| ----- | ------------------- | -------------- | ------------------------------ |
-| -     | `--space-3`         | 12px (0.75rem) | Badge padding, small card gaps |
-| -     | `--space-10`        | 40px (2.5rem)  | Medium section breaks          |
+| Token | CSS Custom Property | Value         | Usage                                                                      |
+| ----- | ------------------- | ------------- | -------------------------------------------------------------------------- |
+| xs    | `--space-1`         | 4px (0.25rem) | Icon gaps, inline padding, tight element margins                           |
+| sm    | `--space-2`         | 8px (0.5rem)  | Compact element spacing, button icon gaps                                  |
+| md    | `--space-4`         | 16px (1rem)   | Default element spacing, card internal padding                             |
+| lg    | `--space-6`         | 24px (1.5rem) | Section heading margins, card gaps in grids                                |
+| xl    | `--space-8`         | 32px (2rem)   | Layout gaps between card groups, form field spacing                        |
+| 2xl   | `--space-12`        | 48px (3rem)   | Section vertical padding (top/bottom)                                      |
+| 3xl   | `--space-16`        | 64px (4rem)   | Major section breaks, hero vertical padding, page-level top/bottom spacing |
 
 Exceptions:
 
 - Nav height: 56px (existing, preserved for E2E test compatibility)
-- Hero top padding on desktop: 132px (nav height 56px + 76px breathing room -- existing value preserved)
+- Hero top padding on desktop: 132px (nav height 56px + 76px breathing room -- existing value preserved, not a design token but a calculated layout value)
 - Touch targets: 44px minimum width and height on all interactive elements (accessibility requirement from CONTEXT.md)
 
-**Source:** RESEARCH.md Architecture Patterns, Pattern 4. Current codebase uses ad-hoc spacing (132px, 48px, 28px, 24px). This scale systematizes existing values.
+**Migration notes for removed non-standard tokens:**
+
+- Former `--space-3` (12px) usage: Badge padding and small card gaps now use `--space-2` (8px) for tighter spacing or `--space-4` (16px) for standard spacing. Badge padding specifically uses 8px horizontal, 4px vertical.
+- Former `--space-10` (40px) usage: Medium section breaks now use `--space-8` (32px) or `--space-12` (48px) depending on visual weight needed. Default to 32px.
+- Former `--space-20` (80px) usage: Page-level top/bottom spacing and hero padding on desktop now use `--space-16` (64px). The 64px value provides sufficient breathing room while staying within the standard scale.
+
+**Source:** RESEARCH.md Architecture Patterns, Pattern 4. Current codebase uses ad-hoc spacing (132px, 48px, 28px, 24px). This scale systematizes existing values using only standard 8-point grid multiples.
 
 ---
 
 ## Typography
 
-| Role      | Size                         | Weight          | Line Height | Font Family       | Usage                                                   |
-| --------- | ---------------------------- | --------------- | ----------- | ----------------- | ------------------------------------------------------- |
-| Body      | 15px (0.938rem)              | 400 (regular)   | 1.7         | Plus Jakarta Sans | Paragraph text, descriptions, FAQ answers               |
-| Label     | 12px (0.75rem)               | 600 (semibold)  | 1.4         | JetBrains Mono    | Section tags, badge labels, metadata, credential labels |
-| Heading 3 | 20px (1.25rem)               | 700 (bold)      | 1.3         | Plus Jakarta Sans | Card titles, FAQ questions, subsection headings         |
-| Heading 2 | clamp(1.4rem, 2.4vw, 1.8rem) | 800 (extrabold) | 1.2         | Plus Jakarta Sans | Section headings (Services, Process, Blog, etc.)        |
-| Display   | clamp(2.4rem, 4.5vw, 3.2rem) | 800 (extrabold) | 1.1         | Plus Jakarta Sans | Hero headline only                                      |
+| Role      | Size                         | Weight        | Line Height | Font Family       | Usage                                                                        |
+| --------- | ---------------------------- | ------------- | ----------- | ----------------- | ---------------------------------------------------------------------------- |
+| Label     | 12px (0.75rem)               | 400 (regular) | 1.4         | JetBrains Mono    | Section tags, badge labels, metadata, credential labels                      |
+| Body      | 15px (0.938rem)              | 400 (regular) | 1.7         | Plus Jakarta Sans | Paragraph text, descriptions, FAQ answers                                    |
+| Heading 3 | 20px (1.25rem)               | 700 (bold)    | 1.3         | Plus Jakarta Sans | Card titles, FAQ questions, subsection headings                              |
+| Heading 2 | clamp(1.4rem, 2.4vw, 1.8rem) | 700 (bold)    | 1.2         | Plus Jakarta Sans | Section headings (Services, Process, Blog, etc.) and hero headline (Display) |
 
-Font weights used (exactly 2 families, each with declared weights):
+The hero headline uses the Heading 2 role at clamp(1.4rem, 2.4vw, 1.8rem). On wide viewports (1440px+), the clamp resolves to 1.8rem (28.8px) which provides sufficient visual weight for the primary page heading. If additional visual prominence is needed for the hero, use letter-spacing or text-transform rather than introducing a fifth size.
 
-| Family            | Weights Loaded     | Purpose                                                                           |
-| ----------------- | ------------------ | --------------------------------------------------------------------------------- |
-| Plus Jakarta Sans | 400, 600, 700, 800 | Body (400), nav links (600), card headings (700), section headings and hero (800) |
-| JetBrains Mono    | 500                | Monospace labels, terminal text, badge labels, code snippets                      |
+Font weights used (exactly 2 weight values across all families):
+
+| Family            | Weights Loaded | Purpose                                                      |
+| ----------------- | -------------- | ------------------------------------------------------------ |
+| Plus Jakarta Sans | 400, 700       | Body/subtitles (400), all headings and nav links (700)       |
+| JetBrains Mono    | 400            | Monospace labels, terminal text, badge labels, code snippets |
+
+**Weight migration notes:**
+
+- Former 600 (semibold) usages: Nav links now use 700. The visual difference between 600 and 700 is minimal at small sizes.
+- Former 800 (extrabold) usages: Hero headline and section headings now use 700. The heading hierarchy is established through size differences (clamp vs 20px vs 15px), not weight differences.
+- JetBrains Mono loads at 400 instead of former 500. At 12px label size, the difference between 400 and 500 weight in JetBrains Mono is imperceptible.
 
 Constraints:
 
@@ -83,7 +88,7 @@ Constraints:
 - Minimum readable font size on mobile: 15px body (no scaling down below this)
 - Section subtitles: 15px body size at weight 400, color `--txt2` (secondary text)
 
-**Source:** RESEARCH.md Aesthetic Decisions (Typography section). Existing fonts kept; sizing refined for more weight contrast between hierarchy levels.
+**Source:** RESEARCH.md Aesthetic Decisions (Typography section). Existing fonts kept; sizing consolidated to 4 roles with 2 weight values for maximum consistency.
 
 ---
 
@@ -146,6 +151,28 @@ Accent is NOT used for: body text, backgrounds of content sections, decorative f
 | `--destructive` | #ef4444 | Form validation errors only (contact form field borders, error message text) |
 
 **Source:** CONTEXT.md locked decision (green + dark navy, refine not replace). RESEARCH.md Aesthetic Decisions (dark-first). Existing codebase tokens preserved with no renames.
+
+---
+
+## Visual Hierarchy and Focal Points
+
+### Primary Focal Point
+
+The h1 hero headline is the primary focal point of the page. It uses the largest type role (Heading 2 at clamp(1.4rem, 2.4vw, 1.8rem)), bold weight (700), and primary text color (`--white` / #f0f4f8). On page load, the hero headline is the first element the eye is drawn to, supported by generous whitespace above and below.
+
+### Secondary Focal Points (in order of visual weight)
+
+1. "Book a Consultation" CTA button -- accent-colored (`--accdark`) fill draws the eye after the headline
+2. Credential badges in hero -- monospace labels in `--acc` color create a secondary visual anchor
+3. Section headings -- each section's h2 uses the same Heading 2 role to establish rhythm down the page
+
+### Visual Weight Distribution
+
+- Hero section: highest density (headline + CTA + credentials + terminal)
+- Content sections: medium density, consistent rhythm via repeating Heading 2 + body pattern
+- Footer/contact: lower density, clear call to action closes the page
+
+**Source:** CONTEXT.md (hero headline + CTA + credentials above fold). RESEARCH.md Pitfall 3 (CTA above fold). UI/UX best practice for landing page focal hierarchy.
 
 ---
 
