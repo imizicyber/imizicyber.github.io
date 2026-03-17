@@ -76,7 +76,14 @@ Plans:
 2. "Book a Consultation" CTA button is visible above the fold on every page without scrolling, on all screen sizes
 3. Site renders correctly on a 375px wide mobile phone, a 768px tablet, and a 1440px desktop without layout breakage
 4. `index.astro` delegates to named section components (HeroSection, ServicesSection, CredentialsSection, etc.) rather than containing all markup inline
-   **Plans**: TBD
+   **Plans:** 4 plans
+
+Plans:
+
+- [ ] 03-01-PLAN.md — Design system foundation: CSS tokens, credentials data, Nav CTA, E2E test stubs
+- [ ] 03-02-PLAN.md — Extract first 5 section components (Hero, Trust, Credentials, WhyUs, Services)
+- [ ] 03-03-PLAN.md — Extract remaining 5 sections (Process, Blog, FAQ, CTA, Contact), finalize index.astro
+- [ ] 03-04-PLAN.md — Visual polish, font optimization, responsive verification, human checkpoint
 
 ### Phase 4: Performance and Accessibility
 
@@ -171,7 +178,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | --------------------------------------------- | -------------- | ----------- | ---------- |
 | 1. Code Quality Tooling                       | 3/3            | Complete    | 2026-03-16 |
 | 2. Security Hardening and Test Coverage       | 0/3            | Planned     | -          |
-| 3. Component Architecture and Visual Redesign | 0/TBD          | Not started | -          |
+| 3. Component Architecture and Visual Redesign | 0/4            | Planned     | -          |
 | 4. Performance and Accessibility              | 0/TBD          | Not started | -          |
 | 5. Analytics and Conversion Tracking          | 0/TBD          | Not started | -          |
 | 6. Trust and Founder Credibility              | 0/TBD          | Not started | -          |
