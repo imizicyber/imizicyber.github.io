@@ -13,12 +13,12 @@
 - [x] **QUAL-04**: TypeScript strict mode enabled with no implicit any
 - [x] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
 - [x] **QUAL-06**: Vitest test framework configured with coverage reporting
-- [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
+- [x] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
 - [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
 - [x] **QUAL-09**: CSP header uses hashes or nonces instead of unsafe-inline for scripts
 - [x] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
 - [x] **QUAL-11**: No sensitive data (API keys, tokens, passwords) committed to repository
-- [ ] **QUAL-12**: Axe-core accessibility testing integrated into Playwright tests
+- [x] **QUAL-12**: Axe-core accessibility testing integrated into Playwright tests
 
 ### UI/UX Design
 
@@ -121,11 +121,11 @@
 | QUAL-05     | Phase 1 | Complete |
 | QUAL-06     | Phase 1 | Complete |
 | QUAL-08     | Phase 1 | Complete |
-| QUAL-07     | Phase 2 | Pending  |
+| QUAL-07     | Phase 2 | Complete |
 | QUAL-09     | Phase 2 | Complete |
 | QUAL-10     | Phase 2 | Pending  |
 | QUAL-11     | Phase 2 | Complete |
-| QUAL-12     | Phase 2 | Pending  |
+| QUAL-12     | Phase 2 | Complete |
 | UIUX-01     | Phase 3 | Complete |
 | UIUX-02     | Phase 3 | Complete |
 | UIUX-03     | Phase 3 | Complete |
