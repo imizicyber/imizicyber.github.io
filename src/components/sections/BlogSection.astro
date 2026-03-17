@@ -1,0 +1,101 @@
+---
+/**
+ * BlogSection -- Latest blog posts grid with dynamic content collection fetch.
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  count?: number;
+}
+
+const { count = 3 } = Astro.props;
+
+const allPosts = (await getCollection('blog'))
+  .sort(
+    (a, b) => new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime(),
+  )
+  .slice(0, count);
+---
+
+<section id="blog" class="sec sec-b">
+  <div class="w reveal">
+    <div class="sec-tag">INSIGHTS</div>
+    <h2 class="sec-title">From the field</h2>
+    <p class="sec-sub">Security insights for regulated organisations in East Africa.</p>
+    {
+      allPosts.length > 0 ? (
+        <div class="blog-grid">
+          {allPosts.map((post) => (
+            <a
+              href={`/blog/${post.id}/`}
+              class:list={['blog-card', { featured: post.data.featured }]}
+            >
+              <div class="blog-date">
+                {post.data.cardDate || post.data.datePublished}
+                {post.data.readTime ? <>&middot; {post.data.readTime}</> : null}
+              </div>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.cardDescription || post.data.description}</p>
+              <span class="blog-link">Read more &#8594;</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="blog-empty">
+          We are preparing insights on cybersecurity in East Africa. Check back soon.
+        </p>
+      )
+    }
+    <a href="/blog/" class="blog-view-all">View All Posts &#8594;</a>
+  </div>
+</section>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .blog-card.featured {
+    grid-column: span 2;
+  }
+  .blog-card.featured h2 {
+    font-size: 1.05rem;
+  }
+  .blog-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 24px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--acc);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .blog-view-all:hover {
+    gap: 10px;
+  }
+  .blog-empty {
+    font-size: 0.84rem;
+    color: var(--txt2);
+    line-height: 1.7;
+  }
+
+  /* RESPONSIVE - TABLET */
+  @media (max-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* RESPONSIVE - MOBILE */
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .blog-card.featured {
+      grid-column: span 1;
+    }
+  }
+</style>

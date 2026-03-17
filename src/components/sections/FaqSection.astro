@@ -1,0 +1,64 @@
+---
+/**
+ * FaqSection -- FAQ accordion with details/summary.
+ */
+const faqItems = [
+  {
+    q: 'Why do banks in Rwanda need penetration testing?',
+    a: 'BNR requires regulated financial institutions to maintain cybersecurity programs. Penetration testing finds vulnerabilities in your web apps, mobile banking, APIs, and USSD services before attackers do. It is a core component of BNR compliance.',
+  },
+  {
+    q: 'Do you help with BNR cybersecurity compliance?',
+    a: 'Yes. We help banks, microfinance institutions, and insurance companies meet BNR cybersecurity requirements through penetration testing, vulnerability assessments, security audits, and ongoing managed security.',
+  },
+  {
+    q: 'How much does penetration testing cost in Rwanda?',
+    a: 'Every engagement is scoped individually based on the number of applications, infrastructure complexity, and testing depth. Contact us with your requirements and we will provide a detailed quote within 48 hours.',
+  },
+  {
+    q: 'What is BNR Regulation on cybersecurity?',
+    a: 'The National Bank of Rwanda requires all regulated financial institutions to implement cybersecurity programs including regular vulnerability assessments, penetration testing, incident response plans, and security awareness training. We help organisations meet these requirements.',
+  },
+  {
+    q: 'What certifications do your consultants hold?',
+    a: 'OSCP and OSCP+ (the gold standard in penetration testing), PNPT, and BlackHat Europe Arsenal presenter. Physically based in Kigali, Rwanda.',
+  },
+  {
+    q: 'How often should banks do penetration testing?',
+    a: 'BNR recommends at minimum annual penetration testing, and after any significant infrastructure or application changes. Most institutions we work with test quarterly for critical systems like mobile banking and payment APIs.',
+  },
+  {
+    q: 'What is the difference between VAPT and penetration testing?',
+    a: 'VAPT combines automated vulnerability scanning with manual penetration testing. Vulnerability assessment identifies weaknesses using tools. Penetration testing goes further by manually exploiting vulnerabilities to demonstrate real business impact. We do both.',
+  },
+  {
+    q: 'Do I need ISO 27001 certification in Rwanda?',
+    a: 'ISO 27001 is not legally mandatory in Rwanda but is increasingly required by international partners, investors, and clients. BNR encourages ISO 27001 alignment for financial institutions. We help organisations prepare through gap analysis and security improvements.',
+  },
+  {
+    q: 'Do you offer cybersecurity training for employees?',
+    a: 'Yes. We deliver security awareness training for all staff levels, from executive briefings to hands-on technical workshops for developers and IT teams. Training covers phishing recognition, secure coding practices, incident response procedures, and BNR compliance requirements. Available on-site in Kigali or remotely across East Africa.',
+  },
+  {
+    q: 'Do you work with organisations outside Rwanda?',
+    a: 'Yes. We are based in Kigali but deliver engagements across East Africa, including remote assessments. Our lead consultant has worked in offensive security roles in Denmark and the UAE, and has delivered penetration testing engagements in multiple African countries.',
+  },
+];
+---
+
+<section id="faq" class="sec sec-b">
+  <div class="w reveal">
+    <div class="sec-tag">FAQ</div>
+    <h2 class="sec-title">Common questions</h2>
+    <div class="faq-list" style="margin-top:16px">
+      {
+        faqItems.map((item) => (
+          <details class="faq">
+            <summary>{item.q}</summary>
+            <div class="faq-body">{item.a}</div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+/**
+ * ProcessSection -- 4-step engagement process.
+ */
+---
+
+<section id="process" class="sec sec-b">
+  <div class="w reveal">
+    <div class="sec-tag">PROCESS</div>
+    <h2 class="sec-title">How we work</h2>
+    <p class="sec-sub">From scoping to remediation, we keep it straightforward.</p>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+        <h4>Scoping call</h4>
+        <p>We understand your environment, compliance needs, and testing objectives</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+        <h4>Proposal and SOW</h4>
+        <p>Clear scope, timeline, cost, and rules of engagement within 48 hours</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+        <h4>Testing</h4>
+        <p>1-3 weeks of manual testing with daily status updates on critical findings</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-line"></div>
+        <h4>Report and support</h4>
+        <p>Detailed report with remediation guidance and 30 days of free follow-up</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(52, 211, 153, 0.1);
+    border: 1.5px solid rgba(52, 211, 153, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--acc);
+    margin: 0 auto 10px;
+  }
+  .step h4 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .step p {
+    font-size: 0.68rem;
+    color: var(--txt3);
+    line-height: 1.5;
+  }
+  .step-line {
+    position: absolute;
+    top: 20px;
+    left: calc(50% + 24px);
+    width: calc(100% - 48px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(52, 211, 153, 0.3), rgba(52, 211, 153, 0.1));
+  }
+  .step:last-child .step-line {
+    display: none;
+  }
+
+  /* RESPONSIVE - TABLET */
+  @media (max-width: 1024px) {
+    .process {
+      grid-template-columns: 1fr 1fr;
+    }
+    .step-line {
+      display: none !important;
+    }
+  }
+
+  /* RESPONSIVE - MOBILE */
+  @media (max-width: 768px) {
+    .process {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
