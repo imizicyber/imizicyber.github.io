@@ -1,0 +1,52 @@
+<div class="trust">
+  <div class="w">
+    <div class="trust-stats">
+      <div class="trust-stat"><strong>6+</strong><span>countries</span></div>
+      <span class="trust-sep">&bull;</span>
+      <div class="trust-stat"><strong>50+</strong><span>engagements</span></div>
+      <span class="trust-sep">&bull;</span>
+      <div class="trust-stat"><strong>OSCP</strong><span>certified</span></div>
+      <span class="trust-sep">&bull;</span>
+      <div class="trust-stat"><strong>BlackHat</strong><span>Europe presenter</span></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .trust {
+    padding: 18px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .trust-stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .trust-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .trust-stat strong {
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--acc);
+  }
+  .trust-stat span {
+    font-size: 0.72rem;
+    color: var(--txt3);
+    font-weight: 500;
+  }
+  .trust-sep {
+    color: var(--dim);
+    font-size: 0.6rem;
+  }
+
+  /* LIGHT THEME */
+  [data-theme='light'] .trust {
+    border-color: rgba(0, 0, 0, 0.07);
+  }
+</style>

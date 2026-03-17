@@ -1,0 +1,190 @@
+---
+import { CONTACT } from '../../data/site';
+---
+
+<section class="hero">
+  <div class="w">
+    <div class="tag">KIGALI, RWANDA</div>
+    <h1>Offensive security and penetration testing for <em>regulated organisations</em></h1>
+    <p class="hero-sub">
+      OSCP-certified. Built for banks, telecoms, and government agencies across East Africa and
+      South Africa.
+    </p>
+    <div class="btns">
+      <a href="#contact" class="btn btn-fill">Book a Consultation</a>
+      <a href={CONTACT.whatsappUrl} class="btn btn-wa" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"
+          ><path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+          ></path><path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.696-5.788-1.876l-.404-.3-2.645.886.886-2.645-.3-.404A9.724 9.724 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"
+          ></path></svg
+        >
+        WhatsApp us
+      </a>
+      <a href="#services" class="btn btn-ghost">Our services</a>
+    </div>
+    <div class="hero-terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">imizicyber - security assessment</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="prompt">$ </span><span class="cmd">imizicyber</span>
+          <span class="flag">--scan</span>
+          <span class="cmd">webapp api mobile</span>
+        </div>
+        <div class="terminal-line">
+          <span class="result">[+] 3 targets queued - manual testing mode</span>
+        </div>
+        <div class="terminal-line"><span class="result">[+] OSCP methodology loaded</span></div>
+        <div class="terminal-line">
+          <span class="prompt">$ </span><span class="cmd">report</span>
+          <span class="flag">--format</span>
+          <span class="cmd">executive</span>
+          <span class="flag">--compliance</span>
+          <span class="cmd">bnr pci iso27001</span>
+        </div>
+        <div class="terminal-line">
+          <span class="result">[+] Report generated - 14 findings, 3 critical</span>
+        </div>
+        <div class="terminal-line">
+          <span class="prompt">$ </span><span class="terminal-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 132px 0 48px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    color: var(--acc);
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--acc);
+  }
+  h1 {
+    font-size: clamp(2.1rem, 4.5vw, 2.9rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 14px;
+    max-width: 580px;
+  }
+  h1 em {
+    color: var(--acc);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: 0.92rem;
+    color: var(--txt2);
+    max-width: 400px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .hero-terminal {
+    margin-top: 28px;
+    max-width: 480px;
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .terminal-dot:nth-child(1) {
+    background: #ef4444;
+  }
+  .terminal-dot:nth-child(2) {
+    background: #f59e0b;
+  }
+  .terminal-dot:nth-child(3) {
+    background: #22c55e;
+  }
+  .terminal-title {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--txt3);
+    margin-left: 8px;
+  }
+  .terminal-body {
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.8;
+  }
+  .terminal-line {
+    color: var(--txt3);
+  }
+  .terminal-line .prompt {
+    color: var(--acc);
+  }
+  .terminal-line .cmd {
+    color: var(--txt);
+  }
+  .terminal-line .flag {
+    color: #f59e0b;
+  }
+  .terminal-line .result {
+    color: var(--acc);
+    opacity: 0.8;
+  }
+  .terminal-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: var(--acc);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* RESPONSIVE - MOBILE */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 88px 0 36px;
+    }
+  }
+
+  /* RESPONSIVE - SMALL */
+  @media (max-width: 480px) {
+    .hero {
+      padding: 72px 0 28px;
+    }
+    h1 {
+      max-width: 100%;
+    }
+    .hero-sub {
+      font-size: 0.84rem;
+    }
+  }
+</style>
