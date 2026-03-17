@@ -15,8 +15,8 @@ test.describe('Accessibility', () => {
     expect(critical).toEqual([]);
   });
 
-  test('contact page has no critical violations', async ({ page, makeAxeBuilder }) => {
-    await page.goto('/contact/');
+  test('security score page has no critical violations', async ({ page, makeAxeBuilder }) => {
+    await page.goto('/tools/security-score/');
     const results = await makeAxeBuilder().analyze();
     const critical = results.violations.filter((v) => v.impact === 'critical');
     expect(critical).toEqual([]);
