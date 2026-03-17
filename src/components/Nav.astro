@@ -43,9 +43,10 @@ const contactHref = isHome ? '#contact' : '/#contact';
             </a>
           )
         }
-        <a href={contactHref} class="nav-cta">Get in Touch</a>
+        <a href={contactHref} class="nav-cta">Book a Consultation</a>
       </div>
       <div class="nav-end">
+        <a href={contactHref} class="nav-cta-mobile">Book a Consultation</a>
         <ThemeToggle />
         <button class="menu-btn" aria-label="Menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -54,6 +55,27 @@ const contactHref = isHome ? '#contact' : '/#contact';
     </div>
   </div>
 </nav>
+
+<style>
+  .nav-cta-mobile {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .nav-cta-mobile {
+      display: inline-flex;
+      background: var(--accdark);
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      min-height: 44px;
+      align-items: center;
+    }
+  }
+</style>
 
 <script>
   (function () {
