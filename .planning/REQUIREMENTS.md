@@ -16,7 +16,7 @@
 - [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
 - [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
 - [ ] **QUAL-09**: CSP header uses hashes or nonces instead of unsafe-inline for scripts
-- [ ] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
+- [x] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
 - [ ] **QUAL-11**: No sensitive data (API keys, tokens, passwords) committed to repository
 - [ ] **QUAL-12**: Axe-core accessibility testing integrated into Playwright tests
 
