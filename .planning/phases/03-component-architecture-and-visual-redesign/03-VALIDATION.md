@@ -36,17 +36,18 @@ created: 2026-03-17
 
 ## Per-Task Verification Map
 
-| Task ID  | Plan | Wave | Requirement | Test Type    | Automated Command                                                   | File Exists | Status     |
-| -------- | ---- | ---- | ----------- | ------------ | ------------------------------------------------------------------- | ----------- | ---------- |
-| 03-01-01 | 01   | 1    | UIUX-01     | e2e + visual | `npx playwright test e2e/homepage.spec.ts --project chromium`       | Partial     | ⬜ pending |
-| 03-01-02 | 01   | 1    | UIUX-02     | e2e          | `npx playwright test e2e/cta-visibility.spec.ts --project chromium` | ❌ W0       | ⬜ pending |
-| 03-01-03 | 01   | 1    | UIUX-03     | e2e          | `npx playwright test e2e/responsive.spec.ts --project chromium`     | ❌ W0       | ⬜ pending |
-| 03-02-01 | 02   | 1    | UIUX-01     | unit/build   | `npm run build`                                                     | ✅          | ⬜ pending |
-| 03-02-02 | 02   | 1    | UIUX-01     | unit         | `npx vitest run tests/index-components.test.ts`                     | ❌ W0       | ⬜ pending |
-| 03-03-01 | 03   | 2    | UIUX-03     | e2e + axe    | `npx playwright test e2e/accessibility.spec.ts`                     | ✅          | ⬜ pending |
-| 03-03-02 | 03   | 2    | UIUX-01     | e2e          | `npx playwright test e2e/homepage.spec.ts`                          | ✅          | ⬜ pending |
+| Task ID  | Plan | Wave | Requirement | Test Type    | Automated Command                                                                                     | File Exists | Status     |
+| -------- | ---- | ---- | ----------- | ------------ | ----------------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| 03-01-01 | 01   | 1    | UIUX-01     | e2e + visual | `npx playwright test e2e/homepage.spec.ts --project chromium`                                         | Partial     | ⬜ pending |
+| 03-01-02 | 01   | 1    | UIUX-02     | e2e          | `npx playwright test e2e/cta-visibility.spec.ts --project chromium`                                   | ❌ W0       | ⬜ pending |
+| 03-01-03 | 01   | 1    | UIUX-03     | e2e          | `npx playwright test e2e/responsive.spec.ts --project chromium`                                       | ❌ W0       | ⬜ pending |
+| 03-02-01 | 02   | 1    | UIUX-01     | build + e2e  | `npm run build && npx playwright test e2e/homepage.spec.ts e2e/navigation.spec.ts --project chromium` | ✅          | ⬜ pending |
+| 03-03-01 | 03   | 2    | UIUX-03     | e2e + axe    | `npx playwright test e2e/accessibility.spec.ts`                                                       | ✅          | ⬜ pending |
+| 03-03-02 | 03   | 2    | UIUX-01     | e2e          | `npx playwright test e2e/homepage.spec.ts`                                                            | ✅          | ⬜ pending |
 
 _Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky_
+
+> **Note (03-02 verification approach):** Component extraction (UIUX-01) is verified via `npm run build` (Astro build fails if component imports are broken or markup is invalid) plus E2E tests (homepage.spec.ts verifies h1, CTA link, and theme toggle; navigation.spec.ts verifies nav links and page loads). A dedicated unit test (`tests/index-components.test.ts`) was considered but rejected — the build + E2E approach provides stronger guarantees because it validates the actual rendered output, not just import statements. Structural assertions about component delegation are implicitly covered: if index.astro fails to import or render a section component, the build fails or E2E selectors break.
 
 ---
 
