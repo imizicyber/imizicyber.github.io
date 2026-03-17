@@ -127,8 +127,8 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
 >
   <main id="main">
     <article>
-      <div class="w" style="max-width:680px">
-        <div style="padding:100px 0 0">
+      <div class="w blog-content">
+        <div class="blog-header">
           <Breadcrumb
             items={[
               { name: 'Home', href: '/' },
@@ -174,5 +174,11 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
     line-height: 1.15;
     color: var(--white);
     margin-bottom: 20px;
+  }
+  .blog-content {
+    max-width: 680px;
+  }
+  .blog-header {
+    padding: 100px 0 0;
   }
 </style>

@@ -35,7 +35,7 @@ import { SITE, CONTACT } from '../../data/site';
           >A4</b
         >, no margins.</span
       >
-      <button onclick="window.print()">Save as PDF</button>
+      <button id="print-btn">Save as PDF</button>
     </div>
     <div class="screen-spacer no-print"></div>
 
@@ -116,7 +116,7 @@ import { SITE, CONTACT } from '../../data/site';
       </div>
       <div class="hero-accent"></div>
 
-      <div style="padding:14px 32px 0;">
+      <div class="section-content">
         <div class="label">Leadership</div>
         <div class="team">
           <div class="team-member">
@@ -159,9 +159,7 @@ import { SITE, CONTACT } from '../../data/site';
         </div>
 
         <div class="label">Banking &amp; Financial Sector Experience</div>
-        <h2
-          style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:8px;letter-spacing:-.02em;"
-        >
+        <h2 class="section-heading-sm">
           Trusted by institutions that handle millions of transactions daily
         </h2>
         <div class="exp-grid">
@@ -259,9 +257,7 @@ import { SITE, CONTACT } from '../../data/site';
 
       <div class="content-p2">
         <div class="label">Services</div>
-        <h2
-          style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:-.02em;"
-        >
+        <h2 class="section-heading-lg">
           How We Help Regulated Organisations
         </h2>
         <div class="services">
@@ -444,9 +440,9 @@ import { SITE, CONTACT } from '../../data/site';
       <div class="page-footer">
         <span>imizicyber.com</span>
         <span
-          ><a href="/privacy-policy/" style="color:var(--txt3);text-decoration:none;"
+          ><a href="/privacy-policy/" class="footer-link"
             >Privacy Policy</a
-          > &middot; <a href="/privacy-policy/" style="color:var(--txt3);text-decoration:none;"
+          > &middot; <a href="/privacy-policy/" class="footer-link"
             >Cookie Settings</a
           ></span
         >
@@ -475,6 +471,7 @@ import { SITE, CONTACT } from '../../data/site';
     <script>
       import { initCookieBanner } from '@/scripts/cookie-consent';
       initCookieBanner();
+      document.getElementById('print-btn')?.addEventListener('click', () => window.print());
     </script>
   </body>
 </html>
@@ -548,6 +545,28 @@ import { SITE, CONTACT } from '../../data/site';
     position: relative;
     overflow: hidden;
     height: 297mm;
+  }
+
+  .section-content {
+    padding: 14px 32px 0;
+  }
+  .section-heading-sm {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .section-heading-lg {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .footer-link {
+    color: var(--txt3);
+    text-decoration: none;
   }
 
   .hero {

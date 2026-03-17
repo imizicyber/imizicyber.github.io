@@ -19,7 +19,7 @@ const SCRIPT_SOURCES = [
   'https://cdn.jsdelivr.net',
 ];
 
-const STYLE_SOURCES = ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'];
+const STYLE_SOURCES = ["'self'", 'https://fonts.googleapis.com'];
 
 const OTHER_DIRECTIVES = [
   "default-src 'self'",
@@ -46,9 +46,22 @@ function getInlineScriptHashes(html) {
   return [...hashes];
 }
 
-function buildCSP(scriptHashes) {
+function getInlineStyleHashes(html) {
+  const hashes = new Set();
+  const regex = /<style[^>]*>([\s\S]*?)<\/style>/g;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    const content = match[1];
+    if (content.trim()) {
+      hashes.add(`'sha256-${sha256(content)}'`);
+    }
+  }
+  return [...hashes];
+}
+
+function buildCSP(scriptHashes, styleHashes) {
   const scriptSrc = ['script-src', ...SCRIPT_SOURCES, ...scriptHashes].join(' ');
-  const styleSrc = ['style-src', ...STYLE_SOURCES].join(' ');
+  const styleSrc = ['style-src', ...STYLE_SOURCES, ...styleHashes].join(' ');
   return [...OTHER_DIRECTIVES, scriptSrc, styleSrc].join('; ');
 }
 
@@ -75,8 +88,9 @@ let updated = 0;
 for (const file of htmlFiles) {
   let html = readFileSync(file, 'utf8');
   const hashes = getInlineScriptHashes(html);
+  const styleHashes = getInlineStyleHashes(html);
 
-  const csp = buildCSP(hashes);
+  const csp = buildCSP(hashes, styleHashes);
   const metaTag = `<meta http-equiv="Content-Security-Policy" content="${csp}">`;
 
   // Replace existing CSP meta tag or insert after <head>

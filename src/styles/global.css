@@ -208,6 +208,11 @@ nav {
 .nav-cta:hover {
   background: var(--acc2);
 }
+.nav-cta-outline {
+  background: transparent;
+  border: 1.5px solid var(--acc);
+  color: var(--acc) !important;
+}
 .menu-btn {
   display: none;
   background: none;
@@ -463,6 +468,7 @@ nav {
    ============================================ */
 .faq-list {
   max-width: 580px;
+  margin-top: 16px;
 }
 .faq {
   margin-bottom: 6px;
@@ -806,6 +812,27 @@ nav {
 }
 .submit-btn:hover {
   background: var(--acc2);
+}
+.honeypot {
+  display: none;
+}
+.form-msg {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+.form-msg-success {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid var(--acc);
+  color: var(--acc);
+  font-weight: 600;
+}
+.form-msg-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #ef4444;
 }
 
 [data-theme='light'] .form-box {
