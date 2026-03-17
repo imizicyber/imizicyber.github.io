@@ -111,7 +111,7 @@ body {
   color: var(--txt);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 15px;
   background-image:
     radial-gradient(circle, rgba(52, 211, 153, 0.07) 1px, transparent 1px),
@@ -179,7 +179,7 @@ nav {
   color: var(--txt2);
 }
 .logo-text b {
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
 }
 .nav-links {
@@ -191,7 +191,7 @@ nav {
   text-decoration: none;
   color: var(--txt3);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: color 0.2s;
 }
 .nav-links a:hover {
@@ -361,8 +361,8 @@ nav {
 .hero-badge,
 .sec-tag {
   font-family: var(--mono);
-  font-size: 0.64rem;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  font-weight: 400;
   color: var(--acc);
   letter-spacing: 0.1em;
   margin-bottom: 6px;
@@ -390,7 +390,7 @@ nav {
 }
 .sec-title {
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.8px;
   color: var(--white);
   margin-bottom: 4px;
@@ -441,7 +441,7 @@ nav {
 }
 .card h3 {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 6px;
   letter-spacing: -0.2px;
@@ -521,7 +521,7 @@ nav {
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
 }
 .cta-box p {
@@ -612,7 +612,7 @@ nav {
 }
 .blog-card h2 {
   font-size: 0.86rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 6px;
   line-height: 1.3;
@@ -650,7 +650,7 @@ nav {
 .article-meta {
   font-family: var(--mono);
   font-size: 0.64rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.12em;
   margin-bottom: 18px;
 }
@@ -667,7 +667,7 @@ nav {
 
 .article-body h2 {
   font-size: clamp(1.15rem, 2vw, 1.4rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--white);
   margin-top: 40px;
@@ -737,7 +737,7 @@ nav {
 }
 .form-box h3 {
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 12px;
 }
@@ -752,7 +752,7 @@ nav {
 .field label {
   display: block;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--txt2);
   margin-bottom: 2px;
 }
@@ -847,7 +847,7 @@ footer {
   color: var(--txt2);
   text-decoration: none;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: color 0.2s;
 }
 .footer-mid a:hover {
@@ -928,8 +928,8 @@ footer {
   bottom: 24px;
   right: 24px;
   z-index: 99;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #25d366;
   display: flex;
@@ -944,8 +944,8 @@ footer {
   box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
 }
 .wa-float svg {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   fill: #fff;
 }
 .wa-float-label {
@@ -1195,6 +1195,14 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  .wa-float {
+    width: 56px;
+    height: 56px;
+  }
+  .wa-float svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* ============================================
@@ -1224,14 +1232,8 @@ footer {
     padding: 20px;
   }
   .wa-float {
-    width: 48px;
-    height: 48px;
     bottom: 16px;
     right: 16px;
-  }
-  .wa-float svg {
-    width: 24px;
-    height: 24px;
   }
   .wa-float-label {
     display: none;
