@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-01-PLAN.md (innerHTML elimination)
-last_updated: '2026-03-17T20:10:00.000Z'
-last_activity: 2026-03-17 — Completed Plan 02-01 (innerHTML Elimination and ESLint Ban Rule)
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-17T21:19:49.329Z"
+last_activity: 2026-03-17 — Completed Plan 02-02 (CSP Hardening and Secret Scanning)
 progress:
   total_phases: 9
   completed_phases: 2
   total_plans: 10
-  completed_plans: 8
-  percent: 80
+  completed_plans: 9
+  percent: 90
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 ## Current Position
 
 Phase: 2 of 9 (Security Hardening and Test Coverage)
-Plan: 2 of 3 in current phase (next up)
-Status: Plan 02-01 complete, ready for Plan 02-02
-Last activity: 2026-03-17 — Completed Plan 02-01 (innerHTML Elimination and ESLint Ban Rule)
+Plan: 3 of 3 in current phase (next up)
+Status: Plan 02-02 complete, ready for Plan 02-03
+Last activity: 2026-03-17 — Completed Plan 02-02 (CSP Hardening and Secret Scanning)
 
-Progress: [████████░░] 80%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ _Updated after each plan completion_
 | Phase 03 P03 | 9min | 2 tasks | 6 files |
 | Phase 03 P04 | 12min | 4 tasks | 12 files |
 | Phase 02 P01 | 1min | 2 tasks | 3 files |
+| Phase 02 P02 | 2min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -90,6 +91,8 @@ Recent decisions affecting current work:
 - [Phase 03 P04]: Hero terminal pushed to order:10 on mobile to keep CTA above the fold
 - [Phase 02 P01]: innerHTML already replaced during Phase 1 execution — plan verified pre-existing implementation
 - [Phase 02 P01]: ESLint no-restricted-syntax rule with AST selectors catches both assignment and member expression innerHTML patterns
+- [Phase 02]: Post-build CSP injection script (inject-csp.mjs) with per-page SHA-256 hashing instead of Astro experimental CSP (not available in Astro 6)
+- [Phase 02]: All inline style attributes replaced with CSS classes for CSP style-src compliance (no unsafe-inline)
 
 ### Pending Todos
 
@@ -97,13 +100,13 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Research flag]: CSP hash-based approach on GitHub Pages needs implementation spike before Phase 2 — verify `_headers` file supports script-src hashes with Astro static adapter
+- [Resolved]: CSP hash-based approach implemented via post-build inject-csp.mjs script — SHA-256 hashes for inline scripts and styles, no _headers file needed (meta tag approach)
 - [Resolved]: eslint-plugin-astro 1.6.0 confirmed compatible with ESLint 9 flat config — working in Plan 01-01
 - [Research flag]: BNR directive numbers for service pages must be verified at bnr.rw before publishing in Phase 7
 - [Content dependency]: Anonymised case studies (Phase 6) require founder to write from real engagements — not a technical blocker but a content scheduling dependency
 
 ## Session Continuity
 
-Last session: 2026-03-17T20:10:00.000Z
-Stopped at: Completed 02-01-PLAN.md
-Resume file: .planning/phases/02-security-hardening-and-test-coverage/02-02-PLAN.md
+Last session: 2026-03-17T21:19:49.326Z
+Stopped at: Completed 02-02-PLAN.md
+Resume file: None
