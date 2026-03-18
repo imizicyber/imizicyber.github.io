@@ -12,7 +12,7 @@ interface Props {
   showFreeTool?: boolean;
 }
 
-const { variant = 'inner', showFreeTool = false } = Astro.props;
+const { variant = 'inner', showFreeTool = true } = Astro.props;
 const isHome = variant === 'home';
 
 const servicesHref = isHome ? '#services' : '/#services';

@@ -500,6 +500,20 @@ const schemas = [
   </main>
 </BaseLayout>
 
+<script>
+  import { trackEvent } from '@/scripts/analytics';
+  document.querySelectorAll('a[href*="wa.me"]').forEach((link) => {
+    if (!link.closest('.wa-float')) {
+      link.addEventListener('click', () => {
+        trackEvent('whatsapp_click', {
+          page: window.location.pathname,
+          location: 'cta_section',
+        });
+      });
+    }
+  });
+</script>
+
 <style>
   /* Blog-style narrow container */
   .w {

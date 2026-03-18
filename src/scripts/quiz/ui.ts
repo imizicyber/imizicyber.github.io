@@ -2,6 +2,7 @@ import { QUESTIONS } from './data';
 import type { ScoreBand } from './data';
 import { calculateScore, getBand, getAnswersFromDOM } from './scoring';
 import { generatePDF, fallbackHTML } from './pdf';
+import { trackEvent } from '@/scripts/analytics';
 import { ANALYTICS } from '@/data/site';
 
 let quizAnswers: number[] = [];
@@ -260,6 +261,12 @@ export function initQuiz(): void {
       rs.classList.add('visible');
       rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    trackEvent('quiz_complete', {
+      score: String(quizTotal),
+      band: quizBand?.label ?? '',
+      page: window.location.pathname,
+    });
   }
 
   function submitGate(e: Event): void {
@@ -304,6 +311,11 @@ export function initQuiz(): void {
       const msg = document.getElementById('gate-msg-success');
       if (msg) msg.style.display = 'block';
       btn.textContent = 'Downloaded \u2713';
+      trackEvent('quiz_pdf_download', {
+        score: String(quizTotal),
+        band: quizBand?.label ?? '',
+        page: window.location.pathname,
+      });
     } catch {
       fallbackHTML(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
       const fullReport = document.getElementById('full-report');

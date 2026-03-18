@@ -24,6 +24,9 @@ import { CONTACT } from '../../data/site';
       </a>
       <a href="#services" class="btn btn-ghost">Our services</a>
     </div>
+    <p class="hero-tool-link">
+      Or <a href="/tools/security-score/">take our free security score quiz</a> — 3 minutes, instant results
+    </p>
     <div class="hero-terminal">
       <div class="terminal-bar">
         <span class="terminal-dot"></span>
@@ -100,6 +103,19 @@ import { CONTACT } from '../../data/site';
     max-width: 400px;
     line-height: 1.7;
     margin-bottom: 28px;
+  }
+  .hero-tool-link {
+    font-size: 0.86rem;
+    color: var(--txt2);
+    margin-top: 16px;
+  }
+  .hero-tool-link a {
+    color: var(--acc);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-tool-link a:hover {
+    text-decoration: none;
   }
   .hero-terminal {
     margin-top: 28px;
