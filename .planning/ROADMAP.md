@@ -175,7 +175,13 @@ Plans:
 3. Read time estimate is visible on the blog index card and at the top of each post
 4. At least 3 new blog articles are live targeting geo-modified keywords (e.g., "penetration testing Kigali," "BNR cybersecurity compliance Rwanda")
 5. A page or blog article covering USSD and mobile money security testing exists and is linked from the services navigation
-   **Plans**: TBD
+   **Plans:** 3 plans
+
+Plans:
+
+- [ ] 08-01-PLAN.md — Add tags to schema and all posts, tag filtering on blog index, related posts component
+- [ ] 08-02-PLAN.md — Write 3 new SEO-targeted blog articles (Kigali pentest, BNR compliance, cloud security)
+- [ ] 08-03-PLAN.md — Link USSD/mobile money from services navigation, full phase verification
 
 ### Phase 9: Lead Generation Funnel
 
@@ -206,5 +212,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 5. Analytics and Conversion Tracking          | 0/2            | Complete    | 2026-03-18 |
 | 6. Trust and Founder Credibility              | 0/3            | Complete    | 2026-03-18 |
 | 7. Service Pages and Content Quality          | 3/3            | Complete    | 2026-03-18 |
-| 8. Blog System and New Content                | 0/TBD          | Not started | -          |
+| 8. Blog System and New Content                | 0/3            | Not started | -          |
 | 9. Lead Generation Funnel                     | 0/TBD          | Not started | -          |
