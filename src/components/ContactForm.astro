@@ -2,7 +2,6 @@
 /**
  * ContactForm — AJAX contact form with Formspree submission.
  */
-import { ANALYTICS } from '../data/site';
 ---
 
 <div class="form-box">
@@ -97,54 +96,59 @@ import { ANALYTICS } from '../data/site';
   }
 </style>
 
-<script define:vars={{ formspreeUrl: ANALYTICS.formspreeUrl }}>
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const btn = form.querySelector('.submit-btn');
-    const btnText = btn.querySelector('.btn-text');
-    const spinner = btn.querySelector('.spinner');
-    const ok = document.getElementById('contact-success');
-    const err = document.getElementById('contact-error');
+<script>
+  import { ANALYTICS } from '@/data/site';
 
-    ok.hidden = true;
-    err.hidden = true;
-    form.setAttribute('aria-busy', 'true');
-    btn.disabled = true;
-    btnText.textContent = 'Sending...';
-    spinner.classList.add('visible');
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const f = e.currentTarget as HTMLFormElement;
+      const btn = f.querySelector('.submit-btn') as HTMLButtonElement;
+      const btnText = btn.querySelector('.btn-text') as HTMLElement;
+      const spinner = btn.querySelector('.spinner') as HTMLElement;
+      const ok = document.getElementById('contact-success') as HTMLElement;
+      const err = document.getElementById('contact-error') as HTMLElement;
 
-    fetch(formspreeUrl, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' },
-    })
-      .then(function (r) {
-        form.setAttribute('aria-busy', 'false');
-        spinner.classList.remove('visible');
-        if (r.ok) {
-          ok.hidden = false;
-          form.reset();
-          document.dispatchEvent(new CustomEvent('contact-form-success'));
-          btnText.textContent = 'Sent!';
-          setTimeout(function () {
-            btn.disabled = false;
+      ok.hidden = true;
+      err.hidden = true;
+      f.setAttribute('aria-busy', 'true');
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+      spinner.classList.add('visible');
+
+      fetch(ANALYTICS.formspreeUrl, {
+        method: 'POST',
+        body: new FormData(f),
+        headers: { Accept: 'application/json' },
+      })
+        .then(function (r) {
+          f.setAttribute('aria-busy', 'false');
+          spinner.classList.remove('visible');
+          if (r.ok) {
+            ok.hidden = false;
+            f.reset();
+            document.dispatchEvent(new CustomEvent('contact-form-success'));
+            btnText.textContent = 'Sent!';
+            setTimeout(function () {
+              btn.disabled = false;
+              btnText.textContent = 'Send enquiry';
+            }, 3000);
+          } else {
+            err.hidden = false;
             btnText.textContent = 'Send enquiry';
-          }, 3000);
-        } else {
+            btn.disabled = false;
+          }
+        })
+        .catch(function () {
+          f.setAttribute('aria-busy', 'false');
+          spinner.classList.remove('visible');
           err.hidden = false;
           btnText.textContent = 'Send enquiry';
           btn.disabled = false;
-        }
-      })
-      .catch(function () {
-        form.setAttribute('aria-busy', 'false');
-        spinner.classList.remove('visible');
-        err.hidden = false;
-        btnText.textContent = 'Send enquiry';
-        btn.disabled = false;
-      });
-  });
+        });
+    });
+  }
 </script>
 
 <script>

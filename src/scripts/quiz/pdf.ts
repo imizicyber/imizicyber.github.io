@@ -16,11 +16,6 @@ export function createJsPDF(): jsPDF {
   return new jsPDF();
 }
 
-/** Legacy async loader — now a no-op since jsPDF is bundled. Kept for backward compatibility. */
-export function loadJsPDF(): Promise<void> {
-  return Promise.resolve();
-}
-
 export function generatePDF(
   quizTotal: number,
   quizBand: ScoreBand,

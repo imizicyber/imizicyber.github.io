@@ -98,7 +98,13 @@ const {
 
     {schemas && schemas.length > 0 && <SchemaOrg schemas={schemas} />}
 
-    <!-- Theme init — must be in head to prevent FOUC -->
+    <!--
+      QUAL-08 justified exception: This script MUST remain is:inline to prevent
+      FOUC (Flash of Unstyled Content). It reads the user's theme preference from
+      localStorage and applies it before the browser's first paint. Moving this
+      to a module script would cause a visible flash as the default theme renders
+      before the script executes.
+    -->
     <script is:inline>
       (function () {
         try {
