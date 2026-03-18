@@ -1,0 +1,135 @@
+---
+/**
+ * Case studies listing page - shows all case studies as a card grid.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { CASE_STUDIES } from '../../data/case-studies';
+import { SITE } from '../../data/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Case Studies',
+    url: `${SITE.url}/case-studies/`,
+    description:
+      'Real-world cybersecurity engagement case studies from Imizi Cyber. See how we help banks and fintechs across East Africa.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'imizicyber',
+      url: SITE.url,
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="Case Studies | imizicyber"
+  description="Real-world cybersecurity engagement case studies from Imizi Cyber. See how we help banks and fintechs across East Africa."
+  canonicalUrl={`${SITE.url}/case-studies/`}
+  schemas={schemas}
+  navVariant="inner"
+  footerVariant="inner"
+>
+  <section class="case-section">
+    <div class="w">
+      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Case Studies' }]} />
+      <h1 class="case-heading">Case Studies</h1>
+      <p class="case-sub">Real-world cybersecurity engagements across East Africa.</p>
+      <div class="case-grid">
+        {
+          CASE_STUDIES.map((cs) => (
+            <a href={`/case-studies/${cs.slug}/`} class="case-card">
+              <span class="case-type">{cs.engagementType}</span>
+              <h2>{cs.title}</h2>
+              <p>{cs.summary}</p>
+              <div class="case-meta">
+                <span>{cs.region}</span>
+                <span>{cs.duration}</span>
+                <span>
+                  {cs.findingsCount} findings ({cs.criticalCount} critical)
+                </span>
+              </div>
+              <span class="case-link">Read case study &#8594;</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-section {
+    padding: 100px 0 60px;
+  }
+  .w {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .case-heading {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .case-sub {
+    color: var(--txt2);
+    font-size: 0.92rem;
+    margin-bottom: 32px;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .case-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .case-card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  }
+  .case-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--acc);
+    font-weight: 700;
+  }
+  .case-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+  }
+  .case-card p {
+    font-size: 0.85rem;
+    color: var(--txt2);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.75rem;
+    color: var(--txt3);
+  }
+  .case-link {
+    font-size: 0.85rem;
+    color: var(--acc);
+    font-weight: 600;
+  }
+</style>
