@@ -48,8 +48,8 @@
 - [x] **SRVC-02**: Security Assessments service page created or updated as flagship offering
 - [x] **SRVC-03**: Custom Tooling service page created or updated as flagship offering
 - [x] **SRVC-04**: Security Training repositioned as secondary offering (not removed)
-- [ ] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
-- [ ] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
+- [x] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
+- [x] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
 - [ ] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
 - [ ] **SRVC-08**: Related posts feature on each blog post based on shared tags
 - [ ] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
@@ -154,8 +154,8 @@
 | SRVC-02     | Phase 7 | Complete |
 | SRVC-03     | Phase 7 | Complete |
 | SRVC-04     | Phase 7 | Complete |
-| SRVC-05     | Phase 7 | Pending  |
-| SRVC-06     | Phase 7 | Pending  |
+| SRVC-05     | Phase 7 | Complete |
+| SRVC-06     | Phase 7 | Complete |
 | SRVC-07     | Phase 8 | Pending  |
 | SRVC-08     | Phase 8 | Pending  |
 | SRVC-09     | Phase 8 | Pending  |
