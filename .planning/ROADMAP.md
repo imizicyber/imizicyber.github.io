@@ -196,7 +196,13 @@ Plans:
 4. Downloading a resource triggers a GA4 event that includes the document name as an event parameter
 5. After submitting a download form, the visitor receives a follow-up email (Formspree or Brevo integration confirmed working)
 6. The quiz is prominently linked from the homepage and from the main navigation
-   **Plans**: TBD
+   **Plans:** 3 plans
+
+Plans:
+
+- [ ] 09-01-PLAN.md — Bundle jsPDF locally, wire GA4 events for quiz completion and resource downloads
+- [ ] 09-02-PLAN.md — WhatsApp service-specific messages, quiz links in nav/homepage, inline WhatsApp tracking
+- [ ] 09-03-PLAN.md — Formspree auto-responder configuration and full phase verification
 
 ## Progress
 
@@ -213,4 +219,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 6. Trust and Founder Credibility              | 0/3            | Complete    | 2026-03-18 |
 | 7. Service Pages and Content Quality          | 3/3            | Complete    | 2026-03-18 |
 | 8. Blog System and New Content                | 0/3            | Complete    | 2026-03-18 |
-| 9. Lead Generation Funnel                     | 0/TBD          | Not started | -          |
+| 9. Lead Generation Funnel                     | 0/3            | Not started | -          |
