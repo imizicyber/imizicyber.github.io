@@ -117,7 +117,12 @@ Plans:
 3. Accepting cookies in the consent banner triggers GA4 and LinkedIn Insight Tag to load within the same session
 4. Google Search Console shows the site as verified and the sitemap as submitted and indexed
 5. A Playwright test confirms no analytics script fires before the consent banner is acknowledged
-   **Plans**: TBD
+   **Plans:** 2 plans
+
+Plans:
+
+- [ ] 05-01-PLAN.md — Analytics infrastructure: trackEvent helper, LinkedIn Insight Tag loader, CSP updates
+- [ ] 05-02-PLAN.md — Wire GA4 events into conversion touchpoints, E2E consent and persistence tests
 
 ### Phase 6: Trust and Founder Credibility
 
@@ -186,7 +191,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 2. Security Hardening and Test Coverage       | 1/3            | In Progress | -          |
 | 3. Component Architecture and Visual Redesign | 4/4            | Complete    | 2026-03-17 |
 | 4. Performance and Accessibility              | 2/3            | In Progress |            |
-| 5. Analytics and Conversion Tracking          | 0/TBD          | Not started | -          |
+| 5. Analytics and Conversion Tracking          | 0/2            | Not started | -          |
 | 6. Trust and Founder Credibility              | 0/TBD          | Not started | -          |
 | 7. Service Pages and Content Quality          | 0/TBD          | Not started | -          |
 | 8. Blog System and New Content                | 0/TBD          | Not started | -          |
