@@ -23,7 +23,7 @@ const { tags } = Astro.props;
 </div>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
     const cards = document.querySelectorAll<HTMLElement>('.blog-card-wrapper');
 
