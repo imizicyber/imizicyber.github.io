@@ -39,8 +39,8 @@
 - [ ] **TRST-02**: Founder credentials prominently visible on homepage before services section
 - [ ] **TRST-03**: At least 2 anonymised case studies with attack narratives from real past engagements
 - [ ] **TRST-04**: Case studies formatted as: anonymous client description, engagement type, findings, business impact, recommendation
-- [ ] **TRST-05**: Service pages include specific BNR directive numbers and compliance mapping
-- [ ] **TRST-06**: PCI DSS, ISO 27001, and Rwanda Data Protection Law explicitly referenced on relevant service pages
+- [x] **TRST-05**: Service pages include specific BNR directive numbers and compliance mapping
+- [x] **TRST-06**: PCI DSS, ISO 27001, and Rwanda Data Protection Law explicitly referenced on relevant service pages
 
 ### Services & Content
 
@@ -148,8 +148,8 @@
 | TRST-02     | Phase 6 | Pending  |
 | TRST-03     | Phase 6 | Pending  |
 | TRST-04     | Phase 6 | Pending  |
-| TRST-05     | Phase 6 | Pending  |
-| TRST-06     | Phase 6 | Pending  |
+| TRST-05     | Phase 6 | Complete |
+| TRST-06     | Phase 6 | Complete |
 | SRVC-01     | Phase 7 | Pending  |
 | SRVC-02     | Phase 7 | Pending  |
 | SRVC-03     | Phase 7 | Pending  |

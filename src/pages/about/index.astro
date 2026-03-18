@@ -1,0 +1,625 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site';
+import { FOUNDER } from '../../data/founder';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: FOUNDER.name,
+    jobTitle: FOUNDER.title,
+    url: `${SITE.url}/about/`,
+    sameAs: [FOUNDER.linkedIn],
+    worksFor: {
+      '@type': 'Organization',
+      name: SITE.legalName,
+      url: SITE.url,
+      '@id': `${SITE.url}/#organization`,
+    },
+    hasCredential: FOUNDER.certifications.map((cert) => ({
+      '@type': 'EducationalOccupationalCredential',
+      name: `${cert.name} — ${cert.org}`,
+    })),
+    alumniOf: FOUNDER.education.map((edu) => ({
+      '@type': 'EducationalOrganization',
+      name: edu.institution,
+    })),
+    knowsAbout: [
+      'Penetration Testing',
+      'Red Team Operations',
+      'Offensive Security',
+      'Application Security',
+      'Network Security',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Kigali',
+      addressCountry: 'RW',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About',
+        item: `${SITE.url}/about/`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="About Aristofanis Chionis | OSCP Pentester Kigali | imizicyber"
+  description="Meet the founder of imizicyber: OSCP & OSCP+ certified penetration tester with red team experience at Tier-1 banks across Europe and Africa. Based in Kigali, Rwanda."
+  keywords="Aristofanis Chionis, OSCP pentester Kigali, offensive security Rwanda, penetration tester Africa, imizicyber founder, cybersecurity consultant Kigali"
+  ogTitle="About Aristofanis Chionis | OSCP Pentester Kigali | imizicyber"
+  ogDescription="OSCP & OSCP+ certified penetration tester and founder of imizicyber. Red team experience at Tier-1 banks across Europe and Africa."
+  twitterTitle="About Aristofanis Chionis | imizicyber"
+  twitterDescription="OSCP-certified founder of imizicyber. Red team experience at Tier-1 banks across Europe and Africa."
+  canonicalUrl={`${SITE.url}/about/`}
+  schemas={schemas}
+  navVariant="inner"
+  footerVariant="inner"
+>
+  <div class="w">
+    <div class="article-header">
+      <div class="breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span>About</span>
+      </div>
+      <div class="article-meta">
+        <span class="label">ABOUT</span>
+        <span class="sep">&middot;</span>
+        <span class="detail">KIGALI, RWANDA</span>
+      </div>
+      <h1>About {FOUNDER.name}</h1>
+      <p class="article-intro">{FOUNDER.bio}</p>
+      <div class="cred-bar">
+        <span>Certifications:</span>
+        {FOUNDER.certifications.map((cert) => <strong>{cert.name}</strong>)}
+        <span class="cred-sep">|</span>
+        <strong>BlackHat Europe Arsenal presenter</strong>
+        <span class="cred-sep">|</span>
+        <span>Red team experience at Tier-1 European &amp; African banks</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w article-body">
+    <h2>Professional background</h2>
+    <p>
+      Aristofanis started his career in software engineering before pivoting to offensive security
+      -- drawn by the challenge of breaking systems to make them stronger. After completing an MSc
+      in Computer Security at the Technical University of Denmark, he joined the internal red team
+      of a Tier-1 Nordic bank, where he gained hands-on experience in adversary simulation,
+      penetration testing, and building security awareness programmes.
+    </p>
+    <p>
+      That experience led to offensive security engagements at major financial institutions across
+      multiple continents: penetration testing web applications and core banking infrastructure for
+      a Pan-African banking group, building custom security tooling for a top-5 South African bank,
+      and testing trading platform security for a securities firm in Abu Dhabi.
+    </p>
+    <p>
+      In 2026, Aristofanis founded Imizi Cyber in Kigali, Rwanda -- bringing international offensive
+      security expertise to a region where demand for qualified, locally-present penetration testers
+      is growing fast. The name "Imizi" comes from Kinyarwanda, meaning "roots" -- reflecting a
+      commitment to building deep, lasting security foundations for African organisations.
+    </p>
+
+    <h2>Certifications &amp; credentials</h2>
+    <p>
+      Professional certifications validate hands-on technical capability. These are not
+      multiple-choice exams -- they require demonstrating real exploitation skills under timed
+      conditions.
+    </p>
+    <div class="cert-list">
+      {
+        FOUNDER.certifications.map((cert) => (
+          <div class="cert-item">
+            <div class="cert-badge">{cert.name}</div>
+            <div class="cert-detail">
+              <b>{cert.name}</b>
+              <span>
+                {cert.name === 'OSCP'
+                  ? 'Offensive Security Certified Professional. A rigorous 24-hour hands-on exam requiring exploitation of multiple machines in a simulated enterprise network.'
+                  : cert.name === 'OSCP+'
+                    ? 'Offensive Security Certified Professional Plus. An extended version of OSCP with additional Active Directory exploitation and advanced attack techniques.'
+                    : 'Practical Network Penetration Tester by TCM Security. Covers real-world internal and external network penetration testing methodology.'}
+              </span>
+              <span class="cert-org">Issued by {cert.org}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p>
+      Beyond certifications, Aristofanis presented at <strong>BlackHat Europe Arsenal</strong> in London
+      (2023), demonstrating security tooling to an international audience of offensive security professionals.
+    </p>
+
+    <h2>Career history</h2>
+    <div class="process-timeline">
+      {
+        FOUNDER.experience.map((exp) => (
+          <div class="p-step">
+            <h3>{exp.org}</h3>
+            <div class="p-meta">
+              <span class="p-role">{exp.role}</span>
+              <span class="p-loc">{exp.location}</span>
+            </div>
+            <p>{exp.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2>Education</h2>
+    <div class="edu-list">
+      {
+        FOUNDER.education.map((edu) => (
+          <div class="edu-item">
+            <div class="edu-degree">
+              {edu.degree} {edu.field}
+            </div>
+            <div class="edu-school">{edu.institution}</div>
+            <div class="edu-country">{edu.country}</div>
+          </div>
+        ))
+      }
+    </div>
+    <p>
+      Academic work focused on network security, cryptography, and secure systems design. The
+      combination of a strong computer science foundation (Athens) with specialised security
+      training (Denmark) provides the theoretical depth that underpins practical offensive security
+      work.
+    </p>
+
+    <h2>Speaking &amp; open source</h2>
+    <p>
+      Aristofanis believes in giving back to the security community through open-source
+      contributions and knowledge sharing.
+    </p>
+    <ul>
+      <li>
+        <strong>BlackHat Europe Arsenal 2023</strong> (London) -- Presented open-source security tooling
+        to an international audience of offensive security professionals.
+      </li>
+      <li>
+        <strong>Google Summer of Code 2023 &amp; 2024</strong> -- Selected contributor with the Honeynet
+        Project, building open-source security tools used by researchers and defenders worldwide.
+      </li>
+    </ul>
+
+    <div class="cta-box">
+      <h2>Work with us</h2>
+      <p>
+        Looking for an experienced penetration tester based in Kigali? Let us discuss how we can
+        help secure your organisation.
+      </p>
+      <div class="cta-btns">
+        <a href="/#contact" class="btn btn-fill">Book a Consultation</a>
+        <a
+          href={`https://wa.me/250793146617?text=${encodeURIComponent("Hi imizicyber, I'd like to discuss security services")}`}
+          class="btn btn-wa"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24"
+            ><path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path><path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.696-5.788-1.876l-.404-.3-2.645.886.886-2.645-.3-.404A9.724 9.724 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"
+            ></path></svg
+          >
+          WhatsApp us
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .w {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HEADER */
+  .breadcrumb {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    color: var(--txt3);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--txt3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover {
+    color: var(--acc);
+  }
+  .breadcrumb .sep {
+    color: var(--dim);
+  }
+  .article-header {
+    padding: 100px 0 36px;
+  }
+  .article-meta {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+  }
+  .article-meta .label {
+    color: var(--acc);
+  }
+  .article-meta .sep {
+    color: var(--txt3);
+    margin: 0 6px;
+  }
+  .article-meta .detail {
+    color: #f59e0b;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .article-intro {
+    font-size: 0.92rem;
+    color: var(--txt2);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* CRED BAR */
+  .cred-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0;
+    margin-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.7rem;
+    color: var(--txt3);
+  }
+  .cred-bar strong {
+    color: var(--txt2);
+    font-weight: 700;
+  }
+  .cred-sep {
+    color: var(--dim);
+  }
+
+  /* BODY */
+  .article-body h2 {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    margin-top: 40px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .article-body p {
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+    color: var(--txt);
+    line-height: 1.75;
+  }
+  .article-body a {
+    color: var(--acc);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .article-body a:hover {
+    text-decoration: none;
+  }
+  .article-body a.btn {
+    text-decoration: none;
+  }
+  .article-body ul {
+    list-style: none;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+  .article-body li {
+    padding: 4px 0 4px 18px;
+    position: relative;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: var(--txt);
+  }
+  .article-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--acc);
+  }
+  .article-body strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* CERTIFICATIONS LIST */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0 20px;
+  }
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+  }
+  .cert-badge {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--acc);
+    background: rgba(52, 211, 153, 0.08);
+    padding: 8px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    min-width: 48px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .cert-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cert-detail b {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .cert-detail span {
+    font-size: 0.78rem;
+    color: var(--txt2);
+    line-height: 1.6;
+  }
+  .cert-org {
+    font-family: var(--mono);
+    font-size: 0.66rem !important;
+    color: var(--txt3) !important;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+  }
+
+  /* TIMELINE */
+  .process-timeline {
+    margin: 16px 0 24px;
+    border-left: 2px solid rgba(52, 211, 153, 0.2);
+    padding-left: 22px;
+  }
+  .p-step {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .p-step:last-child {
+    margin-bottom: 0;
+  }
+  .p-step::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(52, 211, 153, 0.15);
+    border: 2px solid var(--acc);
+  }
+  .p-step h3 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 2px;
+    letter-spacing: -0.2px;
+  }
+  .p-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .p-role {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--acc);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .p-loc {
+    font-size: 0.66rem;
+    color: var(--txt3);
+  }
+  .p-step p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--txt2);
+    line-height: 1.65;
+  }
+
+  /* EDUCATION */
+  .edu-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0 20px;
+  }
+  .edu-item {
+    padding: 16px;
+    background: var(--bg2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+  }
+  .edu-degree {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .edu-school {
+    font-size: 0.76rem;
+    color: var(--txt2);
+    line-height: 1.4;
+  }
+  .edu-country {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--txt3);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* CTA BOX */
+  .cta-box {
+    background: var(--bg3);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+    border-radius: 12px;
+    padding: 36px;
+    text-align: center;
+    margin: 40px 0 20px;
+  }
+  .cta-box h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+  .cta-box p {
+    color: var(--txt2);
+    font-size: 0.84rem;
+    margin-bottom: 18px;
+  }
+  .cta-btns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .btn {
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-fill,
+  .article-body .btn-fill {
+    background: var(--accdark);
+    color: #fff;
+  }
+  .btn-fill:hover {
+    background: var(--acc2);
+    box-shadow: 0 4px 20px rgba(52, 211, 153, 0.15);
+  }
+  .btn-wa,
+  .article-body .btn-wa {
+    background: #25d366;
+    color: #fff;
+  }
+  .btn-wa:hover {
+    background: #20bd5a;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+  }
+  .btn-wa svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+  }
+
+  /* LIGHT THEME */
+  [data-theme='light'] .cert-item,
+  [data-theme='light'] .edu-item {
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+  [data-theme='light'] .cta-box {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  [data-theme='light'] .cred-bar {
+    border-top-color: rgba(0, 0, 0, 0.08);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+  }
+  [data-theme='light'] .btn-fill {
+    color: #fff;
+  }
+  [data-theme='light'] .btn-wa {
+    color: #fff;
+  }
+
+  /* RESPONSIVE - MOBILE */
+  @media (max-width: 768px) {
+    .cred-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .edu-list {
+      grid-template-columns: 1fr;
+    }
+    .cta-box {
+      padding: 24px;
+    }
+    .cta-btns {
+      flex-direction: column;
+      align-items: center;
+    }
+    .article-header {
+      padding: 76px 0 24px;
+    }
+    .cert-item {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  /* RESPONSIVE - SMALL */
+  @media (max-width: 480px) {
+    .w {
+      padding: 0 16px;
+    }
+    .article-body h2 {
+      margin-top: 28px;
+    }
+    .cta-box {
+      padding: 20px;
+    }
+  }
+</style>
