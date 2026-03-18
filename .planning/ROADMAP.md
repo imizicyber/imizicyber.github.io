@@ -242,6 +242,36 @@ Plans:
 
 - [ ] 11-01-PLAN.md — Fix breadcrumbs, add /about/ nav link, extract inline scripts, add E2E tests, clean orphans
 
+## v2 Phases (Future)
+
+### Phase 12: Full-Site Playwright Testing
+
+**Goal**: Every page and interactive element has comprehensive E2E test coverage — responsive breakpoints, accessibility, performance budgets, and critical user flows are all automated
+**Depends on**: Phase 11
+**Requirements**: TEST-01, TEST-02, TEST-03, TEST-04, TEST-05
+**Milestone:** v2
+**Success Criteria** (what must be TRUE):
+
+1. Playwright E2E tests exist for every page route (homepage, blog index, blog posts, all service pages, tools, about, case studies, company-profile, resources, privacy, responsible-disclosure)
+2. All interactive elements tested: contact form submission, tag filtering, quiz completion, theme toggle, cookie consent flow, WhatsApp links, nav hamburger menu
+3. Responsive tests pass at 375px, 768px, 1024px, and 1440px for all pages without layout breakage
+4. axe-core accessibility scans report zero critical/serious violations on all tested pages
+5. Lighthouse CI performance budgets enforce LCP < 2.5s, CLS < 0.1, FID < 100ms
+
+### Phase 13: Apple/Google-Level UI/UX Audit
+
+**Goal**: The site's visual quality, interaction design, and attention to detail compete with world-class cybersecurity firms — every hover state, transition, and spacing decision feels intentional and premium
+**Depends on**: Phase 12
+**Requirements**: UIUX-20, UIUX-21, UIUX-22, UIUX-23, UIUX-24
+**Milestone:** v2
+**Success Criteria** (what must be TRUE):
+
+1. Professional UI/UX audit completed against top-tier cybersecurity firm benchmarks with specific findings addressed
+2. All interactive elements have polished micro-interactions (hover states, focus rings, transitions, loading feedback)
+3. Typography scale and spacing system refined with consistent visual hierarchy across all pages
+4. Dark and light modes both feel equally premium — no "afterthought" theme
+5. Mobile UX passes review for touch-target sizing (44px min), gesture patterns, and Rwanda mobile-first priorities
+
 ## Progress
 
 **Execution Order:**

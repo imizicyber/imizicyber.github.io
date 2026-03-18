@@ -97,6 +97,22 @@
 - **CONT-02**: Video content or webinar recordings
 - **CONT-03**: Industry report or annual Rwanda cybersecurity landscape
 
+### Full-Site Playwright Testing
+
+- **TEST-01**: Playwright E2E tests covering every page (homepage, blog, services, tools, about, case studies, company-profile, resources, privacy, responsible-disclosure)
+- **TEST-02**: Interactive element testing (contact form submission, tag filtering, quiz completion, theme toggle, cookie consent, WhatsApp links, nav hamburger menu)
+- **TEST-03**: Responsive breakpoint testing at 375px, 768px, 1024px, 1440px for all pages
+- **TEST-04**: Accessibility testing with axe-core on every page (zero critical/serious violations)
+- **TEST-05**: Performance budget tests (LCP < 2.5s, CLS < 0.1, FID < 100ms) via Lighthouse CI
+
+### Apple/Google-Level UI/UX Audit
+
+- **UIUX-20**: Professional UI/UX design audit against top-tier cybersecurity firm benchmarks (CrowdStrike, Mandiant, Recorded Future)
+- **UIUX-21**: Micro-interaction and animation polish (hover states, transitions, loading feedback, scroll animations)
+- **UIUX-22**: Typography and spacing system refinement for visual hierarchy and readability
+- **UIUX-23**: Dark/light mode visual parity audit — both themes feel equally premium
+- **UIUX-24**: Mobile-first UX review — touch targets, swipe gestures, bottom-sheet patterns for Rwanda mobile users
+
 ## Out of Scope
 
 | Feature                            | Reason                                                                                  |
