@@ -1,0 +1,94 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: 'Penetration Testing in Kigali for Enterprise | imizicyber'
+headline: 'Choosing a penetration testing firm in Kigali: what enterprises should look for'
+description: 'How Kigali-based enterprises evaluate and select penetration testing providers. Covers certifications, methodology, reporting, and what makes a pentest engagement effective.'
+keywords: 'penetration testing Kigali, pentest Kigali, cybersecurity firm Kigali, ethical hacking Rwanda, penetration testing provider Rwanda'
+datePublished: '2026-03-18'
+readTime: '9 MIN READ'
+metaLabel: 'MARCH 2026'
+breadcrumbName: 'Penetration Testing Kigali'
+ogTitle: 'Choosing a Penetration Testing Firm in Kigali'
+ogDescription: 'What Kigali enterprises should look for when selecting a penetration testing provider.'
+twitterTitle: 'Penetration Testing in Kigali for Enterprise'
+twitterDescription: 'What to look for when choosing a pentest provider in Kigali.'
+canonicalUrl: '/blog/penetration-testing-kigali-enterprise-guide/'
+cardDescription: 'What Kigali enterprises should look for when choosing a penetration testing provider: certifications, methodology, and reporting.'
+cardDate: 'MAR 2026'
+faq:
+  - question: 'What certifications should a Kigali penetration testing firm hold?'
+    answer: 'Look for OSCP (Offensive Security Certified Professional) at minimum. OSCP is a hands-on certification requiring live exploitation of systems, unlike multiple-choice alternatives. Additional credentials like OSWE, OSCE, or CREST demonstrate deeper specialisation.'
+  - question: 'How much does penetration testing cost in Kigali?'
+    answer: 'Pricing depends on scope — number of applications, network segments, and testing depth. A focused web application test typically costs less than a full infrastructure engagement. Request a scoped proposal rather than accepting flat-rate quotes that may cut corners.'
+---
+
+import Callout from '../../components/Callout.astro';
+
+Kigali's technology ecosystem has matured rapidly. With the growth of innovation hubs like Norrsken House, KLab, and the expanding fintech corridor along KN 4 Ave, more enterprises in the city are building and deploying digital products at speed. Banks are rolling out mobile banking platforms, fintechs are processing real-time payments, and SaaS companies are serving international clients from Kigali-based engineering teams. All of this creates attack surface that needs to be tested.
+
+For BNR-regulated institutions, penetration testing is not optional. The National Bank of Rwanda requires supervised entities to conduct regular vulnerability assessments and penetration tests as part of their cybersecurity programme. Beyond BNR, companies pursuing ISO 27001 certification or serving enterprise clients in Europe and North America are increasingly required to demonstrate security testing as a condition of doing business. The challenge for decision-makers is not whether to invest in penetration testing but how to distinguish genuine testing capability from vendors who run an automated scanner and call it a pentest.
+
+This guide covers what makes a penetration test effective, which certifications actually matter, what a quality report looks like, and the red flags that should disqualify a provider from consideration.
+
+## What makes a penetration test effective
+
+A penetration test is not a vulnerability scan. This is the single most important distinction for enterprises evaluating providers in Kigali. Automated vulnerability scanners like Nessus, Qualys, or OpenVAS check systems against databases of known CVEs. They are useful for hygiene but fundamentally limited: they cannot find business logic flaws, authentication bypasses, or chained attack paths that require human reasoning.
+
+An effective penetration test simulates a real attacker. The tester begins with reconnaissance, mapping the target environment, understanding the application's business logic, and identifying entry points. From there, they attempt exploitation: SQL injection, authentication bypass, privilege escalation, lateral movement across network segments, and ultimately data exfiltration or system compromise. The goal is to demonstrate what an attacker could actually achieve, not just list potential vulnerabilities.
+
+The methodology matters. Look for providers who follow the OWASP Testing Guide for web applications and the PTES (Penetration Testing Execution Standard) for infrastructure assessments. These frameworks ensure systematic coverage rather than ad-hoc poking. A structured approach means the tester covers authentication, authorisation, session management, input validation, cryptography, and business logic in a repeatable way.
+
+Manual testing is what separates a pentest from a scan. The tester should be spending the majority of their time manually interacting with the application, not watching a scanner run. Ask your provider what percentage of the engagement is manual versus automated. If they cannot answer that question clearly, that tells you something.
+
+<Callout type="tip">
+  **Scoping questions to ask providers:** How many testers will work on this engagement? What is the
+  split between manual testing and automated scanning? Can you walk me through your methodology step
+  by step? What does your rules of engagement document cover?
+</Callout>
+
+## Certifications that matter
+
+Certifications are the most reliable way to verify a tester's capability before you see their work. Not all certifications are equal, and in the penetration testing field, the gap between rigorous and superficial is wide.
+
+**OSCP (Offensive Security Certified Professional)** is the baseline you should require. The OSCP exam is a 24-hour hands-on test where the candidate must compromise multiple machines in a live environment. There is no multiple choice, no theoretical component. You either break in or you fail. This is why OSCP remains the industry's most respected entry-level offensive certification. If the testers assigned to your engagement do not hold OSCP, ask why.
+
+**OSWE (Offensive Security Web Expert)** demonstrates deep web application exploitation capability, covering source code review, custom exploit development, and advanced injection techniques. For engagements focused on web applications and APIs, OSWE is a strong differentiator. **OSCE3** (the successor to OSCE) covers advanced exploit development and evasion techniques. **CREST certification** is the UK and international standard for penetration testing firms and provides an additional layer of organisational quality assurance.
+
+Be cautious about providers whose only credentials are CompTIA PenTest+ or CEH (Certified Ethical Hacker) without OSCP. These certifications test knowledge through multiple-choice exams and do not prove hands-on exploitation ability. They are not worthless, but they are insufficient as standalone evidence of testing capability. Conference presentations at events like BlackHat, DEF CON, or regional security conferences are also strong signals: they indicate the tester conducts original research, not just client work.
+
+## What to expect from a quality report
+
+The penetration test report is the primary deliverable, and its quality determines whether the engagement was worth the investment. A report that your board cannot understand or your development team cannot act on has failed its purpose regardless of how thorough the testing was.
+
+A quality report has two audiences and must serve both. The **executive summary** is for your board, your CISO, and your compliance team. It should be two to three pages maximum, written in plain language, covering the overall risk posture, the number and severity of findings, the most critical risks in business terms (not technical jargon), and a clear recommendation on what to prioritise. A board member who reads only the executive summary should understand whether the organisation is in good shape or needs urgent remediation.
+
+The **technical findings** section is for your development and infrastructure teams. Each finding should include a clear description of the vulnerability, proof-of-concept screenshots or code demonstrating exploitation, the risk rating mapped to business impact (not just a raw CVSS score with no context), and specific remediation guidance tailored to your technology stack. Generic advice like "implement input validation" is not actionable. Good guidance specifies which parameter, which endpoint, and what validation logic to apply.
+
+<Callout type="info">
+  **Retest window:** A professional provider includes a retest window as part of the engagement.
+  After your team remediates the critical and high findings, the testing firm retests those specific
+  issues to confirm the fixes are effective. This should not be an additional charge. If a provider
+  quotes retesting as a separate line item, negotiate it into the base engagement.
+</Callout>
+
+Risk ratings should be contextualised. A SQL injection vulnerability on a public-facing banking application is critical. The same vulnerability on an internal documentation system with no sensitive data is medium at best. The report should reflect this difference, connecting technical severity to your specific business context.
+
+## Red flags when evaluating providers
+
+Watch for these warning signs when evaluating penetration testing firms in Kigali or elsewhere in East Africa:
+
+- **Flat-rate pricing without scoping.** A provider who quotes a fixed price before understanding your environment is not going to deliver thorough testing. Scope determines effort, and effort determines quality.
+- **No named testers with verifiable credentials.** You should know who will be testing your systems and be able to verify their certifications. "Our team is certified" without naming individuals is evasive.
+- **Automated-only testing sold as penetration testing.** If the deliverable is a Nessus or Qualys report with a cover page, you paid for a vulnerability scan, not a pentest. Ask to see a sample report before engaging.
+- **No methodology documentation.** A professional firm can explain their testing methodology in detail before the engagement begins. If they cannot, they are likely improvising.
+- **Report delivery without a walkthrough meeting.** Dropping a PDF and disappearing is not professional. A debrief meeting where the testers walk your technical team through findings, answer questions, and discuss remediation approaches is essential.
+- **No Rules of Engagement document.** Testing should never begin without a signed agreement defining scope, timing, communication protocols, and escalation procedures. This protects both parties.
+- **Unrealistically short timelines.** A comprehensive web application test cannot be done properly in one day. If a provider promises a full pentest in a day or two, the testing will be superficial.
+
+## How we can help
+
+We are an OSCP-certified penetration testing firm based in Kigali. We conduct manual penetration testing for banks, fintechs, payment providers, and technology companies across Rwanda and East Africa. Our engagements follow OWASP and PTES methodologies, our reports are structured for both board presentation and developer remediation, and every engagement includes a retest window at no additional cost.
+
+For full details on our testing methodology, scope options, and deliverables, see our [penetration testing](/services/penetration-testing/) service page. If you are evaluating the difference between a vulnerability scan and a penetration test, our guide on [penetration testing vs vulnerability scanning](/blog/penetration-testing-vs-vulnerability-scanning/) covers the distinction in detail. For BNR-regulated institutions, our [BNR cybersecurity requirements guide](/blog/bnr-cybersecurity-requirements/) explains exactly what the regulator expects.
+
+[Contact us](/#contact) to scope your next engagement. We respond with a tailored proposal within 48 hours.
