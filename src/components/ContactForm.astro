@@ -7,7 +7,7 @@ import { ANALYTICS } from '../data/site';
 
 <div class="form-box">
   <h3>Request a consultation</h3>
-  <form id="contact-form">
+  <form id="contact-form" aria-label="Contact form">
     <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
     <div class="form-row">
       <div class="field">
@@ -56,46 +56,91 @@ import { ANALYTICS } from '../data/site';
         id="contact-message"
         placeholder="What do you need secured?"></textarea>
     </div>
-    <button type="submit" class="submit-btn">Send enquiry</button>
-    <div id="contact-success" class="form-msg form-msg-success">
+    <button type="submit" class="submit-btn" aria-describedby="form-status">
+      <span class="btn-text">Send enquiry</span>
+      <span class="spinner" aria-hidden="true"></span>
+    </button>
+  </form>
+  <div id="form-status" aria-live="polite" role="status">
+    <div id="contact-success" class="form-msg form-msg-success" hidden>
       Thank you! We will get back to you within 24 hours.
     </div>
-    <div id="contact-error" class="form-msg form-msg-error">
+    <div id="contact-error" class="form-msg form-msg-error" hidden>
       Something went wrong. Please try again or contact us via WhatsApp.
     </div>
-  </form>
+  </div>
 </div>
+
+<style>
+  .spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  .spinner.visible {
+    display: inline-block;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+</style>
 
 <script define:vars={{ formspreeUrl: ANALYTICS.formspreeUrl }}>
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const form = e.currentTarget;
     const btn = form.querySelector('.submit-btn');
+    const btnText = btn.querySelector('.btn-text');
+    const spinner = btn.querySelector('.spinner');
     const ok = document.getElementById('contact-success');
     const err = document.getElementById('contact-error');
-    ok.style.display = 'none';
-    err.style.display = 'none';
-    btn.textContent = 'Sending...';
+
+    ok.hidden = true;
+    err.hidden = true;
+    form.setAttribute('aria-busy', 'true');
     btn.disabled = true;
+    btnText.textContent = 'Sending...';
+    spinner.classList.add('visible');
+
     fetch(formspreeUrl, {
       method: 'POST',
       body: new FormData(form),
       headers: { Accept: 'application/json' },
     })
       .then(function (r) {
+        form.setAttribute('aria-busy', 'false');
+        spinner.classList.remove('visible');
         if (r.ok) {
-          ok.style.display = 'block';
+          ok.hidden = false;
           form.reset();
-          btn.textContent = 'Sent!';
+          btnText.textContent = 'Sent!';
+          setTimeout(function () {
+            btn.disabled = false;
+            btnText.textContent = 'Send enquiry';
+          }, 3000);
         } else {
-          err.style.display = 'block';
-          btn.textContent = 'Send enquiry';
+          err.hidden = false;
+          btnText.textContent = 'Send enquiry';
           btn.disabled = false;
         }
       })
       .catch(function () {
-        err.style.display = 'block';
-        btn.textContent = 'Send enquiry';
+        form.setAttribute('aria-busy', 'false');
+        spinner.classList.remove('visible');
+        err.hidden = false;
+        btnText.textContent = 'Send enquiry';
         btn.disabled = false;
       });
   });
