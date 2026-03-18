@@ -4,11 +4,14 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
+import TagFilter from '../../components/TagFilter.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime(),
 );
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
 ---
 
 <BaseLayout
@@ -24,17 +27,21 @@ const posts = (await getCollection('blog')).sort(
       <div class="w" style="max-width:920px">
         <h1 class="blog-heading">Blog</h1>
         <p class="blog-sub">Practical cybersecurity guidance for East African organisations.</p>
+        <TagFilter tags={allTags} />
         <div class="blog-grid">
           {
             posts.map((post) => (
-              <BlogCard
-                title={post.data.headline}
-                description={post.data.cardDescription}
-                href={`/blog/${post.id}/`}
-                date={post.data.cardDate}
-                readTime={post.data.readTime}
-                featured={post.data.featured}
-              />
+              <div class="blog-card-wrapper" data-tags={post.data.tags?.join(',') || ''}>
+                <BlogCard
+                  title={post.data.headline}
+                  description={post.data.cardDescription}
+                  href={`/blog/${post.id}/`}
+                  date={post.data.cardDate}
+                  readTime={post.data.readTime}
+                  featured={post.data.featured}
+                  tags={post.data.tags}
+                />
+              </div>
             ))
           }
         </div>
@@ -60,5 +67,11 @@ const posts = (await getCollection('blog')).sort(
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+  }
+  .blog-grid :global(.blog-card-wrapper) {
+    display: block;
+  }
+  .blog-grid :global(.blog-card-wrapper) :global(.blog-card) {
+    height: 100%;
   }
 </style>

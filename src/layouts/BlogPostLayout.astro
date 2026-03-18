@@ -6,6 +6,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import CtaBox from '../components/CtaBox.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
 import { SITE } from '../data/site';
 import ogImageAsset from '../assets/og.png';
 
@@ -31,6 +32,7 @@ interface Props {
     twitterDescription?: string;
     ogImage?: string;
     canonicalUrl: string;
+    tags?: string[];
     faq?: FaqItem[];
   };
 }
@@ -111,6 +113,7 @@ if (fm.faq && fm.faq.length > 0) {
 }
 
 const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ');
+const slug = fm.canonicalUrl.replace('/blog/', '').replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -143,6 +146,8 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
       <div class="article-body">
         <slot />
       </div>
+
+      <RelatedPosts currentSlug={slug} currentTags={fm.tags || []} />
 
       <CtaBox
         title="Ready to secure your organisation?"

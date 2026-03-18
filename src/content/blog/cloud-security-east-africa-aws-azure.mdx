@@ -1,0 +1,121 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: 'Cloud Security in East Africa: AWS & Azure | imizicyber'
+headline: 'Cloud security for East African organisations: AWS, Azure, and what most teams miss'
+description: 'Cloud adoption in East Africa is accelerating but security practices lag behind. Common AWS and Azure misconfigurations we find in penetration tests and how to fix them.'
+keywords: 'cloud security East Africa, AWS security Rwanda, Azure security Africa, cloud penetration testing, cloud misconfiguration, cloud security assessment Kigali'
+datePublished: '2026-03-18'
+readTime: '10 MIN READ'
+metaLabel: 'MARCH 2026'
+breadcrumbName: 'Cloud Security East Africa'
+ogTitle: 'Cloud Security for East African Organisations'
+ogDescription: 'Common AWS and Azure security gaps we find in East African organisations and how to fix them.'
+twitterTitle: 'Cloud Security in East Africa: AWS & Azure'
+twitterDescription: 'Common cloud security gaps in East African organisations and how to address them.'
+canonicalUrl: '/blog/cloud-security-east-africa-aws-azure/'
+cardDescription: 'Cloud adoption in East Africa is growing fast but security lags. Common AWS and Azure misconfigurations we find and how to fix them.'
+cardDate: 'MAR 2026'
+faq:
+  - question: 'What are the biggest cloud security risks for East African companies?'
+    answer: 'The most common issues we find are overly permissive IAM policies, unencrypted data at rest, publicly accessible storage buckets, missing logging and monitoring, and no network segmentation between environments. These are configuration issues, not exotic attacks.'
+  - question: 'Does BNR allow banks to use cloud services?'
+    answer: 'BNR has not prohibited cloud usage but requires supervised institutions to maintain oversight of outsourced ICT services, ensure data sovereignty considerations are addressed, and conduct due diligence on cloud providers. Many Rwandan banks use hybrid approaches with sensitive data on-premises and other workloads in cloud.'
+---
+
+import Callout from '../../components/Callout.astro';
+
+Cloud adoption across East Africa is accelerating. The AWS Africa (Cape Town) region brought low-latency cloud infrastructure closer to the continent. Azure availability zones serve organisations across sub-Saharan Africa. Rwandan fintechs are building cloud-native from day one, Kenyan banks are migrating workloads to hybrid cloud architectures, and SaaS companies across the region are deploying on AWS and Azure to serve both local and international clients. The momentum is real.
+
+The security gap is also real. In our penetration testing engagements across East African organisations, cloud misconfigurations are among the most frequent and most impactful findings. The pattern is consistent: engineering teams deploy quickly, security review happens later (if at all), and fundamental configuration errors persist in production for months or years. The good news is that most cloud security issues are not sophisticated attacks. They are configuration mistakes with straightforward fixes.
+
+This guide covers the most common cloud security gaps we find, the regulatory considerations for East African organisations (particularly BNR-regulated institutions in Rwanda), how cloud penetration testing differs from traditional infrastructure testing, and a practical security baseline every organisation should implement.
+
+## Common cloud misconfigurations we find
+
+These are not theoretical risks. These are findings from real penetration testing engagements we have conducted against East African organisations running on AWS and Azure.
+
+### Overly permissive IAM roles and policies
+
+This is the most common finding. IAM (Identity and Access Management) is the foundation of cloud security, and most organisations get it wrong. We routinely find service accounts with AdministratorAccess when they need only S3 read access. We find developers with production database credentials in their personal AWS profiles. We find IAM policies using wildcard actions (`"Action": "*"`) on wildcard resources (`"Resource": "*"`) because it was easier than writing a scoped policy.
+
+The impact is severe. A compromised developer workstation with overly permissive cloud credentials gives an attacker the same access that developer has. If that access is admin-level, the attacker owns your entire cloud environment. **Fix:** Implement least-privilege IAM from day one. Use AWS IAM Access Analyzer or Azure Advisor to identify overly permissive policies. Review IAM policies quarterly. Remove unused credentials aggressively.
+
+### Publicly accessible storage buckets
+
+S3 buckets and Azure Blob Storage containers with public access enabled remain a persistent problem. We find database backups, application logs containing sensitive data, internal documents, and sometimes customer data sitting in storage that anyone on the internet can access. AWS has added multiple guardrails (S3 Block Public Access at the account level), but organisations that created buckets before these controls existed often have legacy misconfigurations.
+
+**Fix:** Enable S3 Block Public Access at the account level. Audit all existing buckets for public access. Use AWS Config rules or Azure Policy to prevent creation of public storage. If public access is genuinely required (static website hosting), use CloudFront or Azure CDN with origin access control instead of making the bucket directly public.
+
+### No encryption at rest for databases and storage
+
+Data at rest encryption is a baseline expectation for any organisation handling sensitive data, and it is a specific requirement under Rwanda's Data Protection and Privacy Law and BNR regulations. We find RDS instances, DynamoDB tables, and Azure SQL databases running without encryption. We find EBS volumes and Azure Managed Disks storing sensitive application data unencrypted.
+
+**Fix:** Enable default encryption for all storage services. In AWS, enable EBS encryption by default at the account level, enable SSE-S3 or SSE-KMS for all S3 buckets, and enable encryption on all RDS instances. In Azure, enable Azure Storage Service Encryption and Transparent Data Encryption for Azure SQL. For existing unencrypted resources, plan a migration: create encrypted copies and decommission the originals.
+
+<Callout type="info">
+  **Encryption is not optional for regulated entities.** BNR requires data protection measures for
+  supervised institutions, and the Rwanda Data Protection and Privacy Law enforced by NCSA mandates
+  appropriate technical measures to protect personal data. Encryption at rest is the minimum
+  standard. If you are processing financial data or personal information without encryption at rest,
+  you have a compliance gap.
+</Callout>
+
+### Missing CloudTrail and Activity Log monitoring
+
+You cannot detect what you cannot see. CloudTrail in AWS and Activity Log in Azure record API calls and management operations across your cloud environment. These logs are essential for incident detection, forensic investigation, and compliance evidence. We regularly find organisations where CloudTrail is either not enabled, not configured to log data events (S3 object access, Lambda invocations), or logging to a bucket that nobody monitors.
+
+**Fix:** Enable CloudTrail in all regions with data event logging for critical services. Send logs to a centralised, immutable S3 bucket with versioning and MFA delete protection. In Azure, configure Activity Log to stream to a Log Analytics workspace. Set up alerts for critical events: root account usage, IAM policy changes, security group modifications, and failed authentication attempts.
+
+### Default security groups allowing broad inbound access
+
+Security groups in AWS and Network Security Groups in Azure are your cloud firewall. Default configurations are often too permissive. We find SSH (port 22) and RDP (port 3389) open to 0.0.0.0/0 on production instances. We find database ports (3306, 5432, 1433) accessible from the internet. We find security groups that were "temporarily" opened for debugging and never locked down.
+
+**Fix:** Restrict all inbound rules to specific IP ranges or security groups. Never allow 0.0.0.0/0 inbound on management ports. Use AWS Systems Manager Session Manager or Azure Bastion for administrative access instead of exposing SSH/RDP directly. Audit security groups monthly and remove any rules that cannot be justified.
+
+## Data sovereignty and regulatory considerations
+
+For East African organisations, particularly those regulated by BNR, where your data physically resides is a compliance consideration. The AWS Africa (Cape Town) region is the closest AWS region to East Africa, but data processed there is still outside Rwanda. Azure does not yet have a data centre in Rwanda.
+
+BNR has not prohibited cloud usage for supervised institutions, but the regulator expects institutions to maintain full oversight of outsourced ICT services and to address data sovereignty considerations. In practice, this means conducting due diligence on cloud providers, understanding where data is stored and processed, ensuring contractual protections for data access and portability, and documenting the risk assessment that led to the cloud adoption decision.
+
+Many Rwandan banks adopt a hybrid approach: sensitive data (core banking, customer PII, transaction records) remains on-premises or in a private cloud within Rwanda, while less sensitive workloads (development environments, analytics, public-facing websites) run in public cloud. This approach balances the operational benefits of cloud with regulatory requirements. Rwanda's Data Protection and Privacy Law requires organisations to ensure adequate protections when transferring personal data outside the country, which adds another layer of consideration for cloud deployments.
+
+## Cloud penetration testing vs traditional infrastructure testing
+
+Testing cloud environments requires a different mindset and methodology than traditional infrastructure penetration testing. The attack surface has shifted.
+
+**Identity is the new perimeter.** In traditional infrastructure, attackers breach the network perimeter and move laterally. In cloud, the perimeter is IAM. An attacker who compromises cloud credentials can access resources from anywhere without ever touching your network. Cloud penetration testing focuses heavily on IAM policy analysis, credential exposure (keys in code repositories, environment variables, metadata services), and privilege escalation paths within the IAM model.
+
+**API-based attacks** are central to cloud security testing. Every action in AWS and Azure is an API call. Misconfigurations in API permissions, exposed API keys, and insecure API integrations are primary attack vectors. Cloud testers evaluate how the application interacts with cloud service APIs and whether those interactions expose unintended access.
+
+**Shared responsibility model** defines the testing scope. AWS and Azure are responsible for security of the cloud (physical infrastructure, hypervisor, managed service internals). You are responsible for security in the cloud (IAM, network configuration, data encryption, application security). Cloud penetration testing focuses on your side of that divide.
+
+<Callout type="tip">
+  **AWS and Azure penetration testing policies:** AWS no longer requires pre-approval for most
+  penetration testing activities against your own resources. Azure similarly permits testing against
+  your own subscriptions without prior notification. However, denial-of-service testing is
+  prohibited on both platforms, and testing must stay within your own accounts and subscriptions.
+  Review the current policies before testing begins.
+</Callout>
+
+## Building a cloud security baseline
+
+Every East African organisation running workloads on AWS or Azure should implement these controls as a minimum baseline:
+
+- **Enable MFA on all user accounts**, especially root/global administrator accounts. Use hardware security keys for the root account if possible.
+- **Implement least-privilege IAM.** No wildcard policies. Scope permissions to specific services, actions, and resources. Review quarterly.
+- **Encrypt all data at rest.** Enable default encryption for EBS, S3, RDS, Azure Storage, and Azure SQL. Use customer-managed keys (CMK) for regulated workloads.
+- **Encrypt all data in transit.** Enforce TLS 1.2 minimum on all endpoints. Use HTTPS-only policies on load balancers and CDN distributions.
+- **Enable comprehensive logging.** CloudTrail in all regions with data events. Azure Activity Log to Log Analytics. Retain logs for at least one year.
+- **Restrict security groups.** No 0.0.0.0/0 inbound on any port. Use bastion hosts or managed access solutions for administration.
+- **Separate environments.** Use separate AWS accounts or Azure subscriptions for production, staging, and development. Never share credentials between environments.
+- **Use infrastructure-as-code.** Terraform or CloudFormation for all infrastructure provisioning. This enables drift detection, peer review of changes, and reproducible environments.
+- **Review and rotate credentials.** Rotate access keys every 90 days. Remove unused credentials immediately. Use IAM roles instead of long-lived access keys wherever possible.
+
+## How we can help
+
+We conduct cloud security assessments and penetration testing for organisations across East Africa running on AWS and Azure. Our testing covers IAM policy analysis, network configuration review, storage and encryption assessment, and application-level testing of cloud-deployed services. We identify misconfigurations that automated tools miss and provide actionable remediation guidance specific to your cloud architecture.
+
+For full details on our testing methodology and deliverables, see our [penetration testing](/services/penetration-testing/) service page. For broader security assessment needs including compliance gap analysis, see our [security assessments](/services/security-assessments/) service page. For context on the financial impact of getting cloud security wrong, see our analysis of [data breach costs in East Africa](/blog/data-breach-cost-east-africa/).
+
+[Contact us](/#contact) to scope a cloud security assessment for your AWS or Azure environment.

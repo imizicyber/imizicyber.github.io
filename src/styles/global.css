@@ -664,6 +664,14 @@ nav {
   line-height: 1.6;
   flex: 1;
 }
+.blog-tags {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--txt2);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  margin-bottom: 4px;
+}
 .blog-link {
   font-size: 0.72rem;
   font-weight: 700;

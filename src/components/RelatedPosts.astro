@@ -1,0 +1,105 @@
+---
+/**
+ * RelatedPosts — shows 2-3 related blog posts based on shared tags.
+ * Renders nothing if fewer than 2 related posts share at least 1 tag.
+ * @prop currentSlug - slug of the current post to exclude from results
+ * @prop currentTags - tags of the current post for matching
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  currentTags: string[];
+}
+
+const { currentSlug, currentTags } = Astro.props;
+
+const allPosts = await getCollection('blog');
+
+// Score posts by shared tags, exclude current
+const scored = allPosts
+  .filter((post) => post.id !== currentSlug)
+  .map((post) => {
+    const postTags = post.data.tags || [];
+    const shared = postTags.filter((t: string) => currentTags.includes(t)).length;
+    return { post, shared };
+  })
+  .filter((item) => item.shared > 0)
+  .sort((a, b) => b.shared - a.shared)
+  .slice(0, 3);
+
+const showRelated = scored.length >= 2;
+---
+
+{
+  showRelated && (
+    <section class="related-posts">
+      <h2>Related articles</h2>
+      <div class="related-grid">
+        {scored.map(({ post }) => (
+          <a href={`/blog/${post.id}/`} class="related-card">
+            <span class="related-meta">
+              {[post.data.metaLabel, post.data.readTime].filter(Boolean).join(' \u00B7 ')}
+            </span>
+            <h3>{post.data.headline}</h3>
+            <span class="related-link">Read more &#8594;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .related-posts {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .related-posts h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .related-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .related-card:hover {
+    border-color: var(--acc);
+  }
+  .related-meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--txt2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .related-card h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+    margin: 0;
+  }
+  .related-link {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--acc);
+    letter-spacing: 0.04em;
+    margin-top: auto;
+  }
+</style>

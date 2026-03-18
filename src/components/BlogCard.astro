@@ -15,14 +15,16 @@ interface Props {
   date: string;
   readTime?: string;
   featured?: boolean;
+  tags?: string[];
 }
 
-const { title, description, href, date, readTime, featured = false } = Astro.props;
+const { title, description, href, date, readTime, featured = false, tags = [] } = Astro.props;
 const dateDisplay = readTime ? `${date} \u00B7 ${readTime}` : date;
 ---
 
 <a href={href} class:list={['blog-card', { featured }]}>
   <div class="blog-date">{dateDisplay}</div>
+  {tags.length > 0 && <div class="blog-tags">{tags.join(', ')}</div>}
   <h2>{title}</h2>
   <p>{description}</p>
   <span class="blog-link">Read more &#8594;</span>
