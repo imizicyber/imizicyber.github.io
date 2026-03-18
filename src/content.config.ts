@@ -22,6 +22,7 @@ const blog = defineCollection({
     cardDescription: z.string(),
     cardDate: z.string(),
     featured: z.boolean().optional(),
+    tags: z.array(z.string()).default([]),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
   }),
 });
