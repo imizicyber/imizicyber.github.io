@@ -62,9 +62,9 @@
 - [ ] **ANLT-02**: GA4 custom event fires on WhatsApp button click
 - [ ] **ANLT-03**: GA4 custom event fires on resource/lead magnet download
 - [ ] **ANLT-04**: GA4 custom event fires on CTA button clicks
-- [ ] **ANLT-05**: Google Search Console verification meta tag or DNS record configured
-- [ ] **ANLT-06**: LinkedIn Insight Tag loads behind cookie consent (same pattern as GA4)
-- [ ] **ANLT-07**: All tracking scripts fire only after user accepts cookies
+- [x] **ANLT-05**: Google Search Console verification meta tag or DNS record configured
+- [x] **ANLT-06**: LinkedIn Insight Tag loads behind cookie consent (same pattern as GA4)
+- [x] **ANLT-07**: All tracking scripts fire only after user accepts cookies
 - [ ] **ANLT-08**: Conversion tracking verified end-to-end in GA4 real-time reports
 
 ### Lead Generation
@@ -140,9 +140,9 @@
 | ANLT-02     | Phase 5 | Pending  |
 | ANLT-03     | Phase 5 | Pending  |
 | ANLT-04     | Phase 5 | Pending  |
-| ANLT-05     | Phase 5 | Pending  |
-| ANLT-06     | Phase 5 | Pending  |
-| ANLT-07     | Phase 5 | Pending  |
+| ANLT-05     | Phase 5 | Complete |
+| ANLT-06     | Phase 5 | Complete |
+| ANLT-07     | Phase 5 | Complete |
 | ANLT-08     | Phase 5 | Pending  |
 | TRST-01     | Phase 6 | Pending  |
 | TRST-02     | Phase 6 | Pending  |
