@@ -2,18 +2,24 @@
 /**
  * WhatsAppFloat — floating WhatsApp chat button.
  * @prop message - optional custom label text (default "Chat with us")
+ * @prop prefilledText - optional WhatsApp pre-filled message text (default generic greeting)
  */
-import { CONTACT } from '../data/site';
 
 interface Props {
   message?: string;
+  prefilledText?: string;
 }
 
-const { message = 'Chat with us' } = Astro.props;
+const { message = 'Chat with us', prefilledText } = Astro.props;
+
+const phone = '250793146617';
+const defaultText = "Hi imizicyber, I'd like to discuss security services";
+const text = prefilledText || defaultText;
+const whatsappHref = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 ---
 
 <a
-  href={CONTACT.whatsappUrl}
+  href={whatsappHref}
   class="wa-float"
   target="_blank"
   rel="noopener noreferrer"
