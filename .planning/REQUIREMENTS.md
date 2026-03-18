@@ -54,7 +54,7 @@
 - [x] **SRVC-08**: Related posts feature on each blog post based on shared tags
 - [x] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
 - [x] **SRVC-10**: Read time displayed on blog index and blog post pages
-- [ ] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
+- [x] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
 
 ### Analytics & Tracking
 
@@ -160,7 +160,7 @@
 | SRVC-08     | Phase 8 | Complete |
 | SRVC-09     | Phase 8 | Complete |
 | SRVC-10     | Phase 8 | Complete |
-| SRVC-11     | Phase 8 | Pending  |
+| SRVC-11     | Phase 8 | Complete |
 | LEAD-01     | Phase 9 | Pending  |
 | LEAD-02     | Phase 9 | Pending  |
 | LEAD-03     | Phase 9 | Pending  |
