@@ -238,9 +238,12 @@ Plans:
 4. E2E tests cover contact form submission flow and Free Score CTA nav link assertion
 5. Orphaned exports (`loadJsPDF`, `CASE_STUDIES`) are removed
 
+**Plans:** 2 plans
+
 Plans:
 
-- [ ] 11-01-PLAN.md — Fix breadcrumbs, add /about/ nav link, extract inline scripts, add E2E tests, clean orphans
+- [ ] 11-01-PLAN.md — Create case studies index page, update Nav/Footer links, extract ContactForm define:vars script, remove loadJsPDF, add FOUC guard comment
+- [ ] 11-02-PLAN.md — Add E2E tests for new navigation paths, verify existing tests pass
 
 ## v2 Phases (Future)
 
@@ -289,4 +292,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 8. Blog System and New Content                | 0/3            | Complete    | 2026-03-18 |
 | 9. Lead Generation Funnel                     | 3/3            | Complete    | 2026-03-18 |
 | 10. Functionality Fixes                       | 1/1            | Complete    | 2026-03-18 |
-| 11. Navigation and Quality Completion         | 0/1            | Not Started | -          |
+| 11. Navigation and Quality Completion         | 0/2            | Not Started | -          |
