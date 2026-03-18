@@ -8,7 +8,7 @@ const schemas = [
     '@type': 'Service',
     name: 'Security Awareness Training',
     description:
-      'On-site and remote security awareness training, phishing simulations, and cybersecurity education for organisations in Rwanda and East Africa.',
+      'Complementary security awareness training that supports penetration testing and security assessment engagements. On-site and remote phishing simulations and cybersecurity education for organisations in Rwanda and East Africa.',
     provider: {
       '@type': 'Organization',
       name: 'imizicyber',
@@ -37,7 +37,7 @@ const schemas = [
 
 <BaseLayout
   title="Security Awareness Training in East Africa | imizicyber"
-  description="Security awareness training for East African organisations. Phishing simulations, staff training, BNR compliance, and certifiable completion. Based in Kigali."
+  description="Security awareness training that complements penetration testing and security assessments for East African organisations. Phishing simulations, staff training, BNR compliance."
   keywords="security awareness training East Africa, cybersecurity training Rwanda, phishing simulation Rwanda, staff security training Kigali, security training banks Rwanda, BNR security training compliance"
   ogTitle="Security Awareness Training in East Africa | imizicyber"
   ogDescription="On-site and remote security awareness training, phishing simulations, and BNR compliance training for East African organisations."
@@ -57,7 +57,7 @@ const schemas = [
             class="sep">/</span
           ><span>Security Training</span>
         </div>
-        <span class="hero-badge">SECURITY AWARENESS TRAINING</span>
+        <span class="hero-badge">COMPLEMENTARY SERVICE</span>
         <h1>Your staff are your<br />strongest defence.</h1>
         <p>
           The majority of breaches involve a non-malicious human element, whether through errors or
@@ -68,6 +68,15 @@ const schemas = [
           >). We train your people to recognise attacks, respond correctly, and become your
           strongest line of defence.
         </p>
+        <div class="hero-callout">
+          Security awareness training complements our core offensive security services. Most clients
+          add training after an initial penetration test or security assessment reveals human-factor
+          vulnerabilities. See our flagship services: <a href="/services/penetration-testing/"
+            >penetration testing</a
+          >, <a href="/services/security-assessments/">security assessments</a>, and <a
+            href="/services/custom-tooling/">custom tooling</a
+          >.
+        </div>
         <a href="/#contact" class="btn">Request a training programme</a>
         <a href="/tools/security-score/" class="btn btn-ghost">Assess your posture</a>
       </div>
@@ -317,9 +326,11 @@ const schemas = [
           For the full picture of social engineering threats and why training matters, see our
           article: <a href="/blog/social-engineering-east-africa-banks/"
             >social engineering threats facing East African financial institutions</a
-          >. For information on our other services: <a href="/services/penetration-testing/"
+          >. For information on our flagship services: <a href="/services/penetration-testing/"
             >penetration testing</a
-          > and <a href="/services/managed-security/">managed security</a>.
+          >, <a href="/services/security-assessments/">security assessments</a>, <a
+            href="/services/custom-tooling/">custom tooling</a
+          >, and <a href="/services/managed-security/">managed security</a>.
         </p>
       </div>
     </div>
@@ -402,6 +413,26 @@ const schemas = [
     max-width: 540px;
     margin: 0 auto 32px;
     line-height: 1.75;
+  }
+  .hero-callout {
+    background: var(--bg2);
+    border-left: 3px solid var(--acc);
+    padding: 14px 18px;
+    margin: 0 auto 28px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.88rem;
+    color: var(--txt2);
+    line-height: 1.7;
+    max-width: 540px;
+    text-align: left;
+  }
+  .hero-callout a {
+    color: var(--acc);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-callout a:hover {
+    text-decoration: none;
   }
   .hero a {
     color: #fff;
