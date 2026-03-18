@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { esc } from './quiz/pdf';
+import { trackEvent } from '@/scripts/analytics';
 import { ANALYTICS } from '@/data/site';
 
 interface ResourceSection {
@@ -513,16 +514,25 @@ export function initResources(): void {
       /* noop */
     }
 
+    const data = RESOURCE_DATA[resource];
     try {
       generateResourcePDF(resource, name, org);
       const ok = document.getElementById('ok-' + id);
       if (ok) ok.style.display = 'block';
       btn.textContent = 'Downloaded \u2713';
+      trackEvent('resource_download', {
+        resource_name: data?.title ?? resource,
+        page: window.location.pathname,
+      });
     } catch {
       resourceFallbackHTML(resource, name, org);
       const ok = document.getElementById('ok-' + id);
       if (ok) ok.style.display = 'block';
       btn.textContent = 'Downloaded \u2713';
+      trackEvent('resource_download', {
+        resource_name: data?.title ?? resource,
+        page: window.location.pathname,
+      });
     }
   }
 
