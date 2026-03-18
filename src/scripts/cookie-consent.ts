@@ -1,4 +1,5 @@
 import { ANALYTICS } from '@/data/site';
+import { loadLinkedIn } from '@/scripts/analytics';
 
 const STORAGE_KEY = 'imizi-cookie-consent';
 
@@ -57,7 +58,10 @@ export function initCookieBanner(): void {
   function handleConsent(accepted: boolean): void {
     setConsentState(accepted);
     bannerEl.classList.remove('visible');
-    if (accepted) loadGA();
+    if (accepted) {
+      loadGA();
+      loadLinkedIn();
+    }
   }
 
   acceptBtn.addEventListener('click', () => handleConsent(true));
@@ -66,6 +70,7 @@ export function initCookieBanner(): void {
   const state = getConsentState();
   if (state === 'accepted') {
     loadGA();
+    loadLinkedIn();
   } else if (state !== 'rejected') {
     banner.classList.add('visible');
     rejectBtn.focus();

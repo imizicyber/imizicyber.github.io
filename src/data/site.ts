@@ -30,4 +30,7 @@ export const ANALYTICS = {
   gaId: 'G-R7TC88KH9N',
   formspreeId: 'mjgerrlv',
   formspreeUrl: 'https://formspree.io/f/mjgerrlv',
+  // Replace with your LinkedIn Insight Tag Partner ID from Campaign Manager
+  // (Campaign Manager -> Account Assets -> Insight Tag -> View Tag)
+  linkedInPartnerId: 'REPLACE_ME',
 } as const;
