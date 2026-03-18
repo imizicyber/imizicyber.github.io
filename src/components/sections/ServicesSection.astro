@@ -1,26 +1,11 @@
 <section id="services" class="sec sec-b" aria-label="Our services">
   <div class="w reveal">
     <div class="sec-tag">SERVICES</div>
-    <h2 class="sec-title">Three ways to work with us</h2>
-    <p class="sec-sub">Ongoing protection, targeted assessments, or training for your team.</p>
+    <h2 class="sec-title">How we work with you</h2>
+    <p class="sec-sub">
+      Targeted assessments, ongoing protection, or bespoke tooling for your team.
+    </p>
     <div class="cards">
-      <a href="/services/managed-security/" class="card">
-        <div class="card-tag">MANAGED / MONTHLY RETAINER</div>
-        <h3>Continuous Security</h3>
-        <p>
-          We deploy and manage security tooling across your environment and deliver monthly reports.
-          An outsourced security function without the headcount.
-        </p>
-        <div class="pills">
-          <span>SAST/DAST in CI/CD</span>
-          <span>Attack surface monitoring</span>
-          <span>Vulnerability tracking</span>
-          <span>Custom validation tools</span>
-          <span>Monthly reporting</span>
-          <span>Incident support</span>
-        </div>
-        <span class="card-cta">View managed security &#8594;</span>
-      </a>
       <a href="/services/penetration-testing/" class="card">
         <div class="card-tag">ON-DEMAND / PER ENGAGEMENT</div>
         <h3>Penetration Testing</h3>
@@ -39,22 +24,64 @@
         </div>
         <span class="card-cta">View penetration testing &#8594;</span>
       </a>
-      <a href="/services/security-training/" class="card">
-        <div class="card-tag">TRAINING / ON-SITE OR REMOTE</div>
-        <h3>Security Awareness Training</h3>
+      <a href="/services/security-assessments/" class="card">
+        <div class="card-tag">ON-DEMAND / PER ENGAGEMENT</div>
+        <h3>Security Assessments</h3>
         <p>
-          Hands-on cybersecurity training for employees and IT teams. From executive awareness to
-          technical workshops for developers and security staff.
+          Vulnerability assessments, configuration audits, cloud security reviews, and compliance
+          gap analysis. Manual-first, not scanner-repackaged.
         </p>
         <div class="pills">
-          <span>Employee awareness</span>
-          <span>Phishing simulations</span>
-          <span>Secure coding</span>
-          <span>Incident response drills</span>
-          <span>Board-level briefings</span>
-          <span>BNR compliance training</span>
+          <span>Vulnerability Assessment</span>
+          <span>Configuration Audit</span>
+          <span>Cloud Security</span>
+          <span>Compliance Gap Analysis</span>
+          <span>Source Code Review</span>
+          <span>Architecture Review</span>
         </div>
-        <span class="card-cta">View security training &#8594;</span>
+        <span class="card-cta">View security assessments &#8594;</span>
+      </a>
+      <a href="/services/managed-security/" class="card">
+        <div class="card-tag">MANAGED / MONTHLY RETAINER</div>
+        <h3>Continuous Security</h3>
+        <p>
+          We deploy and manage security tooling across your environment and deliver monthly reports.
+          An outsourced security function without the headcount.
+        </p>
+        <div class="pills">
+          <span>SAST/DAST in CI/CD</span>
+          <span>Attack surface monitoring</span>
+          <span>Vulnerability tracking</span>
+          <span>Custom validation tools</span>
+          <span>Monthly reporting</span>
+          <span>Incident support</span>
+        </div>
+        <span class="card-cta">View managed security &#8594;</span>
+      </a>
+      <a href="/services/custom-tooling/" class="card">
+        <div class="card-tag">DEVELOPMENT / BESPOKE</div>
+        <h3>Custom Tooling</h3>
+        <p>
+          Custom security tooling, SAST/DAST pipeline integration, security automation, and
+          compliance reporting tools tailored to your stack.
+        </p>
+        <div class="pills">
+          <span>SAST/DAST Integration</span>
+          <span>Custom Scanners</span>
+          <span>Security Automation</span>
+          <span>Compliance Tools</span>
+          <span>API Test Harnesses</span>
+        </div>
+        <span class="card-cta">View custom tooling &#8594;</span>
+      </a>
+    </div>
+    <div class="training-link">
+      <a href="/services/security-training/" class="training-card">
+        <span class="training-label">TRAINING</span>
+        <span class="training-text"
+          >Security Awareness Training — hands-on cybersecurity training for employees and IT teams</span
+        >
+        <span class="training-cta">View security training &#8594;</span>
       </a>
     </div>
   </div>
@@ -63,7 +90,7 @@
 <style>
   .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 14px;
   }
   .card-tag {
@@ -102,16 +129,68 @@
     gap: 10px;
   }
 
+  /* TRAINING SECONDARY LINK */
+  .training-link {
+    margin-top: 14px;
+  }
+  .training-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    background: var(--bg2);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .training-card:hover {
+    border-color: rgba(52, 211, 153, 0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  .training-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .training-text {
+    font-size: 0.8rem;
+    color: var(--txt2);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .training-cta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--acc);
+    white-space: nowrap;
+    transition: gap 0.2s;
+  }
+
   /* LIGHT THEME */
   [data-theme='light'] .pills span {
     background: rgba(0, 0, 0, 0.06);
     color: #4a5568;
   }
+  [data-theme='light'] .training-card {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* RESPONSIVE - LARGE DESKTOP */
+  @media (max-width: 1200px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
   /* RESPONSIVE - TABLET */
   @media (max-width: 1024px) {
     .cards {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -119,6 +198,11 @@
   @media (max-width: 768px) {
     .cards {
       grid-template-columns: 1fr;
+    }
+    .training-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
     }
   }
 </style>
