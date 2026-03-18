@@ -52,7 +52,7 @@
 - [x] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
 - [ ] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
 - [ ] **SRVC-08**: Related posts feature on each blog post based on shared tags
-- [ ] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
+- [x] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
 - [ ] **SRVC-10**: Read time displayed on blog index and blog post pages
 - [ ] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
 
@@ -158,7 +158,7 @@
 | SRVC-06     | Phase 7 | Complete |
 | SRVC-07     | Phase 8 | Pending  |
 | SRVC-08     | Phase 8 | Pending  |
-| SRVC-09     | Phase 8 | Pending  |
+| SRVC-09     | Phase 8 | Complete |
 | SRVC-10     | Phase 8 | Pending  |
 | SRVC-11     | Phase 8 | Pending  |
 | LEAD-01     | Phase 9 | Pending  |

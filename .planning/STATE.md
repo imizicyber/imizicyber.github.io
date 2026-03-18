@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-stopped_at: Phase 8 planned, ready for execution
-last_updated: '2026-03-18T05:00:00.000Z'
-last_activity: 2026-03-18 — Phase 8 planned (blog system and new content)
+status: completed
+stopped_at: Completed 08-01-PLAN.md
+last_updated: '2026-03-18T04:54:18.523Z'
+last_activity: 2026-03-18 — Completed 08-02 (3 new geo-targeted blog articles)
 progress:
   total_phases: 9
   completed_phases: 7
   total_plans: 24
-  completed_plans: 21
-  percent: 88
+  completed_plans: 23
+  percent: 96
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 
 ## Current Position
 
-Phase: 8 of 9 (Blog System and New Content) - PLANNED
-Plan: 0 of 3 in current phase
-Status: Phase 8 planned, ready for execution
-Last activity: 2026-03-18 — Phase 8 planned (3 plans in 2 waves)
+Phase: 8 of 9 (Blog System and New Content) - IN PROGRESS
+Plan: 2 of 3 in current phase
+Status: Plan 08-02 complete, Plan 08-03 remaining
+Last activity: 2026-03-18 — Completed 08-02 (3 new geo-targeted blog articles)
 
-Progress: [████████░░] 88%
+Progress: [██████████] 96%
 
 ## Performance Metrics
 
@@ -72,6 +72,8 @@ _Updated after each plan completion_
 | Phase 07 P02 | 2min | 2 tasks | 2 files |
 | Phase 07 P01 | 6min | 2 tasks | 3 files |
 | Phase 07 P03 | 2min | 2 tasks | 11 files |
+| Phase 08 P02 | 5min | 2 tasks | 3 files |
+| Phase 08 P01 | 5min | 2 tasks | 23 files |
 
 ## Accumulated Context
 
@@ -125,6 +127,10 @@ Recent decisions affecting current work:
 - [Phase 07]: Service pages copy exact CSS from pentest page for visual consistency; no new design patterns
 - [Phase 07]: ServicesSection heading changed to 'How we work with you'; training repositioned as secondary full-width bar
 - [Phase 07]: Service links added in How we can help sections for natural reading flow
+- [Phase 08]: Articles written 1600-2000 words each (above 800 minimum) for substantive SEO value and practitioner credibility
+- [Phase 08]: Client-side tag filtering with data-tags attributes for progressive enhancement
+- [Phase 08]: RelatedPosts scores by shared tag count, minimum 2 related posts to render
+- [Phase 08]: Six-tag taxonomy: penetration-testing, compliance, mobile-security, east-africa, banking-security, security-strategy
 
 ### Pending Todos
 
@@ -139,6 +145,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T05:00:00.000Z
-Stopped at: Phase 8 planned, ready for execution
+Last session: 2026-03-18T04:54:18.520Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None
