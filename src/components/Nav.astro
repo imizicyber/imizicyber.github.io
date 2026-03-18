@@ -34,10 +34,7 @@ const contactHref = isHome ? '#contact' : '/#contact';
         <a href={contactHref}>Contact</a>
         {
           showFreeTool && (
-            <a
-              href="/tools/security-score/"
-              class="nav-cta nav-cta-outline"
-            >
+            <a href="/tools/security-score/" class="nav-cta nav-cta-outline">
               Free Score
             </a>
           )
@@ -80,19 +77,49 @@ const contactHref = isHome ? '#contact' : '/#contact';
   (function () {
     const btn = document.querySelector('.menu-btn');
     const nav = document.querySelector('.nav-links');
-    if (btn && nav) {
-      btn.addEventListener('click', function () {
-        nav.classList.toggle('open');
-        btn.classList.toggle('active');
-        btn.setAttribute('aria-expanded', nav.classList.contains('open').toString());
+    if (!btn || !nav) return;
+    const focusableLinks = nav.querySelectorAll('a');
+
+    btn.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('open');
+      btn.classList.toggle('active');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        focusableLinks[0]?.focus();
+      } else {
+        btn.focus();
+      }
+    });
+
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
       });
-      nav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          nav.classList.remove('open');
-          btn.classList.remove('active');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+
+    nav.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !nav.classList.contains('open')) return;
+      const first = focusableLinks[0];
+      const last = focusableLinks[focusableLinks.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   })();
 </script>

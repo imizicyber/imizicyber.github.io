@@ -112,9 +112,13 @@ const {
   </head>
   <body>
     <SkipLink />
-    <Nav variant={navVariant} showFreeTool={showFreeTool} />
+    <header>
+      <Nav variant={navVariant} showFreeTool={showFreeTool} />
+    </header>
 
-    <slot />
+    <main id="main" role="main">
+      <slot />
+    </main>
 
     <Footer variant={footerVariant} />
     {showWhatsApp && <WhatsAppFloat message={whatsappMessage} />}
