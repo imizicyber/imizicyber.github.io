@@ -13,8 +13,8 @@
 - [x] **QUAL-04**: TypeScript strict mode enabled with no implicit any
 - [x] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
 - [x] **QUAL-06**: Vitest test framework configured with coverage reporting
-- [x] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
-- [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
+- [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
+- [ ] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
 - [x] **QUAL-09**: CSP header uses hashes or nonces instead of unsafe-inline for scripts
 - [x] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
 - [x] **QUAL-11**: No sensitive data (API keys, tokens, passwords) committed to repository
@@ -26,7 +26,7 @@
 - [x] **UIUX-02**: "Book a Consultation" CTA visible above the fold on every page
 - [x] **UIUX-03**: Responsive layout renders correctly on mobile phones, tablets, and desktops
 - [x] **UIUX-04**: LCP under 2.5 seconds on simulated 3G connection
-- [x] **UIUX-05**: All images use Astro Image component with WebP format and lazy loading
+- [ ] **UIUX-05**: All images use Astro Image component with WebP format and lazy loading
 - [x] **UIUX-06**: Fonts optimized for performance (preload, font-display swap, evaluate self-hosting)
 - [x] **UIUX-07**: Contact form shows clear loading, success, and error states with ARIA attributes
 - [x] **UIUX-08**: Skip link, keyboard navigation, and screen reader support on all pages
@@ -50,9 +50,9 @@
 - [x] **SRVC-04**: Security Training repositioned as secondary offering (not removed)
 - [x] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
 - [x] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
-- [x] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
+- [ ] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
 - [x] **SRVC-08**: Related posts feature on each blog post based on shared tags
-- [x] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
+- [ ] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
 - [x] **SRVC-10**: Read time displayed on blog index and blog post pages
 - [x] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
 
@@ -76,7 +76,7 @@
 - [x] **LEAD-05**: Security score quiz completion fires GA4 conversion event
 - [x] **LEAD-06**: Security score quiz PDF generation works reliably without external CDN dependency (bundle jsPDF locally)
 - [x] **LEAD-07**: Email follow-up sequence triggered after resource download (Formspree or Brevo integration)
-- [x] **LEAD-08**: Quiz prominently linked from homepage and navigation
+- [ ] **LEAD-08**: Quiz prominently linked from homepage and navigation
 
 ## v2 Requirements
 
@@ -112,71 +112,73 @@
 
 ## Traceability
 
-| Requirement | Phase   | Status   |
-| ----------- | ------- | -------- |
-| QUAL-01     | Phase 1 | Complete |
-| QUAL-02     | Phase 1 | Complete |
-| QUAL-03     | Phase 1 | Complete |
-| QUAL-04     | Phase 1 | Complete |
-| QUAL-05     | Phase 1 | Complete |
-| QUAL-06     | Phase 1 | Complete |
-| QUAL-08     | Phase 1 | Complete |
-| QUAL-07     | Phase 2 | Complete |
-| QUAL-09     | Phase 2 | Complete |
-| QUAL-10     | Phase 2 | Pending  |
-| QUAL-11     | Phase 2 | Complete |
-| QUAL-12     | Phase 2 | Complete |
-| UIUX-01     | Phase 3 | Complete |
-| UIUX-02     | Phase 3 | Complete |
-| UIUX-03     | Phase 3 | Complete |
-| UIUX-04     | Phase 4 | Complete |
-| UIUX-05     | Phase 4 | Complete |
-| UIUX-06     | Phase 4 | Complete |
-| UIUX-07     | Phase 4 | Complete |
-| UIUX-08     | Phase 4 | Complete |
-| UIUX-09     | Phase 4 | Complete |
-| UIUX-10     | Phase 4 | Complete |
-| ANLT-01     | Phase 5 | Complete |
-| ANLT-02     | Phase 5 | Complete |
-| ANLT-03     | Phase 5 | Complete |
-| ANLT-04     | Phase 5 | Complete |
-| ANLT-05     | Phase 5 | Complete |
-| ANLT-06     | Phase 5 | Complete |
-| ANLT-07     | Phase 5 | Complete |
-| ANLT-08     | Phase 5 | Complete |
-| TRST-01     | Phase 6 | Complete |
-| TRST-02     | Phase 6 | Complete |
-| TRST-03     | Phase 6 | Complete |
-| TRST-04     | Phase 6 | Complete |
-| TRST-05     | Phase 6 | Complete |
-| TRST-06     | Phase 6 | Complete |
-| SRVC-01     | Phase 7 | Complete |
-| SRVC-02     | Phase 7 | Complete |
-| SRVC-03     | Phase 7 | Complete |
-| SRVC-04     | Phase 7 | Complete |
-| SRVC-05     | Phase 7 | Complete |
-| SRVC-06     | Phase 7 | Complete |
-| SRVC-07     | Phase 8 | Complete |
-| SRVC-08     | Phase 8 | Complete |
-| SRVC-09     | Phase 8 | Complete |
-| SRVC-10     | Phase 8 | Complete |
-| SRVC-11     | Phase 8 | Complete |
-| LEAD-01     | Phase 9 | Complete |
-| LEAD-02     | Phase 9 | Complete |
-| LEAD-03     | Phase 9 | Complete |
-| LEAD-04     | Phase 9 | Complete |
-| LEAD-05     | Phase 9 | Complete |
-| LEAD-06     | Phase 9 | Complete |
-| LEAD-07     | Phase 9 | Complete |
-| LEAD-08     | Phase 9 | Complete |
+| Requirement | Phase    | Status   |
+| ----------- | -------- | -------- |
+| QUAL-01     | Phase 1  | Complete |
+| QUAL-02     | Phase 1  | Complete |
+| QUAL-03     | Phase 1  | Complete |
+| QUAL-04     | Phase 1  | Complete |
+| QUAL-05     | Phase 1  | Complete |
+| QUAL-06     | Phase 1  | Complete |
+| QUAL-08     | Phase 11 | Pending  |
+| QUAL-07     | Phase 11 | Pending  |
+| QUAL-09     | Phase 2  | Complete |
+| QUAL-10     | Phase 2  | Complete |
+| QUAL-11     | Phase 2  | Complete |
+| QUAL-12     | Phase 2  | Complete |
+| UIUX-01     | Phase 3  | Complete |
+| UIUX-02     | Phase 3  | Complete |
+| UIUX-03     | Phase 3  | Complete |
+| UIUX-04     | Phase 4  | Complete |
+| UIUX-05     | Phase 10 | Pending  |
+| UIUX-06     | Phase 4  | Complete |
+| UIUX-07     | Phase 4  | Complete |
+| UIUX-08     | Phase 4  | Complete |
+| UIUX-09     | Phase 4  | Complete |
+| UIUX-10     | Phase 4  | Complete |
+| ANLT-01     | Phase 5  | Complete |
+| ANLT-02     | Phase 5  | Complete |
+| ANLT-03     | Phase 5  | Complete |
+| ANLT-04     | Phase 5  | Complete |
+| ANLT-05     | Phase 5  | Complete |
+| ANLT-06     | Phase 5  | Complete |
+| ANLT-07     | Phase 5  | Complete |
+| ANLT-08     | Phase 5  | Complete |
+| TRST-01     | Phase 6  | Complete |
+| TRST-02     | Phase 6  | Complete |
+| TRST-03     | Phase 6  | Complete |
+| TRST-04     | Phase 6  | Complete |
+| TRST-05     | Phase 6  | Complete |
+| TRST-06     | Phase 6  | Complete |
+| SRVC-01     | Phase 7  | Complete |
+| SRVC-02     | Phase 7  | Complete |
+| SRVC-03     | Phase 7  | Complete |
+| SRVC-04     | Phase 7  | Complete |
+| SRVC-05     | Phase 7  | Complete |
+| SRVC-06     | Phase 7  | Complete |
+| SRVC-07     | Phase 10 | Pending  |
+| SRVC-08     | Phase 8  | Complete |
+| SRVC-09     | Phase 10 | Pending  |
+| SRVC-10     | Phase 8  | Complete |
+| SRVC-11     | Phase 8  | Complete |
+| LEAD-01     | Phase 9  | Complete |
+| LEAD-02     | Phase 9  | Complete |
+| LEAD-03     | Phase 9  | Complete |
+| LEAD-04     | Phase 9  | Complete |
+| LEAD-05     | Phase 9  | Complete |
+| LEAD-06     | Phase 9  | Complete |
+| LEAD-07     | Phase 9  | Complete |
+| LEAD-08     | Phase 10 | Pending  |
 
 **Coverage:**
 
-- v1 requirements: 55 total (note: REQUIREMENTS.md initially stated 48; actual count from defined IDs is 55)
+- v1 requirements: 55 total
+- Complete: 49
+- Pending (gap closure): 6 (UIUX-05, SRVC-07, SRVC-09, LEAD-08 → Phase 10; QUAL-07, QUAL-08 → Phase 11)
 - Mapped to phases: 55
 - Unmapped: 0
 
 ---
 
 _Requirements defined: 2026-03-16_
-_Last updated: 2026-03-16 — traceability populated after roadmap creation_
+_Last updated: 2026-03-18 — gap closure phases 10-11 added after milestone audit_

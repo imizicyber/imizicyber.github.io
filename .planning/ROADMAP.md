@@ -22,6 +22,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Service Pages and Content Quality** - Rebuild service pages with compliance mapping, methodology depth, and a complete internal link audit (completed 2026-03-18)
 - [x] **Phase 8: Blog System and New Content** - Add tag filtering, related posts, read time, and publish SEO-targeted articles for Rwanda and East Africa (completed 2026-03-18)
 - [x] **Phase 9: Lead Generation Funnel** - Complete the conversion path: pre-filled WhatsApp, quiz refactor, resource tracking, and email follow-up (completed 2026-03-18)
+- [ ] **Phase 10: Functionality Fixes** - Fix broken tag filter, missing quiz nav link, OG image format, and blog article tags
+- [ ] **Phase 11: Navigation and Quality Completion** - Fix broken breadcrumbs, add /about/ nav link, extract remaining inline scripts, and complete E2E coverage
 
 ## Phase Details
 
@@ -204,10 +206,46 @@ Plans:
 - [ ] 09-02-PLAN.md — WhatsApp service-specific messages, quiz links in nav/homepage, inline WhatsApp tracking
 - [ ] 09-03-PLAN.md — Formspree auto-responder configuration and full phase verification
 
+### Phase 10: Functionality Fixes
+
+**Goal**: All broken functionality identified in the milestone audit works correctly — tag filtering, quiz navigation, OG image format, and blog tag metadata
+**Depends on**: Phase 9
+**Requirements**: SRVC-07, LEAD-08, UIUX-05, SRVC-09
+**Gap Closure:** Closes gaps from v1.0 milestone audit
+**Success Criteria** (what must be TRUE):
+
+1. Clicking a tag filter button on the blog index page filters visible posts by that tag
+2. The "Free Cyber Score" quiz link appears in the navigation on all pages, not just the homepage
+3. The OG image is served as WebP (not PNG) via Astro's `getImage()` API
+4. All 3 new blog articles have a `tags:` field in frontmatter and appear in tag filter results
+5. The schema.org structured data references a valid OG image path (not a 404)
+
+Plans:
+
+- [ ] 10-01-PLAN.md — Fix tag filter event, quiz nav default, OG image format, blog article tags
+
+### Phase 11: Navigation and Quality Completion
+
+**Goal**: All navigation dead-ends are resolved, remaining inline scripts are extracted, and E2E test coverage gaps are filled
+**Depends on**: Phase 10
+**Requirements**: QUAL-08, QUAL-07
+**Gap Closure:** Closes gaps from v1.0 milestone audit
+**Success Criteria** (what must be TRUE):
+
+1. Case study breadcrumb "Case Studies" link navigates to a valid page (no 404)
+2. The `/about/` page is reachable from the main navigation or footer
+3. All inline scripts are extracted to external files or Astro script modules (0 remaining `is:inline`)
+4. E2E tests cover contact form submission flow and Free Score CTA nav link assertion
+5. Orphaned exports (`loadJsPDF`, `CASE_STUDIES`) are removed
+
+Plans:
+
+- [ ] 11-01-PLAN.md — Fix breadcrumbs, add /about/ nav link, extract inline scripts, add E2E tests, clean orphans
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
 
 | Phase                                         | Plans Complete | Status      | Completed  |
 | --------------------------------------------- | -------------- | ----------- | ---------- |
@@ -220,3 +258,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 7. Service Pages and Content Quality          | 3/3            | Complete    | 2026-03-18 |
 | 8. Blog System and New Content                | 0/3            | Complete    | 2026-03-18 |
 | 9. Lead Generation Funnel                     | 3/3            | Complete    | 2026-03-18 |
+| 10. Functionality Fixes                       | 0/1            | Not Started | -          |
+| 11. Navigation and Quality Completion         | 0/1            | Not Started | -          |
