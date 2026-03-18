@@ -50,10 +50,10 @@
 - [x] **SRVC-04**: Security Training repositioned as secondary offering (not removed)
 - [x] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
 - [x] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
-- [ ] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
-- [ ] **SRVC-08**: Related posts feature on each blog post based on shared tags
+- [x] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
+- [x] **SRVC-08**: Related posts feature on each blog post based on shared tags
 - [x] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
-- [ ] **SRVC-10**: Read time displayed on blog index and blog post pages
+- [x] **SRVC-10**: Read time displayed on blog index and blog post pages
 - [ ] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
 
 ### Analytics & Tracking
@@ -156,10 +156,10 @@
 | SRVC-04     | Phase 7 | Complete |
 | SRVC-05     | Phase 7 | Complete |
 | SRVC-06     | Phase 7 | Complete |
-| SRVC-07     | Phase 8 | Pending  |
-| SRVC-08     | Phase 8 | Pending  |
+| SRVC-07     | Phase 8 | Complete |
+| SRVC-08     | Phase 8 | Complete |
 | SRVC-09     | Phase 8 | Complete |
-| SRVC-10     | Phase 8 | Pending  |
+| SRVC-10     | Phase 8 | Complete |
 | SRVC-11     | Phase 8 | Pending  |
 | LEAD-01     | Phase 9 | Pending  |
 | LEAD-02     | Phase 9 | Pending  |
