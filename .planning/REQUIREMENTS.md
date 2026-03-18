@@ -72,10 +72,10 @@
 - [x] **LEAD-01**: WhatsApp pre-filled messages configured on all service pages with service-specific text
 - [x] **LEAD-02**: WhatsApp clicks tracked in GA4 for attribution
 - [x] **LEAD-03**: Resource downloads tracked in GA4 with document name
-- [ ] **LEAD-04**: Security score quiz refactored to use safe DOM methods (no innerHTML)
+- [x] **LEAD-04**: Security score quiz refactored to use safe DOM methods (no innerHTML)
 - [x] **LEAD-05**: Security score quiz completion fires GA4 conversion event
 - [x] **LEAD-06**: Security score quiz PDF generation works reliably without external CDN dependency (bundle jsPDF locally)
-- [ ] **LEAD-07**: Email follow-up sequence triggered after resource download (Formspree or Brevo integration)
+- [x] **LEAD-07**: Email follow-up sequence triggered after resource download (Formspree or Brevo integration)
 - [x] **LEAD-08**: Quiz prominently linked from homepage and navigation
 
 ## v2 Requirements
@@ -164,10 +164,10 @@
 | LEAD-01     | Phase 9 | Complete |
 | LEAD-02     | Phase 9 | Complete |
 | LEAD-03     | Phase 9 | Complete |
-| LEAD-04     | Phase 9 | Pending  |
+| LEAD-04     | Phase 9 | Complete |
 | LEAD-05     | Phase 9 | Complete |
 | LEAD-06     | Phase 9 | Complete |
-| LEAD-07     | Phase 9 | Pending  |
+| LEAD-07     | Phase 9 | Complete |
 | LEAD-08     | Phase 9 | Complete |
 
 **Coverage:**

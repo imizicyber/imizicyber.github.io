@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 6: Trust and Founder Credibility** - Surface founder authority above the fold and add anonymised case studies that answer "have they done this before?" (completed 2026-03-18)
 - [x] **Phase 7: Service Pages and Content Quality** - Rebuild service pages with compliance mapping, methodology depth, and a complete internal link audit (completed 2026-03-18)
 - [x] **Phase 8: Blog System and New Content** - Add tag filtering, related posts, read time, and publish SEO-targeted articles for Rwanda and East Africa (completed 2026-03-18)
-- [ ] **Phase 9: Lead Generation Funnel** - Complete the conversion path: pre-filled WhatsApp, quiz refactor, resource tracking, and email follow-up
+- [x] **Phase 9: Lead Generation Funnel** - Complete the conversion path: pre-filled WhatsApp, quiz refactor, resource tracking, and email follow-up (completed 2026-03-18)
 
 ## Phase Details
 
@@ -196,7 +196,7 @@ Plans:
 4. Downloading a resource triggers a GA4 event that includes the document name as an event parameter
 5. After submitting a download form, the visitor receives a follow-up email (Formspree or Brevo integration confirmed working)
 6. The quiz is prominently linked from the homepage and from the main navigation
-   **Plans:** 2/3 plans executed
+   **Plans:** 3/3 plans complete
 
 Plans:
 
@@ -219,4 +219,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 6. Trust and Founder Credibility              | 0/3            | Complete    | 2026-03-18 |
 | 7. Service Pages and Content Quality          | 3/3            | Complete    | 2026-03-18 |
 | 8. Blog System and New Content                | 0/3            | Complete    | 2026-03-18 |
-| 9. Lead Generation Funnel                     | 2/3            | In Progress |            |
+| 9. Lead Generation Funnel                     | 3/3            | Complete    | 2026-03-18 |
