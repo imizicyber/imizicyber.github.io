@@ -26,7 +26,7 @@
 - [x] **UIUX-02**: "Book a Consultation" CTA visible above the fold on every page
 - [x] **UIUX-03**: Responsive layout renders correctly on mobile phones, tablets, and desktops
 - [x] **UIUX-04**: LCP under 2.5 seconds on simulated 3G connection
-- [ ] **UIUX-05**: All images use Astro Image component with WebP format and lazy loading
+- [x] **UIUX-05**: All images use Astro Image component with WebP format and lazy loading
 - [x] **UIUX-06**: Fonts optimized for performance (preload, font-display swap, evaluate self-hosting)
 - [x] **UIUX-07**: Contact form shows clear loading, success, and error states with ARIA attributes
 - [x] **UIUX-08**: Skip link, keyboard navigation, and screen reader support on all pages
@@ -50,9 +50,9 @@
 - [x] **SRVC-04**: Security Training repositioned as secondary offering (not removed)
 - [x] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
 - [x] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
-- [ ] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
+- [x] **SRVC-07**: Blog tag/category system implemented with tag-based filtering on blog index
 - [x] **SRVC-08**: Related posts feature on each blog post based on shared tags
-- [ ] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
+- [x] **SRVC-09**: At least 3 new SEO-optimized blog articles targeting Rwanda/East Africa cybersecurity keywords
 - [x] **SRVC-10**: Read time displayed on blog index and blog post pages
 - [x] **SRVC-11**: USSD/mobile money security testing content added (Africa-specific topic)
 
@@ -76,7 +76,7 @@
 - [x] **LEAD-05**: Security score quiz completion fires GA4 conversion event
 - [x] **LEAD-06**: Security score quiz PDF generation works reliably without external CDN dependency (bundle jsPDF locally)
 - [x] **LEAD-07**: Email follow-up sequence triggered after resource download (Formspree or Brevo integration)
-- [ ] **LEAD-08**: Quiz prominently linked from homepage and navigation
+- [x] **LEAD-08**: Quiz prominently linked from homepage and navigation
 
 ## v2 Requirements
 
@@ -130,7 +130,7 @@
 | UIUX-02     | Phase 3  | Complete |
 | UIUX-03     | Phase 3  | Complete |
 | UIUX-04     | Phase 4  | Complete |
-| UIUX-05     | Phase 10 | Pending  |
+| UIUX-05     | Phase 10 | Complete |
 | UIUX-06     | Phase 4  | Complete |
 | UIUX-07     | Phase 4  | Complete |
 | UIUX-08     | Phase 4  | Complete |
@@ -156,9 +156,9 @@
 | SRVC-04     | Phase 7  | Complete |
 | SRVC-05     | Phase 7  | Complete |
 | SRVC-06     | Phase 7  | Complete |
-| SRVC-07     | Phase 10 | Pending  |
+| SRVC-07     | Phase 10 | Complete |
 | SRVC-08     | Phase 8  | Complete |
-| SRVC-09     | Phase 10 | Pending  |
+| SRVC-09     | Phase 10 | Complete |
 | SRVC-10     | Phase 8  | Complete |
 | SRVC-11     | Phase 8  | Complete |
 | LEAD-01     | Phase 9  | Complete |
@@ -168,7 +168,7 @@
 | LEAD-05     | Phase 9  | Complete |
 | LEAD-06     | Phase 9  | Complete |
 | LEAD-07     | Phase 9  | Complete |
-| LEAD-08     | Phase 10 | Pending  |
+| LEAD-08     | Phase 10 | Complete |
 
 **Coverage:**
 
