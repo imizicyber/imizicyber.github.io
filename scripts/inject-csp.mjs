@@ -19,11 +19,11 @@ const SCRIPT_SOURCES = [
   'https://cdn.jsdelivr.net',
 ];
 
-const STYLE_SOURCES = ["'self'", 'https://fonts.googleapis.com'];
+const STYLE_SOURCES = ["'self'"];
 
 const OTHER_DIRECTIVES = [
   "default-src 'self'",
-  'font-src https://fonts.gstatic.com',
+  "font-src 'self'",
   "img-src 'self' https: data:",
   "connect-src 'self' https://formspree.io https://www.google-analytics.com",
   "frame-ancestors 'none'",

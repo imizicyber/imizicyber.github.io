@@ -86,11 +86,12 @@ const {
     <meta name="dns-prefetch" content="//formspree.io" />
     <meta property="og:site_name" content={SITE.name} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=JetBrains+Mono:wght@400&display=swap"
+      rel="preload"
+      href="/fonts/plus-jakarta-sans-400-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- CSP meta tag injected at build time by scripts/inject-csp.mjs -->
