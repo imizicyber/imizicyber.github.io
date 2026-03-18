@@ -130,7 +130,10 @@ html {
   --txt: #2d3748;
   --txt2: #4a5568;
   --txt3: #5a6b7d;
-  --dim: #a0aec0;
+  --dim: #718096;
+  --acc: #059669;
+  --acc2: #047857;
+  --accdark: #065f46;
   --white: #0f1923;
 }
 [data-theme='light'] body {
