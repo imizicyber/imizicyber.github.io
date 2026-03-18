@@ -135,7 +135,13 @@ Plans:
 2. `/about/` page exists as a standalone URL with full professional bio, certifications, career history, and academic background
 3. At least 2 anonymised case study pages exist, each formatted with client description, engagement type, findings, business impact, and recommendation
 4. Service pages reference specific BNR directive numbers and explicitly name PCI DSS, ISO 27001, and Rwanda Data Protection Law in compliance context
-   **Plans**: TBD
+   **Plans:** 3 plans
+
+Plans:
+
+- [ ] 06-01-PLAN.md — Founder data module, homepage credentials update, /about/ page
+- [ ] 06-02-PLAN.md — Two anonymised case study pages (bank pentest, mobile money assessment)
+- [ ] 06-03-PLAN.md — BNR directive numbers and compliance mapping on all service pages
 
 ### Phase 7: Service Pages and Content Quality
 
@@ -192,7 +198,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 3. Component Architecture and Visual Redesign | 4/4            | Complete    | 2026-03-17 |
 | 4. Performance and Accessibility              | 2/3            | In Progress |            |
 | 5. Analytics and Conversion Tracking          | 0/2            | Complete    | 2026-03-18 |
-| 6. Trust and Founder Credibility              | 0/TBD          | Not started | -          |
+| 6. Trust and Founder Credibility              | 0/3            | Not started | -          |
 | 7. Service Pages and Content Quality          | 0/TBD          | Not started | -          |
 | 8. Blog System and New Content                | 0/TBD          | Not started | -          |
 | 9. Lead Generation Funnel                     | 0/TBD          | Not started | -          |
