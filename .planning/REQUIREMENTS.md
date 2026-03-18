@@ -14,7 +14,7 @@
 - [x] **QUAL-05**: Husky pre-commit hooks run linting and type checking before every commit
 - [x] **QUAL-06**: Vitest test framework configured with coverage reporting
 - [ ] **QUAL-07**: Playwright end-to-end tests cover critical user journeys (homepage, contact form, blog, quiz)
-- [ ] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
+- [x] **QUAL-08**: All inline scripts extracted to external files or Astro script modules
 - [x] **QUAL-09**: CSP header uses hashes or nonces instead of unsafe-inline for scripts
 - [x] **QUAL-10**: innerHTML usage in security score quiz replaced with safe DOM API methods
 - [x] **QUAL-11**: No sensitive data (API keys, tokens, passwords) committed to repository
@@ -136,7 +136,7 @@
 | QUAL-04     | Phase 1  | Complete |
 | QUAL-05     | Phase 1  | Complete |
 | QUAL-06     | Phase 1  | Complete |
-| QUAL-08     | Phase 11 | Pending  |
+| QUAL-08     | Phase 11 | Complete |
 | QUAL-07     | Phase 11 | Pending  |
 | QUAL-09     | Phase 2  | Complete |
 | QUAL-10     | Phase 2  | Complete |
