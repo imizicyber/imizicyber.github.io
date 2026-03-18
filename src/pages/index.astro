@@ -11,6 +11,10 @@ import BlogSection from '../components/sections/BlogSection.astro';
 import FaqSection from '../components/sections/FaqSection.astro';
 import CtaSection from '../components/sections/CtaSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
+import { getImage } from 'astro:assets';
+import ogImageAsset from '../assets/og.png';
+
+const optimisedOg = await getImage({ src: ogImageAsset, format: 'webp' });
 
 const schemas = [
   {
@@ -23,7 +27,7 @@ const schemas = [
       'OSCP-certified offensive security consultancy in Kigali, Rwanda. Penetration testing, red team operations, managed security services, and compliance assessments for banks and regulated organisations across East Africa and South Africa.',
     url: SITE.url,
     logo: `${SITE.url}/logo-192.png`,
-    image: `${SITE.url}/og.png`,
+    image: `${SITE.url}${optimisedOg.src}`,
     foundingDate: '2026-01-27',
     telephone: '+250793146617',
     priceRange: '$$',

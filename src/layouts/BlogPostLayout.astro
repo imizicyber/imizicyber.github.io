@@ -126,35 +126,33 @@ const metaDisplay = [fm.metaLabel, fm.readTime].filter(Boolean).join(' \u00B7 ')
   twitterDescription={fm.twitterDescription}
   schemas={schemas}
 >
-  <main id="main">
-    <article>
-      <div class="w blog-content">
-        <div class="blog-header">
-          <Breadcrumb
-            items={[
-              { name: 'Home', href: '/' },
-              { name: 'Blog', href: '/blog/' },
-              { name: fm.breadcrumbName },
-            ]}
-          />
-          {metaDisplay && <div class="meta">{metaDisplay}</div>}
-          <h1>{fm.headline}</h1>
-        </div>
-
-        <div class="article-body">
-          <slot />
-        </div>
-
-        <CtaBox
-          title="Ready to secure your organisation?"
-          description="We are an OSCP-certified penetration testing firm based in Kigali. We work with banks, fintechs, and enterprises across Rwanda and East Africa. Get a scoped quote within 24 hours."
-          buttonText="Request a consultation"
-          buttonHref="/#contact"
-          whatsapp={true}
+  <article>
+    <div class="w blog-content">
+      <div class="blog-header">
+        <Breadcrumb
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Blog', href: '/blog/' },
+            { name: fm.breadcrumbName },
+          ]}
         />
+        {metaDisplay && <div class="meta">{metaDisplay}</div>}
+        <h1>{fm.headline}</h1>
       </div>
-    </article>
-  </main>
+
+      <div class="article-body">
+        <slot />
+      </div>
+
+      <CtaBox
+        title="Ready to secure your organisation?"
+        description="We are an OSCP-certified penetration testing firm based in Kigali. We work with banks, fintechs, and enterprises across Rwanda and East Africa. Get a scoped quote within 24 hours."
+        buttonText="Request a consultation"
+        buttonHref="/#contact"
+        whatsapp={true}
+      />
+    </div>
+  </article>
 </BaseLayout>
 
 <style>

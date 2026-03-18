@@ -3,7 +3,10 @@
  * SEOHead — renders all SEO meta tags (OG, Twitter, canonical, hreflang, geo).
  */
 import { SITE } from '../data/site';
+import { getImage } from 'astro:assets';
 import ogImageAsset from '../assets/og.png';
+
+const optimisedOg = await getImage({ src: ogImageAsset, format: 'webp' });
 
 interface Props {
   title: string;
@@ -27,7 +30,7 @@ const {
   ogDescription,
   ogType = 'website',
   canonicalUrl,
-  ogImage = ogImageAsset.src,
+  ogImage = optimisedOg.src,
   twitterTitle,
   twitterDescription,
   robots = 'index, follow',
