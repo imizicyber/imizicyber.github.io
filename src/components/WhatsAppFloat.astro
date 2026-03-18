@@ -29,3 +29,14 @@ const { message = 'Chat with us' } = Astro.props;
   >
   <span class="wa-float-label">{message}</span>
 </a>
+
+<script>
+  import { trackEvent } from '@/scripts/analytics';
+
+  const waLink = document.querySelector('.wa-float');
+  if (waLink) {
+    waLink.addEventListener('click', () => {
+      trackEvent('whatsapp_click', { page: window.location.pathname });
+    });
+  }
+</script>

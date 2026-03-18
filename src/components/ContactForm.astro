@@ -125,6 +125,7 @@ import { ANALYTICS } from '../data/site';
         if (r.ok) {
           ok.hidden = false;
           form.reset();
+          document.dispatchEvent(new CustomEvent('contact-form-success'));
           btnText.textContent = 'Sent!';
           setTimeout(function () {
             btn.disabled = false;
@@ -143,5 +144,13 @@ import { ANALYTICS } from '../data/site';
         btnText.textContent = 'Send enquiry';
         btn.disabled = false;
       });
+  });
+</script>
+
+<script>
+  import { trackEvent } from '@/scripts/analytics';
+
+  document.addEventListener('contact-form-success', () => {
+    trackEvent('consultation_request', { form_location: window.location.pathname });
   });
 </script>

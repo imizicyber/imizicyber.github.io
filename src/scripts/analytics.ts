@@ -28,6 +28,9 @@ export function loadLinkedIn(): void {
   document.head.appendChild(s);
 }
 
+// TODO [ANLT-03]: Wire resource_download event when resource download feature is built (Phase 9, LEAD-03).
+// The trackEvent('resource_download', { resource_name, page }) call should be added to the download handler.
+
 // Type declarations for LinkedIn Insight Tag window globals
 declare global {
   interface Window {

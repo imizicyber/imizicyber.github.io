@@ -123,5 +123,21 @@ const {
     <Footer variant={footerVariant} />
     {showWhatsApp && <WhatsAppFloat message={whatsappMessage} />}
     <CookieBanner />
+
+    <script>
+      import { trackEvent } from '@/scripts/analytics';
+
+      const CTA_SELECTOR = 'a[href*="contact"], a[href*="consultation"], .cta-btn, .hero-cta';
+
+      document.body.addEventListener('click', (e) => {
+        const target = (e.target as Element).closest?.(CTA_SELECTOR);
+        if (target) {
+          trackEvent('cta_click', {
+            cta_text: target.textContent?.trim() || '',
+            page: window.location.pathname,
+          });
+        }
+      });
+    </script>
   </body>
 </html>
