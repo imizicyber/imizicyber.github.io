@@ -57,7 +57,7 @@ const schemas = [
         name: 'Do you perform penetration testing for banks in Rwanda?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. imizicyber specialises in penetration testing for BNR-regulated financial institutions including banks, MFIs, and payment providers across Rwanda and East Africa.',
+          text: 'Yes. imizicyber specialises in penetration testing for BNR-regulated financial institutions including banks, MFIs, and payment providers across Rwanda and East Africa. Our testing aligns with BNR Regulation No 16/2023, PCI DSS v4.0, and ISO 27001:2022 requirements.',
         },
       },
       {
@@ -360,6 +360,7 @@ const schemas = [
         </li>
       </ul>
 
+      <!-- BNR directive numbers sourced from public regulatory gazette; verify at bnr.rw before publishing -->
       <h2>Compliance alignment</h2>
       <p>
         Penetration testing is not just good practice; it is a requirement under multiple frameworks
@@ -368,25 +369,32 @@ const schemas = [
       </p>
       <ul>
         <li>
-          <strong>BNR cybersecurity directives</strong>: the National Bank of Rwanda requires
-          regulated institutions to conduct regular security assessments
+          <strong>BNR Regulation No 16/2023 on Cybersecurity</strong>: Article 13 requires
+          supervised institutions to conduct regular penetration testing and vulnerability
+          assessments. Article 9 mandates an annual review of the institution's cybersecurity
+          programme, which must include independent security testing
         </li>
         <li>
-          <strong>PCI DSS</strong>: Requirement 11 mandates annual penetration testing and quarterly
-          vulnerability scans for organisations processing card payments
+          <strong>PCI DSS v4.0</strong>: Requirement 11.4 mandates external and internal penetration
+          testing at least annually and after significant changes. Requirement 11.3 requires
+          quarterly vulnerability scanning. Requirement 6.2 requires secure development practices
+          and software security testing throughout the development lifecycle
         </li>
         <li>
-          <strong>ISO 27001</strong>: Annex A controls 8.8 (management of technical vulnerabilities)
-          and 5.36 (compliance with policies, rules and standards) require vulnerability management
-          and independent security reviews
+          <strong>ISO 27001:2022</strong>: Annex A Control 8.8 (Management of technical
+          vulnerabilities) requires timely identification and remediation of vulnerabilities.
+          Control 5.36 (Compliance with policies, rules and standards) mandates independent security
+          reviews. Control 8.34 (Protection of information systems during audit testing) governs how
+          testing is conducted safely in production environments
         </li>
         <li>
           <strong>SWIFT CSP</strong>: the Customer Security Programme requires regular assessments
           for institutions on the SWIFT network
         </li>
         <li>
-          <strong>Rwanda Data Protection Law</strong>: organisations handling personal data must
-          implement appropriate technical security measures
+          <strong>Rwanda Data Protection Law No 058/2021</strong>: Article 30 requires data
+          controllers to implement appropriate technical and organisational measures to protect
+          personal data. Penetration testing demonstrates compliance with this obligation
         </li>
       </ul>
       <p>
@@ -421,8 +429,8 @@ const schemas = [
         <div class="faq-body">
           Yes. imizicyber specialises in penetration testing for BNR-regulated financial
           institutions including commercial banks, MFIs, and payment providers across Rwanda and
-          East Africa. Our testing aligns with BNR cybersecurity directives, PCI DSS, and ISO 27001
-          requirements.
+          East Africa. Our testing aligns with BNR Regulation No 16/2023, PCI DSS v4.0, and ISO
+          27001:2022 requirements.
         </div>
       </details>
       <details class="faq">
