@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Analytics and Conversion Tracking** - Wire GA4 conversion events, LinkedIn Insight Tag, and Google Search Console entirely behind the consent gate (completed 2026-03-18)
 - [x] **Phase 6: Trust and Founder Credibility** - Surface founder authority above the fold and add anonymised case studies that answer "have they done this before?" (completed 2026-03-18)
 - [x] **Phase 7: Service Pages and Content Quality** - Rebuild service pages with compliance mapping, methodology depth, and a complete internal link audit (completed 2026-03-18)
-- [ ] **Phase 8: Blog System and New Content** - Add tag filtering, related posts, read time, and publish SEO-targeted articles for Rwanda and East Africa
+- [x] **Phase 8: Blog System and New Content** - Add tag filtering, related posts, read time, and publish SEO-targeted articles for Rwanda and East Africa (completed 2026-03-18)
 - [ ] **Phase 9: Lead Generation Funnel** - Complete the conversion path: pre-filled WhatsApp, quiz refactor, resource tracking, and email follow-up
 
 ## Phase Details
@@ -175,7 +175,7 @@ Plans:
 3. Read time estimate is visible on the blog index card and at the top of each post
 4. At least 3 new blog articles are live targeting geo-modified keywords (e.g., "penetration testing Kigali," "BNR cybersecurity compliance Rwanda")
 5. A page or blog article covering USSD and mobile money security testing exists and is linked from the services navigation
-   **Plans:** 3 plans
+   **Plans:** 3/3 plans complete
 
 Plans:
 
@@ -212,5 +212,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 5. Analytics and Conversion Tracking          | 0/2            | Complete    | 2026-03-18 |
 | 6. Trust and Founder Credibility              | 0/3            | Complete    | 2026-03-18 |
 | 7. Service Pages and Content Quality          | 3/3            | Complete    | 2026-03-18 |
-| 8. Blog System and New Content                | 0/3            | Not started | -          |
+| 8. Blog System and New Content                | 0/3            | Complete    | 2026-03-18 |
 | 9. Lead Generation Funnel                     | 0/TBD          | Not started | -          |
