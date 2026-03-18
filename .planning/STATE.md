@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 06-02-PLAN.md
-last_updated: '2026-03-18T04:06:19.382Z'
-last_activity: 2026-03-18 — Completed Phase 5 (Analytics and Conversion Tracking)
+stopped_at: Completed 06-01-PLAN.md
+last_updated: '2026-03-18T04:08:12.464Z'
+last_activity: 2026-03-18 — Completed 06-02 Case Studies
 progress:
   total_phases: 9
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 18
-  completed_plans: 17
-  percent: 100
+  completed_plans: 18
+  percent: 94
 ---
 
 # Project State
@@ -68,6 +68,7 @@ _Updated after each plan completion_
 | Phase 05 P01 | 2min | 2 tasks | 4 files |
 | Phase 05 P02 | 4min | 2 tasks | 6 files |
 | Phase 06 P03 | 3min | 2 tasks | 3 files |
+| Phase 06 P01 | 4min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -114,6 +115,8 @@ Recent decisions affecting current work:
 - [Phase 05]: ANLT-03 resource download tracking deferred to Phase 9 with TODO in analytics.ts
 - [Phase 06]: Compliance sections use consistent ul/li with strong-tagged framework names and specific article/requirement numbers
 - [Phase 06]: Case study pages use scoped CSS copied from pentest service page for visual consistency
+- [Phase 06]: Founder data centralised in src/data/founder.ts with typed interfaces for reuse across pages
+- [Phase 06]: About page reuses article-body/process-timeline/cta-box patterns from pentest service page for visual consistency
 
 ### Pending Todos
 
@@ -128,6 +131,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T04:06:19.380Z
-Stopped at: Completed 06-02-PLAN.md
+Last session: 2026-03-18T04:08:12.460Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None

@@ -35,8 +35,8 @@
 
 ### Trust & Credibility
 
-- [ ] **TRST-01**: Dedicated founder page at /about/ with professional bio, certifications (OSCP, OSCP+), experience history, and BlackHat Europe Arsenal reference
-- [ ] **TRST-02**: Founder credentials prominently visible on homepage before services section
+- [x] **TRST-01**: Dedicated founder page at /about/ with professional bio, certifications (OSCP, OSCP+), experience history, and BlackHat Europe Arsenal reference
+- [x] **TRST-02**: Founder credentials prominently visible on homepage before services section
 - [x] **TRST-03**: At least 2 anonymised case studies with attack narratives from real past engagements
 - [x] **TRST-04**: Case studies formatted as: anonymous client description, engagement type, findings, business impact, recommendation
 - [x] **TRST-05**: Service pages include specific BNR directive numbers and compliance mapping
@@ -144,8 +144,8 @@
 | ANLT-06     | Phase 5 | Complete |
 | ANLT-07     | Phase 5 | Complete |
 | ANLT-08     | Phase 5 | Complete |
-| TRST-01     | Phase 6 | Pending  |
-| TRST-02     | Phase 6 | Pending  |
+| TRST-01     | Phase 6 | Complete |
+| TRST-02     | Phase 6 | Complete |
 | TRST-03     | Phase 6 | Complete |
 | TRST-04     | Phase 6 | Complete |
 | TRST-05     | Phase 6 | Complete |
