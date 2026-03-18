@@ -136,6 +136,8 @@ Recent decisions affecting current work:
 - [Phase 08]: Six-tag taxonomy: penetration-testing, compliance, mobile-security, east-africa, banking-security, security-strategy
 - [Phase 08]: Used secondary link bar pattern for USSD/mobile money service entry to avoid orphan in 4-column grid
 - [Phase 09]: jsPDF setFont(undefined) cast via unknown as string for npm package TypeScript compatibility
+- [Phase 09 P02]: WhatsApp float uses encodeURIComponent for dynamic URL construction instead of static CONTACT.whatsappUrl
+- [Phase 09 P02]: Nav showFreeTool default changed to true so quiz link appears on all pages without explicit prop
 
 ### Pending Todos
 
@@ -150,6 +152,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T05:19:19.586Z
-Stopped at: Completed 09-01-PLAN.md
+Last session: 2026-03-18T05:17:41Z
+Stopped at: Completed 09-02-PLAN.md
 Resume file: None
