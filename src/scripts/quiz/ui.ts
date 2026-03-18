@@ -1,7 +1,7 @@
 import { QUESTIONS } from './data';
 import type { ScoreBand } from './data';
 import { calculateScore, getBand, getAnswersFromDOM } from './scoring';
-import { loadJsPDF, generatePDF, fallbackHTML } from './pdf';
+import { generatePDF, fallbackHTML } from './pdf';
 import { ANALYTICS } from '@/data/site';
 
 let quizAnswers: number[] = [];
@@ -297,23 +297,21 @@ export function initQuiz(): void {
       /* noop */
     }
 
-    loadJsPDF()
-      .then(function () {
-        generatePDF(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
-        const fullReport = document.getElementById('full-report');
-        if (fullReport) fullReport.classList.add('visible');
-        const msg = document.getElementById('gate-msg-success');
-        if (msg) msg.style.display = 'block';
-        btn.textContent = 'Downloaded \u2713';
-      })
-      .catch(function () {
-        fallbackHTML(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
-        const fullReport = document.getElementById('full-report');
-        if (fullReport) fullReport.classList.add('visible');
-        const msg = document.getElementById('gate-msg-success');
-        if (msg) msg.style.display = 'block';
-        btn.textContent = 'Downloaded \u2713';
-      });
+    try {
+      generatePDF(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
+      const fullReport = document.getElementById('full-report');
+      if (fullReport) fullReport.classList.add('visible');
+      const msg = document.getElementById('gate-msg-success');
+      if (msg) msg.style.display = 'block';
+      btn.textContent = 'Downloaded \u2713';
+    } catch {
+      fallbackHTML(quizTotal, quizBand ?? getBand(0), quizAnswers, name, org);
+      const fullReport = document.getElementById('full-report');
+      if (fullReport) fullReport.classList.add('visible');
+      const msg = document.getElementById('gate-msg-success');
+      if (msg) msg.style.display = 'block';
+      btn.textContent = 'Downloaded \u2713';
+    }
   }
 
   // Bind calculate button

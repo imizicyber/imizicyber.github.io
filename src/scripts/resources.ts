@@ -1,5 +1,5 @@
-import { loadJsPDF, esc } from './quiz/pdf';
-import type { JsPDFInstance } from './quiz/pdf';
+import { jsPDF } from 'jspdf';
+import { esc } from './quiz/pdf';
 import { ANALYTICS } from '@/data/site';
 
 interface ResourceSection {
@@ -269,9 +269,7 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
     month: 'long',
     year: 'numeric',
   });
-  const jspdfMod = window.jspdf;
-  if (!jspdfMod) throw new Error('jsPDF not loaded');
-  const doc = new jspdfMod.jsPDF() as JsPDFInstance;
+  const doc = new jsPDF();
   let y = 20;
   const m = 20;
   const pw = 170;
@@ -295,11 +293,11 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
   doc.rect(0, 0, 210, 28, 'F');
   doc.setTextColor(52, 211, 153);
   doc.setFontSize(16);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('imizicyber', m, 17);
   doc.setTextColor(132, 148, 167);
   doc.setFontSize(9);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(undefined as unknown as string, 'normal');
   doc.text('imizicyber.com | ' + date, 190, 13, { align: 'right' });
   doc.setFontSize(8);
   doc.text('FREE RESOURCE', 105, 24, { align: 'center' });
@@ -315,13 +313,13 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
   // Title
   doc.setTextColor(30);
   doc.setFontSize(16);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   const tl = doc.splitTextToSize(data.title, pw);
   doc.text(tl, m, y);
   y += tl.length * 7 + 3;
   doc.setTextColor(100);
   doc.setFontSize(9);
-  doc.setFont(undefined, 'italic');
+  doc.setFont(undefined as unknown as string, 'italic');
   const sl = doc.splitTextToSize(data.subtitle, pw);
   doc.text(sl, m, y);
   y += sl.length * 4 + 5;
@@ -337,11 +335,11 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
     }
     doc.setTextColor(30);
     doc.setFontSize(11);
-    doc.setFont(undefined, 'bold');
+    doc.setFont(undefined as unknown as string, 'bold');
     doc.text(sec.heading, m, y);
     y += 6;
     if (sec.text) {
-      doc.setFont(undefined, 'normal');
+      doc.setFont(undefined as unknown as string, 'normal');
       doc.setFontSize(9);
       doc.setTextColor(60);
       const lines = doc.splitTextToSize(sec.text, pw);
@@ -355,7 +353,7 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
       y += 3;
     }
     if (sec.items) {
-      doc.setFont(undefined, 'normal');
+      doc.setFont(undefined as unknown as string, 'normal');
       doc.setFontSize(9);
       doc.setTextColor(60);
       sec.items.forEach(function (item) {
@@ -384,10 +382,10 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
   y += 6;
   doc.setTextColor(30);
   doc.setFontSize(11);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('Need help implementing this?', m, y);
   y += 6;
-  doc.setFont(undefined, 'normal');
+  doc.setFont(undefined as unknown as string, 'normal');
   doc.setFontSize(9);
   doc.setTextColor(80);
   const ft = doc.splitTextToSize(
@@ -397,7 +395,7 @@ function generateResourcePDF(resource: string, userName: string, userOrg: string
   doc.text(ft, m, y);
   y += ft.length * 4 + 5;
   doc.setTextColor(52, 211, 153);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.setFontSize(9);
   doc.text('info@imizicyber.com | +250 793 146 617 | imizicyber.com', m, y);
   pgFooter();
@@ -515,19 +513,17 @@ export function initResources(): void {
       /* noop */
     }
 
-    loadJsPDF()
-      .then(function () {
-        generateResourcePDF(resource, name, org);
-        const ok = document.getElementById('ok-' + id);
-        if (ok) ok.style.display = 'block';
-        btn.textContent = 'Downloaded \u2713';
-      })
-      .catch(function () {
-        resourceFallbackHTML(resource, name, org);
-        const ok = document.getElementById('ok-' + id);
-        if (ok) ok.style.display = 'block';
-        btn.textContent = 'Downloaded \u2713';
-      });
+    try {
+      generateResourcePDF(resource, name, org);
+      const ok = document.getElementById('ok-' + id);
+      if (ok) ok.style.display = 'block';
+      btn.textContent = 'Downloaded \u2713';
+    } catch {
+      resourceFallbackHTML(resource, name, org);
+      const ok = document.getElementById('ok-' + id);
+      if (ok) ok.style.display = 'block';
+      btn.textContent = 'Downloaded \u2713';
+    }
   }
 
   // Bind resource forms

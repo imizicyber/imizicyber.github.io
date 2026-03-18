@@ -1,36 +1,6 @@
+import { jsPDF } from 'jspdf';
 import { QUESTIONS } from './data';
 import type { ScoreBand } from './data';
-
-declare global {
-  interface Window {
-    jspdf?: { jsPDF: new () => JsPDFInstance };
-  }
-}
-
-export interface JsPDFInstance {
-  setFillColor(r: number, g: number, b: number): void;
-  rect(x: number, y: number, w: number, h: number, style: string): void;
-  roundedRect(
-    x: number,
-    y: number,
-    w: number,
-    h: number,
-    rx: number,
-    ry: number,
-    style: string,
-  ): void;
-  setTextColor(r: number, g?: number, b?: number): void;
-  setFontSize(size: number): void;
-  setFont(family: string | undefined, style: string): void;
-  text(text: string | string[], x: number, y: number, options?: Record<string, unknown>): void;
-  splitTextToSize(text: string, maxWidth: number): string[];
-  getTextWidth(text: string): number;
-  setDrawColor(r: number, g: number, b: number): void;
-  setLineWidth(width: number): void;
-  line(x1: number, y1: number, x2: number, y2: number): void;
-  addPage(): void;
-  save(filename: string): void;
-}
 
 export function esc(s: string | undefined | null): string {
   return s
@@ -38,35 +8,17 @@ export function esc(s: string | undefined | null): string {
     : '';
 }
 
+/** Type alias for jsPDF instance (used by resources.ts). */
+export type JsPDFInstance = jsPDF;
+
+/** Create a new jsPDF instance (synchronous, no CDN needed). */
+export function createJsPDF(): jsPDF {
+  return new jsPDF();
+}
+
+/** Legacy async loader — now a no-op since jsPDF is bundled. Kept for backward compatibility. */
 export function loadJsPDF(): Promise<void> {
-  return new Promise(function (resolve, reject) {
-    if (window.jspdf) {
-      resolve();
-      return;
-    }
-    const urls = [
-      'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js',
-      'https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js',
-      'https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js',
-    ];
-    function tryNext(i: number): void {
-      if (i >= urls.length) {
-        reject();
-        return;
-      }
-      const s = document.createElement('script');
-      s.src = urls[i];
-      s.onload = function () {
-        if (window.jspdf) resolve();
-        else tryNext(i + 1);
-      };
-      s.onerror = function () {
-        tryNext(i + 1);
-      };
-      document.head.appendChild(s);
-    }
-    tryNext(0);
-  });
+  return Promise.resolve();
 }
 
 export function generatePDF(
@@ -91,9 +43,7 @@ export function generatePDF(
           : quizBand.cls === 'band-lowmod'
             ? '#60a5fa'
             : '#34d399';
-  const jspdfMod = window.jspdf;
-  if (!jspdfMod) throw new Error('jsPDF not loaded');
-  const doc = new jspdfMod.jsPDF() as JsPDFInstance;
+  const doc = new jsPDF();
   let y = 20;
   const m = 20;
   const pw = 170;
@@ -117,11 +67,11 @@ export function generatePDF(
   doc.rect(0, 0, 210, 28, 'F');
   doc.setTextColor(52, 211, 153);
   doc.setFontSize(16);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('imizicyber', m, 17);
   doc.setTextColor(132, 148, 167);
   doc.setFontSize(9);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(undefined as unknown as string, 'normal');
   doc.text('imizicyber.com | ' + date, 190, 13, { align: 'right' });
   doc.setFontSize(8);
   doc.text('SECURITY SCORE REPORT', 105, 24, { align: 'center' });
@@ -140,7 +90,7 @@ export function generatePDF(
     cb2 = parseInt(bc.slice(5, 7), 16);
   doc.setTextColor(cr2, cg2, cb2);
   doc.setFontSize(32);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text(quizTotal + ' / 30', 105, y + 10, { align: 'center' });
   y += 16;
   doc.setTextColor(30);
@@ -149,7 +99,7 @@ export function generatePDF(
   y += 5;
   doc.setTextColor(100);
   doc.setFontSize(9);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(undefined as unknown as string, 'normal');
   const desc = doc.splitTextToSize(quizBand.desc, 140);
   doc.text(desc, 105, y, { align: 'center' });
   y += desc.length * 4 + 6;
@@ -163,7 +113,7 @@ export function generatePDF(
   // Score Breakdown - compact 2-column layout
   doc.setTextColor(30);
   doc.setFontSize(11);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('Score Breakdown', m, y);
   y += 6;
   quizAnswers.forEach(function (v, i) {
@@ -177,9 +127,9 @@ export function generatePDF(
       fc = v <= 1 ? '#f97316' : v === 2 ? '#eab308' : '#34d399';
     doc.setTextColor(60);
     doc.setFontSize(8);
-    doc.setFont(undefined, 'bold');
+    doc.setFont(undefined as unknown as string, 'bold');
     doc.text(QUESTIONS[i].label, cx, y);
-    doc.setFont(undefined, 'normal');
+    doc.setFont(undefined as unknown as string, 'normal');
     doc.setTextColor(130);
     doc.text(v + '/3', cx + 78, y, { align: 'right' });
     doc.setFillColor(230, 230, 230);
@@ -203,7 +153,7 @@ export function generatePDF(
   // Recommendations
   doc.setTextColor(30);
   doc.setFontSize(11);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('Prioritised Recommendations', m, y);
   y += 8;
   quizAnswers.forEach(function (v, i) {
@@ -221,10 +171,10 @@ export function generatePDF(
       pcb = parseInt(c.slice(5, 7), 16);
     // Pre-calc body lines
     doc.setFontSize(8);
-    doc.setFont(undefined, 'normal');
+    doc.setFont(undefined as unknown as string, 'normal');
     const bl = doc.splitTextToSize(r.b, pw - 12);
     doc.setFontSize(9);
-    doc.setFont(undefined, 'bold');
+    doc.setFont(undefined as unknown as string, 'bold');
     const tl = doc.splitTextToSize(r.h, pw - 12);
     const estH = 6 + tl.length * 4 + bl.length * 3.5 + 5;
     if (y + estH > 278) {
@@ -233,7 +183,7 @@ export function generatePDF(
     const startY = y;
     // Row 1: badge + category
     doc.setFontSize(6.5);
-    doc.setFont(undefined, 'bold');
+    doc.setFont(undefined as unknown as string, 'bold');
     const bw = doc.getTextWidth(r.p) + 5;
     doc.setFillColor(pcr, pcg, pcb);
     doc.roundedRect(m + 6, y, bw, 4, 1, 1, 'F');
@@ -241,18 +191,18 @@ export function generatePDF(
     doc.text(r.p, m + 8.5, y + 2.8);
     doc.setFontSize(7);
     doc.setTextColor(150);
-    doc.setFont(undefined, 'normal');
+    doc.setFont(undefined as unknown as string, 'normal');
     doc.text(QUESTIONS[i].label.toUpperCase(), m + 7 + bw + 2, y + 2.8);
     y += 6;
     // Row 2: title
     doc.setFontSize(9);
-    doc.setFont(undefined, 'bold');
+    doc.setFont(undefined as unknown as string, 'bold');
     doc.setTextColor(30);
     doc.text(tl, m + 6, y + 3);
     y += tl.length * 4 + 1;
     // Row 3: description
     doc.setFontSize(8);
-    doc.setFont(undefined, 'normal');
+    doc.setFont(undefined as unknown as string, 'normal');
     doc.setTextColor(100);
     doc.text(bl, m + 6, y + 3);
     y += bl.length * 3.5 + 3;
@@ -273,10 +223,10 @@ export function generatePDF(
   y += 6;
   doc.setTextColor(30);
   doc.setFontSize(11);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.text('Ready to close these gaps?', m, y);
   y += 6;
-  doc.setFont(undefined, 'normal');
+  doc.setFont(undefined as unknown as string, 'normal');
   doc.setFontSize(9);
   doc.setTextColor(80);
   const ft = doc.splitTextToSize(
@@ -286,7 +236,7 @@ export function generatePDF(
   doc.text(ft, m, y);
   y += ft.length * 4 + 5;
   doc.setTextColor(52, 211, 153);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(undefined as unknown as string, 'bold');
   doc.setFontSize(9);
   doc.text('info@imizicyber.com | +250 793 146 617 | imizicyber.com', m, y);
   footer();
