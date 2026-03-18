@@ -45,8 +45,8 @@
 ### Services & Content
 
 - [x] **SRVC-01**: Penetration Testing service page updated with detailed methodology, deliverables, and compliance alignment
-- [ ] **SRVC-02**: Security Assessments service page created or updated as flagship offering
-- [ ] **SRVC-03**: Custom Tooling service page created or updated as flagship offering
+- [x] **SRVC-02**: Security Assessments service page created or updated as flagship offering
+- [x] **SRVC-03**: Custom Tooling service page created or updated as flagship offering
 - [x] **SRVC-04**: Security Training repositioned as secondary offering (not removed)
 - [ ] **SRVC-05**: All existing blog posts audited for quality, accuracy, SEO value, and human-like writing style
 - [ ] **SRVC-06**: Blog posts link to each other and to relevant service pages (internal linking audit)
@@ -151,8 +151,8 @@
 | TRST-05     | Phase 6 | Complete |
 | TRST-06     | Phase 6 | Complete |
 | SRVC-01     | Phase 7 | Complete |
-| SRVC-02     | Phase 7 | Pending  |
-| SRVC-03     | Phase 7 | Pending  |
+| SRVC-02     | Phase 7 | Complete |
+| SRVC-03     | Phase 7 | Complete |
 | SRVC-04     | Phase 7 | Complete |
 | SRVC-05     | Phase 7 | Pending  |
 | SRVC-06     | Phase 7 | Pending  |
