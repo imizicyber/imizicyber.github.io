@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 02-03-PLAN.md
-last_updated: '2026-03-17T21:43:01.437Z'
-last_activity: 2026-03-17 — Completed Plan 02-03 (E2E Tests and CI)
+status: in-progress
+stopped_at: Completed 04-01-PLAN.md
+last_updated: '2026-03-18T01:32:47Z'
+last_activity: 2026-03-18 — Completed Plan 04-01 (Font Self-Hosting and Image Optimization)
 progress:
   total_phases: 9
   completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
-  percent: 100
+  total_plans: 13
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-16)
 
 **Core value:** A decision-maker at a Rwandan bank lands on this site and immediately trusts Imizi Cyber enough to book a consultation.
-**Current focus:** Phase 2 complete — Security Hardening and Test Coverage
+**Current focus:** Phase 4 in progress — Performance and Accessibility
 
 ## Current Position
 
-Phase: 2 of 9 (Security Hardening and Test Coverage) -- COMPLETE
-Plan: 3 of 3 in current phase (complete)
-Status: Phase 2 complete, all 3 plans delivered
-Last activity: 2026-03-17 — Completed Plan 02-03 (E2E Tests and CI)
+Phase: 4 of 9 (Performance and Accessibility)
+Plan: 1 of 3 in current phase (complete)
+Status: Plan 04-01 complete, 2 plans remaining
+Last activity: 2026-03-18 — Completed Plan 04-01 (Font Self-Hosting and Image Optimization)
 
-Progress: [██████████] 100%
+Progress: [████████░░] 85%
 
 ## Performance Metrics
 
@@ -62,6 +62,7 @@ _Updated after each plan completion_
 | Phase 02 P01 | 1min | 2 tasks | 3 files |
 | Phase 02 P02 | 2min | 2 tasks | 9 files |
 | Phase 02 P03 | 11min | 2 tasks | 2 files |
+| Phase 04 P01 | 59min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -95,6 +96,9 @@ Recent decisions affecting current work:
 - [Phase 02]: Post-build CSP injection script (inject-csp.mjs) with per-page SHA-256 hashing instead of Astro experimental CSP (not available in Astro 6)
 - [Phase 02]: All inline style attributes replaced with CSS classes for CSP style-src compliance (no unsafe-inline)
 - [Phase 02]: Accessibility test scans security-score page instead of non-existent /contact/ route
+- [Phase 04 P01]: Mobile gradients kept as-is -- 2 simple radial-gradient dots at 32x32 grid with sub-10% opacity, negligible GPU paint cost
+- [Phase 04 P01]: Only preload critical body font (Plus Jakarta Sans 400), bold and mono load on-demand with font-display swap
+- [Phase 04 P01]: CSP updated to remove Google Fonts external allowances after font self-hosting
 
 ### Pending Todos
 
@@ -109,6 +113,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T21:34:30.967Z
-Stopped at: Completed 02-03-PLAN.md
+Last session: 2026-03-18T01:32:47Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
