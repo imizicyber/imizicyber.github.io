@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Component Architecture and Visual Redesign** - Decompose monolithic page files into named section components and ship the premium boutique visual identity (completed 2026-03-17)
 - [ ] **Phase 4: Performance and Accessibility** - Achieve LCP under 2.5 seconds on 3G, pass Core Web Vitals, and make every page fully accessible
 - [x] **Phase 5: Analytics and Conversion Tracking** - Wire GA4 conversion events, LinkedIn Insight Tag, and Google Search Console entirely behind the consent gate (completed 2026-03-18)
-- [ ] **Phase 6: Trust and Founder Credibility** - Surface founder authority above the fold and add anonymised case studies that answer "have they done this before?"
+- [x] **Phase 6: Trust and Founder Credibility** - Surface founder authority above the fold and add anonymised case studies that answer "have they done this before?" (completed 2026-03-18)
 - [ ] **Phase 7: Service Pages and Content Quality** - Rebuild service pages with compliance mapping, methodology depth, and a complete internal link audit
 - [ ] **Phase 8: Blog System and New Content** - Add tag filtering, related posts, read time, and publish SEO-targeted articles for Rwanda and East Africa
 - [ ] **Phase 9: Lead Generation Funnel** - Complete the conversion path: pre-filled WhatsApp, quiz refactor, resource tracking, and email follow-up
@@ -135,7 +135,7 @@ Plans:
 2. `/about/` page exists as a standalone URL with full professional bio, certifications, career history, and academic background
 3. At least 2 anonymised case study pages exist, each formatted with client description, engagement type, findings, business impact, and recommendation
 4. Service pages reference specific BNR directive numbers and explicitly name PCI DSS, ISO 27001, and Rwanda Data Protection Law in compliance context
-   **Plans:** 3 plans
+   **Plans:** 3/3 plans complete
 
 Plans:
 
@@ -198,7 +198,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 3. Component Architecture and Visual Redesign | 4/4            | Complete    | 2026-03-17 |
 | 4. Performance and Accessibility              | 2/3            | In Progress |            |
 | 5. Analytics and Conversion Tracking          | 0/2            | Complete    | 2026-03-18 |
-| 6. Trust and Founder Credibility              | 0/3            | Not started | -          |
+| 6. Trust and Founder Credibility              | 0/3            | Complete    | 2026-03-18 |
 | 7. Service Pages and Content Quality          | 0/TBD          | Not started | -          |
 | 8. Blog System and New Content                | 0/TBD          | Not started | -          |
 | 9. Lead Generation Funnel                     | 0/TBD          | Not started | -          |
