@@ -28,8 +28,8 @@
 - [x] **UIUX-04**: LCP under 2.5 seconds on simulated 3G connection
 - [x] **UIUX-05**: All images use Astro Image component with WebP format and lazy loading
 - [x] **UIUX-06**: Fonts optimized for performance (preload, font-display swap, evaluate self-hosting)
-- [ ] **UIUX-07**: Contact form shows clear loading, success, and error states with ARIA attributes
-- [ ] **UIUX-08**: Skip link, keyboard navigation, and screen reader support on all pages
+- [x] **UIUX-07**: Contact form shows clear loading, success, and error states with ARIA attributes
+- [x] **UIUX-08**: Skip link, keyboard navigation, and screen reader support on all pages
 - [x] **UIUX-09**: Decorative CSS gradients disabled or simplified on mobile viewports
 - [x] **UIUX-10**: Core Web Vitals pass Google PageSpeed Insights for mobile
 
@@ -132,8 +132,8 @@
 | UIUX-04     | Phase 4 | Complete |
 | UIUX-05     | Phase 4 | Complete |
 | UIUX-06     | Phase 4 | Complete |
-| UIUX-07     | Phase 4 | Pending  |
-| UIUX-08     | Phase 4 | Pending  |
+| UIUX-07     | Phase 4 | Complete |
+| UIUX-08     | Phase 4 | Complete |
 | UIUX-09     | Phase 4 | Complete |
 | UIUX-10     | Phase 4 | Complete |
 | ANLT-01     | Phase 5 | Pending  |

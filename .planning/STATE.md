@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 04-01-PLAN.md
-last_updated: '2026-03-18T01:32:47Z'
-last_activity: 2026-03-18 — Completed Plan 04-01 (Font Self-Hosting and Image Optimization)
+stopped_at: Completed 04-02-PLAN.md
+last_updated: '2026-03-18T02:44:39Z'
+last_activity: 2026-03-18 — Completed Plan 04-02 (ARIA Landmarks and Accessibility)
 progress:
   total_phases: 9
   completed_phases: 3
   total_plans: 13
-  completed_plans: 11
-  percent: 85
+  completed_plans: 12
+  percent: 92
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 ## Current Position
 
 Phase: 4 of 9 (Performance and Accessibility)
-Plan: 1 of 3 in current phase (complete)
-Status: Plan 04-01 complete, 2 plans remaining
-Last activity: 2026-03-18 — Completed Plan 04-01 (Font Self-Hosting and Image Optimization)
+Plan: 2 of 3 in current phase (complete)
+Status: Plan 04-02 complete, 1 plan remaining
+Last activity: 2026-03-18 — Completed Plan 04-02 (ARIA Landmarks and Accessibility)
 
-Progress: [████████░░] 85%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ _Updated after each plan completion_
 | Phase 02 P02 | 2min | 2 tasks | 9 files |
 | Phase 02 P03 | 11min | 2 tasks | 2 files |
 | Phase 04 P01 | 59min | 2 tasks | 10 files |
+| Phase 04 P02 | 35min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -99,6 +100,9 @@ Recent decisions affecting current work:
 - [Phase 04 P01]: Mobile gradients kept as-is -- 2 simple radial-gradient dots at 32x32 grid with sub-10% opacity, negligible GPU paint cost
 - [Phase 04 P01]: Only preload critical body font (Plus Jakarta Sans 400), bold and mono load on-demand with font-display swap
 - [Phase 04 P01]: CSP updated to remove Google Fonts external allowances after font self-hosting
+- [Phase 04 P02]: TrustBar root element changed from div to section for semantic correctness with aria-label
+- [Phase 04 P02]: Contact form status messages moved outside form into aria-live region to avoid re-announcement on form reset
+- [Phase 04 P02]: hidden attribute used instead of style.display for form messages (better semantics, CSP-safe)
 
 ### Pending Todos
 
@@ -113,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T01:32:47Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-18T02:44:39Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
