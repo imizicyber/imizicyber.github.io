@@ -17,6 +17,9 @@ const SCRIPT_SOURCES = [
   'https://cdnjs.cloudflare.com',
   'https://unpkg.com',
   'https://cdn.jsdelivr.net',
+  'https://snap.licdn.com',
+  'https://px.ads.linkedin.com',
+  'https://www.linkedin.com',
 ];
 
 const STYLE_SOURCES = ["'self'"];
@@ -24,8 +27,8 @@ const STYLE_SOURCES = ["'self'"];
 const OTHER_DIRECTIVES = [
   "default-src 'self'",
   "font-src 'self'",
-  "img-src 'self' https: data:",
-  "connect-src 'self' https://formspree.io https://www.google-analytics.com",
+  "img-src 'self' https: data: https://px.ads.linkedin.com",
+  "connect-src 'self' https://formspree.io https://www.google-analytics.com https://px.ads.linkedin.com https://www.linkedin.com",
   "frame-ancestors 'none'",
 ];
 
