@@ -3,6 +3,7 @@
  * SEOHead — renders all SEO meta tags (OG, Twitter, canonical, hreflang, geo).
  */
 import { SITE } from '../data/site';
+import ogImageAsset from '../assets/og.png';
 
 interface Props {
   title: string;
@@ -26,7 +27,7 @@ const {
   ogDescription,
   ogType = 'website',
   canonicalUrl,
-  ogImage = SITE.ogImage,
+  ogImage = ogImageAsset.src,
   twitterTitle,
   twitterDescription,
   robots = 'index, follow',

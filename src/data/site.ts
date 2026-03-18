@@ -6,7 +6,8 @@ export const SITE = {
   lang: 'en',
   region: 'RW',
   placename: 'Kigali',
-  ogImage: '/og.png',
+  // OG image now imported from src/assets/og.png via Astro asset pipeline
+  // See SEOHead.astro and BlogPostLayout.astro for import usage
   ogImageWidth: '1200',
   ogImageHeight: '630',
 } as const;
