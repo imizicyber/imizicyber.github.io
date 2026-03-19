@@ -261,6 +261,14 @@ Plans:
 4. axe-core accessibility scans report zero critical/serious violations on all tested pages
 5. Lighthouse CI performance budgets enforce LCP < 2.5s, CLS < 0.1, FID < 100ms
 
+**Plans:** 3 plans
+
+Plans:
+
+- [ ] 12-01-PLAN.md — Create page-routes and interactions spec files for route smoke tests and interactive element tests
+- [ ] 12-02-PLAN.md — Extend responsive, accessibility, and performance specs with 4-breakpoint, all-page axe, and CWV coverage
+- [ ] 12-03-PLAN.md — Set up Lighthouse CI infrastructure with lighthouserc.json, GitHub Actions workflow, and @lhci/cli
+
 ### Phase 13: Apple/Google-Level UI/UX Audit
 
 **Goal**: The site's visual quality, interaction design, and attention to detail compete with world-class cybersecurity firms — every hover state, transition, and spacing decision feels intentional and premium
@@ -278,7 +286,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 
 | Phase                                         | Plans Complete | Status      | Completed  |
 | --------------------------------------------- | -------------- | ----------- | ---------- |
@@ -293,3 +301,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 9. Lead Generation Funnel                     | 3/3            | Complete    | 2026-03-18 |
 | 10. Functionality Fixes                       | 1/1            | Complete    | 2026-03-18 |
 | 11. Navigation and Quality Completion         | 2/2            | Complete    | 2026-03-18 |
+| 12. Full-Site Playwright Testing              | 0/3            | Planned     | -          |
