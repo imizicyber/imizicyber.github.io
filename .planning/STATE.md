@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 12 context gathered
-last_updated: '2026-03-18T22:29:36.122Z'
-last_activity: 2026-03-18 — Completed 11-01 (Nav links, case studies index, ContactForm extraction, FOUC docs)
+stopped_at: Completed 12-03-PLAN.md
+last_updated: '2026-03-19T17:09:28.332Z'
+last_activity: 2026-03-19 — Completed 12-03 (Lighthouse CI performance budgets)
 progress:
   total_phases: 13
   completed_phases: 11
-  total_plans: 30
-  completed_plans: 30
-  percent: 97
+  total_plans: 33
+  completed_plans: 31
+  percent: 94
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-16)
 
 **Core value:** A decision-maker at a Rwandan bank lands on this site and immediately trusts Imizi Cyber enough to book a consultation.
-**Current focus:** Phase 11 complete -- navigation and quality completion, all 5 structural gaps resolved
+**Current focus:** Phase 12 in progress -- full-site Playwright testing and Lighthouse CI
 
 ## Current Position
 
-Phase: 11 of 13 (Navigation and Quality Completion) - COMPLETE
-Plan: 1 of 1 in current phase
-Status: All plans complete. QUAL-08 closed. Case studies index, nav/footer links, ContactForm extraction, loadJsPDF cleanup done.
-Last activity: 2026-03-18 — Completed 11-01 (Nav links, case studies index, ContactForm extraction, FOUC docs)
+Phase: 12 of 13 (Full-Site Playwright Testing)
+Plan: 3 of 3 in current phase
+Status: 12-03 complete. Lighthouse CI infrastructure with performance budgets deployed.
+Last activity: 2026-03-19 — Completed 12-03 (Lighthouse CI performance budgets)
 
-Progress: [██████████] 97%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -81,6 +81,7 @@ _Updated after each plan completion_
 | Phase 10 P01 | 2min | 2 tasks | 2 files |
 | Phase 11 P01 | 3min | 2 tasks | 6 files |
 | Phase 11 P02 | 2min | 2 tasks | 1 files |
+| Phase 12 P03 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -147,6 +148,10 @@ Recent decisions affecting current work:
 - [Phase 10]: All schema.org image references use getImage() WebP output following SEOHead.astro pattern
 - [Phase 11]: Removed unused ANALYTICS frontmatter import from ContactForm after define:vars extraction
 - [Phase 11]: No code changes needed for contact form tests -- module script extraction works correctly with deferred loading
+- [Phase 12]: TBT at 200ms used as Lighthouse lab proxy for FID/INP responsiveness (real user interaction not available in CI)
+- [Phase 12]: categories:performance as warn not error because CI Lighthouse scores fluctuate; hard metrics (LCP, CLS, TBT) are errors
+- [Phase 12]: Separate Lighthouse CI workflow from E2E tests to avoid impacting Playwright runtime budget
+- [Phase 12]: temporary-public-storage upload target works without GitHub App token setup
 
 ### Pending Todos
 
@@ -161,6 +166,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T22:29:36.114Z
-Stopped at: Phase 12 context gathered
-Resume file: .planning/phases/12-full-site-playwright-testing/12-CONTEXT.md
+Last session: 2026-03-19T17:09:28.326Z
+Stopped at: Completed 12-03-PLAN.md
+Resume file: None
