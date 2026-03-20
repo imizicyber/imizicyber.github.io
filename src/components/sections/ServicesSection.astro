@@ -121,9 +121,9 @@
     font-weight: 700;
     color: var(--txt2);
     background: rgba(255, 255, 255, 0.04);
-    padding: 4px 10px;
-    border-radius: 16px;
-    border-left: 2px solid rgba(52, 211, 153, 0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .card-cta {
     font-size: 0.76rem;
@@ -218,5 +218,21 @@
       align-items: flex-start;
       gap: 8px;
     }
+  }
+
+  /* Light theme overrides */
+  :global([data-theme='light']) .pills span {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+  :global([data-theme='light']) .card {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  :global([data-theme='light']) .card:hover {
+    border-color: rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+  :global([data-theme='light']) .training-card {
+    border-color: rgba(0, 0, 0, 0.1);
   }
 </style>

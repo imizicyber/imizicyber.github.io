@@ -117,7 +117,7 @@ export const FOUNDER: Founder = {
     },
   ],
 
-  bio: 'OSCP and OSCP+ certified offensive security specialist with red team and penetration testing experience at Tier-1 banks across Europe, Africa, and the Middle East. Holds an MSc in Computer Security from the Technical University of Denmark. BlackHat Europe Arsenal presenter and Google Summer of Code contributor. Founded Imizi Cyber to bring international-grade security expertise to East African organisations.',
+  bio: 'Offensive security specialist who has broken into some of the most heavily defended financial systems in Europe, Africa, and the Middle East — then helped them rebuild stronger. OSCP and OSCP+ certified. MSc in Computer Security (Technical University of Denmark). Former red team operator at a Tier-1 Nordic bank. BlackHat Europe Arsenal presenter. Founded Imizi Cyber because East African organisations deserve the same calibre of security testing that protects European banks.',
 } as const;
 
 export interface TeamMember {
@@ -134,6 +134,6 @@ export const TEAM: TeamMember[] = [
     title: 'Marketing & Business Development Manager',
     photo: evalynePhoto,
     linkedIn: 'https://www.linkedin.com/in/evalyne171/',
-    bio: 'Leads client acquisition, strategic partnerships, and market expansion across East Africa. With deep knowledge of the regional business landscape, Evalyne connects organisations with the cybersecurity solutions that fit their compliance requirements, risk profile, and budget. She manages client relationships from initial consultation through engagement delivery, ensuring every project meets expectations.',
+    bio: 'The voice you hear first and the person who makes sure every engagement delivers real value. Evalyne drives business growth across East Africa — identifying organisations that need security, understanding their regulatory pressures, and matching them with the right solutions. She manages every client relationship end-to-end, from first conversation to final report delivery, ensuring nothing falls through the cracks.',
   },
 ];
