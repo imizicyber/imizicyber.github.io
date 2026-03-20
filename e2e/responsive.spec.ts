@@ -9,11 +9,22 @@ const viewports = [
 
 const responsivePages = [
   '/',
-  '/services/penetration-testing/',
-  '/blog/',
-  '/case-studies/east-africa-bank-pentest/',
-  '/tools/security-score/',
   '/about/',
+  '/blog/',
+  '/blog/penetration-testing-rwanda/',
+  '/case-studies/',
+  '/case-studies/east-africa-bank-pentest/',
+  '/case-studies/mobile-money-security-assessment/',
+  '/company-profile/',
+  '/privacy-policy/',
+  '/resources/',
+  '/responsible-disclosure/',
+  '/services/penetration-testing/',
+  '/services/security-assessments/',
+  '/services/custom-tooling/',
+  '/services/managed-security/',
+  '/services/security-training/',
+  '/tools/security-score/',
 ];
 
 test.describe('Responsive Layout (UIUX-03, TEST-03)', () => {
