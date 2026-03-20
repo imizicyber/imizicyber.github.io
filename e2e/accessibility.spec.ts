@@ -1,27 +1,6 @@
 import { test, expect } from './fixtures/axe-test';
 
 test.describe('Accessibility', () => {
-  test('homepage has no critical violations', async ({ page, makeAxeBuilder }) => {
-    await page.goto('/');
-    const results = await makeAxeBuilder().analyze();
-    const critical = results.violations.filter((v) => v.impact === 'critical');
-    expect(critical).toEqual([]);
-  });
-
-  test('blog index has no critical violations', async ({ page, makeAxeBuilder }) => {
-    await page.goto('/blog/');
-    const results = await makeAxeBuilder().analyze();
-    const critical = results.violations.filter((v) => v.impact === 'critical');
-    expect(critical).toEqual([]);
-  });
-
-  test('security score page has no critical violations', async ({ page, makeAxeBuilder }) => {
-    await page.goto('/tools/security-score/');
-    const results = await makeAxeBuilder().analyze();
-    const critical = results.violations.filter((v) => v.impact === 'critical');
-    expect(critical).toEqual([]);
-  });
-
   test('ARIA landmarks are present on homepage (UIUX-08)', async ({ page }) => {
     await page.goto('/');
 
@@ -119,4 +98,51 @@ test.describe('Accessibility', () => {
     // URL hash should be #main or focus/scroll should move to #main
     await page.waitForURL('**/#main');
   });
+});
+
+const allPages = [
+  '/',
+  '/about/',
+  '/blog/',
+  '/resources/',
+  '/services/penetration-testing/',
+  '/services/security-assessments/',
+  '/services/managed-security/',
+  '/services/custom-tooling/',
+  '/services/security-training/',
+  '/case-studies/',
+  '/case-studies/east-africa-bank-pentest/',
+  '/case-studies/mobile-money-security-assessment/',
+  '/company-profile/',
+  '/privacy-policy/',
+  '/responsible-disclosure/',
+  '/tools/security-score/',
+];
+
+test.describe('Accessibility: All Pages (TEST-04)', () => {
+  for (const pagePath of allPages) {
+    test(`${pagePath} has no critical or serious a11y violations`, async ({
+      page,
+      makeAxeBuilder,
+    }) => {
+      await page.goto(pagePath);
+      const results = await makeAxeBuilder().analyze();
+      const criticalOrSerious = results.violations.filter(
+        (v) => v.impact === 'critical' || v.impact === 'serious',
+      );
+
+      // Log minor/moderate as warnings (per CONTEXT.md: not blockers)
+      const minorModerate = results.violations.filter(
+        (v) => v.impact === 'minor' || v.impact === 'moderate',
+      );
+      if (minorModerate.length > 0) {
+        console.warn(
+          `[a11y warning] ${pagePath}: ${minorModerate.length} minor/moderate violation(s):`,
+          minorModerate.map((v) => `${v.id}: ${v.description}`),
+        );
+      }
+
+      expect(criticalOrSerious).toEqual([]);
+    });
+  }
 });

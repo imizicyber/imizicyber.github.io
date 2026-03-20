@@ -82,4 +82,43 @@ test.describe('Performance', () => {
     // Test passes if no img elements exist (site uses SVGs) — the constraint
     // ensures any future img additions must include dimensions.
   });
+
+  test('LCP is under 2.5s on homepage (TEST-05)', async ({ page }) => {
+    await page.goto('/');
+
+    const lcp = await page.evaluate(() => {
+      return new Promise<number>((resolve) => {
+        new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          const lastEntry = entries.at(-1);
+          resolve(lastEntry?.startTime ?? 0);
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+      });
+    });
+
+    expect(lcp).toBeLessThan(2500);
+  });
+
+  test('CLS is under 0.1 on homepage (TEST-05)', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const cls = await page.evaluate(() => {
+      return new Promise<number>((resolve) => {
+        let clsValue = 0;
+        const observer = new PerformanceObserver((list) => {
+          for (const entry of list.getEntries()) {
+            if (!(entry as unknown as { hadRecentInput: boolean }).hadRecentInput) {
+              clsValue += (entry as unknown as { value: number }).value;
+            }
+          }
+        });
+        observer.observe({ type: 'layout-shift', buffered: true });
+        // Give 100ms for any remaining shifts, then resolve
+        setTimeout(() => resolve(clsValue), 100);
+      });
+    });
+
+    expect(cls).toBeLessThan(0.1);
+  });
 });
