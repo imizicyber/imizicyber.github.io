@@ -283,6 +283,13 @@ Plans:
 4. Dark and light modes both feel equally premium — no "afterthought" theme
 5. Mobile UX passes review for touch-target sizing (44px min), gesture patterns, and Rwanda mobile-first priorities
 
+**Plans:** 2 plans
+
+Plans:
+
+- [ ] 13-01-PLAN.md — Micro-interactions polish and light/dark theme parity (global CSS + section components)
+- [ ] 13-02-PLAN.md — Typography/spacing token audit, mobile touch targets, full E2E test verification
+
 ## Progress
 
 **Execution Order:**
@@ -302,3 +309,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 10. Functionality Fixes                       | 1/1            | Complete    | 2026-03-18 |
 | 11. Navigation and Quality Completion         | 2/2            | Complete    | 2026-03-18 |
 | 12. Full-Site Playwright Testing              | 3/3            | Complete    | 2026-03-20 |
+| 13. Apple/Google-Level UI/UX Audit            | 0/2            | In Progress | -          |
