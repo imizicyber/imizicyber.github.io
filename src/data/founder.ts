@@ -1,5 +1,7 @@
-// TODO: Replace src/assets/founder.jpg with actual founder photograph
-import founderPhoto from '../assets/founder.jpg';
+// TODO: Replace src/assets/founder.png with actual founder photograph
+// TODO: Replace src/assets/evalyne.png with actual team member photograph
+import founderPhoto from '../assets/founder.png';
+import evalynePhoto from '../assets/evalyne.png';
 
 export interface Certification {
   name: string;
@@ -117,3 +119,20 @@ export const FOUNDER: Founder = {
 
   bio: 'Software engineer turned offensive security specialist with red team and penetration testing experience at major banks across Europe, Africa, and the Middle East. OSCP and OSCP+ certified, BlackHat Europe Arsenal presenter, and founder of Imizi Cyber in Kigali, Rwanda.',
 } as const;
+
+export interface TeamMember {
+  name: string;
+  title: string;
+  photo: ImageMetadata;
+  linkedIn?: string;
+  bio: string;
+}
+
+export const TEAM: TeamMember[] = [
+  {
+    name: 'Evalyne Kembabazi',
+    title: 'Marketing & Business Development Manager',
+    photo: evalynePhoto,
+    bio: 'Drives client acquisition, partnerships, and market growth across East Africa. Connects organisations with the right cybersecurity solutions for their needs.',
+  },
+];
