@@ -142,6 +142,49 @@ html {
     radial-gradient(circle, rgba(0, 20, 80, 0.05) 1px, transparent 1px);
 }
 
+/* LIGHT THEME — border/shadow/bg overrides for dark-mode rgba values */
+[data-theme='light'] .nav-bar {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme='light'] .card,
+[data-theme='light'] .blog-card,
+[data-theme='light'] .faq details,
+[data-theme='light'] .form-box,
+[data-theme='light'] .training-card {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: var(--bg2);
+}
+[data-theme='light'] .card:hover,
+[data-theme='light'] .blog-card:hover {
+  border-color: rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+[data-theme='light'] .pills span {
+  background: rgba(0, 0, 0, 0.04);
+  border-left-color: rgba(5, 150, 105, 0.4);
+}
+[data-theme='light'] .btn-ghost {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+[data-theme='light'] .btn-ghost:hover {
+  border-color: var(--acc);
+}
+[data-theme='light'] .sec-b {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+[data-theme='light'] .footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme='light'] .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+[data-theme='light'] .cta-box {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme='light'] .article-body blockquote {
+  border-left-color: rgba(5, 150, 105, 0.4);
+}
+
 /* BODY */
 body {
   font-family: var(--sans);
