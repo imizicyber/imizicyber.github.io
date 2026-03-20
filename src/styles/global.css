@@ -184,6 +184,24 @@ html {
 [data-theme='light'] .article-body blockquote {
   border-left-color: rgba(5, 150, 105, 0.4);
 }
+/* Global catch-all: swap invisible white-alpha borders for dark-alpha in light mode */
+[data-theme='light'] .card,
+[data-theme='light'] .edu-item,
+[data-theme='light'] .cred-card,
+[data-theme='light'] .p-step,
+[data-theme='light'] .feature-item,
+[data-theme='light'] .tier,
+[data-theme='light'] .module-card,
+[data-theme='light'] .deliverable-card,
+[data-theme='light'] .training-card,
+[data-theme='light'] .team-card,
+[data-theme='light'] .severity-card,
+[data-theme='light'] .resource-card,
+[data-theme='light'] .finding,
+[data-theme='light'] .error-box,
+[data-theme='light'] section {
+  border-color: rgba(0, 0, 0, 0.08);
+}
 
 /* BODY */
 body {
@@ -375,6 +393,19 @@ nav {
 }
 [data-theme='light'] .nav-cta {
   color: #fff !important;
+}
+[data-theme='light'] .nav-cta-outline {
+  border-color: var(--acc);
+  color: var(--acc) !important;
+  background: rgba(5, 150, 105, 0.06);
+}
+[data-theme='light'] .theme-toggle {
+  border-color: #94a3b8;
+  color: #4a5568;
+}
+[data-theme='light'] .theme-toggle:hover {
+  border-color: var(--acc);
+  color: var(--acc);
 }
 
 /* ============================================
