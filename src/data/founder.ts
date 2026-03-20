@@ -117,7 +117,7 @@ export const FOUNDER: Founder = {
     },
   ],
 
-  bio: 'Software engineer turned offensive security specialist with red team and penetration testing experience at major banks across Europe, Africa, and the Middle East. OSCP and OSCP+ certified, BlackHat Europe Arsenal presenter, and founder of Imizi Cyber in Kigali, Rwanda.',
+  bio: 'OSCP and OSCP+ certified offensive security specialist with red team and penetration testing experience at Tier-1 banks across Europe, Africa, and the Middle East. Holds an MSc in Computer Security from the Technical University of Denmark. BlackHat Europe Arsenal presenter and Google Summer of Code contributor. Founded Imizi Cyber to bring international-grade security expertise to East African organisations.',
 } as const;
 
 export interface TeamMember {
@@ -133,6 +133,7 @@ export const TEAM: TeamMember[] = [
     name: 'Evalyne Kembabazi',
     title: 'Marketing & Business Development Manager',
     photo: evalynePhoto,
+    linkedIn: 'https://www.linkedin.com/in/evalyne171/',
     bio: 'Leads client acquisition, strategic partnerships, and market expansion across East Africa. With deep knowledge of the regional business landscape, Evalyne connects organisations with the cybersecurity solutions that fit their compliance requirements, risk profile, and budget. She manages client relationships from initial consultation through engagement delivery, ensuring every project meets expectations.',
   },
 ];

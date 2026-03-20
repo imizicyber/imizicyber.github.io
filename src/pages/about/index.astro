@@ -99,20 +99,6 @@ const schemas = [
           <h3>{FOUNDER.name}</h3>
           <span class="team-title">{FOUNDER.title}</span>
           <p>{FOUNDER.bio}</p>
-          <div class="team-creds">
-            {FOUNDER.certifications.map((cert) => <span class="cred-tag">{cert.name}</span>)}
-            <span class="cred-tag">BlackHat Arsenal</span>
-            <span class="cred-tag">GSoC 2023 & 2024</span>
-          </div>
-          <div class="team-edu">
-            {
-              FOUNDER.education.map((edu) => (
-                <span>
-                  {edu.degree} {edu.field}, {edu.institution}
-                </span>
-              ))
-            }
-          </div>
           {
             FOUNDER.linkedIn && (
               <a
