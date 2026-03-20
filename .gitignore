@@ -19,6 +19,9 @@ credentials.json
 # Claude Code
 .claude/
 
+# Planning docs (internal)
+.planning/
+
 # Node
 node_modules/
 
