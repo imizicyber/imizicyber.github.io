@@ -124,6 +124,18 @@ import { CONTACT } from '../../data/site';
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 10px;
     overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .hero-terminal:hover {
+    border-color: rgba(52, 211, 153, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  [data-theme='light'] .hero-terminal {
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+  [data-theme='light'] .hero-terminal:hover {
+    border-color: rgba(5, 150, 105, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   }
   .terminal-bar {
     display: flex;
