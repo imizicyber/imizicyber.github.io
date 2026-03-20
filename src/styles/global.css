@@ -244,6 +244,7 @@ nav {
 }
 .nav-cta:hover {
   background: var(--acc2);
+  box-shadow: 0 2px 12px rgba(52, 211, 153, 0.2);
 }
 .nav-cta-outline {
   background: transparent;
@@ -349,6 +350,7 @@ nav {
 .btn-fill:hover {
   background: var(--acc2);
   box-shadow: 0 4px 20px rgba(52, 211, 153, 0.15);
+  transform: translateY(-1px);
 }
 .btn-ghost {
   color: var(--txt2);
@@ -357,6 +359,7 @@ nav {
 .btn-ghost:hover {
   border-color: var(--txt2);
   color: var(--white);
+  transform: translateY(-1px);
 }
 .btn-wa {
   background: #1b7a42;
@@ -365,6 +368,7 @@ nav {
 .btn-wa:hover {
   background: #166e3a;
   box-shadow: 0 4px 20px rgba(27, 122, 66, 0.2);
+  transform: translateY(-1px);
 }
 .btn-wa svg {
   width: 18px;
@@ -499,6 +503,10 @@ nav {
 [data-theme='light'] .card {
   border-color: rgba(0, 0, 0, 0.1);
 }
+[data-theme='light'] .card:hover {
+  border-color: rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
 
 /* ============================================
    FAQ / DETAILS
@@ -524,6 +532,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: color 0.2s;
 }
 .faq summary:hover {
   color: var(--acc);
@@ -580,7 +589,8 @@ nav {
 }
 
 [data-theme='light'] .cta-box {
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(5, 150, 105, 0.15);
+  background: var(--bg3);
 }
 
 /* ============================================
@@ -646,6 +656,7 @@ nav {
 .blog-card:hover {
   border-color: rgba(52, 211, 153, 0.12);
   transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 .blog-date {
   font-family: var(--mono);
@@ -690,6 +701,10 @@ nav {
 }
 [data-theme='light'] .blog-card p {
   color: #4a5568;
+}
+[data-theme='light'] .blog-card:hover {
+  border-color: rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
 }
 
 /* ============================================
@@ -829,6 +844,7 @@ nav {
 .field textarea:focus,
 .field select:focus {
   border-color: var(--acc);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
 }
 .field textarea {
   height: 68px;
@@ -852,11 +868,13 @@ nav {
   cursor: pointer;
   width: 100%;
   font-family: var(--sans);
-  transition: background 0.2s;
+  transition: all 0.2s;
   margin-top: 2px;
 }
 .submit-btn:hover {
   background: var(--acc2);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 12px rgba(52, 211, 153, 0.15);
 }
 .honeypot {
   display: none;
@@ -893,6 +911,11 @@ nav {
 }
 [data-theme='light'] .submit-btn {
   color: #fff;
+}
+[data-theme='light'] .field input:focus,
+[data-theme='light'] .field textarea:focus,
+[data-theme='light'] .field select:focus {
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
 }
 
 /* ============================================
@@ -993,6 +1016,9 @@ footer {
 [data-theme='light'] .footer-left {
   border-top-color: rgba(0, 0, 0, 0.08);
 }
+[data-theme='light'] .sec-b {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
 
 /* ============================================
    FLOATING WHATSAPP
@@ -1069,6 +1095,12 @@ footer {
     transform: none;
   }
   .wa-float:hover {
+    transform: none;
+  }
+  .btn-fill:hover,
+  .btn-ghost:hover,
+  .btn-wa:hover,
+  .submit-btn:hover {
     transform: none;
   }
 }
