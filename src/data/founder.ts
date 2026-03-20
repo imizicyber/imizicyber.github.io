@@ -133,6 +133,6 @@ export const TEAM: TeamMember[] = [
     name: 'Evalyne Kembabazi',
     title: 'Marketing & Business Development Manager',
     photo: evalynePhoto,
-    bio: 'Drives client acquisition, partnerships, and market growth across East Africa. Connects organisations with the right cybersecurity solutions for their needs.',
+    bio: 'Leads client acquisition, strategic partnerships, and market expansion across East Africa. With deep knowledge of the regional business landscape, Evalyne connects organisations with the cybersecurity solutions that fit their compliance requirements, risk profile, and budget. She manages client relationships from initial consultation through engagement delivery, ensuring every project meets expectations.',
   },
 ];

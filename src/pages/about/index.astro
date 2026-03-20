@@ -56,13 +56,13 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="About Aristofanis Chionis | OSCP Pentester Kigali | imizicyber"
-  description="Meet the founder of imizicyber: OSCP & OSCP+ certified penetration tester with red team experience at Tier-1 banks across Europe and Africa. Based in Kigali, Rwanda."
-  keywords="Aristofanis Chionis, OSCP pentester Kigali, offensive security Rwanda, penetration tester Africa, imizicyber founder, cybersecurity consultant Kigali"
-  ogTitle="About Aristofanis Chionis | OSCP Pentester Kigali | imizicyber"
-  ogDescription="OSCP & OSCP+ certified penetration tester and founder of imizicyber. Red team experience at Tier-1 banks across Europe and Africa."
-  twitterTitle="About Aristofanis Chionis | imizicyber"
-  twitterDescription="OSCP-certified founder of imizicyber. Red team experience at Tier-1 banks across Europe and Africa."
+  title="About Us | imizicyber — Cybersecurity Team in Kigali"
+  description="Meet the imizicyber team: OSCP-certified penetration testers and business development professionals delivering cybersecurity services across East Africa from Kigali, Rwanda."
+  keywords="imizicyber team, cybersecurity Kigali, OSCP pentester Rwanda, penetration testing Africa, cybersecurity consultant East Africa"
+  ogTitle="About Us | imizicyber — Cybersecurity Team in Kigali"
+  ogDescription="Meet the imizicyber team delivering cybersecurity services across East Africa from Kigali, Rwanda."
+  twitterTitle="About Us | imizicyber"
+  twitterDescription="Meet the imizicyber team — cybersecurity experts based in Kigali, Rwanda."
   canonicalUrl={`${SITE.url}/about/`}
   schemas={schemas}
   navVariant="inner"
@@ -78,135 +78,65 @@ const schemas = [
         <span class="sep">&middot;</span>
         <span class="detail">KIGALI, RWANDA</span>
       </div>
-      <h1>About {FOUNDER.name}</h1>
-      <p class="article-intro">{FOUNDER.bio}</p>
-      <div class="cred-bar">
-        <span>Certifications:</span>
-        {FOUNDER.certifications.map((cert) => <strong>{cert.name}</strong>)}
-        <span class="cred-sep">|</span>
-        <strong>BlackHat Europe Arsenal presenter</strong>
-        <span class="cred-sep">|</span>
-        <span>Red team experience at Tier-1 European &amp; African banks</span>
-      </div>
+      <h1>About Us</h1>
+      <p class="article-intro">
+        Imizi Cyber is a cybersecurity consultancy based in Kigali, Rwanda. We bring international
+        offensive security expertise to organisations across East Africa. The name "Imizi" comes
+        from Kinyarwanda, meaning "roots" -- reflecting our commitment to building deep, lasting
+        security foundations.
+      </p>
     </div>
   </div>
 
   <div class="w article-body">
-    <h2>Professional background</h2>
-    <p>
-      Aristofanis started his career in software engineering before pivoting to offensive security
-      -- drawn by the challenge of breaking systems to make them stronger. After completing an MSc
-      in Computer Security at the Technical University of Denmark, he joined the internal red team
-      of a Tier-1 Nordic bank, where he gained hands-on experience in adversary simulation,
-      penetration testing, and building security awareness programmes.
-    </p>
-    <p>
-      That experience led to offensive security engagements at major financial institutions across
-      multiple continents: penetration testing web applications and core banking infrastructure for
-      a Pan-African banking group, building custom security tooling for a top-5 South African bank,
-      and testing trading platform security for a securities firm in Abu Dhabi.
-    </p>
-    <p>
-      In 2026, Aristofanis founded Imizi Cyber in Kigali, Rwanda -- bringing international offensive
-      security expertise to a region where demand for qualified, locally-present penetration testers
-      is growing fast. The name "Imizi" comes from Kinyarwanda, meaning "roots" -- reflecting a
-      commitment to building deep, lasting security foundations for African organisations.
-    </p>
-
-    <h2>Certifications &amp; credentials</h2>
-    <p>
-      Professional certifications validate hands-on technical capability. These are not
-      multiple-choice exams -- they require demonstrating real exploitation skills under timed
-      conditions.
-    </p>
-    <div class="cert-list">
-      {
-        FOUNDER.certifications.map((cert) => (
-          <div class="cert-item">
-            <div class="cert-badge">{cert.name}</div>
-            <div class="cert-detail">
-              <b>{cert.name}</b>
-              <span>
-                {cert.name === 'OSCP'
-                  ? 'Offensive Security Certified Professional. A rigorous 24-hour hands-on exam requiring exploitation of multiple machines in a simulated enterprise network.'
-                  : cert.name === 'OSCP+'
-                    ? 'Offensive Security Certified Professional Plus. An extended version of OSCP with additional Active Directory exploitation and advanced attack techniques.'
-                    : 'Practical Network Penetration Tester by TCM Security. Covers real-world internal and external network penetration testing methodology.'}
-              </span>
-              <span class="cert-org">Issued by {cert.org}</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-    <p>
-      Beyond certifications, Aristofanis presented at <strong>BlackHat Europe Arsenal</strong> in London
-      (2023), demonstrating security tooling to an international audience of offensive security professionals.
-    </p>
-
-    <h2>Career history</h2>
-    <div class="process-timeline">
-      {
-        FOUNDER.experience.map((exp) => (
-          <div class="p-step">
-            <h3>{exp.org}</h3>
-            <div class="p-meta">
-              <span class="p-role">{exp.role}</span>
-              <span class="p-loc">{exp.location}</span>
-            </div>
-            <p>{exp.description}</p>
-          </div>
-        ))
-      }
-    </div>
-
-    <h2>Education</h2>
-    <div class="edu-list">
-      {
-        FOUNDER.education.map((edu) => (
-          <div class="edu-item">
-            <div class="edu-degree">
-              {edu.degree} {edu.field}
-            </div>
-            <div class="edu-school">{edu.institution}</div>
-            <div class="edu-country">{edu.country}</div>
-          </div>
-        ))
-      }
-    </div>
-    <p>
-      Academic work focused on network security, cryptography, and secure systems design. The
-      combination of a strong computer science foundation (Athens) with specialised security
-      training (Denmark) provides the theoretical depth that underpins practical offensive security
-      work.
-    </p>
-
-    <h2>Speaking &amp; open source</h2>
-    <p>
-      Aristofanis believes in giving back to the security community through open-source
-      contributions and knowledge sharing.
-    </p>
-    <ul>
-      <li>
-        <strong>BlackHat Europe Arsenal 2023</strong> (London) -- Presented open-source security tooling
-        to an international audience of offensive security professionals.
-      </li>
-      <li>
-        <strong>Google Summer of Code 2023 &amp; 2024</strong> -- Selected contributor with the Honeynet
-        Project, building open-source security tools used by researchers and defenders worldwide.
-      </li>
-    </ul>
-
     <h2>Our team</h2>
+
     <div class="team-grid">
+      <!-- Founder -->
+      <div class="team-card team-card-full">
+        <Image src={FOUNDER.photo} alt={FOUNDER.name} width={160} height={160} class="team-photo" />
+        <div class="team-info">
+          <h3>{FOUNDER.name}</h3>
+          <span class="team-title">{FOUNDER.title}</span>
+          <p>{FOUNDER.bio}</p>
+          <div class="team-creds">
+            {FOUNDER.certifications.map((cert) => <span class="cred-tag">{cert.name}</span>)}
+            <span class="cred-tag">BlackHat Arsenal</span>
+            <span class="cred-tag">GSoC 2023 & 2024</span>
+          </div>
+          <div class="team-edu">
+            {
+              FOUNDER.education.map((edu) => (
+                <span>
+                  {edu.degree} {edu.field}, {edu.institution}
+                </span>
+              ))
+            }
+          </div>
+          {
+            FOUNDER.linkedIn && (
+              <a
+                href={FOUNDER.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="team-link"
+              >
+                LinkedIn &rarr;
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Team members -->
       {
         TEAM.map((member) => (
-          <div class="team-card">
+          <div class="team-card team-card-full">
             <Image
               src={member.photo}
               alt={member.name}
-              width={120}
-              height={120}
+              width={160}
+              height={160}
               class="team-photo"
             />
             <div class="team-info">
@@ -228,6 +158,15 @@ const schemas = [
         ))
       }
     </div>
+
+    <h2>Why Kigali?</h2>
+    <p>
+      Rwanda is one of Africa's fastest-growing technology hubs. As financial institutions adopt
+      digital banking, mobile money, and cloud infrastructure, the need for qualified,
+      locally-present cybersecurity professionals is growing fast. We are here -- not remote, not
+      flying in -- to deliver hands-on security services with local context and international
+      standards.
+    </p>
 
     <div class="cta-box">
       <h2>Work with us</h2>
@@ -672,12 +611,45 @@ const schemas = [
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
   }
+  .team-card-full {
+    padding: 28px;
+  }
   .team-photo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+  }
+  .team-creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .cred-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--acc);
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 16px;
+    padding: 3px 10px;
+  }
+  .team-edu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
+  }
+  .team-edu span {
+    font-size: 0.78rem;
+    color: var(--txt3);
+  }
+  [data-theme='light'] .cred-tag {
+    background: rgba(5, 150, 105, 0.08);
+    border-color: rgba(5, 150, 105, 0.25);
   }
   .team-info h3 {
     font-size: 1.1rem;
