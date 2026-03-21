@@ -19,6 +19,8 @@ export const CONTACT = {
   whatsappUrl:
     'https://wa.me/250793146617?text=Hi%20imizicyber%2C%20I%27d%20like%20to%20discuss%20security%20services',
   address: 'Norrsken House, 1 KN 78 St, Kigali, Rwanda',
+  /** Cal.eu booking link (EU data residency) */
+  calLink: 'aristos-imizi-cyber/free-consultation',
 } as const;
 
 export const SOCIAL = {

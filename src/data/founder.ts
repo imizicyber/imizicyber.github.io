@@ -73,7 +73,7 @@ export const FOUNDER: Founder = {
     },
     {
       degree: 'BSc',
-      field: 'Informatics',
+      field: 'Informatics & Telecommunications',
       institution: 'National and Kapodistrian University of Athens',
       country: 'Greece',
     },

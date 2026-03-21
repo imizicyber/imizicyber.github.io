@@ -84,6 +84,7 @@ const {
     <link rel="manifest" href="/manifest.json" />
 
     <meta name="dns-prefetch" content="//formspree.io" />
+    <meta name="dns-prefetch" content="//app.cal.eu" />
     <meta property="og:site_name" content={SITE.name} />
 
     <link
@@ -130,10 +131,59 @@ const {
     {showWhatsApp && <WhatsAppFloat prefilledText={whatsappMessage} />}
     <CookieBanner />
 
+    <!-- Cal.eu embed — loads async, opens popup on data-cal-link clicks -->
+    <script is:inline>
+      /* eslint-disable prefer-rest-params */
+      (function (C, A, L) {
+        const p = function (a, ar) {
+          a.q.push(ar);
+        };
+        const d = C.document;
+        C.Cal =
+          C.Cal ||
+          function () {
+            const cal = C.Cal;
+            const ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              const s = d.createElement('script');
+              s.src = A;
+              s.async = true;
+              d.head.appendChild(s);
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === 'string') {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+      })(window, 'https://app.cal.eu/embed/embed.js', 'init');
+      /* eslint-enable prefer-rest-params */
+      Cal('init', { origin: 'https://cal.eu' });
+      Cal('ui', {
+        theme: 'dark',
+        styles: { branding: { brandColor: '#047857' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+    </script>
+
     <script>
       import { trackEvent } from '@/scripts/analytics';
 
-      const CTA_SELECTOR = 'a[href*="contact"], a[href*="consultation"], .cta-btn, .hero-cta';
+      const CTA_SELECTOR =
+        'a[href*="contact"], a[href*="consultation"], .cta-btn, .hero-cta, [data-cal-link]';
 
       document.body.addEventListener('click', (e) => {
         const target = (e.target as Element).closest?.(CTA_SELECTOR);

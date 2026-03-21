@@ -454,6 +454,16 @@ nav {
   height: 18px;
   fill: #fff;
 }
+.btn-cal {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-cal svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
 .btns {
   display: flex;
   gap: 10px;

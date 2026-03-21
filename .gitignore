@@ -40,3 +40,6 @@ e2e/results/
 # Temp files
 *.tmp
 *.log
+
+# Strategy Files
+ProductStrategy/

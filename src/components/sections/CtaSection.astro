@@ -2,6 +2,7 @@
 /**
  * CtaSection -- Compliance urgency CTA block.
  */
+import { CONTACT } from '../../data/site';
 ---
 
 <section class="cta-section" aria-label="Get started">
@@ -15,7 +16,14 @@
       gaps before your regulator does.
     </p>
     <div class="btns cta-btns">
-      <a href="#contact" class="btn btn-fill">Schedule a call</a>
+      <button data-cal-link={CONTACT.calLink} class="btn btn-fill btn-cal">
+        <svg viewBox="0 0 20 20" aria-hidden="true"
+          ><path
+            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 011 1v1h1a1 1 0 110 2H7v1a1 1 0 11-2 0v-1H4a1 1 0 110-2h1V8a1 1 0 011-1z"
+          ></path></svg
+        >
+        Book a Free Call
+      </button>
       <a
         href="https://wa.me/250793146617?text=Hi%2C%20I%27d%20like%20to%20discuss%20BNR%20compliance%20for%20our%20institution"
         class="btn btn-wa"

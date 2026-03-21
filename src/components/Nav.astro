@@ -6,6 +6,7 @@
  */
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import { CONTACT } from '../data/site';
 
 interface Props {
   variant?: 'home' | 'inner';
@@ -40,10 +41,12 @@ const contactHref = isHome ? '#contact' : '/#contact';
             </a>
           )
         }
-        <a href={contactHref} class="nav-cta">Book a Consultation</a>
+        <button data-cal-link={CONTACT.calLink} class="nav-cta btn-cal">Book a Free Call</button>
       </div>
       <div class="nav-end">
-        <a href={contactHref} class="nav-cta-mobile">Book a Consultation</a>
+        <button data-cal-link={CONTACT.calLink} class="nav-cta-mobile btn-cal"
+          >Book a Free Call</button
+        >
         <ThemeToggle />
         <button class="menu-btn" aria-label="Menu" aria-expanded="false">
           <span></span><span></span><span></span>
